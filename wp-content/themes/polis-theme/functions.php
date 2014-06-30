@@ -426,46 +426,46 @@ function custom_logo_login() {
 }
 
 /*
- * Add Event Column 
+ * Adiciona colunas na listagem de Usuários
  */
 function polis_users_column( $cols ) {
-  $cols['user_noticias'] = 'Notícias';  
-  $cols['user_publicacoes'] = 'Publicações';
-  $cols['user_acoes'] = 'Ações';
-  return $cols;
+	$cols['user_noticias'] = 'Notícias';  
+	$cols['user_publicacoes'] = 'Publicações';
+	$cols['user_acoes'] = 'Ações';
+	return $cols;
 }
 
 /*
- * Print Event Column Value  
+ * imprime o valor das colunas na listagem de Usuários
  */ 
 function polis_user_column_value( $value, $column_name, $id ) {
-  if( $column_name == 'user_noticias' ) {
-    global $wpdb;
-    $count = (int) $wpdb->get_var( $wpdb->prepare(
-      "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
-       post_type = 'noticias' AND post_status = 'publish' AND post_author = %d",
-       $id
-    ) );
-    return $count;
-  }
-  if( $column_name == 'user_publicacoes' ) {
-    global $wpdb;
-    $count = (int) $wpdb->get_var( $wpdb->prepare(
-      "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
-       post_type = 'publicacoes' AND post_status = 'publish' AND post_author = %d",
-       $id
-    ) );
-    return $count;
-  }
-  if( $column_name == 'user_acoes' ) {
-    global $wpdb;
-    $count = (int) $wpdb->get_var( $wpdb->prepare(
-      "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
-       post_type = 'acoes' AND post_status = 'publish' AND post_author = %d",
-       $id
-    ) );
-    return $count;
-  }
+	if( $column_name == 'user_noticias' ) {
+	global $wpdb;
+	$count = (int) $wpdb->get_var( $wpdb->prepare(
+	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	   post_type = 'noticias' AND post_status = 'publish' AND post_author = %d",
+	   $id
+	) );
+	return $count;
+	}
+	if( $column_name == 'user_publicacoes' ) {
+	global $wpdb;
+	$count = (int) $wpdb->get_var( $wpdb->prepare(
+	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	   post_type = 'publicacoes' AND post_status = 'publish' AND post_author = %d",
+	   $id
+	) );
+	return $count;
+	}
+	if( $column_name == 'user_acoes' ) {
+	global $wpdb;
+	$count = (int) $wpdb->get_var( $wpdb->prepare(
+	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	   post_type = 'acoes' AND post_status = 'publish' AND post_author = %d",
+	   $id
+	) );
+	return $count;
+	}
 }
 
 add_filter( 'manage_users_custom_column', 'polis_user_column_value', 10, 3 );
