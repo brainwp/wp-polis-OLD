@@ -194,7 +194,6 @@ require get_template_directory() . '/inc/cpt-acoes.php';
  * Load CPT Notícias file.
  */
 require get_template_directory() . '/inc/cpt-noticias.php';
-require get_template_directory() . '/inc/tax-tags.php';
 
 /**
  * Load CPT Publicações file.

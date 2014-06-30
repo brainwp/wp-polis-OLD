@@ -49,10 +49,16 @@ function create_post_type_publicacoes() {
 	    'has_archive' => true,
 	    'hierarchical' => true,
 	    'menu_position' => 5,
-	    'supports' => array('title','editor','thumbnail','post-formats','taxonomy')
+	    'supports' => array( 'title','editor','thumbnail','post-formats','taxonomy', 'post_tag ')
 	    )
     );
 
 	flush_rewrite_rules();
 
+}
+
+add_action( 'init', 'tags_publicacoes' );
+
+function tags_publicacoes() {
+    register_taxonomy_for_object_type('post_tag', 'publicacoes');
 }
