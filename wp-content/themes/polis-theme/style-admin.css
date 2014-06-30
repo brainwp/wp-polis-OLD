@@ -1,3 +1,12 @@
 #categoriaschecklist li ul.children {
 	display: none;
 }
+
+.user_noticias,
+.user_acoes,
+.user_publicacoes,
+th.manage-column.column-user_noticias,
+th.manage-column.column-user_acoes,
+th.manage-column.column-user_publicacoes {
+	text-align: center;
+}
