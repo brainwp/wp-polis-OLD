@@ -16,7 +16,7 @@ add_action( 'init', 'polis_deregister_heartbeat', 1 );
 function polis_deregister_heartbeat() {
 	global $pagenow;
 
-	if ( 'post.php' != $pagenow && 'post-new.php' != $pagenow )
+	if ( 'post.php' != $pagenow && 'post-new.php' != $pagenow && 'edit.php' != $pagenow )
 		wp_deregister_script('heartbeat');
 }
 
