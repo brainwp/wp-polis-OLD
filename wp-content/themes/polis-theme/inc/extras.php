@@ -102,10 +102,10 @@ function polis_widget_now() {
   		$num = number_format_i18n( $num_posts->publish );
   		$text = _n( $post_type->labels->singular_name, $post_type->labels->name, intval( $num_posts->publish ) );
   		if ( current_user_can( 'edit_posts' ) ) {
-   			echo "<li class=\"post-type-count\"><a href='edit.php?post_type=$post_type->name'>$num ";
+   			echo "<li class=\"post-type-count $post_type->name\"><a href='edit.php?post_type=$post_type->name'>$num ";
    			echo "$text</a></li>";
   		} else {
-  			echo "<li class=\"post-type-count\">";
+  			echo "<li class=\"post-type-count $post_type->name\">";
   		}
  	}
  

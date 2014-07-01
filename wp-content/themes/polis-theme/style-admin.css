@@ -10,3 +10,25 @@ th.manage-column.column-user_acoes,
 th.manage-column.column-user_publicacoes {
 	text-align: center;
 }
+
+#dashboard_right_now .post-type-count.noticias a:before {
+	content: "\f123";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'dashicons';
+	vertical-align: top;
+}
+#dashboard_right_now .post-type-count.acoes a:before {
+	content: "\f488";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'dashicons';
+	vertical-align: top;
+}
+#dashboard_right_now .post-type-count.publicacoes a:before {
+	content: "\f331";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'dashicons';
+	vertical-align: top;
+}
