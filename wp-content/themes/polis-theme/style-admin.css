@@ -32,3 +32,10 @@ th.manage-column.column-user_publicacoes {
 	font: normal 20px/1 'dashicons';
 	vertical-align: top;
 }
+#dashboard_right_now .post-type-count.projetos a:before {
+	content: "\f116";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'dashicons';
+	vertical-align: top;
+}
