@@ -206,7 +206,7 @@ require get_template_directory() . '/inc/cpt-publicacoes.php';
 require get_template_directory() . '/inc/tax-autor.php';
 
 /**
- * Load Tax Categorias to CPT Publicações, Notícias e Ações.
+ * Load Tax Areas to CPT Publicações, Notícias e Ações.
  */
 require get_template_directory() . '/inc/tax-areas.php';
 
