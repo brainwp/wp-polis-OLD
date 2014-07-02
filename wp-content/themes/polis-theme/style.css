@@ -1038,27 +1038,23 @@ a:active {
 ----------------------------------------------- */
 
 .bg-democracia-e-participacao {
-
 	background: #c05255;
-
 }
 
 .bg-reforma-urbana {
-
 	background: #2f4518;
-
 }
 
 .bg-cidadania-cultural {
-
 	background: #b79543;
-
 }
 
 .bg-inclusao-e-sustentabilidade {
-
 	background: #97b068;
+}
 
+.bg-default {
+	background: #1F5C7B;
 }
 
 
@@ -2410,7 +2406,7 @@ slider de noticias + acoes
 
 #slider-news .thumb .news-terms {
 	position: absolute;
-	right: 2px;
+	right: 1px;
 	padding: 6px 10px;
 	bottom: 0;
 	font-size: 0.8em;

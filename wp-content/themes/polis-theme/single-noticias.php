@@ -19,7 +19,7 @@ get_header(); ?>
 				} else { ?>
 					<img src="<?php echo get_template_directory_uri(); ?>/img/default700x200.jpg" alt="<?php the_title(); ?>" />
 				<?php } ?>
-				<?php $terms = terms( 'categorias' ); ?>
+				<?php $terms = terms( 'areas' ); ?>
 				<?php $class_term = explode(", ", $terms); ?>
 				<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
 					<?php echo $terms; ?>
