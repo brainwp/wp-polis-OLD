@@ -1793,37 +1793,24 @@ object {
 
 
 *{
-
 	font-family: 'Source Sans Pro', sans-serif;
-
 }
 
 a{
-
 	cursor: pointer;
-
 }
 
 .shadow{
-
 	opacity:0.97;
-
-	background: white;
-
 	box-shadow: 0px 4px 20px 0px rgb( 0, 0, 0 );
-
 }
 
 /* header */
-
 .header{
-
-	background:#3e748e;
-
+	background:#083B54;
+	opacity:0.7;
 	padding-top:30px;
-
 	padding-bottom:30px;
-
 }
 
 .header .description{
@@ -2011,12 +1998,13 @@ menu de navegação */
 }
 
 /* fim do menu de navegacao
-
-
-
 conteudo - atuação /pagehome/
-
 */
+
+.content-bg {
+	background-color: #FFF;
+	overflow: hidden;
+}
 
 .content{
 

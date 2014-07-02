@@ -7,6 +7,7 @@
  * @package Polis Theme
  */
 ?>
+</section><!-- content-bg -->
 <footer id="footer" class="col-md-12">
 	<div class="col-md-2 menu institucional">
 		<a class="title">Institucional</a>
