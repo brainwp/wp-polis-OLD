@@ -95,12 +95,16 @@ get_header(); ?>
 								if ( has_post_thumbnail() ) {
 									the_post_thumbnail( 'slider-news-image' );
 								} else {
-									echo '<img src="'. theme('/img/default615x170.jpg') .'" />';
+									echo '<img src="'. theme('/img/default700x200.jpg') .'" />';
 								} ?>
 							</a>
 							<?php $terms = terms( 'areas' ); ?>
 							<?php $class_term = explode(", ", $terms); ?>
-							<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
+							<?php $bg_term = sanitize_title($class_term[0]); ?>
+							<?php if( ! is_area( $bg_term ) ) {
+								$bg_term = 'default';
+							} ?>
+							<div class="news-terms bg-<?php echo $bg_term; ?>">
 								<?php echo $terms; ?>
 							</div>
 						</div><!-- thumb -->

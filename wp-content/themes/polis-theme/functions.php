@@ -75,6 +75,19 @@ if ( ! function_exists( 'polis_theme_setup' ) ) :
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
+
+/* Adiciona tamanhos de imagens */
+function custom_images() {
+	if ( function_exists( 'add_image_size' ) ) {
+		add_image_size( 'slider-news-image', 615, 171 );
+		add_image_size( 'news-image-horizontal', 700, 200 );
+		add_image_size( 'slider-publicacoes-image', 151, 228 );
+		add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
+		}
+}
+
+add_action( 'init', 'custom_images', 1 );
+
 function emptyReturn( $var ) {
 	$var = trim( $var );
 	$var = empty( $var );
@@ -103,10 +116,6 @@ function resumo( $custom_max = '' ){
 		};
 	};
 	return substr( $string, 0, $max ) . " [...]";
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
 }
 
 /**
@@ -216,14 +225,6 @@ require get_template_directory() . '/inc/tax-areas.php';
 require get_template_directory() . '/inc/tax-tipos.php';
 
 require_once( get_stylesheet_directory() . '/router.php' );
-
-
-function custom_images() {
-	add_image_size( 'slider-news-image', 615, 171 );
-	add_image_size( 'slider-publicacoes-image', 151, 228 );
-}
-
-add_action( 'init', 'custom_images', 1 );
 
 register_nav_menu( 'footer-institucional', 'Footer Institucional' );
 register_nav_menu( 'footer-atuacao', 'Footer Areas de Atuação' );
@@ -473,3 +474,11 @@ function polis_user_column_value( $value, $column_name, $id ) {
 
 add_filter( 'manage_users_custom_column', 'polis_user_column_value', 10, 3 );
 add_filter( 'manage_users_columns', 'polis_users_column' );
+
+function is_area( $value ) {
+	if( 'reforma-urbana' == $value || 'democracia-e-participacao' == $value || 'inclusao-e-sustentabilidade' == $value || 'cidadania-cultural' == $value ) {
+		return true;
+	} else {
+		return false;
+	}
+}
