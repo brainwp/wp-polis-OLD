@@ -6,8 +6,7 @@
  */
 
 get_header(); ?>
-
-	<section class="col-md-12 content-single <?php top_term( 'categorias', 'slug' ); ?>">
+    <section class="col-md-12 content-single <?php top_term( 'categorias', 'slug' ); ?>">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
@@ -34,11 +33,9 @@ get_header(); ?>
 				<?php dynamic_sidebar( 'widgets-institucional' ); ?>
 			<?php endif; ?>
 		</aside>
-
 		<?php endwhile; // end of the loop. ?>
 
     </section>
-
 	<?php
 		$terms_c = array();
 		$terms_c = terms( 'categorias' );
@@ -92,5 +89,4 @@ get_header(); ?>
     </section>
 
 <?php endif; ?>
-
 <?php get_footer(); ?>

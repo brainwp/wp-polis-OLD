@@ -57,7 +57,6 @@ and Blueprint http://www.blueprintcss.org/
 html{
 
 	font-family: sans-serif;
-
 	-ms-text-size-adjust:100%;
 
 	-webkit-text-size-adjust:100%
@@ -1815,7 +1814,7 @@ a{
 	background: white;
 
 	box-shadow: 0px 4px 20px 0px rgb( 0, 0, 0 );
-
+    z-index:20;
 }
 
 /* header */
@@ -1969,6 +1968,7 @@ menu de navegação */
 	display:none;
 
 	width: auto;
+    margin-left:9px;
 
 }
 
@@ -3202,6 +3202,7 @@ slider de noticias + acoes
 
 
 /* single areas */
+
 .content-single-areas {
 	padding-top: 40px;
 }
@@ -4470,7 +4471,8 @@ slider de noticias + acoes
 	padding:0;
 
 	padding-bottom:20px;
-
+    padding-right:80px;
+    padding-left:80px;
 }
 
 .biblioteca-main .busca .intro{
@@ -4486,6 +4488,7 @@ slider de noticias + acoes
 	font-size:24px;
 
 	margin-bottom: 40px;
+    text-align: center;
 
 }
 
@@ -4500,7 +4503,9 @@ slider de noticias + acoes
 	font-weight:bold;
 
 }
-
+.biblioteca-main .busca select{
+    background:white;
+}
 .biblioteca-main .busca .input1{
 
 	margin-top:7px;
@@ -4660,4 +4665,320 @@ slider de noticias + acoes
 
 	cursor:pointer;
 
+}
+.th{
+	display:block;
+	float:left;
+	padding:0;
+}
+.th img{
+	height:180px;
+}
+.item, .item *{
+	padding:0;
+}
+.item .search_title a.titulo{
+	text-decoration:none !important;
+	font-family:'Bitter', sans-serif;
+	font-weight:bold;
+	color:#5e5e5e;
+	font-size:18px;
+}
+.item .search_title a.bt{
+	padding:7px;
+	padding-top:3px;
+	padding-bottom: 3px;
+	font-weight:600;
+	font-size:14px;
+	text-decoration:none !important;
+	text-transform: uppercase;
+	color:white;
+	transition:300ms all linear;
+	background:#A22521;
+}
+.item .search_title a.bt:hover{
+	opacity:0.90;
+	transition:300ms all linear;
+}
+.item .search_title .bt-ctn{
+	margin-top:5px;
+}
+.item .col-md-5{
+	margin-top:10px;
+}
+.item .search_title{
+	margin-left:10px;
+}
+.item .resumo a{
+	color:#5e5e5e;
+	transition:200ms ease all;
+	text-decoration:none !important;
+}
+.item .resumo a:hover{
+	opacity:0.85;
+}
+.item .infos{
+	position: absolute;
+	left:87px;
+	bottom:0;
+	background:#cfcfcf;
+	padding-left:15px;
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.item .infos .autor{
+	color:#5e5e5e;
+}
+.item .infos .autor-sep{
+	color:#5e5e5e;
+	text-decoration:none !important;
+}
+.item .infos .download{
+	position: absolute;
+	right:0;
+	top:0;
+	padding:15px;
+	padding-top:7px;
+	padding-bottom:7px;
+	display:block;
+	background:#909090;
+}
+.item .infos .download a{
+	text-decoration: none !important;
+	color:white;
+}
+.item .infos .download span{
+	color:white;
+}
+.biblioteca-main .nav #tab-nav-documentos-e-textos a{
+	background-image:url(img/biblioteca-icon-documentos.png);
+	background-position: center top 20px;
+	background-repeat:no-repeat;
+}
+.biblioteca-main .nav #tab-nav-series-e-livros a{
+	background-image:url(img/biblioteca-icon-livros.png);
+	background-position: center top 20px;
+	background-repeat:no-repeat;
+}
+.biblioteca-main .nav #tab-nav-institucionais a{
+	background-image:url(img/biblioteca-icon-institucionais.png);
+	background-position: center top 20px;
+	background-repeat:no-repeat;
+}
+.biblioteca-main .nav{
+	border:none;
+	background:transparent;
+}
+.biblioteca-main .nav li, .biblioteca-main .nav li a{
+	border-radius: 0 !important;
+	background-color:#f7f7f7;
+	font-family: 'Bitter', serif;
+	border:none !important;
+}
+.biblioteca-main .nav li a{
+	transition:200ms linear all;
+	color:#555 !important;
+	padding-top:55px;
+	font-size:14px;
+	padding-bottom:30px;
+}
+.biblioteca-main .nav li.active a{
+	transition:200ms linear all;
+	padding-right:30px;
+	padding-left:80px;
+	font-weight:bold;
+	text-decoration: underline;
+	background-color:#ededed;
+	background-position: 30px 40px !important;
+}
+.busca-mini{
+	background:#b0d3d8;
+	padding-top:12px;
+	padding-bottom:12px;
+}
+.busca-mini label{
+    font-size:25px;
+    color:#1e5c7a;
+    font-family:'Bitter',serif;
+    font-weight:bold;
+}
+.busca-mini input{
+    box-shadow:none !important;
+    margin-left:15px;
+    border:0 !important;
+    border-radius:2px;
+    padding:5px;
+}
+.busca-mini span{
+    cursor: pointer;
+    padding:4px;
+    font-size:25px;
+    color:#1e5c7a;
+}
+#ajax-biblioteca-sub-count{
+   margin:0;
+   padding:20px;
+   padding-left:15px;
+   padding-right:15px;
+}
+#ajax-biblioteca-sub-count span{
+    color:white;
+    font-weight:bold;
+    font-size:18px;
+}
+#ajax-biblioteca-sub-count a{
+    display:block;
+    width:100%;
+    float:left;
+    padding-left:10px;
+    color:white !important;
+}
+#ajax-biblioteca-sub-count.democracia-e-participacao{
+    background:url(img/areas/biblioteca-sub-democracia.png) no-repeat;
+    background-size:cover;
+}
+#ajax-biblioteca-sub-count.cidadania-cultural{
+    background:#B7913E;
+}
+#ajax-biblioteca-sub-count.cidadania-cultural{
+    background:#B7913E;
+}
+#ajax-biblioteca-sub-count.reforma-urbana{
+     background:#516D33;
+}
+#ajax-biblioteca-sub-count.inclusao-e-sustentabilidade{
+    background:#95AD5F;
+}
+.results .key{
+    font-family:'Bitter', serif;
+    font-weight:bold;
+    font-size:25px;
+    color:#1e5c7a;
+    display:block;
+    float:left;
+    width:100%;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.results .area{
+    font-size:20px;
+    font-family:'Bitter', serif;
+    font-weight:400;
+}
+.results .area.democracia-e-participacao{
+    color:#A22521;
+}
+.results .area.cidadania-cultural{
+    color:#B7913E;
+}
+.results .area.reforma-urbana{
+    color:#516D33;
+}
+.results .area.inclusao-e-sustentabilidade{
+    color:#95AD5F;
+}
+
+#ajax-counter{
+    padding:0;
+}
+#ajax-counter a{
+    display:block;
+    width:100%;
+    background:#bfbfbf;
+    border-radius:5px;
+    font-size:16px;
+    color:white !important;
+    float:left;
+    text-align:left;
+    padding:13px;
+    margin-top:10px;
+    font-family:'Bitter',serif;
+}
+#ajax-counter span{
+    display:block;
+    width:100%;
+    color:#8b8b8b;
+    font-size:15px;
+    margin-top:46px;
+}
+#ajax-counter a.democracia-e-participacao, .biblioteca-main.democracia-e-participacao a.bt{
+    background:#A22521;
+}
+#ajax-counter a.cidadania-cultural, .biblioteca-main.cidadania-cultural a.bt{
+    background:#B7913E;
+}
+#ajax-counter a.reforma-urbana, .biblioteca-main.reforma-urbana a.bt{
+    background:#516D33;
+}
+#ajax-counter a.inclusao-e-sustentabilidade, .biblioteca-main.inclusao-e-sustentabilidade a.bt{
+    background:#95AD5F;
+}
+.biblioteca-main.democracia-e-participacao .th img{
+    border-left:10px solid #A22521;
+}
+.biblioteca-main.cidadania-cultural .th img{
+    border-left:10px solid #B7913E;
+}
+.biblioteca-main.reforma-urbana .th img{
+    border-left:10px solid #516D33;
+}
+.biblioteca-main.inclusao-e-sustentabilidade .th img{
+    border-left:10px solid #95AD5F;
+}
+.search-ctn{
+    padding-left:0;
+}
+.biblioteca-require{
+    font-family: 'Bitter',serif;
+    color:#8b8b8b;
+    font-size:22px;
+    padding-top:20px;
+    padding-bottom:20px;
+    background:url(img/biblioteca-required.png) right center no-repeat;
+}
+header.mini{
+    padding:0;
+    padding-top:10px;
+    padding-bottom:10px;
+    background:url(img/header-mini-bg.jpg) no-repeat;
+    background-size:cover;
+}
+.biblioteca-main .pagination a{
+    margin-left:5px;
+    margin-right: 5px;
+    font-family: 'Bitter',serif;
+    font-weight:bold;
+    color:#1e5c7a;
+    background:none;
+    font-size:18px;
+}
+.biblioteca-main .pagination .atual{
+    font-size:20px;
+}
+.biblioteca-main .header-area{
+    background:url(img/biblioteca-header-bg.jpg) no-repeat;
+    background-size:cover;
+}
+.biblioteca-main .header-area h1{
+    color:#1e5c7a;
+    font-style:normal;
+}
+.biblioteca-main .header-area .pull-left p{
+    padding-top:10px;
+    font-size:21px;
+    font-style:italic;
+}
+.biblioteca-main.first{
+    background:#b0d3d8;
+}
+#map-bg{
+    height:100%;
+    width:100%;
+    position: fixed !important;
+    z-index:0;
+    left:0;
+    overflow: hidden;
+}
+#map-bg a{
+    display:none !important;
 }

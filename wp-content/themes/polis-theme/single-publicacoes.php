@@ -23,7 +23,6 @@ get_header(); ?>
 					<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
 				<?php } ?>
 			</div><!-- thumb -->
-
 			<div class="content">
 				<h2><?php the_title(); ?></h2>
 				<?php the_content(); ?>
@@ -50,13 +49,11 @@ get_header(); ?>
 					<?php endif; ?>
 				</div><!-- meta -->
 			</div><!-- content -->
-
 		</article>
 
 		<?php endwhile; // end of the loop. ?>
 
     </section>
-
     <section class="col-md-12 slider-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
 
     	<h2>Outros <?php echo terms( 'tipos' ); ?></h2>
@@ -104,6 +101,4 @@ get_header(); ?>
 		<div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a></div>
 
     </section>
-
-
 <?php get_footer(); ?>
