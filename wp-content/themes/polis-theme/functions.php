@@ -184,17 +184,20 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-
 /**
  * Load CPT Ações file.
  */
 require get_template_directory() . '/inc/cpt-acoes.php';
 
 /**
+ * Load CPT Projetos file.
+ */
+require get_template_directory() . '/inc/cpt-projetos.php';
+
+/**
  * Load CPT Notícias file.
  */
 require get_template_directory() . '/inc/cpt-noticias.php';
-require get_template_directory() . '/inc/tax-tags.php';
 
 /**
  * Load CPT Publicações file.
@@ -203,7 +206,7 @@ require get_template_directory() . '/inc/cpt-publicacoes.php';
 require get_template_directory() . '/inc/tax-autor.php';
 
 /**
- * Load Tax Categorias to CPT Publicações, Notícias e Ações.
+ * Load Tax Areas to CPT Publicações, Notícias e Ações.
  */
 require get_template_directory() . '/inc/tax-areas.php';
 
@@ -424,3 +427,49 @@ function custom_logo_login() {
 	</style>
 	';
 }
+
+/*
+ * Adiciona colunas na listagem de Usuários
+ */
+function polis_users_column( $cols ) {
+	$cols['user_noticias'] = 'Notícias';  
+	$cols['user_publicacoes'] = 'Publicações';
+	$cols['user_acoes'] = 'Ações';
+	return $cols;
+}
+
+/*
+ * imprime o valor das colunas na listagem de Usuários
+ */ 
+function polis_user_column_value( $value, $column_name, $id ) {
+	if( $column_name == 'user_noticias' ) {
+	global $wpdb;
+	$count = (int) $wpdb->get_var( $wpdb->prepare(
+	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	   post_type = 'noticias' AND post_status = 'publish' AND post_author = %d",
+	   $id
+	) );
+	return $count;
+	}
+	if( $column_name == 'user_publicacoes' ) {
+	global $wpdb;
+	$count = (int) $wpdb->get_var( $wpdb->prepare(
+	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	   post_type = 'publicacoes' AND post_status = 'publish' AND post_author = %d",
+	   $id
+	) );
+	return $count;
+	}
+	if( $column_name == 'user_acoes' ) {
+	global $wpdb;
+	$count = (int) $wpdb->get_var( $wpdb->prepare(
+	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	   post_type = 'acoes' AND post_status = 'publish' AND post_author = %d",
+	   $id
+	) );
+	return $count;
+	}
+}
+
+add_filter( 'manage_users_custom_column', 'polis_user_column_value', 10, 3 );
+add_filter( 'manage_users_columns', 'polis_users_column' );
