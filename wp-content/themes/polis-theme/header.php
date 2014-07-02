@@ -36,4 +36,4 @@
 	<nav class="col-md-12 nav">
 		<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 	</nav>
-	<section class='content-bg'>
+	<div class="content-bg">

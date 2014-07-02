@@ -2003,7 +2003,8 @@ conteudo - atuação /pagehome/
 
 .content-bg {
 	background-color: #FFF;
-	overflow: hidden;
+	display: inline-block;
+	margin-bottom: -5px;
 }
 
 .content{
