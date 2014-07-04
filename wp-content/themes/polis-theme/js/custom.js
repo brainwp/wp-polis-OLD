@@ -361,21 +361,23 @@ jQuery(document).ready(function () {
             var map = new google.maps.Map(document.getElementById('map-bg'),
                 mapOptions);
             map.setOptions({styles: styles});
+            var contentString = '<p><b>Instituto Polis</b></p>'+'<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
+            var infowindow = new google.maps.InfoWindow({
+        });
+
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(-23.544891, -46.644645),
                 map: map,
-                title: 'Polis'
+                title: 'Polis',
+                icon: 'http://brasawp.art.br/polis/wp-content/themes/polis-theme/img/logo.png'
             });
-            var point = new google.maps.LatLng(40, -20);
-            var data = "Hello World!";
-            var infowindow = new google.maps.InfoWindow({
-                content: data
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(contentString);
+                infowindow.open(map,marker);
             });
+
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map,marker);
-        })
     }
 });

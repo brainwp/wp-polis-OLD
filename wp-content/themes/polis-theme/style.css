@@ -4978,3 +4978,110 @@ header.mini{
 #map-bg a{
     display:none !important;
 }
+/*projetos.php */
+.projetos-main .header-area{
+    background:#b0d3d8;
+    padding-left:0 !important;
+    padding-right: 0 !important;
+    padding-top:80px !important;
+    padding-bottom:80px !important;
+}
+.projetos-main .header-area h1{
+    font-size:49px;
+    text-align:center;
+    color:#1e5c7a;
+}
+.projetos-main .tabContaier a.active span{
+    color:#1e5c7a;
+    border-bottom:5px solid #1e5c7a;
+}
+.projetos-main .aba-area .thumb img{
+    width:100%;
+}
+.projetos-main .aba-area .post .cat{
+    color:#5a5a5a;
+    font-size:14px;
+    text-transform: uppercase;
+    font-weight:600;
+}
+.projetos-main .aba-area .post h2{
+    margin-top:10px;
+    font-family: 'Bitter',serif;
+    font-weight:bold;
+    color:#0f5495;
+}
+.projetos-main .aba-area .post .link{
+    text-decoration: none !important;
+}
+.projetos-main .aba-area .post .text{
+    display: block;
+    margin-top:20px;
+    font-size:12px;
+    color:#5a5a5a;
+    font-weight:600;
+    margin-bottom:20px;
+}
+.projetos-main .aba-area .post .leia{
+    font-weight: bold;
+    color:white;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
+    background:#0f5495;
+    font-size:12px;
+    text-transform: uppercase;
+    border-radius:2px;
+}
+.projetos-main .aba-area .detalhes{
+    font-family: 'Bitter',serif;
+    display:block;
+    width:100%;
+    margin:0;
+    background:#0f5495;
+    font-size:18px;
+    color:white;
+    font-weight:bold;
+    text-decoration: none !important;
+    text-align:right;
+    padding:7px;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius:6px;
+}
+.projetos-main .aba-area .equipe{
+    width:100%;
+    margin:0;
+    margin-top:20px;
+    background:#0f5495;
+    padding:7px;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius:6px;
+}
+.projetos-main .aba-area .top{
+    width:100%;
+    border-bottom: 3px solid white;
+    padding-bottom:5px;
+    font-size:18px;
+    font-family: 'Bitter',serif;
+    color:white;
+    font-weight:bold;
+    text-align: right;
+}
+.projetos-main .aba-area .top a{
+    margin-left:10px;
+    font-size:12px;
+    font-weight: normal;
+    text-decoration: none !important;
+    color:white;
+}
+.projetos-main .aba-area .equipe ul{
+    list-style-type:none;
+}
+.projetos-main .aba-area .equipe ul a{
+    font-size:14px;
+    color:white;
+}
+.projetos-main .aba-area .post_content{
+    margin-bottom:20px;
+}
