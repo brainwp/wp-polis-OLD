@@ -2605,6 +2605,9 @@ slider de noticias + acoes
 .search-ctn{
     padding-left:0;
 }
+.biblioteca-main{
+    background:white;
+}
 .biblioteca-require{
     font-family: 'Bitter',serif;
     color:#8b8b8b;

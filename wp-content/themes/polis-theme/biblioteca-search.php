@@ -268,7 +268,6 @@ $total_pages = ceil($total_posts / $per_page);
                 </div>
             </div>
     </main>
-</div>
 <?php
 get_footer();
 ?>
