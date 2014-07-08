@@ -23,5 +23,4 @@ get_header('mini');
                 </div>
             </div>
 		</main>
-	</div>
 <?php get_footer(); ?>
