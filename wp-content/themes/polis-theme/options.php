@@ -44,6 +44,19 @@ function optionsframework_options() {
 	}
 
 	// Options Cabecalho
+
+	if( current_user_can( 'manage_options' ) ) {
+		$options[] = array(
+			'name' => 'Dev',
+			'type' => 'heading');
+
+		$options[] = array(
+			'name' => 'ACF_LITE',
+			'desc' => 'Marque para habilitar a versão UI do ACF.',
+			'id' => 'acf_check',
+			'std' => '',
+			'type' => 'checkbox');
+	}
 	
 	$options[] = array(
 		'name' => 'Cabeçalho',
