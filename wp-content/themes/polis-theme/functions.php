@@ -5,8 +5,7 @@
  * @package Polis Theme
  */
 
-define( 'ACF_LITE' , false );
-
+define( 'ACF_LITE', true );
 require get_template_directory() . '/inc/acf.php';
 
 /**
@@ -21,6 +20,7 @@ function polis_deregister_heartbeat() {
 }
 
 /**
+ *
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
@@ -79,6 +79,7 @@ add_action( 'after_setup_theme', 'polis_theme_setup' );
 /* Adiciona tamanhos de imagens */
 function custom_images() {
 	if ( function_exists( 'add_image_size' ) ) {
+		add_image_size( 'busca-thumb', 87, 130, true );
 		add_image_size( 'slider-news-image', 615, 171 );
 		add_image_size( 'news-image-horizontal', 700, 200 );
 		add_image_size( 'slider-publicacoes-image', 151, 228 );
@@ -100,22 +101,30 @@ function get_campoPersonalizado( $campo ) {
 
 	return $informacao_campo[0];
 }
-function resumo( $custom_max = '' ){
+
+function resumo( $custom_max = '', $sep = '') {
 	global $_query;
 	$string = get_the_excerpt();
-
-	if ( empty( $custom_max ) ) {
-		$max = 100;		
-	} else {
-		$max = $custom_max;
+	if( empty($string) ){
+		return '';
 	}
+	else{
+		if( empty($sep) ){
+			$sep = ' [...]';
+		}
+		if ( empty( $custom_max ) ) {
+			$max = 100;
+		} else {
+			$max = $custom_max;
+		}
 
-	if (strlen($string) > $max) {
-		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
-			$max++;
+		if ( strlen( $string ) > $max ) {
+			while ( substr( $string, $max, 1 ) <> ' ' && ( $max < strlen( $string ) ) ) {
+				$max ++;
+			};
 		};
-	};
-	return substr( $string, 0, $max ) . " [...]";
+		return substr( $string, 0, $max ) . $sep;
+	}
 }
 
 /**
@@ -154,7 +163,8 @@ function polis_theme_scripts() {
 	wp_enqueue_script( 'polis-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'custom_js', get_template_directory_uri() . '/js/custom.js' );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
@@ -193,20 +203,17 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
+
 /**
  * Load CPT Ações file.
  */
 require get_template_directory() . '/inc/cpt-acoes.php';
 
 /**
- * Load CPT Projetos file.
- */
-require get_template_directory() . '/inc/cpt-projetos.php';
-
-/**
  * Load CPT Notícias file.
  */
 require get_template_directory() . '/inc/cpt-noticias.php';
+require get_template_directory() . '/inc/tax-tags.php';
 
 /**
  * Load CPT Publicações file.
@@ -215,7 +222,7 @@ require get_template_directory() . '/inc/cpt-publicacoes.php';
 require get_template_directory() . '/inc/tax-autor.php';
 
 /**
- * Load Tax Areas to CPT Publicações, Notícias e Ações.
+ * Load Tax Categorias to CPT Publicações, Notícias e Ações.
  */
 require get_template_directory() . '/inc/tax-areas.php';
 
@@ -237,9 +244,10 @@ define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/opti
 require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework.php';
 include( dirname( __FILE__ ) . "/options.php" );
 //ajax
-require get_template_directory() . '/publicacoes-slider-ajax.php';
 require get_template_directory() . '/institucional-ajax.php';
 require get_template_directory() . '/areas-ajax.php';
+require get_template_directory() . '/biblioteca-count-ajax.php';
+require get_template_directory() . '/biblioteca-sub-count-ajax.php';
 
 //widget home
 
@@ -333,6 +341,9 @@ require get_template_directory() . '/inc/widget.php';
 require get_template_directory() . '/inc/error_login.php';
 function theme( $arg = '' ) {
 	$theme = get_template_directory_uri();
+	if ( ! empty( $arg ) ) {
+		$theme .= $arg;
+	}
 	if ( !empty( $arg ) ) {
 		$theme .= $arg;
 	}
@@ -352,13 +363,18 @@ function terms( $taxonomy ) {
 	endif;
 }
 
-function escape_terms( $taxonomy ) {
+function escape_terms( $taxonomy, $type = '' ) {
 	global $post;
 	$terms = get_the_terms( $post->ID, $taxonomy );
 	if ( $terms && ! is_wp_error( $terms ) ) :
 		$links = array();
 		foreach ( $terms as $term ) {
-			$links[] = $term->slug;
+			if( empty($type) ){
+				$links[] = $term->slug;
+			}
+			elseif($type == 'name'){
+				$links[] = $term->name;
+			}
 		}
 		$the_terms = join( ", ", $links );
 		return $the_terms;
@@ -369,7 +385,7 @@ function top_term( $taxonomy, $echo = '' ) {
 	global $post;
 	$terms = get_the_terms( $post->ID, $taxonomy );
 	if ( $terms && ! is_wp_error( $terms ) ) {
-		foreach ( $terms as $term ) { 	 
+		foreach ( $terms as $term ) {
 		$parent = $term->parent;
 			if ( $parent=='0' ) {
 				if ( empty( $echo ) ) {
@@ -378,6 +394,8 @@ function top_term( $taxonomy, $echo = '' ) {
 					echo '<a class="top_term_link" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';
 				} elseif ( $echo == 'slug' ) {
 					echo $term->slug;
+				} elseif ( $echo == 'return_slug' ) {
+					return $term->slug;
 				} elseif ( $echo == 'return' ) {
 					return $term->name;
 				}
@@ -386,25 +404,37 @@ function top_term( $taxonomy, $echo = '' ) {
 	}
 }
 
-function child_term( $taxonomy ) {
+function child_term( $taxonomy, $echo = '' ) {
+	global $post;
 	$terms = get_the_terms( $post->ID, $taxonomy );
-	 
-	foreach ($terms as $term) { 	 
-	$parent = $term->parent;
-		if ( ! $parent == '0' ) {
-		    echo '<a class="" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';   
+	if ( $terms && ! is_wp_error( $terms ) ) {
+		foreach ( $terms as $term ) {
+			$parent = $term->parent;
+			if ( ! $parent == '0' ) {
+				if ( empty( $echo ) ) {
+					echo $term->name;
+				} elseif ( $echo == 'a' ) {
+					echo '<a class="top_term_link" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';
+				} elseif ( $echo == 'slug' ) {
+					echo $term->slug;
+				} elseif ( $echo == 'return_slug' ) {
+					return $term->slug;
+				} elseif ( $echo == 'return' ) {
+					return $term->name;
+				}
+			}
 		}
 	}
 }
-
 function cpt_name() {
+    global $post;
 	$obj = get_post_type_object( get_post_type( $post ) );
 	echo $obj->labels->name;
 }
 
 /**
-* Custom logo login.
-*/
+ * Custom logo login.
+ */
 add_action('login_head', 'custom_logo_login');
 function custom_logo_login() {
 	echo '
@@ -421,7 +451,7 @@ function custom_logo_login() {
 			height: 230px;
 		}
 		body.login div#login h1 a {
-			background-image: url( ' . get_bloginfo('template_directory') . '/img/logo-polis-login.png) !important;
+			background-image: url( ' . get_bloginfo( 'template_directory' ) . '/img/logo-polis-login.png) !important;
 			padding: 0;
 			background-size: 230px 230px;
 		}
@@ -429,9 +459,92 @@ function custom_logo_login() {
 	';
 }
 
+function biblioteca_count( $area ) {
+	$key     = ( isset( $_GET['key'] ) ) ? $_GET['key'] : '';
+	$tipo        = ( isset( $_GET['tipo'] ) ) ? $_GET['tipo'] : '';
+	$categoria   = ( isset( $_GET['categoria'] ) ) ? $_GET['categoria'] : '';
+	$anomin      = ( isset( $_GET['anomin'] ) ) ? $_GET['anomin'] : '';
+	$anomax      = ( isset( $_GET['anomax'] ) ) ? $_GET['anomax'] : '';
+    $categoria_query = array();
+    if ( ! empty( $categoria ) ) {
+        $categoria_query = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'categorias',
+                'field' => 'slug',
+                'terms' => $area
+            ),
+            array(
+                'taxonomy' => 'categorias',
+                'field' => 'slug',
+                'terms' => $categoria,
+            ),
+        );
+    }
+    else{
+        $categoria_query = array(
+            array(
+                'taxonomy' => 'categorias',
+                'field' => 'slug',
+                'terms' => $area
+            ),
+        );
+    }
+	$date_query  = array();
+	if ( ! empty( $anomin ) && ! empty( $anomax ) ) {
+		$date_query = array(
+			array(
+				'after'  => array(
+					'year' => $anomin
+				),
+				'before' => array(
+					'year' => $anomax,
+				),
+			)
+		);
+	} elseif ( ! empty( $anomin ) && empty( $anomax ) ) {
+		$date_query = array(
+			array(
+				'after' => array(
+					'year' => $anomin
+				),
+			)
+		);
+	} elseif ( ! empty( $anomax ) && empty( $anomin ) ) {
+		$date_query = array(
+			array(
+				'before' => array(
+					'year' => $anomax
+				),
+			)
+		);
+	}
+
+	$count_args  = array(
+		'post_type'     => 'publicacoes',
+        'tax_query'     => $categoria_query,
+		'tipos'         => $tipo,
+		's'             => $key,
+		'date_query'    => $date_query,
+		'post_per_page' => 999999,
+	);
+	$count_query = new WP_Query( $count_args );
+	$count       = $count_query->found_posts;
+// grab the current page number and set to 1 if no page number is set
+	$total_posts = $count;
+
+	return $count;
+}
+
+remove_action( 'profile_personal_options', 'profile_personal_options' );
+remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+//avatar by acf
+require get_template_directory() . '/inc/avatar.php';
+
+
 /*
- * Adiciona colunas na listagem de Usuários
- */
+* Add Event Column 
+*/
 function polis_users_column( $cols ) {
 	$cols['user_noticias'] = 'Notícias';  
 	$cols['user_publicacoes'] = 'Publicações';
@@ -440,35 +553,35 @@ function polis_users_column( $cols ) {
 }
 
 /*
- * imprime o valor das colunas na listagem de Usuários
- */ 
+* Print Event Column Value  
+*/ 
 function polis_user_column_value( $value, $column_name, $id ) {
 	if( $column_name == 'user_noticias' ) {
-	global $wpdb;
-	$count = (int) $wpdb->get_var( $wpdb->prepare(
-	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
-	   post_type = 'noticias' AND post_status = 'publish' AND post_author = %d",
-	   $id
-	) );
-	return $count;
+	 global $wpdb;
+	 $count = (int) $wpdb->get_var( $wpdb->prepare(
+	   "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	    post_type = 'noticias' AND post_status = 'publish' AND post_author = %d",
+	    $id
+	 ) );
+	 return $count;
 	}
 	if( $column_name == 'user_publicacoes' ) {
-	global $wpdb;
-	$count = (int) $wpdb->get_var( $wpdb->prepare(
-	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
-	   post_type = 'publicacoes' AND post_status = 'publish' AND post_author = %d",
-	   $id
-	) );
-	return $count;
+	 global $wpdb;
+	 $count = (int) $wpdb->get_var( $wpdb->prepare(
+	   "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	    post_type = 'publicacoes' AND post_status = 'publish' AND post_author = %d",
+	    $id
+	 ) );
+	 return $count;
 	}
 	if( $column_name == 'user_acoes' ) {
-	global $wpdb;
-	$count = (int) $wpdb->get_var( $wpdb->prepare(
-	  "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
-	   post_type = 'acoes' AND post_status = 'publish' AND post_author = %d",
-	   $id
-	) );
-	return $count;
+	 global $wpdb;
+	 $count = (int) $wpdb->get_var( $wpdb->prepare(
+	   "SELECT COUNT(ID) FROM $wpdb->posts WHERE 
+	    post_type = 'acoes' AND post_status = 'publish' AND post_author = %d",
+	    $id
+	 ) );
+	 return $count;
 	}
 }
 
