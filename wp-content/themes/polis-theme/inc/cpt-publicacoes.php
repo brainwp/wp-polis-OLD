@@ -49,24 +49,10 @@ function create_post_type_publicacoes() {
 	    'has_archive' => true,
 	    'hierarchical' => true,
 	    'menu_position' => 5,
-	    'supports' => array( 'title','editor','thumbnail','post-formats','taxonomy', 'post_tag ')
+	    'supports' => array( 'title','editor','thumbnail','post-formats','taxonomy' )
 	    )
     );
 
 	flush_rewrite_rules();
 
-}
-
-/**
- * Adicionamos uma ação no inicio do carregamento do WordPress
- * através da funçãoo add_action( 'init' ) para registrar a
- * taxonomia tag dos posts em Notícias
- */
-add_action( 'init', 'tags_publicacoes' );
-
-/**
- * Esta é a função que é chamada pelo add_action() acima
- */
-function tags_publicacoes() {
-    register_taxonomy_for_object_type('post_tag', 'publicacoes');
 }

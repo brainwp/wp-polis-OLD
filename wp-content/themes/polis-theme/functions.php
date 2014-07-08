@@ -5,7 +5,20 @@
  * @package Polis Theme
  */
 
-define( 'ACF_LITE', true );
+// options framework codes
+define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/options-framework/inc/' );
+require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework.php';
+include( dirname( __FILE__ ) . "/options.php" );
+
+function acf_check() {
+	if( of_get_option( 'acf_check' ) ) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+define( 'ACF_LITE', acf_check() );
 require get_template_directory() . '/inc/acf.php';
 
 /**
@@ -238,11 +251,6 @@ register_nav_menu( 'footer-atuacao', 'Footer Areas de Atuação' );
 register_nav_menu( 'footer-projetos', 'Footer Projetos' );
 register_nav_menu( 'footer-biblioteca', 'Footer Bibliotecas' );
 
-// options framework codes
-
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/options-framework/inc/' );
-require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework.php';
-include( dirname( __FILE__ ) . "/options.php" );
 //ajax
 require get_template_directory() . '/institucional-ajax.php';
 require get_template_directory() . '/areas-ajax.php';

@@ -412,7 +412,7 @@ if (function_exists("register_field_group")) {
                         array(
                             'field' => 'field_53b1c1d1453d3',
                             'operator' => '==',
-                            'value' => 'comum'
+                            'value' => 'arquivistiva'
                         )
                     ),
                     'allorany' => 'all'
@@ -506,28 +506,6 @@ if (function_exists("register_field_group")) {
                 'maxlength' => ''
             ),
             array(
-                'key' => 'field_53b1be0f220ca',
-                'label' => 'Idioma',
-                'name' => 'publicacoes_idioma',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'null',
-                            'operator' => '=='
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => ''
-            ),
-            array(
                 'key' => 'field_539b1c1b69a19',
                 'label' => 'Ano de Publicação',
                 'name' => 'publicacoes_ano',
@@ -549,7 +527,255 @@ if (function_exists("register_field_group")) {
                 'append' => '',
                 'formatting' => 'html',
                 'maxlength' => 4
-            )
+            ),
+            array(
+                'key' => 'field_53bbffe321138',
+                'label' => 'Idioma',
+                'name' => 'publicacoes_idioma',
+                'type' => 'select',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'choices' => array (
+                    'Português' => 'Português',
+                    'Alemão' => 'Alemão',
+                    'Espanhol' => 'Espanhol',
+                    'Inglês' => 'Inglês',
+                ),
+                'default_value' => 'Português',
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+            array(
+                'key' => 'field_53bbfc6b2112e',
+                'label' => 'Série',
+                'name' => 'publicacoes_serie',
+                'type' => 'text',
+                'instructions' => 'Adicione o número da Série.',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
+                            'operator' => '==',
+                            'value' => 'arquivistica'
+                        )
+                    ),
+                    'allorany' => 'all'
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbfd842112f',
+                'label' => 'SubSérie',
+                'name' => 'publicacoes_subserie',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
+                            'operator' => '==',
+                            'value' => 'arquivistica'
+                        )
+                    ),
+                    'allorany' => 'all'
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbfd9321130',
+                'label' => 'Unidade de Armazenamento',
+                'name' => 'publicacoes_armazenamento',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
+                            'operator' => '==',
+                            'value' => 'arquivistica'
+                        )
+                    ),
+                    'allorany' => 'all'
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbfdaf21131',
+                'label' => 'Tombo (Número do Documento)',
+                'name' => 'publicacoes_tombo',
+                'type' => 'number',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
+                            'operator' => '==',
+                            'value' => 'arquivistica'
+                        )
+                    ),
+                    'allorany' => 'all'
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'min' => '',
+                'max' => '',
+                'step' => '',
+            ),
+            array(
+                'key' => 'field_53bbfdd221132',
+                'label' => 'Fase do Arquivo',
+                'name' => 'publicacoes_fase',
+                'type' => 'text',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbfde521133',
+                'label' => 'Data',
+                'name' => 'publicacoes_data',
+                'type' => 'date_picker',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'date_format' => 'yyyy-mm-dd',
+                'display_format' => 'dd/mm/yyyy',
+                'first_day' => 1,
+            ),
+            array(
+                'key' => 'field_53bbfe4721134',
+                'label' => 'Fonte',
+                'name' => 'publicacoes_fonte',
+                'type' => 'text',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbfe9121135',
+                'label' => 'Referência',
+                'name' => 'publicacoes_referência',
+                'type' => 'text',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbfeb921136',
+                'label' => 'Link Externo',
+                'name' => 'publicacoes_link_externo',
+                'type' => 'text',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_53bbff9421137',
+                'label' => 'Situação do Documento',
+                'name' => 'publicacoes_situacao',
+                'type' => 'text',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'null',
+                            'operator' => '==',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
         ),
         'location' => array(
             array(
