@@ -52,7 +52,7 @@ if (!empty($anomin) && !empty($anomax)) {
 }
 $args = array(
     'post_type' => 'publicacoes',
-    'categorias' => $categoria,
+    'areas' => $categoria,
     'tipos' => $tipo,
     's' => $key,
     'date_query' => $date_query,
@@ -65,7 +65,7 @@ $query = new WP_Query($args);
 
 $count_args = array(
     'post_type' => 'publicacoes',
-    'categorias' => $categoria,
+    'areas' => $categoria,
     'tipos' => $tipo,
     's' => $key,
     'date_query' => $date_query,
@@ -90,7 +90,7 @@ $total_pages = ceil($total_posts / $per_page);
 
         <div class="col-md-9 right search-ctn">
             <div class="col-md-12 results">
-                <?php $cat_info = get_term_by('slug', $_GET['area'], 'categorias'); ?>
+                <?php $cat_info = get_term_by('slug', $_GET['area'], 'areas'); ?>
                 <?php if(!empty($key)): ?>
                     <span class="key">Resultados para '<?php echo $key;?>'</span>
                 <?php endif; ?>
@@ -112,8 +112,8 @@ $total_pages = ceil($total_posts / $per_page);
                     }
                     $_i = count($type_list[$type_term]);
 
-                    $type_list[$type_term][$_i]['area'] = top_term('categorias', 'return_slug');
-                    $type_list[$type_term][$_i]['area_sub'] = child_term('categorias', 'return');
+                    $type_list[$type_term][$_i]['area'] = top_term('areas', 'return_slug');
+                    $type_list[$type_term][$_i]['area_sub'] = child_term('areas', 'return');
                     $type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name('tipos');
                     $type_list[$type_term][$_i]['term_slug'] = return_term_biblioteca('tipos');
                     $type_list[$type_term][$_i]['title'] = get_the_title();
