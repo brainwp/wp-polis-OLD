@@ -9,10 +9,7 @@ function AjaxSubCount(){
     if (isset($_GET['isAjaxSubCount']) && $_GET['area']) {
 
         $key = (isset($_GET['key'])) ? $_GET['key'] : '';
-        $formato = (isset($_GET['formato'])) ? $_GET['formato'] : '';
-        if (empty($formato)) {
-            $formato = array('publicacoes', 'acoes', 'noticias');
-        }
+        $formato =  'publicacoes';
         $tipo = (isset($_GET['tipo'])) ? $_GET['tipo'] : '';
         $anomin = (isset($_GET['anomin'])) ? $_GET['anomin'] : '';
         $anomax = (isset($_GET['anomax'])) ? $_GET['anomax'] : '';
@@ -46,12 +43,12 @@ function AjaxSubCount(){
                 )
             );
         }
-        $_id = get_term_by('slug', $area, 'categorias');
+        $_id = get_term_by('slug', $area, 'areas');
         echo '<span>'.$_id->name.'</span>';
         $_id = $_id->term_id;
         $args = array(
             'parent'                 => $_id,
-            'taxonomy'                 => 'categorias',
+            'taxonomy'                 => 'areas',
         );
         $categories = get_categories($args);
         foreach ($categories as $category) {
@@ -59,7 +56,7 @@ function AjaxSubCount(){
             $categoria = $category->slug;
             $count_args = array(
                 'post_type' => 'publicacoes',
-                'categorias' => $categoria,
+                'areas' => $categoria,
                 'tipos' => $tipo,
                 's' => $key,
                 'date_query' => $date_query,

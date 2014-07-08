@@ -30,9 +30,9 @@ $args = array(
 
 	'hierarchical' => 1,
 
-	'exclude'      => 'formacao',
+	//'exclude'      => 'formacao',
 
-	'taxonomy'     => 'categorias',
+	'taxonomy'     => 'areas',
 
 	'pad_counts'   => false
 

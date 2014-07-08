@@ -81,7 +81,6 @@ if (function_exists("register_field_group")) {
         ),
         'menu_order' => 0
     ));
-    if (current_user_can('create_users')) {
         register_field_group(array(
             'id' => 'acf_e-privado-se-ativado-somente-membros-logados-poderao-ver',
             'title' => 'É privado? (Se ativado somente membros logados poderão ver)',
@@ -108,7 +107,7 @@ if (function_exists("register_field_group")) {
                         'value' => 'all',
                         'order_no' => 1,
                         'group_no' => 0
-                    )
+                    ),
                 )
             ),
             'options' => array(
@@ -118,7 +117,6 @@ if (function_exists("register_field_group")) {
             ),
             'menu_order' => 0
         ));
-    }
     register_field_group(array(
         'id' => 'acf_e-mail',
         'title' => 'E-mail',

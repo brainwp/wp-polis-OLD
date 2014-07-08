@@ -470,12 +470,12 @@ function biblioteca_count( $area ) {
         $categoria_query = array(
             'relation' => 'AND',
             array(
-                'taxonomy' => 'categorias',
+                'taxonomy' => 'areas',
                 'field' => 'slug',
                 'terms' => $area
             ),
             array(
-                'taxonomy' => 'categorias',
+                'taxonomy' => 'areas',
                 'field' => 'slug',
                 'terms' => $categoria,
             ),
@@ -484,7 +484,7 @@ function biblioteca_count( $area ) {
     else{
         $categoria_query = array(
             array(
-                'taxonomy' => 'categorias',
+                'taxonomy' => 'areas',
                 'field' => 'slug',
                 'terms' => $area
             ),
