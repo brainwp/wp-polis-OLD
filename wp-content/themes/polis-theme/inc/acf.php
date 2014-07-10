@@ -307,8 +307,8 @@ if (function_exists("register_field_group")) {
                     'allorany' => 'all'
                 ),
                 'choices' => array(
-                    'comum' => 'Publicação Comum',
-                    'arquivistica' => 'Publicação Arquivística'
+                    'biblioteca' => 'Biblioteca',
+                    'arquivistica' => 'Docmentação Arquivística'
                 ),
                 'other_choice' => 0,
                 'save_other_choice' => 0,
@@ -580,6 +580,7 @@ if (function_exists("register_field_group")) {
                 'label' => 'SubSérie',
                 'name' => 'publicacoes_subserie',
                 'type' => 'text',
+                'instructions' => 'Adicione o número da SubSérie.',
                 'conditional_logic' => array(
                     'status' => 1,
                     'rules' => array(
@@ -607,9 +608,8 @@ if (function_exists("register_field_group")) {
                     'status' => 1,
                     'rules' => array(
                         array(
-                            'field' => 'field_53b1c1d1453d3',
+                            'field' => 'null',
                             'operator' => '==',
-                            'value' => 'arquivistica'
                         )
                     ),
                     'allorany' => 'all'
@@ -630,9 +630,8 @@ if (function_exists("register_field_group")) {
                     'status' => 1,
                     'rules' => array(
                         array(
-                            'field' => 'field_53b1c1d1453d3',
+                            'field' => 'null',
                             'operator' => '==',
-                            'value' => 'arquivistica'
                         )
                     ),
                     'allorany' => 'all'
@@ -921,4 +920,7 @@ if (function_exists("register_field_group")) {
         ),
         'menu_order' => 0
     ));
-} //Avatar fieldif(function_exists("register_field_group")){    register_field_group(array (        'id' => 'acf_avatar',        'title' => 'Avatar',        'fields' => array (            array (                'key' => 'field_53a9927815518',                'label' => 'Avatar',                'name' => 'user_avatar',                'type' => 'image',                'save_format' => 'id',                'preview_size' => 'thumbnail',                'library' => 'all',            ),        ),        'location' => array (            array (                array (                    'param' => 'ef_user',                    'operator' => '==',                    'value' => 'all',                    'order_no' => 0,                    'group_no' => 0,                ),            ),        ),        'options' => array (            'position' => 'normal',            'layout' => 'no_box',            'hide_on_screen' => array (            ),        ),        'menu_order' => 0,    ));}
+}
+//Avatar field
+
+if(function_exists("register_field_group")){    register_field_group(array (        'id' => 'acf_avatar',        'title' => 'Avatar',        'fields' => array (            array (                'key' => 'field_53a9927815518',                'label' => 'Avatar',                'name' => 'user_avatar',                'type' => 'image',                'save_format' => 'id',                'preview_size' => 'thumbnail',                'library' => 'all',            ),        ),        'location' => array (            array (                array (                    'param' => 'ef_user',                    'operator' => '==',                    'value' => 'all',                    'order_no' => 0,                    'group_no' => 0,                ),            ),        ),        'options' => array (            'position' => 'normal',            'layout' => 'no_box',            'hide_on_screen' => array (            ),        ),        'menu_order' => 0,    ));}
