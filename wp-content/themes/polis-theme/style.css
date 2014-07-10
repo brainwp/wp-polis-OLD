@@ -1304,7 +1304,7 @@ slider de noticias + acoes
 .publicacoes .list_carousel {
 	margin-top: 25px;
 	clear: both;
-	padding-right:40px;
+    padding:0 !important;
 }
 .todos-full {
 	width: 100%;
@@ -2620,8 +2620,6 @@ header.mini{
     padding:0;
     padding-top:10px;
     padding-bottom:10px;
-    background:url(img/header-mini-bg.jpg) no-repeat;
-    background-size:cover;
 }
 .biblioteca-main .pagination a{
     margin-left:5px;
@@ -2773,3 +2771,17 @@ header.mini{
     margin-top:0;
     background:white;
 }
+.clear-mob{
+    display:none;
+}
+@media only screen and (max-width: 700px) {
+    .clear-mob{
+        width:100%;
+        display:block;
+        clear:both;
+    }
+    .item .infos{
+        bottom: inherit !important;
+        width:460px;
+    }
+} /* max-width 700px, mobile-only styles

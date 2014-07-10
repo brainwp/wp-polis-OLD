@@ -16,7 +16,7 @@ $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $key = (isset($_GET['key'])) ? $_GET['key'] : '';
 $tipo = (isset($_GET['tipo'])) ? $_GET['tipo'] : '';
 $categoria = (isset($_GET['categoria'])) ? $_GET['categoria'] : '';
-if(empty($categoria)){
+if (empty($categoria)) {
     $categoria = $_GET['area'];
 }
 $anomin = (isset($_GET['anomin'])) ? $_GET['anomin'] : '';
@@ -82,19 +82,19 @@ $total_pages = ceil($total_posts / $per_page);
 ?>
 
 <div id="primary" class="content-area">
-    <main id="main" class="site-main biblioteca-main <?php echo $_GET['area'];?>" role="main">
+    <main id="main" class="site-main biblioteca-main <?php echo $_GET['area']; ?>" role="main">
         <?php get_template_part('inc/biblioteca', 'search-mini'); ?>
-        <div class="col-md-3 <?php echo $_GET['area'];?>" id="ajax-biblioteca-sub-count">
+        <div class="col-md-3 <?php echo $_GET['area']; ?>" id="ajax-biblioteca-sub-count">
 
         </div>
 
         <div class="col-md-9 right search-ctn">
             <div class="col-md-12 results">
                 <?php $cat_info = get_term_by('slug', $_GET['area'], 'areas'); ?>
-                <?php if(!empty($key)): ?>
-                    <span class="key">Resultados para '<?php echo $key;?>'</span>
+                <?php if (!empty($key)): ?>
+                    <span class="key">Resultados para '<?php echo $key; ?>'</span>
                 <?php endif; ?>
-                <span class="area <?php echo $_GET['area'];?>">Em <?php echo $cat_info->name;?></span>
+                <span class="area <?php echo $_GET['area']; ?>">Em <?php echo $cat_info->name; ?></span>
             </div>
             <?php
             $type_list = array();
@@ -223,6 +223,7 @@ $total_pages = ceil($total_posts / $per_page);
                                 </div>
                             </div>
                         </div>
+                        <div class="clear-mob"></div>
 
                         <?php
                         if ($i == count($slug) - 1) {

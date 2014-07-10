@@ -265,7 +265,7 @@ require get_template_directory() . '/biblioteca-sub-count-ajax.php';
 function outras_areas() {
 
 	$array_areas  = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
-	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'areas' );
 
 	if ( ( $key = array_search( $current_area->slug, $array_areas ) ) !== false ) {
 		unset( $array_areas[$key] );
@@ -275,7 +275,7 @@ function outras_areas() {
 	echo "<li class=title-outras>Outras áreas de atuação</li>";
 
 	foreach ( $array_areas as $area ) {
-		$each_area = get_term_by( 'slug', $area, 'categorias' );
+		$each_area = get_term_by( 'slug', $area, 'areas' );
 		echo "<li class='btn-" . $each_area->slug . "'>";
 		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
 		echo "</li>";
@@ -293,7 +293,7 @@ function todas_areas() {
 	echo "<li class=title-outras>Outras áreas de atuação</li>";
 
 	foreach ( $array_areas as $area ) {
-		$each_area = get_term_by( 'slug', $area, 'categorias' );
+		$each_area = get_term_by( 'slug', $area, 'areas' );
 		echo "<li class='btn-" . $each_area->slug . "'>";
 		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
 		echo "</li>";

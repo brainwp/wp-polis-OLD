@@ -5,7 +5,67 @@ function my_register_fields()
 {
     include_once(get_template_directory() . '/inc/acf-repeater/repeater.php');
 }
+
 if (function_exists("register_field_group")) {
+    $_areas = array();
+    //democracia e participacao
+    $_id = get_term_by('slug', 'democracia-e-participacao', 'areas');
+    $_areas['democracia'] = 'Democracia e Participação';
+
+
+    $args = array(
+        'parent' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+    );
+
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '-- ' . $category->cat_name;
+    }
+    //inclusao-e-sustentabilidade
+    $_id = get_term_by('slug', 'inclusao-e-sustentabilidade', 'areas');
+    $_areas['inclusao'] = 'Inclusão e sustentabilidade';
+
+    $args = array(
+        'parent' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+    );
+
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '-- ' . $category->name;
+    }
+    //reforma urbana
+    $_id = get_term_by('slug', 'reforma-urbana', 'areas');
+    $_areas['reforma'] = 'Reforma Urbana';
+
+    $args = array(
+        'parent' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+    );
+
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '-- ' . $category->name;
+    }
+    //cidadania cultural
+    $_id = get_term_by('slug', 'cidadania-cultural', 'areas');
+    $_areas['cidadania'] = 'Cidadania Cultural';
+
+    $args = array(
+        'parent' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+
+    );
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '-- ' . $category->name;
+    }
+    echo var_dump($_areas);
     register_field_group(array(
         'id' => 'acf_area',
         'title' => 'Area',
@@ -16,12 +76,7 @@ if (function_exists("register_field_group")) {
                 'name' => 'area',
                 'type' => 'select',
                 'required' => 1,
-                'choices' => array(
-                    'reforma' => 'Reforma Urbana',
-                    'inclusao' => 'Inclusão E Sustentabilidade',
-                    'democracia' => 'Democracia E Participação',
-                    'cidadania' => 'Cidadania Cultural'
-                ),
+                'choices' => $_areas,
                 'default_value' => '',
                 'allow_null' => 0,
                 'multiple' => 0
@@ -45,6 +100,7 @@ if (function_exists("register_field_group")) {
         ),
         'menu_order' => 0
     ));
+
     register_field_group(array(
         'id' => 'acf_cargo',
         'title' => 'Cargo',
@@ -81,42 +137,42 @@ if (function_exists("register_field_group")) {
         ),
         'menu_order' => 0
     ));
-        register_field_group(array(
-            'id' => 'acf_e-privado-se-ativado-somente-membros-logados-poderao-ver',
-            'title' => 'É privado? (Se ativado somente membros logados poderão ver)',
-            'fields' => array(
+    register_field_group(array(
+        'id' => 'acf_e-privado-se-ativado-somente-membros-logados-poderao-ver',
+        'title' => 'É privado? (Se ativado somente membros logados poderão ver)',
+        'fields' => array(
+            array(
+                'key' => 'field_538dcab58cb92',
+                'label' => 'Selecione:',
+                'name' => 'isprivate',
+                'type' => 'select',
+                'choices' => array(
+                    'nao' => 'Não',
+                    'sim' => 'Sim'
+                ),
+                'default_value' => '',
+                'allow_null' => 0,
+                'multiple' => 0
+            )
+        ),
+        'location' => array(
+            array(
                 array(
-                    'key' => 'field_538dcab58cb92',
-                    'label' => 'Selecione:',
-                    'name' => 'isprivate',
-                    'type' => 'select',
-                    'choices' => array(
-                        'nao' => 'Não',
-                        'sim' => 'Sim'
-                    ),
-                    'default_value' => '',
-                    'allow_null' => 0,
-                    'multiple' => 0
-                )
-            ),
-            'location' => array(
-                array(
-                    array(
-                        'param' => 'ef_media',
-                        'operator' => '!=',
-                        'value' => 'all',
-                        'order_no' => 1,
-                        'group_no' => 0
-                    ),
-                )
-            ),
-            'options' => array(
-                'position' => 'normal',
-                'layout' => 'default',
-                'hide_on_screen' => array()
-            ),
-            'menu_order' => 0
-        ));
+                    'param' => 'ef_media',
+                    'operator' => '!=',
+                    'value' => 'all',
+                    'order_no' => 1,
+                    'group_no' => 0
+                ),
+            )
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'default',
+            'hide_on_screen' => array()
+        ),
+        'menu_order' => 0
+    ));
     register_field_group(array(
         'id' => 'acf_e-mail',
         'title' => 'E-mail',
@@ -531,17 +587,17 @@ if (function_exists("register_field_group")) {
                 'label' => 'Idioma',
                 'name' => 'publicacoes_idioma',
                 'type' => 'select',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
                     ),
                     'allorany' => 'all',
                 ),
-                'choices' => array (
+                'choices' => array(
                     'Português' => 'Português',
                     'Alemão' => 'Alemão',
                     'Espanhol' => 'Espanhol',
@@ -650,10 +706,10 @@ if (function_exists("register_field_group")) {
                 'label' => 'Fase do Arquivo',
                 'name' => 'publicacoes_fase',
                 'type' => 'text',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
@@ -672,10 +728,10 @@ if (function_exists("register_field_group")) {
                 'label' => 'Data',
                 'name' => 'publicacoes_data',
                 'type' => 'date_picker',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
@@ -691,10 +747,10 @@ if (function_exists("register_field_group")) {
                 'label' => 'Fonte',
                 'name' => 'publicacoes_fonte',
                 'type' => 'text',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
@@ -713,10 +769,10 @@ if (function_exists("register_field_group")) {
                 'label' => 'Referência',
                 'name' => 'publicacoes_referência',
                 'type' => 'text',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
@@ -735,10 +791,10 @@ if (function_exists("register_field_group")) {
                 'label' => 'Link Externo',
                 'name' => 'publicacoes_link_externo',
                 'type' => 'text',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
@@ -757,10 +813,10 @@ if (function_exists("register_field_group")) {
                 'label' => 'Situação do Documento',
                 'name' => 'publicacoes_situacao',
                 'type' => 'text',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'null',
                             'operator' => '==',
                         ),
@@ -921,4 +977,7 @@ if (function_exists("register_field_group")) {
         ),
         'menu_order' => 0
     ));
-} //Avatar fieldif(function_exists("register_field_group")){    register_field_group(array (        'id' => 'acf_avatar',        'title' => 'Avatar',        'fields' => array (            array (                'key' => 'field_53a9927815518',                'label' => 'Avatar',                'name' => 'user_avatar',                'type' => 'image',                'save_format' => 'id',                'preview_size' => 'thumbnail',                'library' => 'all',            ),        ),        'location' => array (            array (                array (                    'param' => 'ef_user',                    'operator' => '==',                    'value' => 'all',                    'order_no' => 0,                    'group_no' => 0,                ),            ),        ),        'options' => array (            'position' => 'normal',            'layout' => 'no_box',            'hide_on_screen' => array (            ),        ),        'menu_order' => 0,    ));}
+} //Avatar field
+if (function_exists("register_field_group")) {
+    register_field_group(array('id' => 'acf_avatar', 'title' => 'Avatar', 'fields' => array(array('key' => 'field_53a9927815518', 'label' => 'Avatar', 'name' => 'user_avatar', 'type' => 'image', 'save_format' => 'id', 'preview_size' => 'thumbnail', 'library' => 'all',),), 'location' => array(array(array('param' => 'ef_user', 'operator' => '==', 'value' => 'all', 'order_no' => 0, 'group_no' => 0,),),), 'options' => array('position' => 'normal', 'layout' => 'no_box', 'hide_on_screen' => array(),), 'menu_order' => 0,));
+}
