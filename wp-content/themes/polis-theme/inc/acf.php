@@ -734,16 +734,20 @@ if (function_exists("register_field_group")) {
                 'label' => 'Link Externo',
                 'name' => 'publicacoes_link_externo',
                 'type' => 'text',
-                'conditional_logic' => array (
-                    'status' => 1,
-                    'rules' => array (
-                        array (
-                            'field' => 'null',
-                            'operator' => '==',
-                        ),
-                    ),
-                    'allorany' => 'all',
-                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+
+            array(
+                'key' => 'field_53bee486343d5',
+                'label' => 'Link Interno',
+                'name' => 'publicacao_link_interno',
+                'type' => 'text',
+                'instructions' => 'Adicione um link interno para ou sobre essa Publicação.',
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
@@ -752,25 +756,74 @@ if (function_exists("register_field_group")) {
                 'maxlength' => '',
             ),
             array(
-                'key' => 'field_53bbff9421137',
+                'key' => 'field_53bee0bc343d1',
                 'label' => 'Situação do Documento',
-                'name' => 'publicacoes_situacao',
+                'name' => 'publicacoes_situacao_documento',
+                'type' => 'radio',
+                'instructions' => 'Marque em qual situação o documento se encontra.',
+                'choices' => array (
+                    'emprestado' => 'Emprestado',
+                    'doado' => 'Doado',
+                    'acervo: No acervo' => 'acervo: No acervo',
+                ),
+                'other_choice' => 1,
+                'save_other_choice' => 1,
+                'default_value' => '',
+                'layout' => 'horizontal',
+            ),
+            array(
+                'key' => 'field_53bee136343d2',
+                'label' => 'Unidade de Armazenamento',
+                'name' => 'publicacoes_unidade_armazenamento',
+                'type' => 'radio',
+                'instructions' => 'Marque como o documento está arquivado',
+                'choices' => array (
+                    'caixa_arquivo' => 'Caixa Arquivo',
+                    'pasta' => 'Pasta',
+                ),
+                'other_choice' => 1,
+                'save_other_choice' => 1,
+                'default_value' => '',
+                'layout' => 'horizontal',
+            ),
+            array(
+                'key' => 'field_53bee1b1343d3',
+                'label' => 'Fase do Arquivo',
+                'name' => 'publicacoes_fase',
+                'type' => 'radio',
+                'instructions' => 'Marque em que fase o documento se encontra.',
+                'choices' => array (
+                    'corrente' => 'Corrente',
+                    'intermediario' => 'intermediário',
+                    'permanente' => 'Permanente',
+                ),
+                'other_choice' => 1,
+                'save_other_choice' => 1,
+                'default_value' => '',
+                'layout' => 'horizontal',
+            ),
+            array(
+                'key' => 'field_53bee205343d4',
+                'label' => 'Classificação',
+                'name' => 'publicacoes_classificacao',
                 'type' => 'text',
-                'conditional_logic' => array (
+                'instructions' => 'Adicione uma classificação a essa Publicação.',
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
-                            'field' => 'null',
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
                             'operator' => '==',
-                        ),
+                            'value' => 'biblioteca'
+                        )
                     ),
-                    'allorany' => 'all',
+                    'allorany' => 'all'
                 ),
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
                 'append' => '',
-                'formatting' => 'html',
+                'formatting' => 'none',
                 'maxlength' => '',
             ),
         ),
