@@ -202,7 +202,7 @@ $categorias = get_categories($args);
 
                             } else {
 
-                                echo '<img src="' . theme('/img/default-publicacoes-thumb.jpg') . '"/>';
+                                echo '<img src="'  . get_bloginfo('template_url') . '/img/default-publicacoes-thumb.jpg"/>';
 
                             }
 
@@ -308,7 +308,7 @@ $categorias = get_categories($args);
 
                             } else {
 
-                                echo '<img src="' . theme('/img/default-publicacoes-thumb.jpg') . '" />';
+                                echo '<img src="' . get_bloginfo('template_url') . '/img/default-publicacoes-thumb.jpg" />';
 
                             }
 

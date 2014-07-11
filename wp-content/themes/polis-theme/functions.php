@@ -275,12 +275,12 @@ function outras_areas() {
 	echo "<ul>";
 	echo "<li class=title-outras>Outras áreas de atuação</li>";
 
-	foreach ( $array_areas as $area ) {
-		$each_area = get_term_by( 'slug', $area, 'areas' );
-		echo "<li class='btn-" . $each_area->slug . "'>";
-		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
-		echo "</li>";
-	}
+    foreach ( $array_areas as $area ) {
+        $each_area = get_term_by( 'slug', $area, 'areas' );
+        echo "<li class='btn-" . $area . "'>";
+        echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+        echo "</li>";
+    }
 
 	echo "</ul>";
 
@@ -295,7 +295,7 @@ function todas_areas() {
 
 	foreach ( $array_areas as $area ) {
 		$each_area = get_term_by( 'slug', $area, 'areas' );
-		echo "<li class='btn-" . $each_area->slug . "'>";
+		echo "<li class='btn-" . $area . "'>";
 		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
 		echo "</li>";
 	}

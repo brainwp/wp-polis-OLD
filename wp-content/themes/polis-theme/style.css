@@ -18,6 +18,7 @@ Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
 along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 and Blueprint http://www.blueprintcss.org/
 */
+
 /* =Reset
 -------------------------------------------------------------- */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
@@ -26,7 +27,9 @@ html{
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%
 	}
-body{ margin:0 }
+body{ margin:0
+overflow-x:hidden;
+}
 article,
 aside,
 details,
@@ -768,6 +771,24 @@ object {
 .democracia-e-participacao .tabDetails .next-slider{
 	background:url(img/areas/democracia-proximo.png) no-repeat;
 }
+.cidadania-cultural .tabDetails .prev-slider{
+    background:url(img/areas/cidadania-anterior.png) no-repeat;
+}
+.cidadania-cultural .tabDetails .next-slider{
+    background:url(img/areas/cidadania-proximo.png) no-repeat;
+}
+.inclusao-e-sustentabilidade .tabDetails .prev-slider{
+    background:url(img/areas/inclusao-anterior.png) no-repeat;
+}
+.inclusao-e-sustentabilidade .tabDetails .next-slider{
+    background:url(img/areas/inclusao-proximo.png) no-repeat;
+}
+.reforma-urbana .tabDetails .prev-slider{
+    background:url(img/areas/reforma-anterior.png) no-repeat;
+}
+.reforma-urbana .tabDetails .next-slider{
+    background:url(img/areas/reforma-proximo.png) no-repeat;
+}
     .tabContaier li a.active{
 		background: #ededed;
 	}
@@ -946,7 +967,7 @@ menu de navegação */
 	display: inline-block;
 	margin: 0;
 	font-size: 1em;
-	
+
 }
 .nav ul li ul li a {
 	padding: 7px 12px;
@@ -968,7 +989,7 @@ conteudo - atuação /pagehome/
 .content{
 	background:white;
 	padding:0;
-}.tabContaier li a span
+}
 .content .description{
 	padding-top: 20px;
 	padding-left:10%;
@@ -986,6 +1007,7 @@ conteudo - atuação /pagehome/
 	background:url("img/home-bg.jpg") bottom no-repeat;
 	padding-top: 40px;
 }
+
 .atuacao .description{
 	font-size:14px;
 	font-weight: normal;
@@ -2804,14 +2826,29 @@ header.mini{
 .clear-mob{
     display:none;
 }
-@media only screen and (max-width: 700px) {
+.item .infos-mob{
+    display:none;
+}
+@media only screen and (max-width: 600px) {
     .clear-mob{
         width:100%;
-        display:block;
+        display:block !important;
         clear:both;
+        height:32px;
     }
     .item .infos{
-        bottom: inherit !important;
-        width:460px;
+        display:none;
     }
+    .atuacao{
+        background:none;
+    }
+    .item .infos-mob{
+        display:block;
+    }
+    @media screen and (max-width:400px) {
+     @-ms-viewport{
+         width:320px;
+   }
+ }
+
 } /* max-width 700px, mobile-only styles

@@ -84,10 +84,10 @@ $total_pages = ceil($total_posts / $per_page);
 <div id="primary" class="content-area">
     <main id="main" class="site-main biblioteca-main <?php echo $_GET['area']; ?>" role="main">
         <?php get_template_part('inc/biblioteca', 'search-mini'); ?>
+        <div class="clear-mob"></div>
         <div class="col-md-3 <?php echo $_GET['area']; ?>" id="ajax-biblioteca-sub-count">
 
         </div>
-
         <div class="col-md-9 right search-ctn">
             <div class="col-md-12 results">
                 <?php $cat_info = get_term_by('slug', $_GET['area'], 'areas'); ?>
@@ -175,7 +175,7 @@ $total_pages = ceil($total_posts / $per_page);
                                 if (has_post_thumbnail($slug[$i]['id'])) {
                                     echo get_the_post_thumbnail($slug[$i]['id'], 'busca-thumb');
                                 } else {
-                                    echo '<img src="http://placehold.it/87x130">';
+                                    echo '<img width="87" height="130" src="'.get_bloginfo('template_url').'/img/default-publicacoes-thumb.jpg">';
                                 }
                                 ?>
                             </a>
@@ -183,7 +183,7 @@ $total_pages = ceil($total_posts / $per_page);
                             <div class="col-md-5 search_title">
                                 <div class="col-md-12">
                                     <a class="titulo"
-                                       href="<?php echo $slug[$i]['title']; ?>"><?php echo $slug[$i]['title']; ?></a>
+                                       href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['title']; ?></a>
                                 </div>
                                 <div class="col-md-12 bt-ctn">
                                     <?php
@@ -221,6 +221,9 @@ $total_pages = ceil($total_posts / $per_page);
                                         Leia Mais
                                     </a>
                                 </div>
+                            </div>
+                            <div class="col-md-10 infos-mob">
+                                <a href="<?php echo $slug[$i]['link'];?>">Mais informações</a>
                             </div>
                         </div>
                         <div class="clear-mob"></div>
