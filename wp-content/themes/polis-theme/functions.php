@@ -233,6 +233,7 @@ require get_template_directory() . '/inc/tax-tags.php';
  */
 require get_template_directory() . '/inc/cpt-publicacoes.php';
 require get_template_directory() . '/inc/tax-autor.php';
+require get_template_directory() . '/inc/tax-categorias.php';
 
 /**
  * Load Tax Categorias to CPT Publicações, Notícias e Ações.
@@ -431,6 +432,9 @@ function child_term( $taxonomy, $echo = '' ) {
 					return $term->name;
 				}
 			}
+            else{
+                return false;
+            }
 		}
 	}
 }
@@ -603,3 +607,5 @@ function is_area( $value ) {
 		return false;
 	}
 }
+
+//pagination

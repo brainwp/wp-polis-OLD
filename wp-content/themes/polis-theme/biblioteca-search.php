@@ -53,7 +53,7 @@ if (!empty($anomin) && !empty($anomax)) {
 $args = array(
     'post_type' => 'publicacoes',
     'areas' => $categoria,
-    'tipos' => $tipo,
+    'categorias' => $tipo,
     's' => $key,
     'date_query' => $date_query,
     'posts_per_page' => $per_page,
@@ -66,7 +66,7 @@ $query = new WP_Query($args);
 $count_args = array(
     'post_type' => 'publicacoes',
     'areas' => $categoria,
-    'tipos' => $tipo,
+    'categorias' => $tipo,
     's' => $key,
     'date_query' => $date_query,
     'post_per_page' => 999999,
@@ -103,8 +103,8 @@ $total_pages = ceil($total_posts / $per_page);
             if ($query->have_posts()) {
                 while ($query->have_posts()) {
                     $query->the_post();
-                    $type_term = return_term_biblioteca('tipos');
-                    if (!in_array(return_term_biblioteca('tipos'), $type_add)) { //verifique se vetor já existe no array
+                    $type_term = return_term_biblioteca('categorias');
+                    if (!in_array(return_term_biblioteca('categorias'), $type_add)) { //verifique se vetor já existe no array
                         $type_add[] = $type_term;
                         $type_list[] = $type_term;
                         $type_list[$type_term][] = 0;
@@ -114,15 +114,15 @@ $total_pages = ceil($total_posts / $per_page);
 
                     $type_list[$type_term][$_i]['area'] = top_term('areas', 'return_slug');
                     $type_list[$type_term][$_i]['area_sub'] = child_term('areas', 'return');
-                    $type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name('tipos');
-                    $type_list[$type_term][$_i]['term_slug'] = return_term_biblioteca('tipos');
+                    $type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name('categorias');
+                    $type_list[$type_term][$_i]['term_slug'] = return_term_biblioteca('categorias');
                     $type_list[$type_term][$_i]['title'] = get_the_title();
                     $type_list[$type_term][$_i]['resumo'] = resumo(150, '...');
                     $type_list[$type_term][$_i]['id'] = get_the_id();
                     $type_list[$type_term][$_i]['link'] = get_permalink();
                     $type_list[$type_term][$_i]['autor'] = get_the_author_meta('display_name');
                     $type_list[$type_term][$_i]['autor_user'] = strtolower(get_the_author_link('user_login'));
-                    $type_list[$type_term][$_i]['tipos'] = escape_terms('tipos', 'name');
+                    $type_list[$type_term][$_i]['tipos'] = escape_terms('categorias', 'name');
                     $type_list[$type_term][$_i]['data'] = get_the_date('d/m/Y');
                     $type_list[$type_term][$_i]['downloadid'] = get_campoPersonalizado('anexo');
 
@@ -138,7 +138,7 @@ $total_pages = ceil($total_posts / $per_page);
                         'order' => 'ASC',
                         'hide_empty' => 1,
                         'hierarchical' => 1,
-                        'taxonomy' => 'tipos',
+                        'taxonomy' => 'categorias',
                         'pad_counts' => false
                     );
                     $categories = get_categories($_args);
@@ -242,28 +242,23 @@ $total_pages = ceil($total_posts / $per_page);
                 <div class="col-md-4 col-md-offset-4">
                     <?php
                     $search_vars = '/?key=' . $key . '&tipo=' . $tipo . '&categoria=' . $categoria . '&area=' . $_GET['area'] . '&anomin=' . $anomin . '&anomax=' . $anomax . '';
-                    if ($page != 1) {
-                        ?>
-                        <a href="<?php echo get_bloginfo('url') ?>/biblioteca/busca/page/<?php echo $page - 1 . $search_vars ?>/">
-                            &lt;</a>
-                    <?php
-                    }
-                    ?>
-                    <?php
-                    for ($i = 1; $i < $total_pages + 1; $i++) {
-                        if ($i == $page) {
-                            echo '<a class="atual" href="' . get_bloginfo('url') . '/biblioteca/busca/page/' . $i . $search_vars . '">' . $i . '</a>';
-                        } else {
-                            echo '<a href="' . get_bloginfo('url') . '/biblioteca/busca/page/' . $i . $search_vars . '">' . $i . '</a>';
-                        }
-                    }
-                    ?>
-                    <?php
-                    if ($page < $total_pages) {
-                        ?>
-                        <a href="<?php echo get_bloginfo('url') ?>/biblioteca/busca/page/<?php echo $page + 1 . $search_vars ?>">
-                            &gt;</a>
-                    <?php
+
+                    $total = $total_pages;
+                    $big = 999999999; // need an unlikely integer
+                    if( $total > 1 )  {
+                        if( !$current_page = $page )
+                            $current_page = 1;
+                        $format = 'page/%#%/'.$search_vars;
+                        echo paginate_links(array(
+                            'base'			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                            'format'		=> $format,
+                            'current'		=> max( 1, $page ),
+                            'total' 		=> $total,
+                            'mid_size'		=> 3,
+                            'type' 			=> 'list',
+                            'prev_text'		=> '<',
+                            'next_text'		=> '>',
+                        ) );
                     }
                     ?>
                 </div>

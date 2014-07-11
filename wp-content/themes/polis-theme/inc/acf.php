@@ -7,65 +7,6 @@ function my_register_fields()
 }
 
 if (function_exists("register_field_group")) {
-    $_areas = array();
-    //democracia e participacao
-    $_id = get_term_by('slug', 'democracia-e-participacao', 'areas');
-    $_areas['democracia'] = 'Democracia e Participação';
-
-
-    $args = array(
-        'parent' => $_id,
-        'taxonomy' => 'areas',
-        'hide_empty' => 0,
-    );
-
-    $categories = get_categories($args);
-    foreach ($categories as $category) {
-        $_areas[$category->slug] = '-- ' . $category->cat_name;
-    }
-    //inclusao-e-sustentabilidade
-    $_id = get_term_by('slug', 'inclusao-e-sustentabilidade', 'areas');
-    $_areas['inclusao'] = 'Inclusão e sustentabilidade';
-
-    $args = array(
-        'parent' => $_id,
-        'taxonomy' => 'areas',
-        'hide_empty' => 0,
-    );
-
-    $categories = get_categories($args);
-    foreach ($categories as $category) {
-        $_areas[$category->slug] = '-- ' . $category->name;
-    }
-    //reforma urbana
-    $_id = get_term_by('slug', 'reforma-urbana', 'areas');
-    $_areas['reforma'] = 'Reforma Urbana';
-
-    $args = array(
-        'parent' => $_id,
-        'taxonomy' => 'areas',
-        'hide_empty' => 0,
-    );
-
-    $categories = get_categories($args);
-    foreach ($categories as $category) {
-        $_areas[$category->slug] = '-- ' . $category->name;
-    }
-    //cidadania cultural
-    $_id = get_term_by('slug', 'cidadania-cultural', 'areas');
-    $_areas['cidadania'] = 'Cidadania Cultural';
-
-    $args = array(
-        'parent' => $_id,
-        'taxonomy' => 'areas',
-        'hide_empty' => 0,
-
-    );
-    $categories = get_categories($args);
-    foreach ($categories as $category) {
-        $_areas[$category->slug] = '-- ' . $category->name;
-    }
-    echo var_dump($_areas);
     register_field_group(array(
         'id' => 'acf_area',
         'title' => 'Area',
@@ -76,8 +17,8 @@ if (function_exists("register_field_group")) {
                 'name' => 'area',
                 'type' => 'select',
                 'required' => 1,
-                'choices' => $_areas,
-                'default_value' => '',
+                'choices' => '',
+                'default_value' => 'Institucional',
                 'allow_null' => 0,
                 'multiple' => 0
             )
@@ -981,3 +922,76 @@ if (function_exists("register_field_group")) {
 if (function_exists("register_field_group")) {
     register_field_group(array('id' => 'acf_avatar', 'title' => 'Avatar', 'fields' => array(array('key' => 'field_53a9927815518', 'label' => 'Avatar', 'name' => 'user_avatar', 'type' => 'image', 'save_format' => 'id', 'preview_size' => 'thumbnail', 'library' => 'all',),), 'location' => array(array(array('param' => 'ef_user', 'operator' => '==', 'value' => 'all', 'order_no' => 0, 'group_no' => 0,),),), 'options' => array('position' => 'normal', 'layout' => 'no_box', 'hide_on_screen' => array(),), 'menu_order' => 0,));
 }
+
+function select_user_area($field){
+    //democracia e participacao
+    $_id = get_term_by('slug', 'democracia-e-participacao', 'areas');
+    $_id = $_id->term_id;
+    $_areas['democracia'] = 'Democracia e Participação';
+    $field['choices'] = array();
+
+    $args = array(
+        'child_of' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+
+    );
+
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '   -- ' . $category->cat_name;
+    }
+    //inclusao-e-sustentabilidade
+    $_id = get_term_by('slug', 'inclusao-e-sustentabilidade', 'areas');
+    $_id = $_id->term_id;
+    $_areas['inclusao'] = 'Inclusão e sustentabilidade';
+
+    $args = array(
+        'child_of' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+    );
+
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '   -- ' . $category->name;
+    }
+    //reforma urbana
+    $_id = get_term_by('slug', 'reforma-urbana', 'areas');
+    $_id = $_id->term_id;
+    $_areas['reforma'] = 'Reforma Urbana';
+
+    $args = array(
+        'child_of' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+
+    );
+
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '   -- ' . $category->name;
+    }
+    //cidadania cultural
+    $_id = get_term_by('slug', 'cidadania-cultural', 'areas');
+    $_id = $_id->term_id;
+    $_areas['cidadania'] = 'Cidadania Cultural';
+
+    $args = array(
+        'child_of' => $_id,
+        'taxonomy' => 'areas',
+        'hide_empty' => 0,
+
+    );
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $_areas[$category->slug] = '   -- ' . $category->name;
+    }
+    $_areas['Outro'] = 'Outro';
+    $_areas['Institucional'] = 'Institucional';
+    $field['choices'] = $_areas;
+    return $field;
+}
+
+// v4.0.0 and above
+add_filter('acf/load_field/name=area', 'select_user_area');

@@ -170,5 +170,17 @@ function optionsframework_options() {
         'std'  => '20',
         'type' => 'text');
 
+    $options[] = array(
+        'name' => 'Equipe',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Membros por página (/equipe/)',
+        'id'   => 'equipe-per-page',
+        'std'  => '16',
+        'type' => 'text');
+
+
+
     return $options;
 }

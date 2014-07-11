@@ -698,7 +698,7 @@ object {
 	text-decoration: none;
 }
 .tabContaier li a span{
-	font-size: 25px;
+	font-size: 18px;
 	font-weight: bold;
 	font-family: 'Bitter', serif;
 	color:#888888;
@@ -962,11 +962,13 @@ conteudo - atuação /pagehome/
 	background-color: #FFF;
 	display: inline-block;
 	margin-bottom: -5px;
+    max-width:100%;
+    width:100%;
 }
 .content{
 	background:white;
 	padding:0;
-}
+}.tabContaier li a span
 .content .description{
 	padding-top: 20px;
 	padding-left:10%;
@@ -1234,11 +1236,11 @@ slider de noticias + acoes
 	margin-top:20px;
 	padding:20px;
 	padding-top:30px;
-	padding-bottom:30px;
 	background: url(img/canal-bg.png);
 	background-size: cover;
 	color: #FFF;
 	position: relative;
+    padding-bottom: 83px;
 }
 .canal p{
 	color:white;
@@ -1946,7 +1948,15 @@ slider de noticias + acoes
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
-.atividades .pagination a{
+.pagination ul{
+    list-style: none;
+    display:block;
+}
+.pagination li{
+    display:block;
+    float:left;
+}
+.atividades .pagination a, .atividades .pagination span, .equipe .pagination a, .equipe .pagination span{
 	font-weight: bold;
 	background:#c2c2c2;
 	padding: 5px 10px;
@@ -1956,7 +1966,8 @@ slider de noticias + acoes
 	transition:ease 300ms all;
 	color: #FFF;
 }
-.pagination a:hover, .pagination a.atual{
+
+.pagination a:hover, .pagination a.atual, .pagination span.current{
 	background: #4b809a;
 	transition:ease 300ms all;
 }
@@ -1981,11 +1992,13 @@ slider de noticias + acoes
 	display: inline;
 	font-size: 27px;
 	font-weight:bold;
+    color:#0D6194;
 }
 .perfil .sep {
 	margin-left:10px;
 	font-weight: bold;
 	font-size: 19px;
+    color:#0D6194;
 }
 .perfil .cargo {
 	margin-left: 10px;
@@ -2075,6 +2088,9 @@ slider de noticias + acoes
 	font-family: 'Source Sans Pro';
 }
 /* classes de acordo com a area */
+.user .name{
+    background:#0D6194;
+}
 .user .name.reforma{
 	background:#516c37;
 }
@@ -2087,42 +2103,50 @@ slider de noticias + acoes
 .user .name.cidadania{
 	background:#b5923e;
 }
+.perfil .intro span{
+    border-bottom:5px solid #0D6194;
+    color:#0D6194;
+}
 .perfil .intro.inclusao span{
+    color:#91ac5f;
 	border-bottom:5px solid #91ac5f;
 }
 .perfil .intro.democracia span{
+    color:#983c3b;
 	border-bottom:5px solid #983c3b;
 }
 .perfil .intro.cidadania span{
+    color:#b5923e;
 	border-bottom:5px solid #b5923e;
 }
 .perfil .intro.reforma span{
+    color:#516c37;
 	border-bottom:5px solid #516c37;
 }
-.perfil.inclusao{
-	color:#91ac5f;
+.perfil.inclusao, .perfil.inclusao .links_rel a, .perfil.inclusao .links_rel h2, .perfil.inclusao .nome, .perfil.inclusao .sep, .perfil.inclusao .cargo{
+    color:#91ac5f;
 }
-.perfil.reforma{
-	color:#516c37;
+.perfil.reforma, .perfil.reforma .links_rel a, .perfil.reforma .links_rel h2,  .perfil.reforma .nome, .perfil.reforma .sep, .perfil.reforma .cargo {
+	color:#516c37 !important;
 }
-.perfil.democracia{
-	color:#983c3b;
+.perfil.democracia, .perfil.democracia .links_rel a, .perfil.democracia .links_rel h2,  .perfil.democracia .nome, .perfil.democracia .sep, .perfil.democracia .cargo{
+	color:#983c3b !important;
 }
-.perfil.cidadania{
-	color:#b5923e;
+.perfil.cidadania, .perfil.cidadania .links_rel a, .perfil.cidadania .links_rel h2,  .perfil.cidadania .nome, .perfil.cidadania .sep, .perfil.cidadania .cargo{
+	color:#b5923e !important;
 }
 .links_rel{
 	padding:0;
 }
 .links_rel h2{
 	font-size:18px;
-	color:#983c3b;
+	color:#0D6194;
 	font-family: 'Bitter', serif;
 	font-weight:400;
 }
 .links_rel a{
 	font-size:12px;
-	color:#983c3b;
+	color:#0D6194;
 	font-family: 'Bitter', serif;
 	font-weight:400;
 	display:block;
@@ -2630,7 +2654,13 @@ header.mini{
     background:none;
     font-size:18px;
 }
-.biblioteca-main .pagination .atual{
+.biblioteca-main .pagination .current{
+    margin-left:5px;
+    margin-right: 5px;
+    font-family: 'Bitter',serif;
+    font-weight:bold;
+    color:#1e5c7a;
+    background:none;
     font-size:20px;
 }
 .biblioteca-main .header-area{
