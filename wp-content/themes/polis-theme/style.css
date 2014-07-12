@@ -18,6 +18,7 @@ Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
 along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 and Blueprint http://www.blueprintcss.org/
 */
+
 /* =Reset
 -------------------------------------------------------------- */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
@@ -26,7 +27,9 @@ html{
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%
 	}
-body{ margin:0 }
+body{ margin:0
+overflow-x:hidden;
+}
 article,
 aside,
 details,
@@ -698,7 +701,7 @@ object {
 	text-decoration: none;
 }
 .tabContaier li a span{
-	font-size: 25px;
+	font-size: 18px;
 	font-weight: bold;
 	font-family: 'Bitter', serif;
 	color:#888888;
@@ -767,6 +770,24 @@ object {
 }
 .democracia-e-participacao .tabDetails .next-slider{
 	background:url(img/areas/democracia-proximo.png) no-repeat;
+}
+.cidadania-cultural .tabDetails .prev-slider{
+    background:url(img/areas/cidadania-anterior.png) no-repeat;
+}
+.cidadania-cultural .tabDetails .next-slider{
+    background:url(img/areas/cidadania-proximo.png) no-repeat;
+}
+.inclusao-e-sustentabilidade .tabDetails .prev-slider{
+    background:url(img/areas/inclusao-anterior.png) no-repeat;
+}
+.inclusao-e-sustentabilidade .tabDetails .next-slider{
+    background:url(img/areas/inclusao-proximo.png) no-repeat;
+}
+.reforma-urbana .tabDetails .prev-slider{
+    background:url(img/areas/reforma-anterior.png) no-repeat;
+}
+.reforma-urbana .tabDetails .next-slider{
+    background:url(img/areas/reforma-proximo.png) no-repeat;
 }
     .tabContaier li a.active{
 		background: #ededed;
@@ -946,7 +967,7 @@ menu de navegação */
 	display: inline-block;
 	margin: 0;
 	font-size: 1em;
-	
+
 }
 .nav ul li ul li a {
 	padding: 7px 12px;
@@ -962,6 +983,8 @@ conteudo - atuação /pagehome/
 	background-color: #FFF;
 	display: inline-block;
 	margin-bottom: -5px;
+    max-width:100%;
+    width:100%;
 }
 .content{
 	background:white;
@@ -984,6 +1007,7 @@ conteudo - atuação /pagehome/
 	background:url("img/home-bg.jpg") bottom no-repeat;
 	padding-top: 40px;
 }
+
 .atuacao .description{
 	font-size:14px;
 	font-weight: normal;
@@ -1234,11 +1258,11 @@ slider de noticias + acoes
 	margin-top:20px;
 	padding:20px;
 	padding-top:30px;
-	padding-bottom:30px;
 	background: url(img/canal-bg.png);
 	background-size: cover;
 	color: #FFF;
 	position: relative;
+    padding-bottom: 83px;
 }
 .canal p{
 	color:white;
@@ -1304,7 +1328,7 @@ slider de noticias + acoes
 .publicacoes .list_carousel {
 	margin-top: 25px;
 	clear: both;
-	padding-right:40px;
+    padding:0 !important;
 }
 .todos-full {
 	width: 100%;
@@ -1946,7 +1970,15 @@ slider de noticias + acoes
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
-.atividades .pagination a{
+.pagination ul{
+    list-style: none;
+    display:block;
+}
+.pagination li{
+    display:block;
+    float:left;
+}
+.atividades .pagination a, .atividades .pagination span, .equipe .pagination a, .equipe .pagination span{
 	font-weight: bold;
 	background:#c2c2c2;
 	padding: 5px 10px;
@@ -1956,7 +1988,8 @@ slider de noticias + acoes
 	transition:ease 300ms all;
 	color: #FFF;
 }
-.pagination a:hover, .pagination a.atual{
+
+.pagination a:hover, .pagination a.atual, .pagination span.current{
 	background: #4b809a;
 	transition:ease 300ms all;
 }
@@ -1981,11 +2014,13 @@ slider de noticias + acoes
 	display: inline;
 	font-size: 27px;
 	font-weight:bold;
+    color:#0D6194;
 }
 .perfil .sep {
 	margin-left:10px;
 	font-weight: bold;
 	font-size: 19px;
+    color:#0D6194;
 }
 .perfil .cargo {
 	margin-left: 10px;
@@ -2075,6 +2110,9 @@ slider de noticias + acoes
 	font-family: 'Source Sans Pro';
 }
 /* classes de acordo com a area */
+.user .name{
+    background:#0D6194;
+}
 .user .name.reforma{
 	background:#516c37;
 }
@@ -2087,42 +2125,50 @@ slider de noticias + acoes
 .user .name.cidadania{
 	background:#b5923e;
 }
+.perfil .intro span{
+    border-bottom:5px solid #0D6194;
+    color:#0D6194;
+}
 .perfil .intro.inclusao span{
+    color:#91ac5f;
 	border-bottom:5px solid #91ac5f;
 }
 .perfil .intro.democracia span{
+    color:#983c3b;
 	border-bottom:5px solid #983c3b;
 }
 .perfil .intro.cidadania span{
+    color:#b5923e;
 	border-bottom:5px solid #b5923e;
 }
 .perfil .intro.reforma span{
+    color:#516c37;
 	border-bottom:5px solid #516c37;
 }
-.perfil.inclusao{
-	color:#91ac5f;
+.perfil.inclusao, .perfil.inclusao .links_rel a, .perfil.inclusao .links_rel h2, .perfil.inclusao .nome, .perfil.inclusao .sep, .perfil.inclusao .cargo{
+    color:#91ac5f;
 }
-.perfil.reforma{
-	color:#516c37;
+.perfil.reforma, .perfil.reforma .links_rel a, .perfil.reforma .links_rel h2,  .perfil.reforma .nome, .perfil.reforma .sep, .perfil.reforma .cargo {
+	color:#516c37 !important;
 }
-.perfil.democracia{
-	color:#983c3b;
+.perfil.democracia, .perfil.democracia .links_rel a, .perfil.democracia .links_rel h2,  .perfil.democracia .nome, .perfil.democracia .sep, .perfil.democracia .cargo{
+	color:#983c3b !important;
 }
-.perfil.cidadania{
-	color:#b5923e;
+.perfil.cidadania, .perfil.cidadania .links_rel a, .perfil.cidadania .links_rel h2,  .perfil.cidadania .nome, .perfil.cidadania .sep, .perfil.cidadania .cargo{
+	color:#b5923e !important;
 }
 .links_rel{
 	padding:0;
 }
 .links_rel h2{
 	font-size:18px;
-	color:#983c3b;
+	color:#0D6194;
 	font-family: 'Bitter', serif;
 	font-weight:400;
 }
 .links_rel a{
 	font-size:12px;
-	color:#983c3b;
+	color:#0D6194;
 	font-family: 'Bitter', serif;
 	font-weight:400;
 	display:block;
@@ -2620,8 +2666,6 @@ header.mini{
     padding:0;
     padding-top:10px;
     padding-bottom:10px;
-    background:url(img/header-mini-bg.jpg) no-repeat;
-    background-size:cover;
 }
 .biblioteca-main .pagination a{
     margin-left:5px;
@@ -2632,7 +2676,13 @@ header.mini{
     background:none;
     font-size:18px;
 }
-.biblioteca-main .pagination .atual{
+.biblioteca-main .pagination .current{
+    margin-left:5px;
+    margin-right: 5px;
+    font-family: 'Bitter',serif;
+    font-weight:bold;
+    color:#1e5c7a;
+    background:none;
     font-size:20px;
 }
 .biblioteca-main .header-area{
@@ -2773,3 +2823,32 @@ header.mini{
     margin-top:0;
     background:white;
 }
+.clear-mob{
+    display:none;
+}
+.item .infos-mob{
+    display:none;
+}
+@media only screen and (max-width: 600px) {
+    .clear-mob{
+        width:100%;
+        display:block !important;
+        clear:both;
+        height:32px;
+    }
+    .item .infos{
+        display:none;
+    }
+    .atuacao{
+        background:none;
+    }
+    .item .infos-mob{
+        display:block;
+    }
+    @media screen and (max-width:400px) {
+     @-ms-viewport{
+         width:320px;
+   }
+ }
+
+} /* max-width 700px, mobile-only styles

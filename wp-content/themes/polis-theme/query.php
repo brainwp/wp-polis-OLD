@@ -279,7 +279,7 @@ function _query_equipe(){
 
 // how many users to show per page
 
-	$users_per_page = 16;
+	$users_per_page = (int) of_get_option('equipe-per-page');
 
 // calculate the total number of pages.
 
@@ -356,7 +356,17 @@ function _query_membros(){
 		$_avatar = get_avatar( $_user->ID, 200 );
 
 		$_area_slug   = get_field( 'area', 'user_' . $_user->ID );
-
+        if($_area_slug == 'Institucional' || $_area_slug == 'Outro'){
+            $_area_slug = 'default';
+        }
+        else{
+            $_area_slug_term = get_term_by('slug', $_area_slug, 'areas');
+            if($_area_slug_term->parent != 0){
+                $_top_term = get_term_by('id', $_area_slug_term->parent, 'areas');
+                $_area_slug = explode('-',trim($_top_term->slug));
+                $_area_slug = $_area_slug[0];
+            }
+        }
 		$_cargo   = get_field( 'cargo', 'user_' . $_user->ID );
 
 		$_tel   = get_field( 'telefone', 'user_' . $_user->ID );

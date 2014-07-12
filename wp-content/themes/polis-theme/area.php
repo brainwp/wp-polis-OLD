@@ -6,7 +6,7 @@
 
 <?php
 
-$current_term = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+$current_term = get_term_by('slug', get_query_var('area'), 'areas');
 
 $name_term = $current_term->name;
 
@@ -18,27 +18,27 @@ $id = $current_term->term_id;
 
 $args = array(
 
-	'type'         => array( 'acoes', 'post', 'noticias', 'publicacoes' ),
+    'type' => array('acoes', 'post', 'noticias', 'publicacoes'),
 
-	'child_of'     => $id,
+    'child_of' => $id,
 
-	'orderby'      => 'name',
+    'orderby' => 'name',
 
-	'order'        => 'ASC',
+    'order' => 'ASC',
 
-	'hide_empty'   => 1,
+    'hide_empty' => 1,
 
-	'hierarchical' => 1,
+    'hierarchical' => 1,
 
-	//'exclude'      => 'formacao',
+    //'exclude'      => 'formacao',
 
-	'taxonomy'     => 'areas',
+    'taxonomy' => 'areas',
 
-	'pad_counts'   => false
+    'pad_counts' => false
 
 );
 
-$categorias = get_categories( $args );
+$categorias = get_categories($args);
 
 // echo get_query_var( 'area' );
 
@@ -46,543 +46,542 @@ $categorias = get_categories( $args );
 
 
 
-	<div id="primary" class="content-area">
+    <div id="primary" class="content-area">
 
-	<main id="main" class="site-main area-main <?php echo $current_class; ?>" role="main" data-slug="<?php echo $current_class; ?>">
+    <main id="main" class="site-main area-main <?php echo $current_class; ?>" role="main"
+          data-slug="<?php echo $current_class; ?>">
 
-	<div id="hide-ajax" style="display: none"></div>
+    <div id="hide-ajax" style="display: none"></div>
 
-	<div class="header-area <?php echo $current_class; ?>">
+    <div class="header-area <?php echo $current_class; ?>">
 
-		<div class="left col-md-2">
+        <div class="left col-md-2">
 
-			<h1><?php echo $name_term; ?></h1>
+            <h1><?php echo $name_term; ?></h1>
 
-			<?php echo $description_term; ?>
+            <?php echo $description_term; ?>
 
-		</div>
+        </div>
 
-		<!-- .left -->
+        <!-- .left -->
 
 
+        <div class="col-md-2 pull-right areas">
 
-		<div class="col-md-2 pull-right areas">
+            <?php outras_areas(); ?>
 
-			<?php outras_areas(); ?>
+        </div>
 
-		</div>
+        <!-- rigtht -->
 
-		<!-- rigtht -->
 
+    </div>
 
+    <!-- .header-area -->
 
-	</div>
+    <div id="ajax-publicacoes" class="hidden"></div>
 
-	<!-- .header-area -->
+    <div id="ajax-noticias" class="hidden"></div>
 
-	<div id="ajax-publicacoes" class="hidden"></div>
+    <div id="ajax-acoes" class="hidden"></div>
 
-	<div id="ajax-noticias" class="hidden"></div>
+    <div class="tabContaier">
 
-	<div id="ajax-acoes" class="hidden"></div>
+    <ul>
 
-	<div class="tabContaier">
+        <?php $_i = 0; ?>
 
-	<ul>
+        <?php foreach ($categorias as $_categorias): ?>
 
-		<?php $_i = 0; ?>
+            <li>
 
-		<?php foreach ( $categorias as $_categorias ): ?>
+                <?php
 
-			<li>
+                if ($_i == 0) {
 
-				<?php
+                    $_first = $_categorias;
 
-				if ( $_i == 0 ) {
+                    ?>
 
-					$_first = $_categorias;
+                    <a class="active" data-id="<?php echo $_categorias->term_id; ?>"
+                       href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
-					?>
+                <?php
 
-					<a class="active" data-id="<?php echo $_categorias->term_id; ?>" href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
+                } else {
 
-				<?php
+                    ?>
 
-				} else {
+                    <a data-id="<?php echo $_categorias->term_id; ?>"
+                       href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
-					?>
+                <?php } ?>
 
-					<a data-id="<?php echo $_categorias->term_id; ?>" href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
+                <?php $_i++; ?>
 
-				<?php } ?>
+            </li>
 
-				<?php $_i ++; ?>
+        <?php endforeach; ?>
 
-			</li>
+    </ul>
 
-		<?php endforeach; ?>
+    <!-- //Tab buttons -->
 
-	</ul>
+    <section class="col-md-12 tabDetails atividades">
 
-	<!-- //Tab buttons -->
+    <?php $cat = $_first->term_id; ?>
 
-	<section class="col-md-12 tabDetails atividades">
+    <div id="first" data-first="<?php echo $cat; ?>" style="display:none"></div>
 
-	<?php $cat = $_first->term_id; ?>
+    <div id="tab<?php echo $_first->term_id; ?>" class="tabContents aba-area">
 
-	<div id="first" data-first="<?php echo $cat; ?>" style="display:none"></div>
 
-	<div id="tab<?php echo $_first->term_id; ?>" class="tabContents aba-area">
+    <div class="cada-loop-aba publicacoes">
 
+        <div class="section-title">
 
+            <h3>Noticias</h3>
 
-		<div class="cada-loop-aba publicacoes">
+            <a href="#" class="col-md-1 shape-todos">Ver todos</a>
 
-			<div class="section-title">
+        </div>
 
-				<h3>Noticias</h3>
+        <div class="col-md-12 list_carousel responsive">
 
-				<a href="#" class="col-md-1 shape-todos">Ver todos</a>
+            <?php // Loop Notícias
 
-			</div>
+            $args = array(
 
-			<div class="col-md-12 list_carousel responsive">
+                'post_type' => 'noticias',
 
-				<?php // Loop Notícias
+                'tax_query' => array(
 
-				$args = array(
+                    array(
 
-					'post_type' => 'noticias',
+                        'taxonomy' => 'areas',
 
-					'tax_query' => array(
+                        'field' => 'id',
 
-						array(
+                        'terms' => $cat,
 
-							'taxonomy'         => 'categorias',
+                        'include_children' => true,
 
-							'field'            => 'id',
+                        'posts_per_page' => 8,
 
-							'terms'            => $cat,
+                    )
 
-							'include_children' => true,
+                )
 
-							'posts_per_page'   => 8,
+            );
 
-						)
+            ?>
 
-					)
+            <ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
 
-				);
+                <?php
 
-				?>
+                $noticias = new WP_Query($args); // exclude category
 
-				<ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
+                while ($noticias->have_posts()) : $noticias->the_post(); ?>
 
-					<?php
+                    <li class="item">
 
-					$noticias = new WP_Query( $args ); // exclude category
+                        <a href="<?php the_permalink(); ?>">
 
-					while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
+                            <?php $terms = terms('areas'); ?>
 
-						<li class="item">
+                            <?php $terms = explode(',', $terms); ?>
 
-							<a href="<?php the_permalink(); ?>">
+                            <?php
 
-								<?php $terms = terms( 'categorias' ); ?>
+                            if (has_post_thumbnail()) {
 
-								<?php $terms = explode(',',$terms);?>
+                                $thumb_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'slider-publicacoes-image', true);
 
-								<?php
+                                echo '<img src="' . $thumb_url[0] . '"/>';
 
-								if ( has_post_thumbnail() ) {
+                            } else {
 
-									$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+                                echo '<img src="'  . get_bloginfo('template_url') . '/img/default-publicacoes-thumb.jpg"/>';
 
-									echo '<img src="' . $thumb_url[0] . '"/>';
+                            }
 
-								} else {
+                            ?>
 
-									echo '<img src="' . theme( '/img/default-publicacoes-thumb.jpg' ) . '"/>';
+                            <div class="caption-container">
 
-								}
+                                <small class="caption"><?php echo $terms[0]; ?></small>
 
-								?>
+                            </div>
 
-								<div class="caption-container">
+                            <h2 class="title"><?php the_title(); ?></h2>
 
-									<small class="caption"><?php echo $terms[0];?></small>
+                            <div class="col-md-12 resumo"><?php echo resumo(); ?></div>
 
-								</div>
+                        </a>
 
-								<h2 class="title"><?php the_title();?></h2>
+                    </li>
 
-								<div class="col-md-12 resumo"><?php echo resumo();?></div>
+                <?php endwhile; ?>
 
-							</a>
+            </ul>
 
-						</li>
+        </div>
 
-					<?php endwhile; ?>
+        <div class="prev-slider" id="noticias-prev-slider-<?php echo $cat; ?>"></div>
 
-				</ul>
+        <div class="next-slider" id="noticias-next-slider-<?php echo $cat; ?>"></div>
 
-			</div>
+        <div class="clear"></div>
 
-			<div class="prev-slider" id="noticias-prev-slider-<?php echo $cat;?>"></div>
+    </div>
 
-			<div class="next-slider" id="noticias-next-slider-<?php echo $cat;?>"></div>
+    <!-- .cada-loop-aba -->
 
-			<div class="clear"></div>
 
-		</div>
+    <div class="cada-loop-aba publicacoes">
 
-		<!-- .cada-loop-aba -->
+        <div class="section-title">
 
+            <h3>Publicações</h3>
 
+            <a href="#" class="col-md-1 shape-todos">Ver todos</a>
 
-		<div class="cada-loop-aba publicacoes">
+        </div>
 
-			<div class="section-title">
+        <div class="col-md-12 list_carousel responsive">
 
-				<h3>Publicações</h3>
+            <?php // Loop Publicacoes
 
-				<a href="#" class="col-md-1 shape-todos">Ver todos</a>
+            $args = array(
 
-			</div>
+                'post_type' => 'publicacoes',
 
-			<div class="col-md-12 list_carousel responsive">
+                'tax_query' => array(
 
-				<?php // Loop Publicacoes
+                    array(
 
-				$args = array(
+                        'taxonomy' => 'areas',
 
-					'post_type' => 'publicacoes',
+                        'field' => 'id',
 
-					'tax_query' => array(
+                        'terms' => $cat,
 
-						array(
+                        'include_children' => true,
 
-							'taxonomy'         => 'categorias',
+                        'posts_per_page' => 10,
 
-							'field'            => 'id',
+                    )
 
-							'terms'            => $cat,
+                )
 
-							'include_children' => true,
+            );
 
-							'posts_per_page'   => 10,
+            ?>
 
-						)
+            <ul id="publicacoes-slider-<?php echo $cat; ?>" class="publicacoes-slider">
 
-					)
+                <?php
 
-				);
+                $publicacoes = new WP_Query($args); ?>
 
-				?>
+                <?php while ($publicacoes->have_posts()) :
 
-				<ul id="publicacoes-slider-<?php echo $cat;?>" class="publicacoes-slider">
+                    $publicacoes->the_post(); ?>
 
-					<?php
+                    <li class="item">
 
-					$publicacoes = new WP_Query( $args ); ?>
+                        <a href="<?php the_permalink(); ?>">
 
-					<?php while ( $publicacoes->have_posts() ) :
 
-						$publicacoes->the_post(); ?>
+                            <div class="hover"></div>
 
-						<li class="item">
 
-							<a href="<?php the_permalink(); ?>">
 
+                            <?php
 
+                            if (has_post_thumbnail()) {
 
-								<div class="hover"></div>
+                                $thumb_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'slider-publicacoes-image', true);
 
+                                echo '<img src="' . $thumb_url[0] . '"/>';
 
+                            } else {
 
-								<?php
+                                echo '<img src="' . get_bloginfo('template_url') . '/img/default-publicacoes-thumb.jpg" />';
 
-								if ( has_post_thumbnail() ) {
+                            }
 
-									$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+                            ?>
 
-									echo '<img src="' . $thumb_url[0] . '"/>';
+                        </a>
 
-								} else {
+                    </li>
 
-									echo '<img src="' . theme( '/img/default-publicacoes-thumb.jpg' ) . '" />';
+                <?php endwhile; ?>
 
-								}
+            </ul>
 
-								?>
+        </div>
 
-							</a>
+        <div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat; ?>"></div>
 
-						</li>
+        <div class="next-slider" id="publicacoes-next-slider-<?php echo $cat; ?>"></div>
 
-					<?php endwhile; ?>
+        <div class="clear"></div>
 
-				</ul>
+        <div class="todos-full">
 
-			</div>
+            <a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma
+                busca</a>
 
-			<div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat;?>"></div>
+        </div>
 
-			<div class="next-slider" id="publicacoes-next-slider-<?php echo $cat;?>"></div>
+        <?php // teste// ?>
 
-			<div class="clear"></div>
+    </div>
 
-			<div class="todos-full">
+    <div class="cada-loop-aba publicacoes">
 
-				<a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a>
+        <div class="section-title">
 
-			</div>
+            <h3>Ações</h3>
 
-			<?php // teste// ?>
+            <a href="#" class="col-md-1 shape-todos">Ver todos</a>
 
-		</div>
+        </div>
 
-		<div class="cada-loop-aba publicacoes">
 
-			<div class="section-title">
+        <div class="col-md-12 list_carousel responsive">
 
-				<h3>Ações</h3>
+            <?php // Loop Ações
 
-				<a href="#" class="col-md-1 shape-todos">Ver todos</a>
+            $args = array(
 
-			</div>
+                'post_type' => 'acoes',
 
+                'tax_query' => array(
 
+                    array(
 
-			<div class="col-md-12 list_carousel responsive">
+                        'taxonomy' => 'areas',
 
-				<?php // Loop Ações
+                        'field' => 'id',
 
-				$args = array(
+                        'terms' => $cat,
 
-					'post_type' => 'acoes',
+                        'include_children' => true,
 
-					'tax_query' => array(
+                        'posts_per_page' => 10,
 
-						array(
+                    )
 
-							'taxonomy'         => 'categorias',
+                )
 
-							'field'            => 'id',
+            );
 
-							'terms'            => $cat,
+            ?>
 
-							'include_children' => true,
+            <ul id="acoes-slider-<?php echo $cat; ?>">
 
-							'posts_per_page'   => 10,
+                <?php
 
-						)
+                $noticias = new WP_Query($args); // exclude category
 
-					)
+                while ($noticias->have_posts()) : $noticias->the_post(); ?>
 
-				);
+                    <li class="item">
 
-				?>
 
-				<ul id="acoes-slider-<?php echo $cat; ?>">
+                        <a href="<?php the_permalink(); ?>" class="post">
 
-					<?php
+                            <div class="post_container">
 
-					$noticias = new WP_Query( $args ); // exclude category
+                                <div class="thumb">
 
-					while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
+                                    <?php
 
-						<li class="item">
+                                    if (has_post_thumbnail()) {
 
-							<a href="<?php the_permalink(); ?>" class="col-md-3 post">
+                                        the_post_thumbnail('medium');
 
-								<div class="post_container">
+                                    } else {
 
-									<div class="thumb">
+                                        echo '<img src="' . theme() . '/img/thumb-equipe.png">';
 
-										<?php
+                                    } ?>
 
-										if ( has_post_thumbnail() ) {
+                                    <h3><?php the_title(); ?></h3>
 
-											the_post_thumbnail( 'medium' );
+                                </div>
 
-										} else {
+                                <!-- thumb -->
 
-											echo '<img src="' . theme() . '/img/thumb-equipe.png">';
 
-										} ?>
+                                <div class="col-md-12 description">
 
-										<h3><?php the_title(); ?></h3>
+                                    <?php echo resumo(150); ?>
 
-									</div><!-- thumb -->
+                                    <span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
 
+                                </div>
 
+                            </div>
 
-									<div class="col-md-12 description">
+                            <!-- post_container -->
 
-										<?php echo resumo( 150 ); ?>
+                        </a>
 
-										<span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
+                    </li>
 
-									</div>
 
-								</div><!-- post_container -->
 
-							</a>
+                <?php endwhile; ?>
 
-						</li>
+            </ul>
 
+        </div>
 
+        <div class="prev-slider" id="acoes-prev-slider-<?php echo $cat; ?>"></div>
 
-					<?php endwhile; ?>
+        <div class="next-slider" id="acoes-next-slider-<?php echo $cat; ?>"></div>
 
-				</ul>
+        <div class="clear"></div>
 
-			</div>
+    </div>
 
-			<div class="prev-slider" id="acoes-prev-slider-<?php echo $cat;?>"></div>
+    <!-- .cada-loop-aba -->
 
-			<div class="next-slider" id="acoes-next-slider-<?php echo $cat;?>"></div>
+    </div>
 
-			<div class="clear"></div>
+    <?php $_i = 0; ?>
 
-		</div>
+    <?php foreach ($categorias as $_categorias): ?>
 
-		<!-- .cada-loop-aba -->
+        <?php if ($_i != 0) {
 
-	</div>
+            $cat = $_categorias->term_id;
 
-	<?php $_i = 0; ?>
+            ?>
 
-	<?php foreach ( $categorias as $_categorias ): ?>
+            <div id="tab<?php echo $cat; ?>" class="tabContents aba-area">
 
-		<?php if ( $_i != 0 ) {
 
-			$cat = $_categorias->term_id;
+                <div class="cada-loop-aba publicacoes">
 
-		?>
+                    <div class="section-title">
 
-			<div id="tab<?php echo $cat; ?>" class="tabContents aba-area">
+                        <h3>Noticias</h3>
 
+                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
 
+                    </div>
 
-				<div class="cada-loop-aba publicacoes">
+                    <div class="col-md-12 list_carousel responsive">
 
-					<div class="section-title">
+                        <ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
 
-						<h3>Noticias</h3>
+                        </ul>
 
-						<a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                    </div>
 
-					</div>
+                    <div class="prev-slider" id="noticias-prev-slider-<?php echo $cat; ?>"></div>
 
-					<div class="col-md-12 list_carousel responsive">
+                    <div class="next-slider" id="noticias-next-slider-<?php echo $cat; ?>"></div>
 
-						<ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
+                    <div class="clear"></div>
 
-						</ul>
+                </div>
 
-					</div>
+                <!-- .cada-loop-aba -->
 
-					<div class="prev-slider" id="noticias-prev-slider-<?php echo $cat;?>"></div>
 
-					<div class="next-slider" id="noticias-next-slider-<?php echo $cat;?>"></div>
+                <div class="cada-loop-aba publicacoes">
 
-					<div class="clear"></div>
+                    <div class="section-title">
 
-				</div>
+                        <h3>Publicações</h3>
 
-				<!-- .cada-loop-aba -->
+                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
 
+                    </div>
 
+                    <div class="col-md-12 list_carousel responsive">
 
-				<div class="cada-loop-aba publicacoes">
+                        <ul id="publicacoes-slider-<?php echo $cat; ?>" class="publicacoes-slider">
 
-					<div class="section-title">
+                        </ul>
 
-						<h3>Publicações</h3>
+                    </div>
 
-						<a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                    <div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat; ?>"></div>
 
-					</div>
+                    <div class="next-slider" id="publicacoes-next-slider-<?php echo $cat; ?>"></div>
 
-					<div class="col-md-12 list_carousel responsive">
+                    <div class="clear"></div>
 
-						<ul id="publicacoes-slider-<?php echo $cat;?>" class="publicacoes-slider">
+                    <div class="todos-full">
 
-						</ul>
+                        <a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações
+                            ou faça uma busca</a>
 
-					</div>
+                    </div>
 
-					<div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat;?>"></div>
+                    <?php // teste// ?>
 
-					<div class="next-slider" id="publicacoes-next-slider-<?php echo $cat;?>"></div>
+                </div>
 
-					<div class="clear"></div>
+                <div class="cada-loop-aba publicacoes">
 
-					<div class="todos-full">
+                    <div class="section-title">
 
-						<a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a>
+                        <h3>Ações</h3>
 
-					</div>
+                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
 
-					<?php // teste// ?>
+                    </div>
 
-				</div>
 
-				<div class="cada-loop-aba publicacoes">
+                    <div class="col-md-12 list_carousel responsive">
 
-					<div class="section-title">
+                        <ul id="acoes-slider-<?php echo $cat; ?>">
 
-						<h3>Ações</h3>
+                        </ul>
 
-						<a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                    </div>
 
-					</div>
 
+                    <div class="prev-slider" id="acoes-prev-slider-<?php echo $cat; ?>"></div>
 
+                    <div class="next-slider" id="acoes-next-slider-<?php echo $cat; ?>"></div>
 
-					<div class="col-md-12 list_carousel responsive">
+                    <div class="clear"></div>
 
-						<ul id="acoes-slider-<?php echo $cat; ?>">
+                </div>
 
-						</ul>
+                <!-- .cada-loop-aba -->
 
-					</div>
+            </div>
 
+        <?php } ?>
 
+        <?php $_i++; ?>
 
-					<div class="prev-slider" id="acoes-prev-slider-<?php echo $cat;?>"></div>
+    <?php endforeach; ?>
 
-					<div class="next-slider" id="acoes-next-slider-<?php echo $cat;?>"></div>
+    </section>
 
-					<div class="clear"></div>
+    <!-- //tab Details -->
 
-				</div>
+    </div>
 
-				<!-- .cada-loop-aba -->
+    <!-- //Tab Container -->
 
-			</div>
+    </main>
 
-		<?php } ?>
+    <!-- #main -->
 
-		<?php $_i ++; ?>
-
-	<?php endforeach; ?>
-
-	</section>
-
-	<!-- //tab Details -->
-
-	</div>
-
-	<!-- //Tab Container -->
-
-	</main>
-
-	<!-- #main -->
-
-	</div><!-- #primary -->
+    </div><!-- #primary -->
 
 
 <?php get_footer(); ?>

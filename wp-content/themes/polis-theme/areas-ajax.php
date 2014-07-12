@@ -24,7 +24,7 @@ function areaAjax() {
 
 					array(
 
-						'taxonomy'         => 'categorias',
+						'taxonomy'         => 'areas',
 
 						'field'            => 'id',
 
@@ -48,7 +48,7 @@ function areaAjax() {
 
 					<a href="<?php the_permalink(); ?>">
 
-						<?php $terms = terms( 'categorias' ); ?>
+						<?php $terms = terms( 'areas' ); ?>
 
 						<?php $terms = explode( ',', $terms ); ?>
 
@@ -106,7 +106,7 @@ function areaAjax() {
 
 					array(
 
-						'taxonomy'         => 'categorias',
+						'taxonomy'         => 'areas',
 
 						'field'            => 'id',
 
@@ -180,7 +180,7 @@ function areaAjax() {
 
 					array(
 
-						'taxonomy'         => 'categorias',
+						'taxonomy'         => 'areas',
 
 						'field'            => 'id',
 
