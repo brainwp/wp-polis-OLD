@@ -49,8 +49,10 @@ function AjaxSubCount(){
         $args = array(
             'parent'                 => $_id,
             'taxonomy'                 => 'areas',
+
         );
         $categories = get_categories($args);
+        $_counter = 1;
         foreach ($categories as $category) {
             // The Query
             $categoria = $category->slug;
@@ -66,8 +68,10 @@ function AjaxSubCount(){
             $count = $count_query->found_posts;
             if($count > 0){
                 echo '<a data-categoria="'.$category->slug.'" class="bt-categorias">'.$category->name . ' (' . $count . ')</a>';
+                $_counter++;
             }
         }
+        echo '<div style="display:none" id="counter-sub-count" data-counter="' . $_counter * 50 . '"></div>';
         die();
     }
 }

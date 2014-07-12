@@ -115,7 +115,7 @@ jQuery(document).ready(function () {
         prev: '#noticias-prev-slider-' + _first,
         next: '#noticias-next-slider-' + _first,
         responsive: true,
-        width: '100%',
+        width: '97%',
         scroll: {
             items: 1,
             pauseOnHover: true
@@ -132,7 +132,7 @@ jQuery(document).ready(function () {
         prev: '#publicacoes-prev-slider-' + _first,
         next: '#publicacoes-next-slider-' + _first,
         responsive: true,
-        width: '100%',
+        width: '97%',
         scroll: {
             items: 1,
             pauseOnHover: true
@@ -149,7 +149,7 @@ jQuery(document).ready(function () {
         prev: '#acoes-prev-slider-' + _first,
         next: '#acoes-next-slider-' + _first,
         responsive: true,
-        width: '100%',
+        width: '97%',
         scroll: {
             items: 1,
             pauseOnHover: true
@@ -157,7 +157,7 @@ jQuery(document).ready(function () {
         items: {
             width: 250,
             visible: {
-                min: 4,
+                min: 1,
                 max: 4
             }
         }
@@ -176,7 +176,7 @@ jQuery(document).ready(function () {
                 prev: '#noticias-prev-slider-' + id,
                 next: '#noticias-next-slider-' + id,
                 responsive: true,
-                width: '100%',
+                width: '97%',
                 scroll: {
                     items: 1,
                     pauseOnHover: true
@@ -185,7 +185,7 @@ jQuery(document).ready(function () {
                     width: 250,
                     visible: {
                         min: 4,
-                        max: 4
+                        max: 5
                     }
                 }
             });
@@ -204,7 +204,7 @@ jQuery(document).ready(function () {
                 prev: '#publicacoes-prev-slider-' + id,
                 next: '#publicacoes-next-slider-' + id,
                 responsive: true,
-                width: '100%',
+                width: '97%',
                 scroll: {
                     items: 1,
                     pauseOnHover: true
@@ -232,7 +232,7 @@ jQuery(document).ready(function () {
                 prev: '#acoes-prev-slider-' + id,
                 next: '#acoes-next-slider-' + id,
                 responsive: true,
-                width: '100%',
+                width: '97%',
                 scroll: {
                     items: 1,
                     pauseOnHover: true
@@ -331,7 +331,12 @@ jQuery(document).ready(function () {
         $('#busca-biblioteca-mini').submit();
     });
     var _ajax = '?isAjaxSubCount=true&key=' + $('#key').val() + '&categoria=' + $('#categoria-hidden').val() + '&area=' + $('#area-hidden').val();
-    $('#ajax-biblioteca-sub-count').load($(document.body).attr('data-siteurl') + '/' + _ajax);
+    $('#ajax-biblioteca-sub-count').load($(document.body).attr('data-siteurl') + '/' + _ajax,function(){
+        if($(window).width() < 710){
+            var size = $(document.body).find('#counter-sub-count').attr('data-counter');
+            $('#ajax-biblioteca-sub-count').css('height',size + 'px');
+        }
+    });
     if ($(window).width() >= 700) {
         $(document.body).css('background', 'transparent');
         $('#map-bg').contents().find('#mp-embed-bar').remove();
@@ -346,7 +351,7 @@ jQuery(document).ready(function () {
                 disableDefaultUI: true,
                 scrollwheel: false,
                 navigationControl: false,
-                mapTypeControl: false,
+                mapTypeControl: false
             }
             var styles = {
                 elementType: "labels",
@@ -380,4 +385,15 @@ jQuery(document).ready(function () {
 
         google.maps.event.addDomListener(window, 'load', initialize);
     }
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement("style");
+        msViewportStyle.appendChild(
+            document.createTextNode(
+                "@-ms-viewport{width:auto!important}"
+            )
+        );
+        document.getElementsByTagName("head")[0].
+            appendChild(msViewportStyle);
+    }
+
 });

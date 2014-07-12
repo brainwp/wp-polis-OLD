@@ -216,11 +216,15 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-
 /**
  * Load CPT Ações file.
  */
 require get_template_directory() . '/inc/cpt-acoes.php';
+
+/**
+ * Load CPT Projetos file.
+ */
+require get_template_directory() . '/inc/cpt-projetos.php';
 
 /**
  * Load CPT Notícias file.
@@ -233,6 +237,7 @@ require get_template_directory() . '/inc/tax-tags.php';
  */
 require get_template_directory() . '/inc/cpt-publicacoes.php';
 require get_template_directory() . '/inc/tax-autor.php';
+require get_template_directory() . '/inc/tax-categorias.php';
 
 /**
  * Load Tax Categorias to CPT Publicações, Notícias e Ações.
@@ -265,7 +270,7 @@ require get_template_directory() . '/biblioteca-sub-count-ajax.php';
 function outras_areas() {
 
 	$array_areas  = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
-	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'areas' );
 
 	if ( ( $key = array_search( $current_area->slug, $array_areas ) ) !== false ) {
 		unset( $array_areas[$key] );
@@ -274,12 +279,12 @@ function outras_areas() {
 	echo "<ul>";
 	echo "<li class=title-outras>Outras áreas de atuação</li>";
 
-	foreach ( $array_areas as $area ) {
-		$each_area = get_term_by( 'slug', $area, 'categorias' );
-		echo "<li class='btn-" . $each_area->slug . "'>";
-		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
-		echo "</li>";
-	}
+    foreach ( $array_areas as $area ) {
+        $each_area = get_term_by( 'slug', $area, 'areas' );
+        echo "<li class='btn-" . $area . "'>";
+        echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+        echo "</li>";
+    }
 
 	echo "</ul>";
 
@@ -293,8 +298,8 @@ function todas_areas() {
 	echo "<li class=title-outras>Outras áreas de atuação</li>";
 
 	foreach ( $array_areas as $area ) {
-		$each_area = get_term_by( 'slug', $area, 'categorias' );
-		echo "<li class='btn-" . $each_area->slug . "'>";
+		$each_area = get_term_by( 'slug', $area, 'areas' );
+		echo "<li class='btn-" . $area . "'>";
 		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
 		echo "</li>";
 	}
@@ -431,6 +436,9 @@ function child_term( $taxonomy, $echo = '' ) {
 					return $term->name;
 				}
 			}
+            else{
+                return false;
+            }
 		}
 	}
 }
@@ -603,3 +611,5 @@ function is_area( $value ) {
 		return false;
 	}
 }
+
+//pagination

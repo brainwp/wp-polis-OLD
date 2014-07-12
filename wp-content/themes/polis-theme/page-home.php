@@ -52,6 +52,7 @@ get_header(); ?>
 				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/cidadania-cultural">Saiba mais</a>
 			</div>
 		</div>
+        <div class="col-md-12 clear"></div>
 		<div class="col-md-10 col-md-offset-1 consultoria-alert">
 			<img src="<?php bloginfo('template_url');?>/img/consultoria-alert.png"> <!-- trocar pelo png transparente depois -->
 			<span>Interessado nos serviços de consultoria da Pólis?</span>
