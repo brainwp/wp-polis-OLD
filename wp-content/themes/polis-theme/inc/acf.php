@@ -371,6 +371,19 @@ if (function_exists("register_field_group")) {
                 'maxlength' => ''
             ),
             array(
+                'key' => 'field_53bee486343d5',
+                'label' => 'Link Interno',
+                'name' => 'publicacao_link_interno',
+                'type' => 'text',
+                'instructions' => 'Adicione um link interno para algo relacionado a essa Publicação.',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
                 'key' => 'field_53ac797a35734',
                 'label' => 'ISBN',
                 'name' => 'publicacoes_isbn',
@@ -462,6 +475,7 @@ if (function_exists("register_field_group")) {
                 ),
                 'choices' => array(
                     '.pdf' => '.pdf',
+                    '.zip' => '.zip',
                     '.jpg' => '.jpg',
                     '.gif' => '.gif',
                     '.png' => '.png',
@@ -469,7 +483,8 @@ if (function_exists("register_field_group")) {
                     '.wma' => '.wma',
                     '.wmv' => '.wmv',
                     '.mp3' => '.mp3',
-                    '.mp4' => '.mp4'
+                    '.mp4' => '.mp4',
+                    'outro' => 'outro'
                 ),
                 'other_choice' => 1,
                 'save_other_choice' => 0,
@@ -597,28 +612,6 @@ if (function_exists("register_field_group")) {
                 'maxlength' => '',
             ),
             array(
-                'key' => 'field_53bbfd9321130',
-                'label' => 'Unidade de Armazenamento',
-                'name' => 'publicacoes_armazenamento',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'null',
-                            'operator' => '==',
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-            array(
                 'key' => 'field_53bbfdaf21131',
                 'label' => 'Tombo (Número do Documento)',
                 'name' => 'publicacoes_tombo',
@@ -683,28 +676,6 @@ if (function_exists("register_field_group")) {
                 'first_day' => 1,
             ),
             array(
-                'key' => 'field_53bbfe4721134',
-                'label' => 'Fonte',
-                'name' => 'publicacoes_fonte',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'null',
-                            'operator' => '==',
-                        ),
-                    ),
-                    'allorany' => 'all',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-            array(
                 'key' => 'field_53bbfe9121135',
                 'label' => 'Referência',
                 'name' => 'publicacoes_referência',
@@ -719,32 +690,6 @@ if (function_exists("register_field_group")) {
                     ),
                     'allorany' => 'all',
                 ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-            array(
-                'key' => 'field_53bbfeb921136',
-                'label' => 'Link Externo',
-                'name' => 'publicacoes_link_externo',
-                'type' => 'text',
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-
-            array(
-                'key' => 'field_53bee486343d5',
-                'label' => 'Link Interno',
-                'name' => 'publicacao_link_interno',
-                'type' => 'text',
-                'instructions' => 'Adicione um link interno para ou sobre essa Publicação.',
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
@@ -1086,3 +1031,54 @@ function select_user_area($field){
 
 // v4.0.0 and above
 add_filter('acf/load_field/name=area', 'select_user_area');
+
+
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_migrando-publicacoes',
+        'title' => 'Migrando Publicações',
+        'fields' => array (
+            array (
+                'key' => 'field_53c10d5be1fc3',
+                'label' => 'Arquivo para Download',
+                'name' => 'mgr_pub_download',
+                'type' => 'text',
+                'instructions' => 'Nome do arquivo anexo a Publicação.
+    cld_file',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'ef_user',
+                    'operator' => '==',
+                    'value' => 'administrator',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'publicacoes',
+                    'order_no' => 1,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'side',
+            'layout' => 'default',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 14,
+    ));
+}
+
