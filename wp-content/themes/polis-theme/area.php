@@ -59,7 +59,7 @@ $categorias = get_categories($args);
 
             <h1><?php echo $name_term; ?></h1>
 
-            <?php echo $description_term; ?>
+            <span class="rm-mob"><?php echo $description_term; ?></span>
 
         </div>
 
@@ -103,7 +103,7 @@ $categorias = get_categories($args);
 
                     ?>
 
-                    <a class="active" data-id="<?php echo $_categorias->term_id; ?>"
+                    <a class="tab-link active" data-id="<?php echo $_categorias->term_id; ?>"
                        href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
                 <?php
@@ -112,7 +112,7 @@ $categorias = get_categories($args);
 
                     ?>
 
-                    <a data-id="<?php echo $_categorias->term_id; ?>"
+                    <a class="tab-link" data-id="<?php echo $_categorias->term_id; ?>"
                        href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
                 <?php } ?>
@@ -184,7 +184,7 @@ $categorias = get_categories($args);
 
                 while ($noticias->have_posts()) : $noticias->the_post(); ?>
 
-                    <li class="item">
+                    <li class="col-xs-12 item">
 
                         <a href="<?php the_permalink(); ?>">
 
@@ -289,7 +289,7 @@ $categorias = get_categories($args);
 
                     $publicacoes->the_post(); ?>
 
-                    <li class="item">
+                    <li class="col-xs-12 item">
 
                         <a href="<?php the_permalink(); ?>">
 

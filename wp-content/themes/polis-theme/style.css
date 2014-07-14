@@ -2845,10 +2845,32 @@ header.mini{
     .item .infos-mob{
         display:block;
     }
-    @media screen and (max-width:400px) {
-     @-ms-viewport{
-         width:320px;
-   }
- }
-
+    .biblioteca-main .busca .intro{
+        display:none;
+    }
+    .biblioteca-main .busca{
+        padding-left:5px;
+        padding-right:5px;
+    }
+    .tabDetails .next-slider, .tabDetails .prev-slider{
+        display:none;
+    }
+    .area-main .header-area .left{
+        padding:0;
+    }
+    .area-main .tabContaier ul{
+        min-height:330px;
+    }
+    .area-main .tabContaier .tab-link{
+        display:block;
+        float:left;
+        width:100%;
+        margin-bottom:20px;
+    }
+    .rm-mob{
+        display:none;
+    }
+    .area-main h1{
+        float:right;
+    }
 } /* max-width 700px, mobile-only styles

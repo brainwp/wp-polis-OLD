@@ -111,57 +111,63 @@ jQuery(document).ready(function () {
     });
     var _first = $('#first').attr('data-first');
     console.log(_first)
-    $('#noticias-slider-' + _first).carouFredSel({
-        prev: '#noticias-prev-slider-' + _first,
-        next: '#noticias-next-slider-' + _first,
-        responsive: true,
-        width: '97%',
-        scroll: {
-            items: 1,
-            pauseOnHover: true
-        },
-        items: {
-            width: 250,
-            visible: {
-                min: 1,
-                max: 5
+    if ($(window).width() > 700) {
+        $('#noticias-slider-' + _first).carouFredSel({
+            prev: '#noticias-prev-slider-' + _first,
+            next: '#noticias-next-slider-' + _first,
+            responsive: true,
+            width: '97%',
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 1,
+                    max: 5
+                }
             }
-        }
-    });
-    $('#publicacoes-slider-' + _first).carouFredSel({
-        prev: '#publicacoes-prev-slider-' + _first,
-        next: '#publicacoes-next-slider-' + _first,
-        responsive: true,
-        width: '97%',
-        scroll: {
-            items: 1,
-            pauseOnHover: true
-        },
-        items: {
-            width: 250,
-            visible: {
-                min: 4,
-                max: 4
+        });
+    }
+    if ($(window).width() > 700) {
+        $('#publicacoes-slider-' + _first).carouFredSel({
+            prev: '#publicacoes-prev-slider-' + _first,
+            next: '#publicacoes-next-slider-' + _first,
+            responsive: true,
+            width: '97%',
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 4,
+                    max: 4
+                }
             }
-        }
-    });
-    $('#acoes-slider-' + _first).carouFredSel({
-        prev: '#acoes-prev-slider-' + _first,
-        next: '#acoes-next-slider-' + _first,
-        responsive: true,
-        width: '97%',
-        scroll: {
-            items: 1,
-            pauseOnHover: true
-        },
-        items: {
-            width: 250,
-            visible: {
-                min: 1,
-                max: 4
+        });
+    }
+    if ($(window).width() > 700) {
+        $('#acoes-slider-' + _first).carouFredSel({
+            prev: '#acoes-prev-slider-' + _first,
+            next: '#acoes-next-slider-' + _first,
+            responsive: true,
+            width: '97%',
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 1,
+                    max: 4
+                }
             }
-        }
-    });
+        });
+    }
     jQuery(".tabContents").hide(); // Hide all tab content divs by default
     jQuery(".tabContents:first").show(); // Show the first div of tab content by default
 
@@ -172,63 +178,74 @@ jQuery(document).ready(function () {
             $('#noticias-slider-' + id).trigger('destroy');
             $('#ajax-noticias').html(data);
             $('#noticias-slider-' + id).html('');
-            $('#noticias-slider-' + id).carouFredSel({
-                prev: '#noticias-prev-slider-' + id,
-                next: '#noticias-next-slider-' + id,
-                responsive: true,
-                width: '97%',
-                scroll: {
-                    items: 1,
-                    pauseOnHover: true
-                },
-                items: {
-                    width: 250,
-                    visible: {
-                        min: 4,
-                        max: 5
+            if ($(window).width() > 700) {
+                $('#noticias-slider-' + id).carouFredSel({
+                    prev: '#noticias-prev-slider-' + id,
+                    next: '#noticias-next-slider-' + id,
+                    responsive: true,
+                    width: '97%',
+                    scroll: {
+                        items: 1,
+                        pauseOnHover: true
+                    },
+                    items: {
+                        width: 250,
+                        visible: {
+                            min: 4,
+                            max: 5
+                        }
                     }
-                }
-            });
-            $('.ajax-item-noticias').each(function () {
-                var content = $(this).html();
-                var item = '<li class="item">' + content + '</li>'
-                $('#noticias-slider-' + id).trigger('insertItem', [item, 1, false]);
-            });
+                });
+                $('.ajax-item-noticias').each(function () {
+                    var content = $(this).html();
+                    var item = '<li class="item">' + content + '</li>'
+                    $('#noticias-slider-' + id).trigger('insertItem', [item, 1, false]);
+                });
+            }
+            else{
+                $('#noticias-slider-' + id).html(data);
+            }
         });
         var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=publicacoes';
         $.get(post_link, function (data) {
             $('#ajax-publicacoes').html(data);
             $('#publicacoes-slider-' + id).trigger('destroy');
             $('#publicacoes-slider-' + id).html('');
-            $('#publicacoes-slider-' + id).carouFredSel({
-                prev: '#publicacoes-prev-slider-' + id,
-                next: '#publicacoes-next-slider-' + id,
-                responsive: true,
-                width: '97%',
-                scroll: {
-                    items: 1,
-                    pauseOnHover: true
-                },
-                items: {
-                    width: 250,
-                    visible: {
-                        min: 1,
-                        max: 5
+            if ($(window).width() > 700) {
+                $('#publicacoes-slider-' + id).carouFredSel({
+                    prev: '#publicacoes-prev-slider-' + id,
+                    next: '#publicacoes-next-slider-' + id,
+                    responsive: true,
+                    width: '97%',
+                    scroll: {
+                        items: 1,
+                        pauseOnHover: true
+                    },
+                    items: {
+                        width: 250,
+                        visible: {
+                            min: 1,
+                            max: 5
+                        }
                     }
-                }
-            });
-            $('.ajax-item-publicacoes').each(function () {
-                var content = $(this).html();
-                var item = '<li class="item">' + content + '</li>';
-                $('#publicacoes-slider-' + id).trigger('insertItem', [item, 1, false]);
-            });
+                });
+                $('.ajax-item-publicacoes').each(function () {
+                    var content = $(this).html();
+                    var item = '<li class="item">' + content + '</li>';
+                    $('#publicacoes-slider-' + id).trigger('insertItem', [item, 1, false]);
+                });
+            }
+            else {
+                $('#publicacoes-slider-' + id).html(data);
+            }
         });
         var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=acoes';
         $.get(post_link, function (data) {
             $('#acoes-slider-' + id).trigger('destroy');
             $('#acoes-slider-' + id).html('');
             $('#ajax-acoes').html(data);
-            $('#acoes-slider-' + id).carouFredSel({
+            if ($(window).width() > 700) {
+                $('#acoes-slider-' + id).carouFredSel({
                 prev: '#acoes-prev-slider-' + id,
                 next: '#acoes-next-slider-' + id,
                 responsive: true,
@@ -250,6 +267,10 @@ jQuery(document).ready(function () {
                 var item = '<li class="item">' + content + '</li>';
                 $('#acoes-slider-' + id).trigger('insertItem', [item, 1, false]);
             });
+            }
+            else{
+                $('#acoes-slider-' + id).html(data);
+            }
         });
         var activeTab = jQuery(this).attr("href"); // Catch the click link
         jQuery(".tabContaier ul li a").removeClass("active"); // Remove pre-highlighted link
@@ -331,10 +352,10 @@ jQuery(document).ready(function () {
         $('#busca-biblioteca-mini').submit();
     });
     var _ajax = '?isAjaxSubCount=true&key=' + $('#key').val() + '&categoria=' + $('#categoria-hidden').val() + '&area=' + $('#area-hidden').val();
-    $('#ajax-biblioteca-sub-count').load($(document.body).attr('data-siteurl') + '/' + _ajax,function(){
-        if($(window).width() < 710){
+    $('#ajax-biblioteca-sub-count').load($(document.body).attr('data-siteurl') + '/' + _ajax, function () {
+        if ($(window).width() < 710) {
             var size = $(document.body).find('#counter-sub-count').attr('data-counter');
-            $('#ajax-biblioteca-sub-count').css('height',size + 'px');
+            $('#ajax-biblioteca-sub-count').css('height', size + 'px');
         }
     });
     if ($(window).width() >= 700) {
@@ -366,9 +387,9 @@ jQuery(document).ready(function () {
             var map = new google.maps.Map(document.getElementById('map-bg'),
                 mapOptions);
             map.setOptions({styles: styles});
-            var contentString = '<p><b>Instituto Polis</b></p>'+'<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
+            var contentString = '<p><b>Instituto Polis</b></p>' + '<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
             var infowindow = new google.maps.InfoWindow({
-        });
+            });
 
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(-23.544891, -46.644645),
@@ -376,9 +397,9 @@ jQuery(document).ready(function () {
                 title: 'Polis',
                 icon: 'http://brasawp.art.br/polis/wp-content/themes/polis-theme/img/logo.png'
             });
-            google.maps.event.addListener(marker, 'click', function() {
+            google.maps.event.addListener(marker, 'click', function () {
                 infowindow.setContent(contentString);
-                infowindow.open(map,marker);
+                infowindow.open(map, marker);
             });
 
         }

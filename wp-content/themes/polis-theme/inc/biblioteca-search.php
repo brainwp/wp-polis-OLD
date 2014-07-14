@@ -8,9 +8,11 @@
         <a class="envia-area" data-area="reforma-urbana"> Reforma Urbana</a>
         <a class="envia-area" data-area="cidadania-cultural">Cidadania Cultural</a>
     </aside>
+    <div class="clear-mob"></div>
     <aside class="col-md-8">
         <div class="input_container">
             <h2 class="intro"><?php echo of_get_option('biblioteca-form-intro'); ?></h2>
+            <div class="clear-mob"></div>
             <label class="col-md-2">Buscar:</label>
             <input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto" id="key">
             <span class="right glyphicon glyphicon-search" id="busca-biblioteca-bt"></span> <!-- icone de search !-->
