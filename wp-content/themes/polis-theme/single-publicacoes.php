@@ -12,7 +12,15 @@ get_header(); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 		<header>
-			<h1><?php top_term( 'categorias' ); ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?></span><span class="marcador">•</span><span><?php echo terms( 'tipos' ); ?></span>
+			
+			<?php
+			$top_term = top_term( 'categorias' );
+			if ( empty( $top_term ) ) : ?>
+				<h1><?php cpt_name(); ?></h1><span class="marcador">•</span><span><?php echo terms( 'tipos' ); ?></span>
+			<?php else : ?>
+				<?php echo $top_term; ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?></span><span class="marcador">•</span><span><?php echo terms( 'tipos' ); ?></span>
+			<?php endif; ?>
+		
 		</header><!-- header -->
 
 		<article class="col-md-12 pull-left">
@@ -27,19 +35,21 @@ get_header(); ?>
 				<h2><?php the_title(); ?></h2>
 				<?php the_content(); ?>
 				<div class="meta">
-					<?php if( get_field('publicacoes_autor') ): ?>
-						<span>Autor: <?php echo get_field( 'publicacoes_autor' ); ?></span><br>
+					
+					<?php $autores = get_the_terms( $post_id, 'autor' ); ?>
+					<?php if( $autores ): ?>
+						<span>Autor(es): <?php echo terms('autor'); ?></span><br>
 					<?php endif; ?>
 
-					<?php if( get_field('publicacoes_ano') ): ?>
-						<span>Ano: <?php echo get_field( 'publicacoes_ano' ); ?></span><br>
+					<?php if( get_campoPersonalizado('publicacoes_ano') ): ?>
+						<span>Ano: <?php echo get_campoPersonalizado( 'publicacoes_ano' ); ?></span><br>
 					<?php endif; ?>
 
-					<?php if( get_field('publicacoes_paginas') ): ?>
-						<span>Páginas: <?php echo get_field( 'publicacoes_paginas' ); ?></span><br>
+					<?php if( get_campoPersonalizado('publicacoes_paginas') ): ?>
+						<span>Páginas: <?php echo get_campoPersonalizado( 'publicacoes_paginas' ); ?></span><br>
 					<?php endif; ?>
 
-					<?php if( get_field('publicacoes_download') ): ?>
+					<?php if( get_campoPersonalizado('publicacoes_download') ): ?>
 						<?php
 							$download = get_field('publicacoes_download');
 							$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
@@ -47,6 +57,14 @@ get_header(); ?>
 						?>
 						<a class="btn bg-<?php top_term( 'categorias', 'slug' ); ?>" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
 					<?php endif; ?>
+					<?php if( get_campoPersonalizado('mgr_pub_download') ): ?>
+						<?php
+							$mgr_download = get_campoPersonalizado('mgr_pub_download');
+							$explode_download = explode( '.', $mgr_download );
+						?>
+						<a class="btn bg-<?php top_term( 'categorias', 'slug' ); ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
+					<?php endif; ?>
+
 				</div><!-- meta -->
 			</div><!-- content -->
 		</article>
