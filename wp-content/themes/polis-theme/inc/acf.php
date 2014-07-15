@@ -439,17 +439,6 @@ if (function_exists("register_field_group")) {
                 'name' => 'publicacoes_fonte',
                 'type' => 'text',
                 'instructions' => 'Adicione a fonte da Publicação (quando houver).',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'null',
-                            'operator' => '==',
-                            'value' => ''
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
