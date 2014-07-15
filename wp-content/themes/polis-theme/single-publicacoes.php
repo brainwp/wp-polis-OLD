@@ -7,27 +7,40 @@
 
 get_header(); ?>
 
-	<section class="col-md-12 content-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
+	<?php
+		$w_term = top_term( 'categorias', 'return_slug' );
+		if ( empty( $w_term ) ) {
+			$bg_content = 'default';
+		} else {
+			$bg_content = "bg-" . $w_term;
+		}
+	?>
+
+	<section class="col-md-12 content-single-areas <?php echo $bg_content; ?>">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
 		<header>
 			
 			<?php
-			$top_term = top_term( 'categorias' );
-			if ( empty( $top_term ) ) : ?>
+			if ( empty( $w_term ) ) : ?>
 				<h1><?php cpt_name(); ?></h1><span class="marcador">•</span><span><?php echo terms( 'tipos' ); ?></span>
 			<?php else : ?>
-				<?php echo $top_term; ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?></span><span class="marcador">•</span><span><?php echo terms( 'tipos' ); ?></span>
+				<h1><?php top_term( 'categorias', 'a' ); ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?></span><span class="marcador">•</span><span><?php echo terms( 'tipos' ); ?></span>
 			<?php endif; ?>
 		
 		</header><!-- header -->
 
 		<article class="col-md-12 pull-left">
 			<div class="thumb">
-				<?php if ( has_post_thumbnail() ) {
-					the_post_thumbnail( 'slider-publicacoes-thumb' );
-				} else { ?>
+				<?php $post_thumbnail_id = get_post_thumbnail_id( $post_id ); ?>
+				<?php $the_thumb = wp_get_attachment_image_src( $post_thumbnail_id, 'full' ); ?>
+				
+				<?php if ( has_post_thumbnail() ) { ?>
+					<a class="thickbox" rel="thickbox" href="<?php echo $the_thumb[0]; ?>">
+						<img src="<?php echo $the_thumb[0]; ?>" width="<?php echo $the_thumb[1]; ?>" height="<?php echo $the_thumb[2]; ?>">
+					</a>
+				<?php } else { ?>
 					<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
 				<?php } ?>
 			</div><!-- thumb -->
@@ -55,14 +68,14 @@ get_header(); ?>
 							$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
 							$size = number_format( filesize( get_attached_file( $download['id'] ) ) / 1048576, 2 ) . "mb";
 						?>
-						<a class="btn bg-<?php top_term( 'categorias', 'slug' ); ?>" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
+						<a class="btn bg-<?php echo $bg_content; ?>" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
 					<?php endif; ?>
 					<?php if( get_campoPersonalizado('mgr_pub_download') ): ?>
 						<?php
 							$mgr_download = get_campoPersonalizado('mgr_pub_download');
 							$explode_download = explode( '.', $mgr_download );
 						?>
-						<a class="btn bg-<?php top_term( 'categorias', 'slug' ); ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
+						<a class="btn bg-<?php echo $bg_content; ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
 					<?php endif; ?>
 
 				</div><!-- meta -->

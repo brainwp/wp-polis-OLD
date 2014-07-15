@@ -388,18 +388,6 @@ if (function_exists("register_field_group")) {
                 'label' => 'ISBN',
                 'name' => 'publicacoes_isbn',
                 'type' => 'number',
-                'instructions' => 'Adicione o registro ISBN dessa Publicação (quando houver).',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'null',
-                            'operator' => '==',
-                            'value' => ''
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
@@ -414,17 +402,6 @@ if (function_exists("register_field_group")) {
                 'name' => 'publicacoes_issn',
                 'type' => 'number',
                 'instructions' => 'Adicione o registro ISSN dessa Publicação (quando houver).',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'field_53b1c1d1453d3',
-                            'operator' => '==',
-                            'value' => 'arquivistiva'
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
