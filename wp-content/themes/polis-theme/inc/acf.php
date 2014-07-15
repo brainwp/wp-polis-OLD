@@ -487,8 +487,8 @@ if (function_exists("register_field_group")) {
                     'outro' => 'outro'
                 ),
                 'other_choice' => 1,
-                'save_other_choice' => 0,
-                'default_value' => '',
+                'save_other_choice' => 1,
+                'default_value' => '.pdf',
                 'layout' => 'horizontal'
             ),
             array(
@@ -620,8 +620,9 @@ if (function_exists("register_field_group")) {
                     'status' => 1,
                     'rules' => array(
                         array(
-                            'field' => 'null',
+                            'field' => 'field_53b1c1d1453d3',
                             'operator' => '==',
+                            'value' => 'arquivistica'
                         )
                     ),
                     'allorany' => 'all'
@@ -633,28 +634,6 @@ if (function_exists("register_field_group")) {
                 'min' => '',
                 'max' => '',
                 'step' => '',
-            ),
-            array(
-                'key' => 'field_53bbfdd221132',
-                'label' => 'Fase do Arquivo',
-                'name' => 'publicacoes_fase',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'null',
-                            'operator' => '==',
-                        ),
-                    ),
-                    'allorany' => 'all',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
             ),
             array(
                 'key' => 'field_53bbfde521133',
@@ -703,14 +682,25 @@ if (function_exists("register_field_group")) {
                 'name' => 'publicacoes_situacao_documento',
                 'type' => 'radio',
                 'instructions' => 'Marque em qual situação o documento se encontra.',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
+                            'operator' => '==',
+                            'value' => 'arquivistica'
+                        )
+                    ),
+                    'allorany' => 'all'
+                ),
                 'choices' => array (
                     'emprestado' => 'Emprestado',
                     'doado' => 'Doado',
-                    'acervo: No acervo' => 'acervo: No acervo',
+                    'acervo' => 'No acervo',
                 ),
                 'other_choice' => 1,
                 'save_other_choice' => 1,
-                'default_value' => '',
+                'default_value' => 'acervo',
                 'layout' => 'horizontal',
             ),
             array(
@@ -722,10 +712,11 @@ if (function_exists("register_field_group")) {
                 'choices' => array (
                     'caixa_arquivo' => 'Caixa Arquivo',
                     'pasta' => 'Pasta',
+                    'nao-definido' => 'Não Definido'
                 ),
                 'other_choice' => 1,
                 'save_other_choice' => 1,
-                'default_value' => '',
+                'default_value' => 'nao-definido',
                 'layout' => 'horizontal',
             ),
             array(
@@ -734,14 +725,25 @@ if (function_exists("register_field_group")) {
                 'name' => 'publicacoes_fase',
                 'type' => 'radio',
                 'instructions' => 'Marque em que fase o documento se encontra.',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_53b1c1d1453d3',
+                            'operator' => '==',
+                            'value' => 'arquivistica'
+                        )
+                    ),
+                    'allorany' => 'all'
+                ),
                 'choices' => array (
                     'corrente' => 'Corrente',
-                    'intermediario' => 'intermediário',
+                    'intermediario' => 'Intermediário',
                     'permanente' => 'Permanente',
                 ),
                 'other_choice' => 1,
                 'save_other_choice' => 1,
-                'default_value' => '',
+                'default_value' => 'permanente',
                 'layout' => 'horizontal',
             ),
             array(
@@ -1038,8 +1040,8 @@ if(function_exists("register_field_group"))
     register_field_group(array (
         'id' => 'acf_migrando-publicacoes',
         'title' => 'Migrando Publicações',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53c10d5be1fc3',
                 'label' => 'Arquivo para Download',
                 'name' => 'mgr_pub_download',
@@ -1053,16 +1055,23 @@ if(function_exists("register_field_group"))
                 'formatting' => 'none',
                 'maxlength' => '',
             ),
-        ),
-        'location' => array (
-            array (
-                array (
-                    'param' => 'ef_user',
-                    'operator' => '==',
-                    'value' => 'administrator',
-                    'order_no' => 0,
-                    'group_no' => 0,
+            array(
+                    'key' => 'field_53c510498ce5e',
+                    'label' => 'Url',
+                    'name' => 'mgr_pub_url',
+                    'type' => 'text',
+                    'instructions' => 'Url dessa Publicação no site anterior (sem www.polis.org.br/)
+                so_url',
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'formatting' => 'none',
+                    'maxlength' => '',
                 ),
+            ),
+        'location' => array (
+            array(
                 array (
                     'param' => 'post_type',
                     'operator' => '==',
@@ -1072,13 +1081,12 @@ if(function_exists("register_field_group"))
                 ),
             ),
         ),
-        'options' => array (
+        'options' => array(
             'position' => 'side',
             'layout' => 'default',
             'hide_on_screen' => array (
             ),
         ),
-        'menu_order' => 14,
     ));
 }
 
