@@ -1594,11 +1594,20 @@ slider de noticias + acoes
 .content-single-areas.default{
 	background: url('img/areas/bg-single-areas-default.jpg') right bottom no-repeat;
 }
-.content-single-areas .col-md-12 {
-	padding: 0;
+.content-single-areas.bg-reforma-urbana {
+	background: url('img/areas/bg-single-reforma-urbana.png') right bottom no-repeat;
+}
+.content-single-areas.bg-cidadania-cultural {
+	background: url('img/areas/bg-single-cidadania-cultural.png') right bottom no-repeat;
 }
 .content-single-areas.democracia-e-participacao {
 	background: url("img/areas/bg-democracia-e-participacao-inv.png") right no-repeat;
+}
+.content-single-areas.inclusao-e-sustentabilidade {
+	background: url("img/areas/bg-inclusao-e-sustentabilidade.png") right no-repeat;
+}
+.content-single-areas .col-md-12 {
+	padding: 0;
 }
 .content-single-areas.democracia-e-participacao header h1, .slider-single-areas.democracia-e-participacao h2 {
 	color: #c05255;
