@@ -357,9 +357,6 @@ function theme( $arg = '' ) {
 	if ( ! empty( $arg ) ) {
 		$theme .= $arg;
 	}
-	if ( !empty( $arg ) ) {
-		$theme .= $arg;
-	}
 	return $theme;
 }
 
