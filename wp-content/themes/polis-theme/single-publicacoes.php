@@ -10,9 +10,11 @@ get_header(); ?>
 	<?php
 		$w_term = top_term( 'categorias', 'return_slug' );
 		if ( empty( $w_term ) ) {
-			$bg_content = 'default';
-		} else {
+			$bg_content = 'bg-default';
+		} elseif ( $w_term == 'reforma-urbana' || $w_term == 'democracia-e-participacao' || $w_term == 'inclusao-e-sustentabilidade' || $w_term == 'cidadania-cultural'   ) {
 			$bg_content = "bg-" . $w_term;
+		} else {
+			$bg_content = 'bg-default';
 		}
 	?>
 
@@ -75,7 +77,7 @@ get_header(); ?>
 							$mgr_download = get_campoPersonalizado('mgr_pub_download');
 							$explode_download = explode( '.', $mgr_download );
 						?>
-						<a class="btn bg-<?php echo $bg_content; ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
+						<a class="btn <?php echo $bg_content; ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
 					<?php endif; ?>
 
 				</div><!-- meta -->

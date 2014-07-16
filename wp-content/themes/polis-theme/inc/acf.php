@@ -1003,7 +1003,7 @@ add_filter('acf/load_field/name=area', 'select_user_area');
 
 if(function_exists("register_field_group"))
 {
-    register_field_group(array (
+    register_field_group(array(
         'id' => 'acf_migrando-publicacoes',
         'title' => 'Migrando Publicações',
         'fields' => array(
@@ -1036,13 +1036,13 @@ if(function_exists("register_field_group"))
                     'maxlength' => '',
                 ),
             ),
-        'location' => array (
+        'location' => array(
             array(
-                array (
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'publicacoes',
-                    'order_no' => 1,
+                    'order_no' => 0,
                     'group_no' => 0,
                 ),
             ),
@@ -1050,7 +1050,7 @@ if(function_exists("register_field_group"))
         'options' => array(
             'position' => 'side',
             'layout' => 'default',
-            'hide_on_screen' => array (
+            'hide_on_screen' => array(
             ),
         ),
     ));

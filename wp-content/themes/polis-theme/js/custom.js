@@ -125,7 +125,7 @@ jQuery(document).ready(function () {
                 width: 250,
                 visible: {
                     min: 1,
-                    max: 5
+                    max: 4
                 }
             }
         });

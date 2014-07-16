@@ -111,7 +111,6 @@ function emptyReturn( $var ) {
 
 function get_campoPersonalizado( $campo ) {
 	$informacao_campo = get_post_custom_values( $campo );
-
 	return $informacao_campo[0];
 }
 

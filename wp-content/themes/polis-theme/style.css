@@ -638,6 +638,9 @@ object {
 	width: 100%;
 	background:transparent url(img/areas/bg-inclusao-e-sustentabilidade.png) bottom left no-repeat;
 }
+.content-single-areas.bg-default {
+	background-color: transparent;	
+}
 .area-main .reforma-urbana-icon{
 	 width:167px;
 	 height:185px;
@@ -779,28 +782,28 @@ object {
 	cursor:pointer;
 }
 .democracia-e-participacao .tabDetails .prev-slider{
-	background:url(img/areas/democracia-anterior.png) no-repeat;
+	background:url(img/areas/anterior.png) no-repeat;
 }
 .democracia-e-participacao .tabDetails .next-slider{
-	background:url(img/areas/democracia-proximo.png) no-repeat;
+	background:url(img/areas/proximo.png) no-repeat;
 }
 .cidadania-cultural .tabDetails .prev-slider{
-    background:url(img/areas/cidadania-anterior.png) no-repeat;
+    background:url(img/areas/anterior.png) no-repeat;
 }
 .cidadania-cultural .tabDetails .next-slider{
-    background:url(img/areas/cidadania-proximo.png) no-repeat;
+    background:url(img/areas/proximo.png) no-repeat;
 }
 .inclusao-e-sustentabilidade .tabDetails .prev-slider{
-    background:url(img/areas/inclusao-anterior.png) no-repeat;
+    background:url(img/areas/anterior.png) no-repeat;
 }
 .inclusao-e-sustentabilidade .tabDetails .next-slider{
-    background:url(img/areas/inclusao-proximo.png) no-repeat;
+    background:url(img/areas/proximo.png) no-repeat;
 }
 .reforma-urbana .tabDetails .prev-slider{
-    background:url(img/areas/reforma-anterior.png) no-repeat;
+    background:url(img/areas/anterior.png) no-repeat;
 }
 .reforma-urbana .tabDetails .next-slider{
-    background:url(img/areas/reforma-proximo.png) no-repeat;
+    background:url(img/areas/proxima.png) no-repeat;
 }
     .tabContaier li a.active{
 		background: #ededed;
@@ -823,18 +826,19 @@ object {
 	height:220px !important;
 }
 .noticias .item{
-	padding:3px;
+	background-color: #FFF;
+	padding: 3px;
 	position: relative;
-	overflow:hidden;
-	display:block;
-	outline:0 !important;
+	overflow: hidden;
+	display: block;
+	outline: 0 !important;
 	border-color:transparent !important;
-	height:270px !important;
+	height: 300px !important;
 	transition:ease 300ms all;
 }
 .noticias .item:hover{
-	transition:ease 300ms all;
-	background-color:#d1d1d1;
+	transition:linear 400ms all;
+	box-shadow: 2px 4px 8px 0.5px rgba(0,0,0,0.50);
 }
 .noticias .item a{
 	padding:0;
@@ -884,6 +888,28 @@ object {
 	float: left;
 	margin: 10px;
 }
+
+.list_carousel .noticias {
+	margin: 20px 0 20px 15px;
+}
+
+.list_carousel .noticias .resumo {
+	padding: 10px 15px;
+}
+
+.list_carousel .noticias .resumo h2 {
+	margin-bottom: 10px;
+}
+
+.list_carousel .noticias .resumo p {
+	font-size: 0.9em;
+	line-height: 1.2em;
+}
+
+.noticias-slider .caroufredsel_wrapper {
+	padding: 20px 0;
+}
+
 *{
 	font-family: 'Source Sans Pro', sans-serif;
 }
