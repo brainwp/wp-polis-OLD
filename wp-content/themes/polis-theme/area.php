@@ -146,78 +146,49 @@ $categorias = get_categories($args);
 
         </div>
 
-        <div class="col-md-12 list_carousel responsive">
+        <div class="col-md-12 list_carousel responsive noticias-slider">
 
-            <?php // Loop Notícias
-
+            <?php
+            // Loop Notícias
             $args = array(
-
                 'post_type' => 'noticias',
-
                 'tax_query' => array(
-
                     array(
-
                         'taxonomy' => 'areas',
-
                         'field' => 'id',
-
                         'terms' => $cat,
-
                         'include_children' => true,
-
                         'posts_per_page' => 8,
-
                     )
-
                 )
-
             );
-
             ?>
 
             <ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
 
                 <?php
-
                 $noticias = new WP_Query($args); // exclude category
-
                 while ($noticias->have_posts()) : $noticias->the_post(); ?>
 
                     <li class="col-xs-12 item">
-
                         <a href="<?php the_permalink(); ?>">
-
                             <?php $terms = terms('areas'); ?>
-
                             <?php $terms = explode(',', $terms); ?>
-
                             <?php
-
                             if (has_post_thumbnail()) {
-
                                 $thumb_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'slider-publicacoes-image', true);
-
                                 echo '<img src="' . $thumb_url[0] . '"/>';
-
                             } else {
-
-                                echo '<img src="'  . get_bloginfo('template_url') . '/img/default-publicacoes-thumb.jpg"/>';
-
+                                echo '<img src="'  . get_bloginfo('template_url') . '/img/thumb-noticias.png"/>';
                             }
-
                             ?>
-
                             <div class="caption-container">
-
                                 <small class="caption"><?php echo $terms[0]; ?></small>
-
                             </div>
-
-                            <h2 class="title"><?php the_title(); ?></h2>
-
-                            <div class="col-md-12 resumo"><?php echo resumo(); ?></div>
-
+                            <div class="col-md-12 resumo">
+                                <h2 class="title"><?php the_title(); ?></h2>
+                                <p><?php echo resumo(); ?></p>
+                            </div><!-- .resumo -->
                         </a>
 
                     </li>
@@ -392,39 +363,24 @@ $categorias = get_categories($args);
 
                     <li class="item">
 
-
                         <a href="<?php the_permalink(); ?>" class="post">
 
                             <div class="post_container">
 
                                 <div class="thumb">
-
                                     <?php
-
                                     if (has_post_thumbnail()) {
-
                                         the_post_thumbnail('medium');
-
                                     } else {
-
                                         echo '<img src="' . theme() . '/img/thumb-equipe.png">';
-
                                     } ?>
-
-                                    <h3><?php the_title(); ?></h3>
-
-                                </div>
-
-                                <!-- thumb -->
-
+                                </div><!-- thumb -->
 
                                 <div class="col-md-12 description">
-
+                                    <h3><?php the_title(); ?></h3>
                                     <?php echo resumo(150); ?>
-
                                     <span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
-
-                                </div>
+                                </div><!-- .description -->
 
                             </div>
 
@@ -494,7 +450,6 @@ $categorias = get_categories($args);
                 </div>
 
                 <!-- .cada-loop-aba -->
-
 
                 <div class="cada-loop-aba publicacoes">
 
