@@ -17,6 +17,9 @@ function _query_rules () {
 		'^equipe/([^/]+)/page/([^/]+)/?$' => 'template=membros&nome=$matches[1]&paged=$matches[2]',
 		'^canal/?$' => 'template=canal',
         '^projetos/?$' => 'template=projetos',
+        '^projetos/page/([^/]+)/?$' => 'template=projetos&paged=$matches[1]',
+        '^projetos/tipo/([^/]+)/?$' => 'template=projetos&aba=$matches[1]',
+        '^projetos/tipo/([^/]+)/page/([^/]+)/?$' => 'template=projetos&aba=$matches[1]&paged=$matches[2]',
         '^area/([^/]+)/?$' => 'template=area&area=$matches[1]',
 		'^area/([^/]+)/([^/]+)/?$' => 'template=index&area_archive=$matches[1]&area=$matches[2]',
 	);

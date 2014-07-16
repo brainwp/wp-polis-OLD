@@ -173,7 +173,9 @@ function polis_theme_scripts() {
 
 
 	wp_enqueue_script( 'polis-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	wp_enqueue_script( 'custom_js', get_template_directory_uri() . '/js/custom.js' );
+    wp_enqueue_script( 'tinynav', get_template_directory_uri() . '/js/tinynav.min.js' );
+    wp_enqueue_script( 'custom_js', get_template_directory_uri() . '/js/custom.js' );
+
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -230,6 +232,7 @@ require get_template_directory() . '/inc/cpt-acoes.php';
  * Load CPT Projetos file.
  */
 require get_template_directory() . '/inc/cpt-projetos.php';
+require get_template_directory() . '/inc/tax-projetos.php';
 
 /**
  * Load CPT Notícias file.

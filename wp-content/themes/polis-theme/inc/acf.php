@@ -1055,4 +1055,83 @@ if(function_exists("register_field_group"))
         ),
     ));
 }
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_projetos',
+        'title' => 'Projetos',
+        'fields' => array (
+            array (
+                'key' => 'field_53c5447b7015f',
+                'label' => 'Projetos',
+                'name' => 'projetos_repeater',
+                'type' => 'repeater',
+                'sub_fields' => array (
+                    array (
+                        'key' => 'field_53c5455070160',
+                        'label' => 'Nome',
+                        'name' => 'projetos_nome',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_53c545af70161',
+                        'label' => 'Telefone',
+                        'name' => 'projetos_telefone',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_53c5460270162',
+                        'label' => 'Email',
+                        'name' => 'projetos_email',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                ),
+                'row_min' => 0,
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Adicionar mais',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'projetos',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+
 

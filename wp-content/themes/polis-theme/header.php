@@ -35,7 +35,7 @@
 			<span class="glyphicon glyphicon-search"></span> <!-- icone de search !-->
 		</form>
 	</header>
-	<nav class="col-md-12 nav">
+	<nav class="col-md-12 nav" id="nav">
 		<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 	</nav>
 	<div class="content-bg">
