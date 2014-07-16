@@ -639,7 +639,7 @@ object {
 	background:transparent url(img/areas/bg-inclusao-e-sustentabilidade.png) bottom left no-repeat;
 }
 .content-single-areas.bg-default {
-	background-color: transparent;	
+	background:transparent url(img/areas/bg-single-areas-default.jpg) bottom right no-repeat;
 }
 .area-main .reforma-urbana-icon{
 	 width:167px;
