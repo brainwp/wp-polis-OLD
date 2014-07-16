@@ -26,13 +26,13 @@
         <a href="<?php the_permalink(); ?>" class="detalhes">Detalhes do Projeto</a>
 
         <div class="col-lg-12 clear"></div>
+        <?php if (get_field('projetos_repeater')): ?>
         <aside class="equipe">
             <div class="top">
                 Equipe
                 <a href="<?php the_permalink(); ?>#equipe_todos">[ver todos]</a>
             </div>
             <ul>
-                <?php if (get_field('projetos_repeater')): ?>
                     <?php $_repeater_i = 1; ?>
                     <?php while (has_sub_field('projetos_repeater')): ?>
                         <?php
@@ -49,8 +49,8 @@
                         }
                         ?>
                     <?php endwhile; ?>
-                <?php endif; ?>
             </ul>
         </aside>
+        <?php endif; ?>
     </div>
 </div>
