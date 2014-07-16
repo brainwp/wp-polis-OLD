@@ -8,7 +8,7 @@
 get_header(); ?>
 
 	<?php
-		$w_term = top_term( 'categorias', 'return_slug' );
+		$w_term = top_term( 'areas', 'return_slug' );
 		if ( empty( $w_term ) ) {
 			$bg_content = 'bg-default';
 		} elseif ( $w_term == 'reforma-urbana' || $w_term == 'democracia-e-participacao' || $w_term == 'inclusao-e-sustentabilidade' || $w_term == 'cidadania-cultural'   ) {
