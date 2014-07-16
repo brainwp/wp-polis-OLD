@@ -180,6 +180,21 @@ function optionsframework_options() {
         'std'  => '16',
         'type' => 'text');
 
+    $options[] = array(
+        'name' => 'Atividades por pagina (no perfil do usuario em /equipe/USERNAME)',
+        'id'   => 'equipe-atividades-per-page',
+        'std'  => '16',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Projetos',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Projetos por pagina (/projetos/)',
+        'id'   => 'projetos-per-page',
+        'std'  => '16',
+        'type' => 'text');
 
 
     return $options;

@@ -301,11 +301,13 @@ function _query_projetos(){
 
     $_query->found_posts = $count_query->found_posts;
 
+    $per_page = (int) get_option('projetos_per_page');
+
     $args = array(
         'post_type'			=> array( 'projetos' ),
         'orderby'			=> 'date',
         'order'				=> 'ASC',
-        'posts_per_page'	=> 1,
+        'posts_per_page'	=> $per_page,
         'projetos_tax'      => $aba,
         'paged'             => $page
     );
@@ -400,7 +402,7 @@ function _query_membros(){
 
 		$total_posts = $count;
 
-		$per_page = 4;
+		$per_page = (int) get_option('equipe-atividades-per-page');
 
 
 
