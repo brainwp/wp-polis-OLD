@@ -11,14 +11,17 @@ get_header(); ?>
 		$w_term = top_term( 'areas', 'return_slug' );
 		if ( empty( $w_term ) ) {
 			$bg_content = 'bg-default';
+			$bg_single_content = 'bg-default';
 		} elseif ( $w_term == 'reforma-urbana' || $w_term == 'democracia-e-participacao' || $w_term == 'inclusao-e-sustentabilidade' || $w_term == 'cidadania-cultural'   ) {
-			$bg_content = "bg-" . $w_term;
+			$bg_content = 'bg-' . $w_term;
+			$bg_single_content = 'bg-single-' . $w_term;
 		} else {
 			$bg_content = 'bg-default';
+			$bg_single_content = 'bg-default';
 		}
 	?>
 
-	<section class="col-md-12 content-single-areas <?php echo $bg_content; ?>">
+	<section class="col-md-12 content-single-areas <?php echo $bg_single_content; ?>">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
