@@ -14,7 +14,16 @@
             <h2 class="intro"><?php echo of_get_option('biblioteca-form-intro'); ?></h2>
             <div class="clear-mob"></div>
             <label class="col-md-2">Buscar:</label>
-            <input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto" id="key">
+            <?php
+            if(isset($_GET['search_key'])): ?>
+                <input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto" id="key" value="<?php echo $_GET['search_key'];?>">
+                <span class="hidden" id="search_key_validate" data-validate="true"></span>
+            <?php endif; ?>
+            <?php
+            if(!isset($_GET['search_key'])): ?>
+                <span class="hidden" id="search_key_validate" data-validate="false"></span>
+                <input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto" id="key">
+            <?php endif; ?>
             <span class="right glyphicon glyphicon-search" id="busca-biblioteca-bt"></span> <!-- icone de search !-->
         </div>
         <div class="input_container">

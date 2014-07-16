@@ -33,8 +33,21 @@
             </div>
             <ul>
                 <?php if (get_field('projetos_repeater')): ?>
+                    <?php $_repeater_i = 1; ?>
                     <?php while (has_sub_field('projetos_repeater')): ?>
-                        <li><a><?php the_sub_field('projetos_nome'); ?></a></li>
+                        <?php
+                        if($_repeater_i <= 4){
+                            $user = get_user_by( 'email', get_sub_field('projetos_email') );
+                            if($user){
+                                $href = get_bloginfo('url') . '/equipe/' . $user->user_login;
+                                echo '<li><a href="' . $href . '"> ' . get_sub_field('projetos_nome') . ' </a></li>';
+                            }
+                            else{
+                                echo '<li><a> ' . get_sub_field('projetos_nome') . ' </a></li>';
+                            }
+                            $_repeater_i++;
+                        }
+                        ?>
                     <?php endwhile; ?>
                 <?php endif; ?>
             </ul>
