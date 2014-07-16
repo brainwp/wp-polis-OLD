@@ -290,7 +290,7 @@ img {
 	width: 100%;
 	margin: 0 auto 40px;
 	height: auto;
-	border-bottom: 2px dashed #CCC;
+	border-bottom: 1px dashed #DDD;
 	clear: both;
 	padding: 40px 0 0 0;
 }
