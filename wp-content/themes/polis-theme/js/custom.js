@@ -1,3 +1,9 @@
+/**
+ * jQuery.browser.mobile (http://detectmobilebrowser.com/)
+ *
+ * jQuery.browser.mobile will be true if the browser is a mobile device
+ *
+ **/
 jQuery(document).ready(function () {
     var $ = jQuery.noConflict();
     $('.slider_area').carouFredSel({
@@ -92,23 +98,25 @@ jQuery(document).ready(function () {
             }, 500);
         })
     });
-    $('#slider2').carouFredSel({
-        prev: '#prev-publicacao',
-        next: '#next-publicacao',
-        responsive: true,
-        width: '100%',
-        scroll: {
-            items: 1,
-            pauseOnHover: true
-        },
-        items: {
-            width: 250,
-            visible: {
-                min: 4,
-                max: 4
+    if($(window).width() > 700){
+        $('#slider2').carouFredSel({
+            prev: '#prev-publicacao',
+            next: '#next-publicacao',
+            responsive: true,
+            width: '100%',
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 4,
+                    max: 4
+                }
             }
-        }
-    });
+        });
+    }
     var _first = $('#first').attr('data-first');
     console.log(_first)
     if ($(window).width() > 700) {
@@ -416,5 +424,9 @@ jQuery(document).ready(function () {
         document.getElementsByTagName("head")[0].
             appendChild(msViewportStyle);
     }
-
+    if($(window).width() < 700){
+         $('#nav div ul').tinyNav({
+             label:'Menu'
+         });
+    }
 });
