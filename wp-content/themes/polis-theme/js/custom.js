@@ -104,8 +104,8 @@ jQuery(document).ready(function () {
         items: {
             width: 250,
             visible: {
-                min: 4,
-                max: 4
+                min: 1,
+                max: 5
             }
         }
     });
@@ -143,8 +143,8 @@ jQuery(document).ready(function () {
             items: {
                 width: 250,
                 visible: {
-                    min: 4,
-                    max: 4
+                    min: 1,
+                    max: 5
                 }
             }
         });

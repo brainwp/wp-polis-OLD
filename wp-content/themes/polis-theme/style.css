@@ -1653,9 +1653,11 @@ slider de noticias + acoes
 	display: block;
 }
 .content-single-areas article .thumb {
-	max-width: 180px;
-	margin-right: 30px;
-	float: left;
+	border: 5px solid #fff;
+    float: left;
+    margin-right: 30px;
+    max-width: 190px;
+    outline: 2px solid #ddd;
 }
 .content-single-areas article .content {
 	float: left;
@@ -1668,6 +1670,11 @@ slider de noticias + acoes
 .content-single-areas article .content .meta {
 	position: relative;
 }
+
+.content-single-areas article .content .meta .left {
+	max-width: 80%;
+}
+
 .content-single-areas article .content .meta .btn {
 	text-align: center;
 	padding: 3px 5px;
@@ -1693,21 +1700,23 @@ slider de noticias + acoes
 	margin-bottom: 15px;
 }
 .content-single-areas article .content .meta {
+	border-top: 1px solid #DDD;
+	padding-top: 20px;
 	position: relative;
 }
 .content-single-areas article .content .meta .btn {
-	text-align: center;
-	padding: 3px 5px;
+	border-radius: 2px;
 	color:white;
 	font-size: 12px;
 	font-weight: bold;
 	margin: 0;
-	border-radius: 2px;
+	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+	padding: 5px 8px;
 	position: absolute;
-	top: 0;
 	right: 0;
+	top: 20px;
 }
 .content-single-areas article .content .meta .btn:hover {
 }

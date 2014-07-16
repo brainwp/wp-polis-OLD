@@ -50,19 +50,23 @@ get_header(); ?>
 				<h2><?php the_title(); ?></h2>
 				<?php the_content(); ?>
 				<div class="meta">
-					
-					<?php $autores = get_the_terms( $post_id, 'autor' ); ?>
-					<?php if( $autores ): ?>
-						<span>Autor(es): <?php echo terms('autor'); ?></span><br>
-					<?php endif; ?>
 
-					<?php if( get_campoPersonalizado('publicacoes_ano') ): ?>
-						<span>Ano: <?php echo get_campoPersonalizado( 'publicacoes_ano' ); ?></span><br>
-					<?php endif; ?>
+					<div class="left">
+						
+						<?php $autores = get_the_terms( $post_id, 'autor' ); ?>
+						<?php if( $autores ): ?>
+							<span>Autor(es): <?php echo terms('autor'); ?></span><br>
+						<?php endif; ?>
 
-					<?php if( get_campoPersonalizado('publicacoes_paginas') ): ?>
-						<span>Páginas: <?php echo get_campoPersonalizado( 'publicacoes_paginas' ); ?></span><br>
-					<?php endif; ?>
+						<?php if( get_campoPersonalizado('publicacoes_ano') ): ?>
+							<span>Ano: <?php echo get_campoPersonalizado( 'publicacoes_ano' ); ?></span><br>
+						<?php endif; ?>
+
+						<?php if( get_campoPersonalizado('publicacoes_paginas') ): ?>
+							<span>Páginas: <?php echo get_campoPersonalizado( 'publicacoes_paginas' ); ?></span><br>
+						<?php endif; ?>
+
+					</div><!-- left -->
 
 					<?php if( get_campoPersonalizado('publicacoes_download') ): ?>
 						<?php
