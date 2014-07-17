@@ -1134,4 +1134,45 @@ if(function_exists("register_field_group"))
     ));
 }
 
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_videos',
+        'title' => 'Vídeos',
+        'fields' => array (
+            array (
+                'key' => 'field_53c7cb0b9c875',
+                'label' => 'URL do Vídeo',
+                'name' => 'url_do_video',
+                'type' => 'text',
+                'instructions' => 'Adicione a url do vídeo que deseja embedar inserir. Os principais serviços suportados são YouTube, Vimeo e DailyMotion, GoogleVídeo.',
+                'required' => 1,
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'videos',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'default',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
 

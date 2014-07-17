@@ -224,6 +224,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
+ * Load CPT Vídeos file.
+ */
+require get_template_directory() . '/inc/cpt-videos.php';
+
+/**
  * Load CPT Ações file.
  */
 require get_template_directory() . '/inc/cpt-acoes.php';
