@@ -2878,7 +2878,7 @@ header.mini{
 .item .infos-mob{
     display:none;
 }
-.tinynav{
+.tinynav, .tinynav_label{
     display:none;
 }
 .carousel-indicators .active{
@@ -2910,7 +2910,19 @@ nav.nav img{
     position: absolute;
     margin-left:10px;
 }
+.atividades .post_container{
+    height: 320px;
+}
+.cpt-acoes,.cpt-publicacoes{
+    padding:0 !important;
+}
+.cpt-acoes .intro, .cpt-publicacoes .intro{
+    margin-left:30px;
+}
 @media only screen and (max-width: 600px) {
+    nav.nav img{
+        margin-left:2px;
+    }
     .clear-mob{
         width:100%;
         display:block !important;
@@ -2953,6 +2965,9 @@ nav.nav img{
     }
     .area-main h1{
         float:right;
+    }
+    .tinynav_label{
+        display:block;
     }
     .tinynav {
         float:right;
@@ -2997,6 +3012,10 @@ nav.nav img{
     nav.sticky{
         top:0;
         padding-bottom:30px;
+        transition:200ms all ease;
+    }
+    .atividades .post_container{
+        height:auto;
     }
 
 }

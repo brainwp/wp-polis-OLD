@@ -8,12 +8,12 @@
 global $wp_query;
 get_header();?>
 
-    <section class="col-md-12 content perfil projetos-main cpt-acoes">
+    <section class="col-md-12 content perfil projetos-main cpt-publicacoes">
         <div class="header-area col-md-12">
-            <h1>Ações</h1>
+            <h1>Publicações</h1>
         </div>
         <div class="col-md-5 intro <?php echo $_query->area_slug ?>">
-            <span>Todas Ações</span>
+            <span>Todas Publicações</span>
         </div>
     </section>
     <section class="col-md-12 atividades archive-publicacoes">

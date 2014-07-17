@@ -225,6 +225,7 @@ class widget_newsletter extends WP_Widget {
 			<p><?php echo $title; ?></p>
 			<?php echo $text; ?>
 			<input type="text" placeholder="NOME" class="col-md-12">
+            <div class="clear-mob"></div>
 			<select class="col-md-12">
                 <option value="" disabled selected>Area de interesse</option>
                 <?php echo $areas; ?>
