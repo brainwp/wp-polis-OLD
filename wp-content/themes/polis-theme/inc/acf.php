@@ -463,17 +463,6 @@ if (function_exists("register_field_group")) {
                 'name' => 'publicacoes_paginas',
                 'type' => 'text',
                 'instructions' => 'Adicione a quantidade de páginas dessa publicação (quando houver). Exemplo: "XX p."',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'field_53b1bd7f220c9',
-                            'operator' => '==',
-                            'value' => '.pdf'
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
                 'default_value' => '',
                 'placeholder' => 'Número de Páginas',
                 'prepend' => '',
