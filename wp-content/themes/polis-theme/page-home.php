@@ -70,7 +70,7 @@ get_header(); ?>
     <section class="col-md-12 content news">
         <div class="col-md-12">
             <div class="section-title">
-                <h3>Notícias e ações em todas as Áreas</h3>
+                <h3>Notícias e Ações</h3>
                 <a href="#" class="col-md-1 shape-todos">Ver todos</a>
             </div>
         </div>
@@ -152,7 +152,7 @@ get_header(); ?>
                     Conheça nosso novo canal!
                     <a href="#" class="col-md-8 btn-ao-vivo">Ao vivo</a>
                 </div>
-                <a href="<?php echo home_url(); ?>/canal" class="full-link"></a>
+                <a href="<?php echo home_url(); ?>/videos" class="full-link"></a>
             </div>
         </section>
     </section>
@@ -163,7 +163,7 @@ get_header(); ?>
 
         <div class="section-title">
             <h3>Publicações</h3>
-            <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+            <a href="<?php echo home_url(); ?>/publicacoes" class="col-md-1 shape-todos">Ver todos</a>
         </div>
         <div id="hide-ajax" style="display: none"></div>
         <div id="carousel" class="col-md-12 list_carousel responsive">

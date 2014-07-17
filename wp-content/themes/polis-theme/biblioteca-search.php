@@ -170,7 +170,7 @@ $total_pages = ceil($total_posts / $per_page);
                         }
                         ?>
                         <div class="col-md-12 item" data-term-slug="<?php echo $slug[$i]['term_slug'] ?>">
-                            <a href="<?php echo $slug[$i]['link'] ?>'" class="th">
+                            <a href="<?php echo $slug[$i]['link'] ?>" class="th">
                                 <?php
                                 if (has_post_thumbnail($slug[$i]['id'])) {
                                     echo get_the_post_thumbnail($slug[$i]['id'], 'busca-thumb');

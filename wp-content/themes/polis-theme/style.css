@@ -290,7 +290,7 @@ img {
 	width: 100%;
 	margin: 0 auto 40px;
 	height: auto;
-	border-bottom: 2px dashed #CCC;
+	border-bottom: 1px dashed #DDD;
 	clear: both;
 	padding: 40px 0 0 0;
 }
@@ -637,7 +637,7 @@ object {
 	background:transparent url(img/areas/bg-inclusao-e-sustentabilidade.png) bottom left no-repeat;
 }
 .content-single-areas.bg-default {
-	background-color: transparent;	
+	background:transparent url(img/areas/bg-single-areas-default.jpg) bottom right no-repeat;
 }
 .area-main .reforma-urbana-icon{
 	 width:167px;
@@ -2762,6 +2762,58 @@ header.mini{
 #map-bg a{
     display:none !important;
 }
+
+/* Vídeos */
+.each-video.col-md-3 {
+	padding: 10px;
+}
+.each-video .content {
+	background-color: #f8f8f8;
+	overflow: hidden;
+	height: 290px;
+	margin-bottom: 30px;
+	transition:ease 300ms all;
+}
+
+.each-video .content:hover {
+	transition:linear 200ms all;
+	box-shadow: 2px 4px 8px 0.5px rgba(0,0,0,0.50);
+}
+
+.each-video .content .resumo {
+}
+
+.each-video .content .resumo h2 {
+	text-align: center;
+	margin: 15px 0 15px;
+}
+
+.cinza {
+	color: #555;
+}
+
+.videos .content-page h1 {
+	text-align: center;
+}
+
+.videos .thumb {
+	margin: 20px auto;
+	max-height: 350px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.videos .video {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+}
+
+.videos .comentarios {
+	display: block;
+	overflow: hidden;
+}
+
 /*projetos.php */
 .projetos-main .header-area{
     background:#b0d3d8;

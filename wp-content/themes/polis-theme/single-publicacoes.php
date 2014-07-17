@@ -61,6 +61,11 @@ get_header(); ?>
 							<span>Autor(es): <?php echo terms('autor'); ?></span><br>
 						<?php endif; ?>
 
+						<?php $organizadores = get_the_terms( $post_id, 'organizador' ); ?>
+						<?php if( $organizadores ): ?>
+							<span>Organizador(es): <?php echo terms('organizador'); ?></span><br>
+						<?php endif; ?>
+
 						<?php if( get_campoPersonalizado('publicacoes_ano') ): ?>
 							<span>Ano: <?php echo get_campoPersonalizado( 'publicacoes_ano' ); ?></span><br>
 						<?php endif; ?>
