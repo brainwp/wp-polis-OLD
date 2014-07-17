@@ -51,6 +51,7 @@
 	</div>
 </footer>
 </div> <!-- container shadow -->
+<div id="map-bg"></div>
 <?php wp_footer(); ?>
 </body>
 </html>

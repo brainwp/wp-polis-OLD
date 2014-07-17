@@ -217,14 +217,17 @@ class widget_newsletter extends WP_Widget {
 		$title = apply_filters( 'widget_newsletter', empty( $instance['title'] ) ? '' : $instance['title'], $instance );
 		$form_to = apply_filters( 'widget_newsletter', empty( $instance['form_to'] ) ? '' : $instance['form_to'], $instance );
 		$form_method = apply_filters( 'widget_newsletter', empty( $instance['form_method'] ) ? '' : $instance['form_method'], $instance );
-		$text = apply_filters( 'widget_newsletter', empty( $instance['text'] ) ? '' : $instance['text'], $instance );?>
-		<form class="col-md-12 newsletter" method="<?php echo $form_method; ?>" action="<?php echo $form_to ?>">
+		$text = apply_filters( 'widget_newsletter', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
+        $areas = apply_filters( 'widget_newsletter', empty( $instance['areas'] ) ? '' : $instance['areas'], $instance );
+        ?>
+
+        <form class="col-md-12 newsletter" method="<?php echo $form_method; ?>" action="<?php echo $form_to ?>">
 			<p><?php echo $title; ?></p>
 			<?php echo $text; ?>
 			<input type="text" placeholder="NOME" class="col-md-12">
 			<select class="col-md-12">
-				<option>Area de interesse</option>
-				<option>Teste2</option>
+                <option value="" disabled selected>Area de interesse</option>
+                <?php echo $areas; ?>
 			</select>
 			<input type="tel" placeholder="TEL: ( )" class="col-md-12">
 			<input type="email" placeholder="Informe seu email" class="col-md-8">
@@ -238,7 +241,9 @@ class widget_newsletter extends WP_Widget {
 		$instance['form_to'] = strip_tags($new_instance['form_to']);
 		$instance['form_method'] = strip_tags($new_instance['form_method']);
 		$instance['title'] = strip_tags($new_instance['title']);
-		if ( current_user_can('unfiltered_html') )
+        $instance['areas'] =  $new_instance['areas'];
+
+        if ( current_user_can('unfiltered_html') )
 			$instance['text'] =  $new_instance['text'];
 		else
 			$instance['text'] = stripslashes( wp_filter_post_kses( addslashes($new_instance['text']) ) ); // wp_filter_post_kses() expects slashed
@@ -251,7 +256,9 @@ class widget_newsletter extends WP_Widget {
 		$form_to = strip_tags($instance['form_to']);
 		$form_method = strip_tags($instance['form_method']);
 		$text = esc_textarea($instance['text']);
-		?>
+        $areas = esc_textarea($instance['areas']);
+
+        ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Titulo:'; ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
@@ -261,8 +268,11 @@ class widget_newsletter extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('link'); ?>"><?php echo 'Metodo de envio do formulario (GET/POST/etc):'; ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('form_method'); ?>" name="<?php echo $this->get_field_name('form_method'); ?>" type="text" value="<?php echo esc_attr($form_method); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('text'); ?>"><?php echo 'Texto:'; ?></label>
-		<textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+        <p><label for="<?php echo $this->get_field_id('areas'); ?>"><?php echo 'Areas de interesse: (Em HTML)'; ?></label>
+        <textarea class="widefat" rows="8" cols="20" id="<?php echo $this->get_field_id('areas'); ?>" name="<?php echo $this->get_field_name('areas'); ?>"><?php echo $areas; ?></textarea>
+
+        <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php echo 'Texto:'; ?></label>
+		<textarea class="widefat" rows="4" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
 	<?php
 	}
 }

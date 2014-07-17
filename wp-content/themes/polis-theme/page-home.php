@@ -143,18 +143,9 @@ get_header(); ?>
                 <?php wp_reset_postdata(); ?>
         </article>
         <section class="col-md-5 pull-right">
-            <form class="col-md-12 newsletter">
-                <p>Receba nosso boletim</p>
-                Se cadastre para receber todo o nosso conteudo em primeira mão
-                <input type="text" placeholder="NOME" class="col-md-12">
-                <select class="col-md-12">
-                    <option>Area de interesse</option>
-                    <option>Teste2</option>
-                </select>
-                <input type="tel" placeholder="TEL: ( )" class="col-md-12">
-                <input type="email" placeholder="Informe seu email" class="col-md-9">
-                <button class="pull-right">Enviar</button>
-            </form>
+            <?php if (is_active_sidebar('widgets-boletim-home')) : ?>
+                <?php dynamic_sidebar('widgets-boletim-home'); ?>
+            <?php endif; ?>
             <div class="col-md-12 canal">
                 <div class="col-md-6">
                     <p>Canal Pólis</p>
@@ -165,7 +156,7 @@ get_header(); ?>
             </div>
         </section>
     </section>
-
+    <div class="clear-mob"></div>
     <section class="col-md-12 content publicacoes">
 
         <div class="linha-tracejada"></div>
@@ -223,8 +214,5 @@ get_header(); ?>
 
         <div class="linha-tracejada"></div>
 
-        <?php if (is_active_sidebar('widgets-home')) : ?>
-            <?php dynamic_sidebar('widgets-home'); ?>
-        <?php endif; ?>
     </section>
 <?php get_footer(); ?>
