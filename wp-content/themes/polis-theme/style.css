@@ -2763,6 +2763,57 @@ header.mini{
 #map-bg a{
     display:none !important;
 }
+
+/* Vídeos */
+.each-video.col-md-3 {
+	padding: 10px;
+}
+.each-video .content {
+	background-color: #f8f8f8;
+	overflow: hidden;
+	height: 290px;
+	margin-bottom: 30px;
+	transition:ease 300ms all;
+}
+
+.each-video .content:hover {
+	transition:linear 200ms all;
+	box-shadow: 2px 4px 8px 0.5px rgba(0,0,0,0.50);
+}
+
+.each-video .content .resumo {
+}
+
+.each-video .content .resumo h2 {
+	text-align: center;
+	margin: 15px 0 15px;
+}
+
+.cinza {
+	color: #555;
+}
+
+.videos .content-page h1 {
+	text-align: center;
+}
+
+.videos .thumb {
+	margin: 20px auto;
+	max-height: 350px;
+	overflow: hidden;
+}
+
+.videos .video {
+	text-align: center;
+	margin: 0 auto;
+	width: auto;
+}
+
+.videos .comentarios {
+	display: block;
+	overflow: hidden;
+}
+
 /*projetos.php */
 .projetos-main .header-area{
     background:#b0d3d8;

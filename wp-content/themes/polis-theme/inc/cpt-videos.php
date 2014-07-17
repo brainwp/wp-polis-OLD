@@ -49,7 +49,7 @@ function create_post_type_videos() {
 	    'has_archive' => true,
 	    'hierarchical' => true,
 	    'menu_position' => 10,
-	    'supports' => array('title','author','editor','thumbnail')
+	    'supports' => array('title','author','editor','comments','thumbnail')
 	    )
     );
 	flush_rewrite_rules();
