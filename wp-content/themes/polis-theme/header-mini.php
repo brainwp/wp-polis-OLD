@@ -32,3 +32,4 @@
         </a>
         <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
     </nav>
+    <div class="content-bg">
