@@ -2737,6 +2737,7 @@ header.mini{
 .biblioteca-main .header-area{
     background:url(img/biblioteca-header-bg.jpg) no-repeat;
     background-size:cover;
+    padding-top:20px;
 }
 .biblioteca-main .header-area h1{
     color:#1e5c7a;

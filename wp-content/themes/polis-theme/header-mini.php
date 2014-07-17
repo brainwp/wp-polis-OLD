@@ -27,5 +27,8 @@
         </a>
     </header>
     <nav class="col-md-12 nav" id="nav">
+        <a href="<?php bloginfo('url');?>">
+            <img src="<?php bloginfo('template_url');?>/img/logo-mini.png">
+        </a>
         <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
     </nav>
