@@ -291,16 +291,14 @@ jQuery(document).ready(function () {
         $('#ajax-noticias').html("");
         return false; //prevent page scrolling on tab click
     });
-    jQuery('.nav ul li').on('mouseover', function () {
-        jQuery('.nav ul li ul').each(function () {
-            jQuery(this).css('display', 'none');
-        });
-        jQuery(this).find('ul').css('display', 'block');
+    $('.nav ul li').on('mouseover', function () {
+        $('.nav ul li ul').css('display','none');
+        $(this).find('ul').css('display', 'block');
     });
-    jQuery('.nav ul li ul').on('mouseout', function () {
-        jQuery(this).css('display', 'none');
+    $('.nav ul li ul').on('mouseout', function () {
+        $(this).css('display', 'none');
     });
-    jQuery(".publicacoes-link").on('click', function () {
+    $(".publicacoes-link").on('click', function () {
         $('.publicacoes-link').each(function () {
             $(this).removeClass('ativo');
         })
@@ -369,8 +367,8 @@ jQuery(document).ready(function () {
     if ($(window).width() >= 700) {
         $(document.body).css('background', 'transparent');
         $('#map-bg').contents().find('#mp-embed-bar').remove();
-        $('#map-bg').css('height', $(window).height() + 'px');
-        $('#map-bg').css('width', $(window).width() + 'px');
+        $('#map-bg').css('height', $(document).height() + 'px');
+        $('#map-bg').css('width', $(document).width() + 'px');
         $('#map-bg').css('display', 'block');
         function initialize() {
             var mapOptions = {
@@ -440,4 +438,36 @@ jQuery(document).ready(function () {
             $('#biblioteca-require').fadeIn('slow');
         }
     }
+    var sticky_width = $('.container.shadow').width();
+    $('nav.sticky').css('width',sticky_width + 'px');
+
+    var stickyNavTop = $('#nav').offset().top;
+    var stickyNav = function(){
+        var scrollTop = $(window).scrollTop();
+
+        if (scrollTop > stickyNavTop) {
+            var data_sticky = $('nav.nav').attr('data-sticky');
+            if( data_sticky  != 'true' ){
+                $('nav.nav').addClass('sticky');
+                $('nav.nav img').fadeIn();
+                $('nav.nav').attr('data-sticky','true');
+                $('nav.nav').css('width',sticky_width + 'px');
+                if($('#wpadminbar').length > 0 && $(window).width() >= 700){
+                    $('nav.nav').css('margin-top','32px');
+                }
+            }
+            $('nav.sticky').css('top',scrollTop + 'px');
+        } else {
+            $('nav.nav').attr('data-sticky','false');
+            $('nav.nav img').fadeOut();
+            $('nav.nav').removeClass('sticky');
+            $('nav.nav').removeAttr('style');
+        }
+    };
+
+    //stickyNav();
+
+    $(window).scroll(function() {
+        stickyNav();
+    });
 });

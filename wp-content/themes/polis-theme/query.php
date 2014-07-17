@@ -18,7 +18,6 @@ function _init_query_object() {
 	add_rewrite_tag( '%nome%', '(.+)' );
 
 
-
 	global $_query;
 
 	$_query = (object) array(
@@ -403,16 +402,9 @@ function _query_membros(){
 		$total_posts = $count;
 
 		$per_page = (int) get_option('equipe-atividades-per-page');
-
-
-
 // calculate the total number of pages.
 
 		$offset = $per_page * ( $page - 1 );
-
-		$total_pages = ceil( $total_posts / $per_page );
-
-
 
 		$wp_query->is_404=false;
 
@@ -440,15 +432,12 @@ function _query_membros(){
 
 
 
-		$_query->total_pages = $total_pages;
 
 		$_query->offset = $offset;
 
 		$_query->per_page = $per_page;
 
 		$_query->_page = $page;
-
-		$_query->total_pages = $total_pages;
 
 		$_query->area_slug = $_area_slug;
 
@@ -474,13 +463,17 @@ function _query_membros(){
 
 			'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),
 
-			'showposts'  => $_query->per_page,
+			'paged'  => $_query->per_page,
 
 			'offset'  => $_query->offset // skip the number of users that we have per page
 
 		);
 
 		$wp_query = new WP_Query($args);
+
+        $total_pages = $wp_query->max_num_pages;
+
+        $_query->total_pages = $total_pages;
 
 		$_query->error = false;
 
