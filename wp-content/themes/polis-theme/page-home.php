@@ -163,7 +163,7 @@ get_header(); ?>
 
         <div class="section-title">
             <h3>Publicações</h3>
-            <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+            <a href="<?php echo home_url(); ?>/publicacoes" class="col-md-1 shape-todos">Ver todos</a>
         </div>
         <div id="hide-ajax" style="display: none"></div>
         <div id="carousel" class="col-md-12 list_carousel responsive">
