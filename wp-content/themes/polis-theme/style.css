@@ -2801,6 +2801,7 @@ header.mini{
 	margin: 20px auto;
 	max-height: 350px;
 	overflow: hidden;
+	text-align: center;
 }
 
 .videos .video {
