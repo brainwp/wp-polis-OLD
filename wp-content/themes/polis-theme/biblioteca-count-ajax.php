@@ -7,7 +7,7 @@
  */
 function biblioteca_count_ajax() {
 	if ( isset($_GET['isBibliotecaCountAjax']) ) {
-        echo '<span>Sua busca trouxe esses resultados separados por nossas áreas de atuação</span>';
+        echo '<span>Sua busca trouxe esses resultados separados por nossas Áreas de Atuação</span>';
 		$democracia = biblioteca_count('democracia-e-participacao');
 		$cidadania = biblioteca_count('cidadania-cultural');
 		$inclusao = biblioteca_count('inclusao-e-sustentabilidade');
