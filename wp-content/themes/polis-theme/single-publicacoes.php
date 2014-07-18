@@ -74,6 +74,14 @@ get_header(); ?>
 							<span>Páginas: <?php echo get_campoPersonalizado( 'publicacoes_paginas' ); ?></span><br>
 						<?php endif; ?>
 
+						<?php if( get_campoPersonalizado('publicacoes_issn') ): ?>
+							<span>ISSN: <?php echo get_campoPersonalizado( 'publicacoes_issn' ); ?></span><br>
+						<?php endif; ?>
+
+						<?php if( get_campoPersonalizado('publicacoes_isbn') ): ?>
+							<span>ISBN: <?php echo get_campoPersonalizado( 'publicacoes_isbn' ); ?></span><br>
+						<?php endif; ?>
+
 					</div><!-- left -->
 
 					<?php if( get_campoPersonalizado('publicacoes_download') ): ?>

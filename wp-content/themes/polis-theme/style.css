@@ -2780,6 +2780,15 @@ header.mini{
 	box-shadow: 2px 4px 8px 0.5px rgba(0,0,0,0.50);
 }
 
+.each-video .content .thumb {
+	height: 170px;
+	overflow: hidden;
+}
+
+.each-video .content .thumb img {
+	width: 100%;
+}
+
 .each-video .content .resumo {
 }
 

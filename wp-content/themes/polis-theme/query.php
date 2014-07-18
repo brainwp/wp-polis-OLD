@@ -1,14 +1,9 @@
 <?php
 /**
-
  * Query object
-
  *
-
  * As the query processor relies on a global `$_query` object, we should
-
  * declare it and document each of the attributes of this object here.
-
  */
 
 add_action( 'init', '_init_query_object' );
@@ -17,164 +12,84 @@ function _init_query_object() {
 
 	add_rewrite_tag( '%nome%', '(.+)' );
 
-
 	global $_query;
-
 	$_query = (object) array(
 
-
-
 		// Choose a different template
-
 		'template'     => false,
 
-
-
-		// Blog
-
+		// Equipe
 		'equipe'       => false,
 
-
-
-		// Vari?veis das ?reas do site
-
+		// Variaveis das Areas do site
 		'area'         => false,
-
 		'area_archive' => false,
 
-
-
 		// Noticias
-
 		'noticias'     => false,
 
-
-
 		// Publicacoes
-
 		'publicacoes'  => false,
 
-
-
 		//Acoes
-
 		'acoes'        => false,
 
-
+		//Canal
+		'canal'        => false,
 
 	);
-
-
-
 }
 
-
-
 /**
-
  * Query processor
-
  *
-
  * All requests will pass throught this function to receive more custom data in
-
  * a set of `if` conditions. These conditions can either be defined by default
-
  * WordPress queries or by the custom rewrite rule of the theme's router.
-
  *
-
  * To modify the main WordPress query, replace the `$wp_query` for a new
-
  * `WP_Query` instance. For example:
-
  * $wp_query = new WP_Query( $new_query_vars );
-
  *
-
  * To get data from a custom query set in the rewrite rule, simply do the same
-
  * with the $_query object:
-
  * $_query = new WP_Query( $query_vars );
-
  *
-
  * If there's something to be given at all queries like footer menus or sidebar
-
  * items, just put it in the end outside the `if` condition.
-
  */
-
-
 
 function _query_processor( $query ) {
 
-
-
 	global $_query, $post, $wpdb, $wp_query;
-
 	$_query->template = ! $_query->template ? get_query_var( 'template' ) : false;
-
 	$_query->paged    = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-
-
 	/* Main home */
-
-
-
 	if ( $query->is_home() && ! $_query ) {
 
-
-
-		/* Search page */
-
-
+	/* Search page */
 
 	} elseif ( $query->get( 's' ) ) {
 
-
-
-		/* Archives */
-
-
+	/* Archives */
 
 	} elseif ( $query->is_archive() ) {
 
-
-
-
-
-		/* Singles */
-
-
+	/* Singles */
 
 	} elseif ( $query->is_single() ) {
 
-
-
-
-
-		/* 404 error */
-
-
+	/* 404 error */
 
 	} elseif ( $query->is_404() ) {
-
-
 
 	} elseif ( 'noticias' == get_query_var( 'area_archive' ) ) {
 
 		$area = get_query_var( 'area' );
-
 		_query_archive_noticias( $area );
 
-
-
 		/* Democracia e Participacao */
-
-
 
 	} elseif ( 'democracia-e-participacao' == get_query_var( 'area' ) ) {
 
@@ -186,11 +101,7 @@ function _query_processor( $query ) {
 
 		_query_publicacoes( $area );
 
-
-
 		/* Reforma Urbana */
-
-
 
 	} elseif ( 'reforma-urbana' == get_query_var( 'area' ) ) {
 
@@ -202,11 +113,7 @@ function _query_processor( $query ) {
 
 		_query_publicacoes( $area );
 
-
-
 		/* Cidadania Cultural */
-
-
 
 	} elseif ( 'cidadania-cultural' == get_query_var( 'area' ) ) {
 
@@ -218,19 +125,11 @@ function _query_processor( $query ) {
 
 		_query_publicacoes( $area );
 
-
-
 		/* The sample query */
-
-
 
 	} elseif ( $q = get_query_var( 'sample_query' ) ) {
 
-
-
 		$_query->sample_query = 'Nice!';
-
-
 
 	} elseif ( get_query_var( 'template' ) == 'equipe' ) {
 
@@ -246,22 +145,32 @@ function _query_processor( $query ) {
         _query_projetos();
 
     }
+    elseif ( get_query_var( 'template' ) == 'canal' ) {
+
+        _query_canal();
+
+    }
 
 	/* Template redirect */
 
-
-
-
-
 	/* Put something here to do suff in all queries */
-
-
-
 }
+
+function _query_canal(){
+    
+	global $_query;
+	$args = array(
+		'post_type' => 'videos',
+	);
+
+	$_query->canal = new WP_Query( $args );
+}
+
 function _query_projetos(){
+    
     //redireciona o usuario caso ele esteja numa página > 1 no projetos sem tax selecionada (utilizando a padrão)
     if(isset($_GET['aba_pag'])){
-        $page        = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
+        $page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
         if(empty($page)){
             header('Location: '.get_bloginfo('url').'/projetos/tipo/'.$_GET['aba_pag']);
         }
@@ -269,22 +178,24 @@ function _query_projetos(){
             header('Location: '.get_bloginfo('url').'/projetos/tipo/'.$_GET['aba_pag'].'/page/'.$page);
         }
     }
+
     global $_query, $wp_query;
     $args = array(
         'type'                     => 'projetos',
         'taxonomy'                 => 'projetos_tax',
         'hide_empty'               => 1,
     );
+
     $categories = get_categories($args);
     foreach ($categories as $category) {
         $_query->first_tax = $category;
         break;
     }
 
-    $page        = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-    $_aba        = ( get_query_var( 'aba' ) ) ? get_query_var( 'aba' ) : false;
+    $page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $_aba = ( get_query_var( 'aba' ) ) ? get_query_var( 'aba' ) : false;
     $_query->aba_if = $_aba;
-    $aba        = ( get_query_var( 'aba' ) ) ? get_query_var( 'aba' ) : $_query->first_tax->slug;
+    $aba = ( get_query_var( 'aba' ) ) ? get_query_var( 'aba' ) : $_query->first_tax->slug;
     $args = array(
         'post_type'			=> array( 'projetos' ),
         'posts_per_page'	=> 999999999999,
@@ -430,9 +341,6 @@ function _query_membros(){
 
 		$_email   = get_field( 'email', 'user_' . $_user->ID );
 
-
-
-
 		$_query->offset = $offset;
 
 		$_query->per_page = $per_page;
@@ -489,34 +397,20 @@ function _query_membros(){
 
 function _query_blog() {
 
-
-
 	global $wp_query, $_query;
-
-
 
 	$_query->titulo = 'Blog';
 
-
-
 	$wp_query = new WP_Query( array(
-
 		'post_type' => 'post',
-
 		'order'     => 'ASC'
-
 	) );
 
-
-
 }
-
-
 
 function _query_noticias( $area ) {
 
 	global $_query;
-
 	$args             = array(
 
 		'post_type' => 'noticias',
@@ -543,11 +437,7 @@ function _query_noticias( $area ) {
 
 	$_query->noticias = new WP_Query( $args ); // exclude category
 
-
-
 }
-
-
 
 function _query_publicacoes( $area ) {
 
@@ -581,8 +471,6 @@ function _query_publicacoes( $area ) {
 
 }
 
-
-
 function _query_acoes( $area ) {
 
 	global $_query;
@@ -615,8 +503,6 @@ function _query_acoes( $area ) {
 
 }
 
-
-
 function _query_archive_noticias( $area ) {
 
 	global $wp_query;
@@ -648,8 +534,6 @@ function _query_archive_noticias( $area ) {
 	$wp_query = new WP_Query( $args );
 
 }
-
-
 
 function _query_produtos() {
 
@@ -741,8 +625,6 @@ function _query_produtos() {
 
 		}
 
-
-
 		if ( $type == 'chocolate-e-creme' ) {
 
 			$_query->titulo = 'Produtos';
@@ -801,19 +683,13 @@ function _query_produtos() {
 
 }
 
-
-
 function _title( $title ) {
 
 	global $wp_query, $_query;
 
-
-
 	if ( $_query->template == 'membros' && $_query->error == false) {
 
 		$title = get_bloginfo( 'name' ) . ' | Equipe | ' . $_query->nome;
-
-
 
 		return $title;
 
@@ -823,15 +699,11 @@ function _title( $title ) {
 
 			$title = get_bloginfo( 'name' ) . ' | Equipe';
 
-
-
 			return $title;
 
 		} else {
 
 			$title = get_bloginfo( 'name' ) . ' | Equipe | Pagina ' . $_query->_page;
-
-
 
 			return $title;
 
