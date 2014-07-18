@@ -1,11 +1,11 @@
 <form class="col-md-12 busca" id="busca-biblioteca" action="<?php bloginfo('url'); ?>/biblioteca/busca">
     <aside class="col-md-4 pull-right" id="ajax-counter">
         <span>
-            Abaixo exibiremos a quantidade de resultados em cada área de atuação
+            Abaixo exibiremos a quantidade de resultados em cada Área de Atuação
         </span>
-        <a class="envia-area" data-area="democracia-e-participacao"> Democracia e Participação</a>
-        <a class="envia-area" data-area="inclusao-e-sustentabilidade"> Inclusão e Sustentabilidade</a>
-        <a class="envia-area" data-area="reforma-urbana"> Reforma Urbana</a>
+        <a class="envia-area" data-area="democracia-e-participacao">Democracia e Participação</a>
+        <a class="envia-area" data-area="inclusao-e-sustentabilidade">Inclusão e Sustentabilidade</a>
+        <a class="envia-area" data-area="reforma-urbana">Reforma Urbana</a>
         <a class="envia-area" data-area="cidadania-cultural">Cidadania Cultural</a>
     </aside>
     <div class="clear-mob"></div>
@@ -28,7 +28,7 @@
         </div>
         <div class="input_container">
             <label class="col-md-2">Filtros:</label>
-            <select class="col-md-1 select1" name="tipo" id="select_tipo">
+            <select class="select1" name="tipo" id="select_tipo">
                 <option value="">Tipo</option>
                 <?php
                 $_args = array(
@@ -87,7 +87,7 @@
                     echo '<option value="' . $i . '">' . $i . '</option>';
                 } ?>
             </select>
-            <label style="margin-left: 10px">á</label>
+            <label style="margin-left: 10px">a</label>
             <select class="select1" id="select_anomax">
                 <option value="">Ano</option>
                 <?php for ($i = 2014; $i > 1987; $i--) {

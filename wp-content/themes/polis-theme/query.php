@@ -495,7 +495,7 @@ function _query_acoes( $area ) {
 
 				'include_children' => true,
 
-				'posts_per_page'   => 10,
+				'posts_per_page'   => 12,
 
 			)
 

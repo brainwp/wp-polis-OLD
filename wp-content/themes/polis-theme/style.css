@@ -2370,17 +2370,21 @@ slider de noticias + acoes
 	font-size:20px;
 }
 .input_container{
-	margin-bottom:20px;
-	margin-top:20px;
+	margin-bottom:10px;
+	margin-top:15px;
+}
+#select_tipo {
+	max-width: 150px;
 }
 .biblioteca-main .busca .select1{
-	padding:3px;
-	margin-top:7px;
-	border-radius:2px;
-	border:none;
+	padding: 3px 5px;
+	margin-top: 3px;
+	border-radius: 2px;
+	border: none;
 }
 .select1{
-	margin-left: 15px;
+	margin-left: 10px;
+	cursor: pointer;
 }
 .select1:first-child{
 	margin-left:0;
@@ -2522,6 +2526,10 @@ slider de noticias + acoes
 }
 .item .infos .download span{
 	color:white;
+}
+
+.biblioteca-main .pull-left {
+	margin: 30px 0 10px 0;
 }
 .biblioteca-main .nav #tab-nav-documentos-e-textos a{
 	background-image:url(img/biblioteca-icon-documentos.png);
@@ -2735,9 +2743,8 @@ header.mini{
     font-size:20px;
 }
 .biblioteca-main .header-area{
-    background:url(img/biblioteca-header-bg.jpg) no-repeat;
-    background-size:cover;
-    padding-top:20px;
+    background:url(img/biblioteca-header-bg.jpg) no-repeat right fixed;
+    background-size: cover;
 }
 .biblioteca-main .header-area h1{
     color:#1e5c7a;
@@ -2850,10 +2857,9 @@ header.mini{
     font-weight:600;
 }
 .projetos-main .aba-area .post h2{
-    margin-top:10px;
     font-family: 'Bitter',serif;
-    font-weight:bold;
-    color:#0f5495;
+    font-weight: bold;
+    color: #0f5495;
 }
 .projetos-main .aba-area .post .link{
     text-decoration: none !important;
@@ -2879,60 +2885,85 @@ header.mini{
 }
 .projetos-main .aba-area .detalhes{
     font-family: 'Bitter',serif;
-    display:block;
-    width:100%;
-    margin:0;
-    background:#0f5495;
-    font-size:18px;
-    color:white;
-    font-weight:bold;
+    display: block;
+    width: 100%;
+    margin: 0;
+    background: #0f5495;
+    font-size: 16px;
+    color: white;
     text-decoration: none !important;
-    text-align:right;
-    padding:7px;
-    padding-left:10px;
-    padding-right:10px;
-    border-radius:6px;
+    text-align: left;
+    padding: 12px 0 10px 10px;
+    border-radius: 6px;
+}
+.projetos-main .aba-area .detalhes:before{
+	content: "\f116";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 30px/1 'dashicons';
+	vertical-align: middle;
+	margin-right: 10px;
 }
 .projetos-main .aba-area .equipe{
-    width:100%;
-    margin:0;
-    margin-top:20px;
-    background:#0f5495;
-    padding:7px;
-    padding-left:10px;
-    padding-right:10px;
-    border-radius:6px;
+    width: 100%;
+    margin: 15px auto;
+    background: #0f5495;
+	padding: 10px 10px;
+    border-radius: 6px;
 }
 .projetos-main .aba-area .top{
     width:100%;
     border-bottom: 3px solid white;
-    padding-bottom:5px;
-    font-size:18px;
+    padding-bottom: 5px;
+    font-size: 16px;
     font-family: 'Bitter',serif;
-    color:white;
-    font-weight:bold;
-    text-align: right;
+    color: white;
+    font-weight: bold;
+    text-align: left;
 }
-.projetos-main .aba-area .top a{
-    margin-left:10px;
-    font-size:12px;
+.projetos-main .aba-area .equipe .top a:before{
+	content: "\f110";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 30px/1 'dashicons';
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.projetos-main .aba-area .top a {
     font-weight: normal;
     text-decoration: none !important;
-    color:white;
+    color: white;
 }
 .projetos-main .aba-area .equipe ul{
-    list-style-type:none;
+    list-style-type: none;
+    margin: 10px 0;
 }
 .projetos-main .aba-area .equipe ul a{
-    font-size:14px;
+    font-size: 14px;
     color:white;
 }
-.projetos-main .aba-area .post_content{
-    margin-bottom:20px;
+.projetos-main .aba-area .equipe .detalhes{
+	padding: 7px 0;
 }
+.projetos-main .aba-area .post_content{
+    border-bottom: 1px solid #FFF;
+    margin: 20px auto;
+    padding: 10px 0 30px 0;
+}
+.projetos-main .post_content .thumb{
+	background-color: #FFF;
+	border-radius: 5px;
+	text-align: center;
+	padding: 20px;
+}
+.projetos-main .post_content .thumb img{
+	max-width: 90%;
+}
+
 #biblioteca-require{
-    margin-top:0;
-    background:white;
+    margin-top: 0;
+    background: white;
+    padding: 20px 0;
 }
 .clear-mob{
     display:none;
