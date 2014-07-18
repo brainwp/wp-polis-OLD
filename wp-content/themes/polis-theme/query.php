@@ -18,10 +18,10 @@ function _init_query_object() {
 		// Choose a different template
 		'template'     => false,
 
-		// Blog
+		// Equipe
 		'equipe'       => false,
 
-		// Vari?veis das ?reas do site
+		// Variaveis das Areas do site
 		'area'         => false,
 		'area_archive' => false,
 
@@ -33,6 +33,9 @@ function _init_query_object() {
 
 		//Acoes
 		'acoes'        => false,
+
+		//Canal
+		'canal'        => false,
 
 	);
 }
@@ -142,10 +145,25 @@ function _query_processor( $query ) {
         _query_projetos();
 
     }
+    elseif ( get_query_var( 'template' ) == 'canal' ) {
+
+        _query_canal();
+
+    }
 
 	/* Template redirect */
 
 	/* Put something here to do suff in all queries */
+}
+
+function _query_canal(){
+    
+	global $_query;
+	$args = array(
+		'post_type' => 'videos',
+	);
+
+	$_query->canal = new WP_Query( $args );
 }
 
 function _query_projetos(){
