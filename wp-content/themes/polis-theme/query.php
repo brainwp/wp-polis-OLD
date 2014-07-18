@@ -232,11 +232,15 @@ function _query_equipe(){
 
 	global $_query;
 
+    $_query->exclude = explode(',', of_get_option('equipe-exclude'));
+
 	$count_args       = array(
 
 		'fields' => 'all_with_meta',
 
-		'number' => 999999
+		'number' => 9999999999,
+
+        'exclude' => $_query->exclude
 
 	);
 
@@ -281,7 +285,6 @@ function _query_equipe(){
 		$_query->error = true;
 
 	}
-    $_query->exclude = explode(',', of_get_option('equipe-exclude'));
 
 }
 
