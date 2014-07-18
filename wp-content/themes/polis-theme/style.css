@@ -2981,6 +2981,29 @@ nav.nav img{
 .cpt-acoes .intro, .cpt-publicacoes .intro{
     margin-left:30px;
 }
+.biblioteca-main .atividades{
+    min-height:inherit;
+    background:transparent;
+}
+.biblioteca-main .atividades .item{
+    float:left;
+    padding-left:10px;
+}
+.biblioteca-main .atividades .item .description{
+    padding-left:5px;
+    padding-right:5px;
+}
+.biblioteca-main .section-title{
+    padding-bottom: 20px;
+}
+.biblioteca-main .next{
+    right:80px;
+    top: 170px;
+}
+.biblioteca-main .prev{
+    left:80px;
+    top: 170px;
+}
 @media only screen and (max-width: 600px) {
     nav.nav img{
         margin-left:2px;

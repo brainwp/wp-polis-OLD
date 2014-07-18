@@ -7,8 +7,8 @@
 jQuery(document).ready(function () {
     var $ = jQuery.noConflict();
     $('.slider_area').carouFredSel({
-        prev: '#prev-slider',
-        next: '#next-slider',
+        prev: '#prev-biblioteca-series',
+        next: '#next-biblioteca-series',
         responsive: true,
         width: '100%',
         scroll: {
@@ -19,14 +19,14 @@ jQuery(document).ready(function () {
             width: 250,
             visible: {
                 min: 3,
-                max: 3
+                max: 4
             }
         }
     });
     if ($(window).width() >= 700) {
         $('.slider_documentos').carouFredSel({
-            prev: '#prev-slider',
-            next: '#next-slider',
+            prev: '#prev-biblioteca-docs',
+            next: '#next-biblioteca-docs',
             responsive: true,
             width: '100%',
             height: '280',
@@ -44,6 +44,28 @@ jQuery(document).ready(function () {
             }
         });
     }
+    if ($(window).width() >= 700) {
+        $('.slider_institucional').carouFredSel({
+            prev: '#prev-biblioteca-institucionais',
+            next: '#next-biblioteca-institucionais',
+            responsive: true,
+            width: '100%',
+            height: '280',
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 4,
+                    max: 4
+                },
+                height: 400
+            }
+        });
+    }
+
     $('.create_head').each(function () {
         var content = $(this).html();
         var slug = $(this).attr('data-term-slug');

@@ -44,6 +44,7 @@ get_header();?>
         <div class="container pagination">
             <div class="col-md-4 col-md-offset-4">
                 <?php
+                $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
                 $total = $wp_query->max_num_pages;
                 $big = 999999999; // need an unlikely integer

@@ -23,5 +23,6 @@ get_header('mini');
                 Escolha uma área para melhorar o resultado de sua busca
             </div>
         </div>
+        <?php get_template_part('biblioteca','sliders');?>
     </main>
 <?php get_footer(); ?>
