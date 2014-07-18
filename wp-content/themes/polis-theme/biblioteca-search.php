@@ -238,7 +238,7 @@ $total_pages = ceil($total_posts / $per_page);
                 </div>
             <?php
             } else {
-                echo 'nenhum post encontrado nessa pesquisa';
+                echo 'Nenhum post encontrado nessa pesquisa';
             }
             ?>
             <div class="container pagination">

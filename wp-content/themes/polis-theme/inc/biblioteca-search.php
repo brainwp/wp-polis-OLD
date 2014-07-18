@@ -1,7 +1,7 @@
 <form class="col-md-12 busca" id="busca-biblioteca" action="<?php bloginfo('url'); ?>/biblioteca/busca">
     <aside class="col-md-4 pull-right" id="ajax-counter">
         <span>
-            Abaixo exibiremos a quantidade de resultados em cada Área de Atuação
+            Clique abaixo na área de atuação em que você deseja pesquisar.
         </span>
         <a class="envia-area" data-area="democracia-e-participacao">Democracia e Participação</a>
         <a class="envia-area" data-area="inclusao-e-sustentabilidade">Inclusão e Sustentabilidade</a>

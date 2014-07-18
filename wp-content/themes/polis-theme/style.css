@@ -139,6 +139,9 @@ textarea {
 	font-size: 1.6rem;
 	line-height: 1.5;
 }
+#wpstats {
+	display: none;
+}
 .clear {
 	width: 100%;
 	height: 1px;
