@@ -686,7 +686,6 @@ object {
 	background: #F1F1F1;
 }
 .aba-area {
-	background: #536C32;
 	width: 100%;
 	height: auto;
 	overflow: hidden;
@@ -2737,6 +2736,7 @@ header.mini{
 .biblioteca-main .header-area{
     background:url(img/biblioteca-header-bg.jpg) no-repeat;
     background-size:cover;
+    padding-top:20px;
 }
 .biblioteca-main .header-area h1{
     color:#1e5c7a;
