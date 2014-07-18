@@ -187,6 +187,12 @@ function optionsframework_options() {
         'type' => 'text');
 
     $options[] = array(
+        'name' => 'Excluir membros da página de equipe por ID (separados por virgula)',
+        'id'   => 'equipe-exclude',
+        'std'  => '',
+        'type' => 'text');
+
+    $options[] = array(
         'name' => 'Projetos',
         'type' => 'heading');
 

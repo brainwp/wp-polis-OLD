@@ -281,6 +281,7 @@ function _query_equipe(){
 		$_query->error = true;
 
 	}
+    $_query->exclude = explode(',', of_get_option('equipe-exclude'));
 
 }
 

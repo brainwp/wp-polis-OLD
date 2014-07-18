@@ -18,7 +18,8 @@ get_header(); ?>
             // return all fields
             'fields' => 'all_with_meta',
             'number' => $_query->users_per_page,
-            'offset' => $_query->offset // skip the number of users that we have per page
+            'offset' => $_query->offset, // skip the number of users that we have per page
+            'exclude' => $_query->exclude
         );
 
         // The User Query
