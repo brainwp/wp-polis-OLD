@@ -12,16 +12,15 @@
 global $_query;
 get_header(); ?>
 
+
+<div class="header-area col-md-12 header-area-canal">
+	<h1>Canal Pólis</h1>
+</div>
+
 <section id="primary" class="content-area content-canal">
-		<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main" role="main">
 
 		<?php if ( $_query->canal->have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<h1>Canal Pólis</h1>
-				</h1>
-			</header><!-- .page-header -->
 
 			<?php while ( $_query->canal->have_posts() ) : $_query->canal->the_post(); ?>
 

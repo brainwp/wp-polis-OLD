@@ -624,18 +624,22 @@ object {
 }
 /* Area */
 .header-area.reforma-urbana {
+	overflow: hidden;
 	width: 100%;
 	background:transparent url(img/areas/bg-reforma-urbana.png) bottom left no-repeat;
 }
 .header-area.democracia-e-participacao {
+	overflow: hidden;
 	width: 100%;
 	background:transparent url(img/areas/bg-democracia-e-participacao.png) bottom left no-repeat;
 }
 .header-area.cidadania-cultural {
+	overflow: hidden;
 	width: 100%;
 	background:transparent url(img/areas/bg-cidadania-cultural.png) bottom left no-repeat;
 }
 .header-area.inclusao-e-sustentabilidade {
+    overflow: hidden;
 	width: 100%;
 	background:transparent url(img/areas/bg-inclusao-e-sustentabilidade.png) bottom left no-repeat;
 }
@@ -660,14 +664,14 @@ object {
 .area-main .democracia-e-participacao-icon{
 	width:167px;
 	height:185px;
-	background: url(img/areas/democracia-e-participacao-icon.png) no-repeat;
+	background: url('img/areas/democracia-e-participacao-icon.png') no-repeat;
 	position: absolute;
 	bottom:-70px;
 }
 .area-main .cidadania-cultural-icon{
 	width:167px;
 	height:185px;
-	background: url(img/areas/cidadania-cultural-icon.png) no-repeat;
+	background: url('img/areas/cidadania-cultural-icon.png') no-repeat;
 	position: absolute;
 	bottom:-70px;
 	margin-left:-17px;
@@ -676,10 +680,11 @@ object {
 	float: left;
 	padding-left:18%;
 	width: 70%;
+	margin-top: 30px;
 }
 .header-area .left h1{
-	width:60%;
-	margin-bottom:40px;
+	width: 100%;
+	margin-bottom: 20px;
 	font-family: 'Bitter', serif;
 	font-weight: bold;
 }
@@ -1293,6 +1298,19 @@ slider de noticias + acoes
 	-moz-appearance: none;
 	appearance: none;
 	background: white url(img/select-arrow.png) no-repeat right center;
+}
+.header-area-canal {
+    background: url('img/bg-header-projetos.jpg') center 1px fixed #b0d3d8;
+    padding-left:0 !important;
+    padding-right: 0 !important;
+    padding-top:80px !important;
+    padding-bottom:80px !important;
+    margin-bottom: 30px;
+}
+.header-area-canal h1{
+    font-size: 49px;
+    text-align: center;
+    color: #1e5c7a;
 }
 .canal{
 	margin-top:20px;
@@ -2618,8 +2636,8 @@ slider de noticias + acoes
     color:white !important;
 }
 #ajax-biblioteca-sub-count.democracia-e-participacao{
-    background:url(img/areas/biblioteca-sub-democracia.png) no-repeat;
-    background-size:cover;
+    background: url('img/areas/biblioteca-sub-democracia.png') no-repeat;
+    background-size: cover;
 }
 #ajax-biblioteca-sub-count.cidadania-cultural{
     background:#B7913E;
@@ -2834,17 +2852,17 @@ header.mini{
 }
 
 /*projetos.php */
-.projetos-main .header-area{
-    background:#b0d3d8;
+.projetos-main .header-area {
+    background: url('img/bg-header-projetos.jpg') center 1px fixed #b0d3d8;
     padding-left:0 !important;
     padding-right: 0 !important;
     padding-top:80px !important;
     padding-bottom:80px !important;
 }
-.projetos-main .header-area h1{
-    font-size:49px;
-    text-align:center;
-    color:#1e5c7a;
+.projetos-main .header-area h1 {
+    font-size: 49px;
+    text-align: center;
+    color: #1e5c7a;
 }
 .projetos-main .tabContaier a.active span{
     color:#1e5c7a;
