@@ -84,15 +84,19 @@ get_header(); ?>
 
 					</div><!-- left -->
 
-					<?php if( get_campoPersonalizado('publicacoes_download') ): ?>
+					<?php
+					$download_id = get_campoPersonalizado('publicacoes_download');
+					if( !empty( $download_id ) ): ?>
 						<?php
-							$download = get_field('publicacoes_download');
-							$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
-							$size = number_format( filesize( get_attached_file( $download['id'] ) ) / 1048576, 2 ) . "mb";
+							$download_url = wp_get_attachment_url( $download_id );
+							$download_title = get_the_title( $download_id );
+							$file = substr( $download_url, strrpos( $download_url, '/' ) +1 );
+							$size = number_format( filesize( get_attached_file( $download_id ) ) / 1048576, 2 ) . "mb";
 						?>
-						<a class="btn bg-<?php echo $bg_content; ?>" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
+						<a class="btn <?php echo $bg_content; ?>" href="<?php echo $download_url; ?>" download="<?php echo $file; ?>">Download • <?php echo $size; ?></a>
 					<?php endif; ?>
-					<?php if( get_campoPersonalizado('mgr_pub_download') ): ?>
+
+					<?php if( get_campoPersonalizado('mgr_pub_download') && empty( $download_id ) ): ?>
 						<?php
 							$mgr_download = get_campoPersonalizado('mgr_pub_download');
 							$explode_download = explode( '.', $mgr_download );
