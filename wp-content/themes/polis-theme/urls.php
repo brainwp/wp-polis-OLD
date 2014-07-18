@@ -16,6 +16,8 @@ function _query_rules () {
 		'^equipe/([^/]+)/?$' => 'template=membros&nome=$matches[1]',
 		'^equipe/([^/]+)/page/([^/]+)/?$' => 'template=membros&nome=$matches[1]&paged=$matches[2]',
 		'^canal/?$' => 'template=canal',
+        '^noticias-e-acoes/?$' => 'template=noticias-e-acoes',
+        '^noticias-e-acoes/page/([^/]+)/?$' => 'template=noticias-e-acoes&paged=$matches[1]',
         '^projetos/?$' => 'template=projetos',
         '^projetos/page/([^/]+)/?$' => 'template=projetos&paged=$matches[1]',
         '^projetos/tipo/([^/]+)/?$' => 'template=projetos&aba=$matches[1]',

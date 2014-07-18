@@ -145,6 +145,12 @@ function _query_processor( $query ) {
         _query_projetos();
 
     }
+
+    elseif ( get_query_var( 'template' ) == 'noticias-e-acoes' ) {
+
+        _query_noticias_acoes();
+
+    }
     elseif ( get_query_var( 'template' ) == 'canal' ) {
 
         _query_canal();
@@ -164,6 +170,27 @@ function _query_canal(){
 	);
 
 	$_query->canal = new WP_Query( $args );
+}
+
+function _query_noticias_acoes(){
+
+    global $_query, $wp_query;
+
+    $page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $per_page = get_option('posts_per_page');
+
+    $args = array(
+        'post_type'			=> array( 'noticias','acoes' ),
+        'orderby'			=> 'date',
+        'order'				=> 'ASC',
+        'posts_per_page'	=> $per_page,
+        'paged'             => $page
+    );
+
+    $wp_query = new WP_Query($args);
+    $_query->_page = $page;
+    $_query->total_pages = $wp_query->max_num_pages;
+
 }
 
 function _query_projetos(){
@@ -713,7 +740,25 @@ function _title( $title ) {
 
 		}
 
-	} else {
+	}
+    elseif ( $_query->template == 'noticias-e-acoes' ) {
+
+        if ( $_query->_page != 1 ) {
+
+            $title = 'Noticias e Ações | ' . $title = get_bloginfo( 'name' ) ;
+
+            return $title;
+
+        } else {
+
+            $title = get_bloginfo( 'name' ) . ' | Notícias e Ações | Página ' . $_query->_page;
+
+            return $title;
+
+        }
+
+    }
+    else {
 
 		return $title;
 
