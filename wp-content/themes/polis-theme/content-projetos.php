@@ -15,11 +15,10 @@
         <?php } ?>
     </div>
     <div class="col-md-6 post">
-        <span class="cat">Projeto</span>
         <a class="link" href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
-                            <span class="text">
-                                <?php echo resumo(); ?>
-                            </span>
+            <span class="text">
+                <?php echo resumo(); ?>
+            </span>
         <a class="leia" href="<?php the_permalink(); ?>">Leia Mais</a>
     </div>
     <div class="col-md-3">
@@ -29,8 +28,7 @@
         <?php if (get_field('projetos_repeater')): ?>
         <aside class="equipe">
             <div class="top">
-                Equipe
-                <a href="<?php the_permalink(); ?>#equipe_todos">[ver todos]</a>
+                <a href="<?php the_permalink(); ?>#equipe_todos" class="detalhes">Equipe</a>
             </div>
             <ul>
                     <?php $_repeater_i = 1; ?>
