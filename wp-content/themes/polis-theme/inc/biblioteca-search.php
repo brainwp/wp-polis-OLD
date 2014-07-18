@@ -15,12 +15,12 @@
             <div class="clear-mob"></div>
             <label class="col-md-2">Buscar:</label>
             <?php
-            if(isset($_GET['search_key'])): ?>
+            if(isset($_GET['search_key']) && !empty($_GET['search_key'])): ?>
                 <input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto" id="key" value="<?php echo $_GET['search_key'];?>">
                 <span class="hidden" id="search_key_validate" data-validate="true"></span>
             <?php endif; ?>
             <?php
-            if(!isset($_GET['search_key'])): ?>
+            if(!isset($_GET['search_key']) || empty($_GET['search_key'])): ?>
                 <span class="hidden" id="search_key_validate" data-validate="false"></span>
                 <input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto" id="key">
             <?php endif; ?>

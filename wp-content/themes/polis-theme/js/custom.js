@@ -438,6 +438,10 @@ jQuery(document).ready(function () {
             $('#biblioteca-require').fadeIn('slow');
         }
     }
+    $('#header-search-bt').on('click', function(){
+       $('#header-search-form').submit();
+    });
+
     var sticky_width = $('.container.shadow').width();
     $('nav.sticky').css('width',sticky_width + 'px');
 
@@ -470,4 +474,5 @@ jQuery(document).ready(function () {
     $(window).scroll(function() {
         stickyNav();
     });
+
 });

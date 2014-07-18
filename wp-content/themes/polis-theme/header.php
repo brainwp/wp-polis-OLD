@@ -26,13 +26,13 @@
 		<a href="<?php bloginfo('url');?>" class="col-md-6 left">  <!-- logo -->
 			<img src="<?php bloginfo('template_url');?>/img/logo.png">
 		</a>
-		<form class="col-md-5 left description" action="<?php bloginfo('url');?>/biblioteca/" method="get">
+		<form class="col-md-5 left description" action="<?php bloginfo('url');?>/biblioteca/" method="get" id="header-search-form">
 			<p>
 				<?php echo of_get_option('frase-head'); ?>
 			</p>
 			<label class="left">Busque conteudo</label>
 			<input type="search" placeholder="Digite e aperte enter" name="search_key">
-			<span class="glyphicon glyphicon-search"></span> <!-- icone de search !-->
+			<span class="glyphicon glyphicon-search" id="header-search-bt"></span> <!-- icone de search !-->
 		</form>
 	</header>
 	<nav class="col-md-12 nav" id="nav">
