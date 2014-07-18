@@ -10,7 +10,7 @@ function is_logged(){
 		$is_private = get_post_custom_values('isprivate');
 		if($is_private[0] == 'sim' && is_singular() ){
 			header('HTTP/1.0 403 Forbidden');
-			include(get_template_directory() . '/404.php');
+			include(get_template_directory() . '/403.php');
 			die();
 		}
 	}
