@@ -219,19 +219,21 @@ class widget_newsletter extends WP_Widget {
 		$form_method = apply_filters( 'widget_newsletter', empty( $instance['form_method'] ) ? '' : $instance['form_method'], $instance );
 		$text = apply_filters( 'widget_newsletter', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
         $areas = apply_filters( 'widget_newsletter', empty( $instance['areas'] ) ? '' : $instance['areas'], $instance );
+        $hidden = apply_filters( 'widget_newsletter', empty( $instance['hidden'] ) ? '' : $instance['hidden'], $instance );
         ?>
 
         <form class="col-md-12 newsletter" method="<?php echo $form_method; ?>" action="<?php echo $form_to ?>">
 			<p><?php echo $title; ?></p>
 			<?php echo $text; ?>
-			<input type="text" placeholder="NOME" class="col-md-12">
+			<input type="text" placeholder="NOME" class="col-md-12" name="SMT_nome">
             <div class="clear-mob"></div>
-			<select class="col-md-12">
+			<select class="col-md-12" name="SMT_area">
                 <option value="" disabled selected>Area de interesse</option>
                 <?php echo $areas; ?>
 			</select>
-			<input type="tel" placeholder="TEL: ( )" class="col-md-12">
-			<input type="email" placeholder="Informe seu email" class="col-md-8">
+			<input type="tel" placeholder="TEL: ( )" class="col-md-12" name="SMT_telefone_residencial">
+			<input type="email" placeholder="Informe seu email" class="col-md-8" name="SMT_email">
+            <?php echo $hidden; ?>
 			<button class="col-md-3 pull-right">Enviar</button>
 		</form>
 	<?php
@@ -243,6 +245,7 @@ class widget_newsletter extends WP_Widget {
 		$instance['form_method'] = strip_tags($new_instance['form_method']);
 		$instance['title'] = strip_tags($new_instance['title']);
         $instance['areas'] =  $new_instance['areas'];
+        $instance['hidden'] =  $new_instance['hidden'];
 
         if ( current_user_can('unfiltered_html') )
 			$instance['text'] =  $new_instance['text'];
@@ -258,6 +261,7 @@ class widget_newsletter extends WP_Widget {
 		$form_method = strip_tags($instance['form_method']);
 		$text = esc_textarea($instance['text']);
         $areas = esc_textarea($instance['areas']);
+        $hidden = esc_textarea($instance['hidden']);
 
         ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Titulo:'; ?></label>
@@ -272,9 +276,12 @@ class widget_newsletter extends WP_Widget {
         <p><label for="<?php echo $this->get_field_id('areas'); ?>"><?php echo 'Areas de interesse: (Em HTML)'; ?></label>
         <textarea class="widefat" rows="8" cols="20" id="<?php echo $this->get_field_id('areas'); ?>" name="<?php echo $this->get_field_name('areas'); ?>"><?php echo $areas; ?></textarea>
 
+        <p><label for="<?php echo $this->get_field_id('hidden'); ?>"><?php echo 'Campos adicionais ou escondidos:'; ?></label>
+		<textarea class="widefat" rows="4" cols="20" id="<?php echo $this->get_field_id('hidden'); ?>" name="<?php echo $this->get_field_name('hidden'); ?>"><?php echo $hidden; ?></textarea>
+
         <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php echo 'Texto:'; ?></label>
-		<textarea class="widefat" rows="4" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
-	<?php
+        <textarea class="widefat" rows="4" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+    <?php
 	}
 }
 
