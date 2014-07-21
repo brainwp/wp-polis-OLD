@@ -1,78 +1,45 @@
 <?php global $_query; ?>
-
 <?php get_header(); ?>
 
-
-
 <?php
+    $current_term = get_term_by('slug', get_query_var('area'), 'areas');
+    $name_term = $current_term->name;
+    $description_term = $current_term->description;
+    $current_class = $current_term->slug;
+    $id = $current_term->term_id;
 
-$current_term = get_term_by('slug', get_query_var('area'), 'areas');
+    $args = array(
+        'type' => array('acoes', 'noticias', 'publicacoes'),
+        'child_of' => $id,
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'hide_empty' => 1,
+        'hierarchical' => 1,
+        //'exclude'      => 'formacao',
+        'taxonomy' => 'areas',
+        'pad_counts' => false
+    );
 
-$name_term = $current_term->name;
-
-$description_term = $current_term->description;
-
-$current_class = $current_term->slug;
-
-$id = $current_term->term_id;
-
-$args = array(
-
-    'type' => array('acoes', 'post', 'noticias', 'publicacoes'),
-
-    'child_of' => $id,
-
-    'orderby' => 'name',
-
-    'order' => 'ASC',
-
-    'hide_empty' => 1,
-
-    'hierarchical' => 1,
-
-    //'exclude'      => 'formacao',
-
-    'taxonomy' => 'areas',
-
-    'pad_counts' => false
-
-);
-
-$categorias = get_categories($args);
-
-// echo get_query_var( 'area' );
-
+    $categorias = get_categories($args);
+    // echo get_query_var( 'area' );
 ?>
-
-
 
     <div id="primary" class="content-area">
 
-    <main id="main" class="site-main area-main <?php echo $current_class; ?>" role="main"
-          data-slug="<?php echo $current_class; ?>">
+    <main id="main" class="site-main area-main <?php echo $current_class; ?>" role="main" data-slug="<?php echo $current_class; ?>">
 
     <div id="hide-ajax" style="display: none"></div>
 
     <div class="header-area <?php echo $current_class; ?>">
 
         <div class="left col-md-2">
-
             <h1><?php echo $name_term; ?></h1>
-
             <span class="rm-mob"><?php echo $description_term; ?></span>
-
-        </div>
-
-        <!-- .left -->
-
+        </div><!-- .left -->
 
         <div class="col-md-2 pull-right areas">
-
             <?php outras_areas(); ?>
-
-        </div>
-
-        <!-- rigtht -->
+        </div><!-- rigtht -->
 
 
     </div>
@@ -88,29 +55,16 @@ $categorias = get_categories($args);
     <div class="tabContaier">
 
     <ul>
-
         <?php $_i = 0; ?>
-
         <?php foreach ($categorias as $_categorias): ?>
-
             <li>
-
                 <?php
-
                 if ($_i == 0) {
-
-                    $_first = $_categorias;
-
-                    ?>
-
+                    $_first = $_categorias; ?>
                     <a class="tab-link active" data-id="<?php echo $_categorias->term_id; ?>"
                        href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
-                <?php
-
-                } else {
-
-                    ?>
+                <?php } else { ?>
 
                     <a class="tab-link" data-id="<?php echo $_categorias->term_id; ?>"
                        href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
@@ -135,40 +89,36 @@ $categorias = get_categories($args);
 
     <div id="tab<?php echo $_first->term_id; ?>" class="tabContents aba-area">
 
-
     <div class="cada-loop-aba publicacoes">
 
         <div class="section-title">
-
             <h3>Noticias</h3>
-
             <a href="#" class="col-md-1 shape-todos">Ver todos</a>
-
-        </div>
+        </div><!-- section-title -->
 
         <div class="col-md-12 list_carousel responsive noticias-slider">
 
             <?php
-            // Loop Notícias
-            $args = array(
-                'post_type' => 'noticias',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'areas',
-                        'field' => 'id',
-                        'terms' => $cat,
-                        'include_children' => true,
-                        'posts_per_page' => 8,
+                // Loop Notícias
+                $args = array(
+                    'post_type' => 'noticias',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'areas',
+                            'field' => 'id',
+                            'terms' => $cat,
+                            'include_children' => true,
+                            'posts_per_page' => 8,
+                        )
                     )
-                )
-            );
+                );
             ?>
 
             <ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
 
                 <?php
-                $noticias = new WP_Query($args); // exclude category
-                while ($noticias->have_posts()) : $noticias->the_post(); ?>
+                $noticias = new WP_Query( $args ); // exclude category
+                while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
 
                     <li class="col-xs-12 item">
                         <a href="<?php the_permalink(); ?>">
@@ -213,40 +163,27 @@ $categorias = get_categories($args);
     <div class="cada-loop-aba publicacoes">
 
         <div class="section-title">
-
             <h3>Publicações</h3>
-
             <a href="#" class="col-md-1 shape-todos">Ver todos</a>
-
-        </div>
+        </div><!-- section-title -->
 
         <div class="col-md-12 list_carousel responsive">
 
-            <?php // Loop Publicacoes
+            <?php 
+                // Loop Publicacoes
+                $args = array(
 
-            $args = array(
-
-                'post_type' => 'publicacoes',
-
-                'tax_query' => array(
-
-                    array(
-
-                        'taxonomy' => 'areas',
-
-                        'field' => 'id',
-
-                        'terms' => $cat,
-
-                        'include_children' => true,
-
-                        'posts_per_page' => 10,
-
+                    'post_type' => 'publicacoes',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'areas',
+                            'field' => 'id',
+                            'terms' => $cat,
+                            'include_children' => true,
+                            'posts_per_page' => 10,
+                        )
                     )
-
-                )
-
-            );
+                );
 
             ?>
 
@@ -254,7 +191,7 @@ $categorias = get_categories($args);
 
                 <?php
 
-                $publicacoes = new WP_Query($args); ?>
+                $publicacoes = new WP_Query( $args ); ?>
 
                 <?php while ($publicacoes->have_posts()) :
 
