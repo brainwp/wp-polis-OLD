@@ -1164,4 +1164,46 @@ if(function_exists("register_field_group"))
         'menu_order' => 0,
     ));
 }
-
+if(function_exists("register_field_group"))
+{
+    $_id = get_page_by_path('institucional',OBJECT,'page');
+    $_id = $_id->ID;
+    register_field_group(array (
+        'id' => 'acf_ordenar',
+        'title' => 'Ordenar',
+        'fields' => array (
+            array (
+                'key' => 'field_53ceb3ebbbab9',
+                'label' => 'Ordernar',
+                'name' => 'institucional_order',
+                'type' => 'number',
+                'instructions' => 'Ordene a exibição dos botões na página Institucional',
+                'default_value' => 1,
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'min' => '',
+                'max' => '',
+                'step' => '',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'page_parent',
+                    'operator' => '==',
+                    'value' => $_id,
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}

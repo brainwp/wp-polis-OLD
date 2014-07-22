@@ -3056,7 +3056,11 @@ nav.nav img{
     left:80px;
     top: 170px;
 }
+
 @media only screen and (max-width: 600px) {
+    .intro-institucional .bg,.intro-institucional .triangulo{
+        display:none;
+    }
     nav.nav img{
         margin-left:2px;
     }
