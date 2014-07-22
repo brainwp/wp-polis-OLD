@@ -116,7 +116,7 @@ jQuery(document).ready(function () {
             $('#bt-' + pageid).addClass('atual');
             location.hash = 'page_' + pageid;
             $('html, body').animate({
-                scrollTop: $('#post_ajax').offset().top
+                scrollTop: $('#post_ajax').offset().top-160
             }, 500);
         })
     });
