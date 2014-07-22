@@ -773,7 +773,7 @@ object {
 	left:-11px;
 	width:40px;
 	height:40px;
-	margin-top:156px;
+	margin-top: 215px;
 	cursor:pointer;
 	z-index:99;
 }
@@ -783,20 +783,21 @@ object {
 	z-index:99;
 	width:40px;
 	height:40px;
-	margin-top:156px;
+	margin-top:215px;
 	cursor:pointer;
+	z-index:99;
 }
 .democracia-e-participacao .tabDetails .prev-slider{
 	background:url(img/areas/anterior.png) no-repeat;
 }
 .democracia-e-participacao .tabDetails .next-slider{
-	background:url(img/areas/proximo.png) no-repeat;
+	background:url(img/areas/proxima.png) no-repeat;
 }
 .cidadania-cultural .tabDetails .prev-slider{
     background:url(img/areas/anterior.png) no-repeat;
 }
 .cidadania-cultural .tabDetails .next-slider{
-    background:url(img/areas/proximo.png) no-repeat;
+    background:url(img/areas/proxima.png) no-repeat;
 }
 .inclusao-e-sustentabilidade .tabDetails .prev-slider{
     background:url(img/areas/anterior.png) no-repeat;
@@ -1386,7 +1387,9 @@ slider de noticias + acoes
 .publicacoes .list_carousel {
 	margin-top: 25px;
 	clear: both;
-    padding:0 !important;
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
 }
 .todos-full {
 	width: 100%;
@@ -2124,11 +2127,12 @@ slider de noticias + acoes
 	color: #58595B;
 }
 .atividades .post_container{
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	position: relative;
 	background: white;
 	overflow: hidden;
+	max-width: 300px;
 }
 .atividades .post_container:hover{
 	transition:linear 400ms all;
@@ -2161,7 +2165,10 @@ slider de noticias + acoes
     margin: 5px 0 15px;
     overflow: hidden;
 	font-family:'Source Sans Pro', sans-serif;
-    padding-bottom: 35px;
+    padding: 5px 20px 40px 20px;
+}
+.atividades .post_container .description h3 {
+	margin: 0 auto 10px auto;
 }
 .atividades .post_container .description .leia{
     background-color: #58595B;
@@ -2179,6 +2186,7 @@ slider de noticias + acoes
 	border: 0 !important;
 	font-family: 'Source Sans Pro';
 }
+
 /* classes de acordo com a area */
 .user .name{
     background:#0D6194;
@@ -3025,7 +3033,7 @@ nav.nav img{
     margin-left:10px;
 }
 .atividades .post_container{
-    height: 320px;
+    /*height: 320px;*/
 }
 .cpt-acoes,.cpt-publicacoes{
     padding:0 !important;
