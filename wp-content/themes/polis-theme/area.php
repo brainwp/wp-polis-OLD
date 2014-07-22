@@ -149,9 +149,9 @@
 
         </div>
 
-        <div class="prev-slider" id="noticias-prev-slider-<?php echo $cat; ?>"></div>
+        <div class="prev-slider noticias-prev-slider" id="noticias-prev-slider-<?php echo $cat; ?>"></div>
 
-        <div class="next-slider" id="noticias-next-slider-<?php echo $cat; ?>"></div>
+        <div class="next-slider noticias-next-slider" id="noticias-next-slider-<?php echo $cat; ?>"></div>
 
         <div class="clear"></div>
 
@@ -299,9 +299,9 @@
             </ul>
         </div>
 
-        <div class="prev-slider" id="acoes-prev-slider-<?php echo $cat; ?>"></div>
+        <div class="prev-slider acoes-prev-slider" id="acoes-prev-slider-<?php echo $cat; ?>"></div>
 
-        <div class="next-slider" id="acoes-next-slider-<?php echo $cat; ?>"></div>
+        <div class="next-slider acoes-next-slider" id="acoes-next-slider-<?php echo $cat; ?>"></div>
 
         <div class="clear"></div>
 

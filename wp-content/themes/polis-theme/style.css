@@ -656,7 +656,7 @@ object {
 .area-main .inclusao-e-sustentabilidade-icon{
 	width:167px;
 	height:185px;
-	background: url(img/areas/inclusao-e-sustentabilidade-icon.png) no-repeat;
+	background: url('img/areas/inclusao-e-sustentabilidade-icon.png') no-repeat;
 	position: absolute;
 	bottom:-70px;
 	margin-left:18px;
@@ -680,7 +680,7 @@ object {
 	float: left;
 	padding-left:18%;
 	width: 70%;
-	margin-top: 30px;
+	margin-top: 80px;
 }
 .header-area .left h1{
 	width: 100%;
@@ -773,7 +773,7 @@ object {
 	left:-11px;
 	width:40px;
 	height:40px;
-	margin-top: 215px;
+	margin-top: 165px;
 	cursor:pointer;
 	z-index:99;
 }
@@ -783,10 +783,19 @@ object {
 	z-index:99;
 	width:40px;
 	height:40px;
-	margin-top:215px;
+	margin-top:165px;
 	cursor:pointer;
 	z-index:99;
 }
+
+.noticias-prev-slider, .noticias-next-slider {
+	margin-top: 180px !important;
+}
+
+.acoes-prev-slider, .acoes-next-slider {
+	margin-top: 205px !important;	
+}
+
 .democracia-e-participacao .tabDetails .prev-slider{
 	background:url(img/areas/anterior.png) no-repeat;
 }
@@ -1483,6 +1492,9 @@ slider de noticias + acoes
 	float: left;
 	border: 3px solid #FFF;
 	position: relative;
+}
+.publicacoes-slider li {
+	max-width: 300px;
 }
 #slider2 li:hover, .publicacoes-slider li:hover{
 	outline: 3px solid #CCC;
