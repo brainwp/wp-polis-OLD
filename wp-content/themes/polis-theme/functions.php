@@ -92,7 +92,7 @@ add_action( 'after_setup_theme', 'polis_theme_setup' );
 /* Adiciona tamanhos de imagens */
 function custom_images() {
 	if ( function_exists( 'add_image_size' ) ) {
-		add_image_size( 'busca-thumb', 87, 130, true );
+		/*add_image_size( 'busca-thumb', 87, 130, true );*/
 		add_image_size( 'slider-news-image', 615, 171 );
 		add_image_size( 'news-image-horizontal', 700, 200 );
 		add_image_size( 'slider-publicacoes-image', 151, 228 );

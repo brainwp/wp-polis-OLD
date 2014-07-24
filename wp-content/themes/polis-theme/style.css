@@ -2490,7 +2490,7 @@ slider de noticias + acoes
 	padding:0;
 }
 .th img{
-	height:180px;
+	/*height:180px;*/
 }
 .item, .item *{
 	padding:0;
@@ -2522,7 +2522,7 @@ slider de noticias + acoes
 	margin-top:5px;
 }
 .item .col-md-5{
-	margin-top:10px;
+	margin-left:20px;
 }
 .item .search_title{
 	margin-left:10px;
@@ -2536,9 +2536,9 @@ slider de noticias + acoes
 	opacity:0.85;
 }
 .item .infos{
-	position: absolute;
-	left:87px;
-	bottom:0;
+	position:absolute;
+	left:160px;
+	bottom:20px;
 	background:#cfcfcf;
 	padding-left:15px;
 	padding-top:7px;
@@ -2553,7 +2553,7 @@ slider de noticias + acoes
 }
 .item .infos .download{
 	position: absolute;
-	right:0;
+	right:18px;
 	top:0;
 	padding:15px;
 	padding-top:7px;
@@ -2671,16 +2671,19 @@ slider de noticias + acoes
 #ajax-biblioteca-sub-count.inclusao-e-sustentabilidade{
     background:#95AD5F;
 }
+.col-md-12.results{
+	padding-bottom: 25px;
+	padding-top: 10px;
+}
 .results .key{
+	color:#1e5c7a;
     font-family:'Bitter', serif;
     font-weight:bold;
     font-size:25px;
-    color:#1e5c7a;
     display:block;
     float:left;
+	padding:5px 0 10px 0;
     width:100%;
-    padding-top:15px;
-    padding-bottom:15px;
 }
 .results .area{
     font-size:20px;
@@ -2734,21 +2737,34 @@ slider de noticias + acoes
 #ajax-counter a.inclusao-e-sustentabilidade, .biblioteca-main.inclusao-e-sustentabilidade a.bt{
     background:#95AD5F;
 }
-.biblioteca-main.democracia-e-participacao .th img{
+
+.tab-pane.democracia-e-participacao {
     border-left:10px solid #A22521;
+    overflow: hidden;
 }
-.biblioteca-main.cidadania-cultural .th img{
+.tab-pane.cidadania-cultural {
     border-left:10px solid #B7913E;
+    overflow: hidden;
 }
-.biblioteca-main.reforma-urbana .th img{
+.tab-pane.reforma-urbana {
     border-left:10px solid #516D33;
+    overflow: hidden;
 }
-.biblioteca-main.inclusao-e-sustentabilidade .th img{
+.tab-pane.inclusao-e-sustentabilidade {
     border-left:10px solid #95AD5F;
+    overflow: hidden;
+}
+.col-md-9.right.search-ctn {
+	padding-right: 0 !important;
 }
 .search-ctn{
     padding-left:0;
 }
+
+.search-ctn .item {
+	padding: 20px 0;
+}
+
 .biblioteca-main{
     background:white;
 }

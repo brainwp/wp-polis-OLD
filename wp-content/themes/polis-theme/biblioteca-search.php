@@ -92,7 +92,7 @@ $total_pages = ceil($total_posts / $per_page);
             <div class="col-md-12 results">
                 <?php $cat_info = get_term_by('slug', $_GET['area'], 'areas'); ?>
                 <?php if (!empty($key) && empty($_GET['categoria'])): ?>
-                    <span class="key">Resultados para '<?php echo $key; ?>'</span>
+                    <span class="key"><span class="cinza">Resultados para</span> '<?php echo $key; ?>'</span>
                 <?php endif; ?>
                 <?php if (!empty($key) && empty($_GET['categoria'])): ?>
                     <span class="area <?php echo $_GET['area']; ?>">Em <?php echo $cat_info->name; ?></span>
@@ -170,7 +170,7 @@ $total_pages = ceil($total_posts / $per_page);
                     }
                     if ($i == 1) {
                     ?>
-                    <div class="tab-pane" id="tab-<?php echo $slug[$i]['term_slug'] ?>"
+                    <div class="tab-pane <?php echo $_GET['area']; ?>" id="tab-<?php echo $slug[$i]['term_slug'] ?>"
                          data-nav="tab-nav-<?php echo $slug[$i]['term_slug'] ?>">
                         <?php
                         }
@@ -179,14 +179,14 @@ $total_pages = ceil($total_posts / $per_page);
                             <a href="<?php echo $slug[$i]['link'] ?>" class="th">
                                 <?php
                                 if (has_post_thumbnail($slug[$i]['id'])) {
-                                    echo get_the_post_thumbnail($slug[$i]['id'], 'busca-thumb');
+                                    echo get_the_post_thumbnail($slug[$i]['id'], 'slider-publicacoes-thumb');
                                 } else {
-                                    echo '<img width="87" height="130" src="'.get_bloginfo('template_url').'/img/default-publicacoes-thumb.jpg">';
+                                    echo '<img width="160" height="240" src="'.get_bloginfo('template_url').'/img/default/thumb-default-publicacoes.jpg">';
                                 }
                                 ?>
                             </a>
 
-                            <div class="col-md-5 search_title">
+                            <div class="col-md-4 search_title">
                                 <div class="col-md-12">
                                     <a class="titulo"
                                        href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['title']; ?></a>
