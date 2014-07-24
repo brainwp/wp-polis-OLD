@@ -6,8 +6,8 @@
     $anomin = ( isset( $_GET['anomin'] ) ) ? $_GET['anomin'] : '';
     $anomax = ( isset( $_GET['anomax'] ) ) ? $_GET['anomax'] : '';
     ?>
-    <div class="col-md-6 col-md-offset-2">
-        <label class="pull-left">Biblioteca</label>
+    <div class="col-md-6 col-md-offset-2 content-search-mini">
+        <label class="">Biblioteca</label>
         <input id="key" name="key" class="col-md-8 pull-left" placeholder="Faça uma nova busca" value="<?php echo $key?>"/>
         <span class="right glyphicon glyphicon-search" id="busca-biblioteca-mini-bt"></span> <!-- icone de search !-->
         <input type="hidden" id="categoria-hidden" name="categoria" value="<?php echo $categoria;?>"/>
