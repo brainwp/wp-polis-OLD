@@ -164,7 +164,7 @@
 
         <div class="section-title">
             <h3>Publicações</h3>
-            <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+            <a href="<?php echo home_url('/publicacoes'); ?>" class="col-md-1 shape-todos">Ver todos</a>
         </div><!-- section-title -->
 
         <div class="col-md-12 list_carousel responsive">
@@ -276,7 +276,7 @@
                 <?php
                 $noticias = new WP_Query( $args ); // exclude category
                 while ($noticias->have_posts()) : $noticias->the_post(); ?>
-                    <li class="item">
+                    <li class="item item-slider">
                         <a href="<?php the_permalink(); ?>" class="post">
                             <div class="post_container">
                                 <div class="thumb">
@@ -289,10 +289,13 @@
                                 </div><!-- thumb -->
                                 <div class="col-md-12 description">
                                     <h3><?php the_title(); ?></h3>
-                                    <?php echo resumo(150); ?>
-                                    <span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
+                                    <?php echo resumo( '140' ); ?>
+
+                                    <div class="footer-item">
+                                        <span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
+                                    </div><!-- .footer-item -->
                                 </div><!-- .description -->
-                            </div><!-- post_container -->
+                            </div><!-- post_container .item-slider-padrao -->
                         </a>
                     </li>
                 <?php endwhile; ?>
