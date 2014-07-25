@@ -12,11 +12,9 @@ get_header();?>
         <div class="header-area col-md-12">
             <h1>Publicações</h1>
         </div>
-        <div class="col-md-5 intro <?php echo $_query->area_slug ?>">
-            <span>Todas Publicações</span>
-        </div>
     </section>
     <section class="col-md-12 atividades archive-publicacoes">
+        <?php $count = ''; ?>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <a href="<?php the_permalink(); ?>" class="col-md-3 post">
                 <div class="post_container">
@@ -36,7 +34,16 @@ get_header();?>
                     </div>
                 </div>
                 <!-- post_container -->
+
+            <?php $count++; ?>
+
             </a>
+
+            <?php if ( $count >= 4 ) : ?>
+                <div class="clear"></div>
+                <?php $count = ''; ?>
+            <?php endif; ?>
+
         <?php endwhile;
         else: ?>
 

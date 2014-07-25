@@ -2126,6 +2126,7 @@ slider de noticias + acoes
 .atividades{
 	min-height: 400px;
 	background:#ededed;
+	padding-top: 25px;
 }
 .atividades .col-md-3.post {
 	padding: 0 10px;
@@ -2861,6 +2862,7 @@ header.mini{
 .each-video .content .resumo h2 {
 	text-align: center;
 	margin: 15px 0 15px;
+	font-size: 1.3em;
 }
 
 .cinza {
