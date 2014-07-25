@@ -17,7 +17,7 @@
     <div class="col-md-6 post">
         <a class="link" href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
             <span class="text">
-                <?php echo resumo(); ?>
+                <?php echo resumo('500'); ?>
             </span>
         <a class="leia" href="<?php the_permalink(); ?>">Leia Mais</a>
     </div>

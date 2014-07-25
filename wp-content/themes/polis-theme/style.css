@@ -950,10 +950,10 @@ a{
 	color:white;
 }
 .header .description label{
-	color:white;
+	color: white;
 	text-transform: uppercase;
-	margin-right:10px;
-	letter-spacing: 3px;
+	margin-right: 10px;
+	letter-spacing: 1px;
 }
 .header .description input:hover,.header .description input:focus{
 	box-shadow:0;
@@ -967,15 +967,15 @@ a{
 	font-size: 0.9em;
 }
 .header .description span{
-	font-size:18px;
-	color:white;
-	margin-left:10px;
-    cursor:pointer;
+	font-size: 18px;
+	color: white;
+	margin-left: 10px;
+    cursor: pointer;
 }
 /* fim do header
 menu de navegação */
 .nav {
-	background:#1f5c7b;
+	background: #1f5c7b;
 }
 .nav ul.menu {
 	height: 46px;
@@ -985,19 +985,15 @@ menu de navegação */
 	float: left;
 }
 .nav ul li a{
-	display:block;
-	float:left;
-	padding-top:10px;
-	padding-bottom: 10px;
-	padding-left:10px;
-	padding-right: 10px;
+	display: block;
+	float: left;
+	padding: 10px;
 	font-size:1.1em;
-	font-weight: bold;
 	letter-spacing: 1px;
-	text-transform:uppercase;
+	text-transform: uppercase;
 	text-decoration: none;
 	color: #FFF;
-	margin-left:10px;
+	margin: 0 10px;
 }
 .nav ul li a:hover, .nav ul li .atual{
 	background:#3a84a7;
@@ -1560,8 +1556,8 @@ slider de noticias + acoes
 /* footer */
 #footer{
 	padding: 20px 40px;
-	background:rgba(79,130,157,1);
-    opacity:0.9;
+	background: #083b54;
+    opacity: 0.9;
 }
 #footer .menu{
 	padding-left:5px;
