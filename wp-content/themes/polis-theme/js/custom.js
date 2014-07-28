@@ -165,7 +165,8 @@ jQuery(document).ready(function () {
             prev: '#publicacoes-prev-slider-' + _first,
             next: '#publicacoes-next-slider-' + _first,
             responsive: true,
-            width: '97%',
+            width: '100%',
+            height: 340,
             scroll: {
                 items: 1,
                 pauseOnHover: true
@@ -174,7 +175,7 @@ jQuery(document).ready(function () {
                 width: 250,
                 visible: {
                     min: 1,
-                    max: 5
+                    max: 4
                 }
             }
         });
