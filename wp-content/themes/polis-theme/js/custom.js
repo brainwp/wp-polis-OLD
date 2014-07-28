@@ -184,7 +184,8 @@ jQuery(document).ready(function () {
             prev: '#acoes-prev-slider-' + _first,
             next: '#acoes-next-slider-' + _first,
             responsive: true,
-            width: '97%',
+            width: '100%',
+            height: 390,
             scroll: {
                 items: 1,
                 pauseOnHover: true

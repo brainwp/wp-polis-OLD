@@ -245,7 +245,7 @@
 
     </div>
 
-    <div class="cada-loop-aba publicacoes">
+    <div class="cada-loop-aba acoes">
 
         <div class="section-title">
             <h3>Ações</h3>
@@ -270,40 +270,39 @@
                     )
                 );
             ?>
-
+            <!-- Slider de Ações -->
             <ul id="acoes-slider-<?php echo $cat; ?>">
 
                 <?php
                 $noticias = new WP_Query( $args ); // exclude category
                 while ($noticias->have_posts()) : $noticias->the_post(); ?>
                     <li class="item item-slider">
-                        <a href="<?php the_permalink(); ?>" class="post">
-                            <div class="post_container">
-                                <div class="thumb">
+                        <div class="post_container">
+                            <div class="thumb">
+                                <a href="<?php the_permalink(); ?>">
                                     <?php
                                     if (has_post_thumbnail()) {
                                         the_post_thumbnail('medium');
                                     } else {
                                         echo '<img src="' . theme() . '/img/thumb-equipe.png">';
                                     } ?>
-                                </div><!-- thumb -->
-                                <div class="col-md-12 description">
-                                    <h3><?php the_title(); ?></h3>
-                                    <?php echo resumo( '140' ); ?>
+                                </a>
+                            </div><!-- thumb -->
+                            <div class="col-md-12 description">
+                                <h3><?php the_title(); ?></h3>
+                                <?php echo resumo( '150' ); ?>
 
-                                    <div class="footer-item">
-                                        <span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
-                                    </div><!-- .footer-item -->
-                                </div><!-- .description -->
-                            </div><!-- post_container .item-slider-padrao -->
-                        </a>
+                            </div><!-- .description -->
+                        <div class="footer-item">
+                            <a class="leia" href="<?php the_permalink(); ?>">Leia mais</a>
+                        </div><!-- .footer-item -->
+                        </div><!-- post_container .item-slider -->
                     </li>
                 <?php endwhile; ?>
             </ul>
         </div>
 
         <div class="prev-slider acoes-prev-slider" id="acoes-prev-slider-<?php echo $cat; ?>"></div>
-
         <div class="next-slider acoes-next-slider" id="acoes-next-slider-<?php echo $cat; ?>"></div>
 
         <div class="clear"></div>

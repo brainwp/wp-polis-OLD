@@ -624,86 +624,102 @@ object {
 }
 
 /* Item padrao Sliders */
-.item-slider {
 
+.cada-loop-aba .list_carousel .caroufredsel_wrapper {
+	margin-left: 0 !important;
+}
+
+.list_carousel {
+	margin-top: 20px;
 }
 
 .item-slider {
-	height: 370px;
+}
+
+.list_carousel li.item-slider {
+	height: 380px;
 	overflow: hidden;
 	position: relative;
+	padding: 10px;
+	background: transparent;
+	margin: 0;
 }
 
-.post_container{
+.list_carousel li.item-slider div.post_container {
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
-	background: white;
+	background: #FFF;
 	overflow: hidden;
-	max-width: 300px;
+	max-width: 320px;
 	height: 100%;
 }
-.post_container:hover{
-	transition:linear 400ms all;
-	box-shadow: 2px 4px 8px 0.5px rgba(0,0,0,0.50);
+
+.list_carousel li.item-slider div.post_container:hover {
+	transition:linear 300ms all;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.5);
 }
-.item-slider .post_container .thumb{
-	width:100%;
-	height: 150px;
+.list_carousel li.item-slider div.post_container div.thumb {
+	width: 100%;
+	height: 140px;
 	transition:linear 400ms all;
 	position: relative;
+	overflow: hidden;
 }
-.post_container .thumb img{
-	width:100%;
-	max-height:163px;
+.list_carousel li.item-slider div.post_container div.thumb a {
+	padding: 0;
 }
-.post_container .thumb h3{
-	font-family: 'Bitter', serif;
-	font-weight: bold;
-	color: white;
-	position: absolute;
-	text-align: center;
-	margin-top: 3em;
-	width: inherit;
-	top:0;
-	text-shadow: 0px 2px 10px rgba(150, 150, 150, 0.9);
+.list_carousel li.item-slider div.post_container div.thumb img:hover {
+	margin-top: -2px;
 }
-.post_container .description{
+.list_carousel li.item-slider div.post_container div.thumb img {
+	width: 100%;
+	max-height: 160px;
+}
+.list_carousel li.item-slider div.post_container div.description {
+	color: #333;
 	font-size: 0.9em;
     line-height: 1.3;
     margin: 5px 0 15px;
     overflow: hidden;
 	font-family:'Source Sans Pro', sans-serif;
     padding: 5px 20px 40px 20px;
-    position: relative;
+    width: 100%;
 }
-.post_container .description h3 {
-	margin: 0 auto 10px auto;
+.list_carousel li.item-slider div.post_container div.description h3{
+	font-family: 'Bitter', serif;
+	font-size: 1.4em;
+	line-height: 1.3em;
+	padding: 10px 0 3px;
+	text-align: center;
+	width: inherit;
 }
-
-.item-slider .post_container .description .footer-item {
-	background-color: #FFF;
+.list_carousel li.item-slider div.post_container div.footer-item {
+	background: url('img/bg-footer-item.png') repeat-x;
+	bottom: 0;
+	height: 150px;
 	width: 100%;
 	overflow: hidden;
 	position: absolute;
-	bottom: 0;
+	z-index: 2;
+	margin: 0 auto;
 }
 
-.post_container .description .leia{
-    background-color: #58595B;
+.list_carousel li.item-slider div.post_container div.footer-item a.leia {
+    background: #58595B;
     border-radius: 3px;
-    bottom: 0;
     clear: both;
     color: #FFFFFF;
     display: inline-block;
-    font-size: 0.8em;
-    font-weight: bold;
+    font-size: 0.7em;
+    margin: 110px 10px 0 0;
     padding: 5px 7px;
-    position: absolute;
-    right: 15px;
     text-transform: uppercase;
 	border: 0 !important;
-	font-family: 'Source Sans Pro';
+	font-family: 'Bitter', serif;
+	float: right;
 }
 
 /* Area */
@@ -1438,7 +1454,7 @@ slider de noticias + acoes
 	display: none;
 }
 .canal .btn-ao-vivo { display: none; }
-.publicacoes {
+.publicacoes, .acoes {
 	overflow: hidden;
 	position: relative;
 }
@@ -1446,10 +1462,10 @@ slider de noticias + acoes
 	background:#c0c0c0;
 	color:white;
 }
-.publicacoes .section-title {
+.publicacoes .section-title, .acoes .section-title {
 	margin: 0 auto 20px;
 }
-.publicacoes .section-title h3 {
+.publicacoes .section-title h3, .acoes .section-title h3 {
 	float: left;
 	width: auto;
 	display: inline-block;
@@ -1457,7 +1473,7 @@ slider de noticias + acoes
 	color: #005E8C;
 	font-weight: bold;
 }
-.publicacoes .section-title .shape-todos {
+.publicacoes .section-title .shape-todos, .acoes .section-title .shape-todos {
 	text-align: center;
 	margin-top: 5px;
 	padding: 3px;
@@ -1470,7 +1486,7 @@ slider de noticias + acoes
 	text-decoration: none;
 	text-transform: uppercase;
 }
-.publicacoes .section-title .shape-todos:hover {
+.publicacoes .section-title .shape-todos:hover, .acoes .section-title .shape-todos:hover {
 	background: #055C91;
 }
 .publicacoes .list_carousel {
