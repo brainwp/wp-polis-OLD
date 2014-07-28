@@ -146,7 +146,8 @@ jQuery(document).ready(function () {
             prev: '#noticias-prev-slider-' + _first,
             next: '#noticias-next-slider-' + _first,
             responsive: true,
-            width: '97%',
+            width: '100%',
+            height: 400,
             scroll: {
                 items: 1,
                 pauseOnHover: true

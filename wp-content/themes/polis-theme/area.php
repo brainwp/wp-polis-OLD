@@ -117,31 +117,38 @@
             <ul id="noticias-slider-<?php echo $cat; ?>" class="noticias">
 
                 <?php
-                $noticias = new WP_Query( $args ); // exclude category
-                while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
+                    $noticias = new WP_Query( $args );
+                    while ( $noticias->have_posts() ) : $noticias->the_post();
+                    $terms = terms('areas');
+                    $terms = explode(',', $terms);
+                ?>
+                    
+                    <li class="item item-slider noticias">
+                        <div class="post_container">
+                            <div class="thumb">
+                                <div class="caption-container">
+                                    <small class="caption"><?php echo $terms[0]; ?></small>
+                                </div>
 
-                    <li class="col-xs-12 item">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php $terms = terms('areas'); ?>
-                            <?php $terms = explode(',', $terms); ?>
-                            <?php
-                            if (has_post_thumbnail()) {
-                                $thumb_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'slider-publicacoes-image', true);
-                                echo '<img src="' . $thumb_url[0] . '"/>';
-                            } else {
-                                echo '<img src="'  . get_bloginfo('template_url') . '/img/thumb-noticias.png"/>';
-                            }
-                            ?>
-                            <div class="caption-container">
-                                <small class="caption"><?php echo $terms[0]; ?></small>
-                            </div>
-                            <div class="col-md-12 resumo">
-                                <h2 class="title"><?php the_title(); ?></h2>
-                                <p><?php echo resumo(); ?></p>
-                            </div><!-- .resumo -->
-                        </a>
-
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php
+                                    if (has_post_thumbnail()) {
+                                        the_post_thumbnail('medium');
+                                    } else {
+                                        echo '<img src="' . theme() . '/img/thumb-equipe.png">';
+                                    } ?>
+                                </a>
+                            </div><!-- thumb -->
+                            <div class="col-md-12 description">
+                                <h3><?php the_title(); ?></h3>
+                                <?php echo resumo( '150' ); ?>
+                            </div><!-- .description -->
+                        <div class="footer-item">
+                            <a class="leia bg-<?php echo sanitize_title( $terms[0] ); ?>" href="<?php the_permalink(); ?>">Leia mais</a>
+                        </div><!-- .footer-item -->
+                        </div><!-- post_container .item-slider -->
                     </li>
+
 
                 <?php endwhile; ?>
 
@@ -180,7 +187,7 @@
                             'field' => 'id',
                             'terms' => $cat,
                             'include_children' => true,
-                            'posts_per_page' => 4,
+                            'posts_per_page' => 10,
                         )
                     )
                 );
