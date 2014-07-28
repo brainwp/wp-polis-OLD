@@ -866,7 +866,18 @@ object {
 .inclusao-e-sustentabilidade .shape-todos:hover, .inclusao-e-sustentabilidade .tabDetails .item .caption{
 	background:#95AD5F !important;
 }
-.tabDetails .prev-slider{
+
+.biblioteca .prev-slider{
+	left: 10px;
+	margin-top: -200px;
+}
+
+.biblioteca .next-slider{
+	right: 10px;
+	margin-top: -200px;
+}
+
+.prev-slider{
 	position: absolute;
 	left:-11px;
 	width:40px;
@@ -875,7 +886,7 @@ object {
 	cursor:pointer;
 	z-index:99;
 }
-.tabDetails .next-slider{
+.next-slider{
 	position: absolute;
 	right:-11px;
 	z-index:99;
@@ -892,6 +903,13 @@ object {
 
 .acoes-prev-slider, .acoes-next-slider {
 	margin-top: 205px !important;	
+}
+
+.prev-slider{
+	background:url(img/areas/anterior.png) no-repeat;
+}
+.next-slider{
+	background:url(img/areas/proxima.png) no-repeat;
 }
 
 .democracia-e-participacao .tabDetails .prev-slider{
@@ -2308,12 +2326,6 @@ slider de noticias + acoes
 .post_container .links .leia{
 	background:#1e5c7a;
 }
-.livros_section .caroufredsel_wrapper{
-	height:320px !important;
-}
-.livros img{
-	height:250px;
-}
 .livros a .hover-icon{
 	transition:400ms all ease;
 	margin-top:-150px;
@@ -2365,21 +2377,35 @@ slider de noticias + acoes
 	text-decoration: none;
 	background:#1e5c7a;
 }
-.biblioteca-main section{
-	padding-left:100px;
-	padding-right:100px;
+.biblioteca-main section {
+	background: #ededed;
+	padding: 30px 20px;
+	overflow: hidden;
+	position: relative;
+	margin-top: 0;
 }
+
+section.biblioteca.documentos_e_textos {
+	background-color: #F7F7F7;
+}
+
+section.biblioteca.institucionais {
+	background-color: #ededed;
+}
+
+section.biblioteca.livros_section {
+	border-top: 1px solid #C0C0C0;
+}
+
 @media only screen and (max-width: 40em) {
 	.biblioteca-main section{
-		padding:0;
+		padding: 5px;
 	}
 }
-.biblioteca-main .busca{
+
+.biblioteca-main .busca {
 	background: #ededed;
-	padding:0;
-	padding-bottom:20px;
-    padding-right:80px;
-    padding-left:80px;
+	padding: 0 80px 30px 80px;
 }
 .biblioteca-main .busca .intro{
 	font-family:'Bitter', sans-serif;
@@ -3089,10 +3115,10 @@ nav.nav img{
     padding-right:5px;
 }
 .biblioteca-main .section-title{
-    padding-bottom: 20px;
+    padding: 5px 0 25px 10px;
 }
 .biblioteca-main .next{
-    right:80px;
+    right: 80px;
     top: 170px;
 }
 .biblioteca-main .prev{

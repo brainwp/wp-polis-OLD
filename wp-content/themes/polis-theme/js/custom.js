@@ -182,6 +182,66 @@ jQuery(document).ready(function () {
         });
     }
     if ($(window).width() > 700) {
+        $('.publicacoes-slider').carouFredSel({
+            prev: '#prev-biblioteca-series',
+            next: '#next-biblioteca-series',
+            responsive: true,
+            width: '100%',
+            height: 340,
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 1,
+                    max: 4
+                }
+            }
+        });
+    }
+    if ($(window).width() > 700) {
+        $('.documentos-slider').carouFredSel({
+            prev: '#prev-biblioteca-documentos',
+            next: '#next-biblioteca-documentos',
+            responsive: true,
+            width: '100%',
+            height: 340,
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 1,
+                    max: 4
+                }
+            }
+        });
+    }
+    if ($(window).width() > 700) {
+        $('.institucionais-slider').carouFredSel({
+            prev: '#prev-biblioteca-institucionais',
+            next: '#next-biblioteca-institucionais',
+            responsive: true,
+            width: '100%',
+            height: 340,
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 1,
+                    max: 4
+                }
+            }
+        });
+    }
+    if ($(window).width() > 700) {
         $('#acoes-slider-' + _first).carouFredSel({
             prev: '#acoes-prev-slider-' + _first,
             next: '#acoes-next-slider-' + _first,
