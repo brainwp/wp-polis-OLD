@@ -151,6 +151,11 @@ function _query_processor( $query ) {
         _query_noticias_acoes();
 
     }
+    elseif ( get_query_var( 'template' ) == 'archive-publicacoes' ) {
+
+        _query_archive_publicacoes();
+
+    }
     elseif ( get_query_var( 'template' ) == 'canal' ) {
 
         _query_canal();
@@ -161,7 +166,23 @@ function _query_processor( $query ) {
 
 	/* Put something here to do suff in all queries */
 }
+function _query_archive_publicacoes(){
+    global $_query;
 
+    $page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $per_page = 30;
+
+    $args = array(
+        'post_type'			=> array( 'publicacoes'),
+        'posts_per_page'	=> $per_page,
+        'paged'             => $page
+    );
+
+    $wp_query = new WP_Query($args);
+    $_query->_page = $page;
+    $_query->total_pages = $wp_query->max_num_pages;
+
+}
 function _query_canal(){
     
 	global $_query;
@@ -253,9 +274,6 @@ function _query_projetos(){
 
     $_query->projetos_tax_slug = $aba;
     $_query->total_pages = $wp_query->max_num_pages;
-}
-function _pre_membros(){
-
 }
 function _query_equipe(){
 
@@ -753,6 +771,23 @@ function _title( $title ) {
         } else {
 
             $title = get_bloginfo( 'name' ) . ' | Notícias e Ações | Página ' . $_query->_page;
+
+            return $title;
+
+        }
+
+    }
+    elseif ( $_query->template == 'archive-publicacoes' ) {
+
+        if ( $_query->_page == 1 ) {
+
+            $title = 'Publicações | ' . $title = get_bloginfo( 'name' ) ;
+
+            return $title;
+
+        } else {
+
+            $title = get_bloginfo( 'name' ) . ' | Publicações | Página ' . $_query->_page;
 
             return $title;
 

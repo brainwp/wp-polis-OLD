@@ -24,5 +24,7 @@ function _query_rules () {
         '^projetos/tipo/([^/]+)/page/([^/]+)/?$' => 'template=projetos&aba=$matches[1]&paged=$matches[2]',
         '^area/([^/]+)/?$' => 'template=area&area=$matches[1]',
 		'^area/([^/]+)/([^/]+)/?$' => 'template=index&area_archive=$matches[1]&area=$matches[2]',
-	);
+        '^publicacoes/?$' => 'template=archive-publicacoes',
+        '^publicacoes/page/([^/]+)/?$' => 'template=archive-publicacoes&paged=$matches[1]',
+    );
 }

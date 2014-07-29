@@ -2303,7 +2303,7 @@ slider de noticias + acoes
 		min-height: 1100px;
 	}
 }
-.biblioteca{
+.biblioteca:first-child{
 	margin-top:20px;
 }
 .post_container .links{
@@ -3266,5 +3266,13 @@ nav.nav img{
         height:auto;
     }
 
+}
+.rm-border{
+    border:0 !important;
+}
+.rm-border.livros_section{
+    background:#ededed;
+    margin:0;
+    padding-top:10px;
 }
  /* max-width 700px, mobile-only styles
