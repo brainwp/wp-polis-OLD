@@ -1215,10 +1215,10 @@ if(function_exists("register_field_group"))
         'title' => 'Exibir nos Sliders da Biblioteca?',
         'fields' => array (
             array (
-                'key' => 'field_53d7c21fad003',
+                'key' => 'field_53d7c21fad0034334344343',
                 'label' => 'Exibir nos Sliders da Biblioteca?',
                 'name' => 'in_biblioteca_slider',
-                'type' => 'checkbox',
+                'type' => 'radio',
                 'choices' => array (
                     'sim' => 'Sim',
                     'nao' => 'Não',
@@ -1233,6 +1233,45 @@ if(function_exists("register_field_group"))
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'publicacoes',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_exibir-nos-sliders-da-home',
+        'title' => 'Exibir nos Sliders da Home?',
+        'fields' => array (
+            array (
+                'key' => 'field_53d7c21fad003',
+                'label' => 'Exibir nos Sliders da Home?',
+                'name' => 'in_home_slider',
+                'type' => 'radio',
+                'choices' => array (
+                    'sim' => 'Sim',
+                    'nao' => 'Não',
+                ),
+                'default_value' => 'sim',
+                'layout' => 'vertical',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '!=',
+                    'value' => 'post',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),

@@ -81,7 +81,14 @@ get_header(); ?>
                     'post_type' => array('acoes', 'noticias'),
                     'orderby' => 'date',
                     'order' => 'ASC',
-                    'posts_per_page' => 6
+                    'posts_per_page' => 6,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'in_home_slider',
+                            'value' => 'nao',
+                            'compare' => '!='
+                        ),
+                    )
                 ));?>
                 <?php $_i = 0; ?>
                 <?php while ($slider_query->have_posts()) :
@@ -171,7 +178,14 @@ get_header(); ?>
                 'post_type' => array('publicacoes'),
                 'orderby' => 'date',
                 'ordr' => 'ASC',
-                'posts_per_page' => 15
+                'posts_per_page' => 15,
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_home_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
             );
             ?>
             <ul id="slider2">
