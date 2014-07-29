@@ -254,7 +254,9 @@ function _query_projetos(){
     $_query->projetos_tax_slug = $aba;
     $_query->total_pages = $wp_query->max_num_pages;
 }
+function _pre_membros(){
 
+}
 function _query_equipe(){
 
 	global $_query;
@@ -307,7 +309,7 @@ function _query_equipe(){
 
 		$_query->error = false;
 
-	} else {
+    } else {
 
 		$_query->error = true;
 
@@ -343,7 +345,7 @@ function _query_membros(){
 
 		$total_posts = $count;
 
-		$per_page = (int) get_option('equipe-atividades-per-page');
+		$per_page = 4;
 // calculate the total number of pages.
 
 		$offset = $per_page * ( $page - 1 );
@@ -402,10 +404,9 @@ function _query_membros(){
 
 			'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),
 
-			'paged'  => $_query->per_page,
+			'paged'  => $_query->_page,
 
-			'offset'  => $_query->offset // skip the number of users that we have per page
-
+            'post_per_page' => $per_page
 		);
 
 		$wp_query = new WP_Query($args);
