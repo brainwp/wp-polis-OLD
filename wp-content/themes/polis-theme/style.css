@@ -3040,14 +3040,21 @@ header.mini{
 	vertical-align: middle;
 	margin-right: 10px;
 }
-.projetos-main .aba-area .equipe{
+.projetos-main .aba-area .equipe {
     width: 100%;
     margin: 15px auto;
     background: #0f5495;
-	padding: 10px 10px;
+	padding: 20px 20px;
     border-radius: 6px;
 }
-.projetos-main .aba-area .top{
+.sidebar-page .equipe {
+    width: 100%;
+    margin: 30px auto 5px;
+    background: #0f5495;
+	padding: 20px 20px;
+    border-radius: 6px;
+}
+.projetos-main .aba-area .top, .sidebar-page .equipe .top{
     width:100%;
     border-bottom: 3px solid white;
     padding-bottom: 5px;
@@ -3057,7 +3064,7 @@ header.mini{
     font-weight: bold;
     text-align: left;
 }
-.projetos-main .aba-area .equipe .top a:before{
+.projetos-main .aba-area .equipe .top a:before, .sidebar-page .equipe .top a:before {
 	content: "\f110";
 	display: inline-block;
 	-webkit-font-smoothing: antialiased;
@@ -3065,20 +3072,20 @@ header.mini{
 	vertical-align: middle;
 	margin-right: 10px;
 }
-.projetos-main .aba-area .top a {
+.projetos-main .aba-area .top a, .sidebar-page .equipe .top a {
     font-weight: normal;
     text-decoration: none !important;
     color: white;
 }
-.projetos-main .aba-area .equipe ul{
+.projetos-main .aba-area .equipe ul, .sidebar-page .equipe ul {
     list-style-type: none;
     margin: 10px 0;
 }
-.projetos-main .aba-area .equipe ul a{
+.projetos-main .aba-area .equipe ul a, .sidebar-page .equipe ul a  {
     font-size: 14px;
     color:white;
 }
-.projetos-main .aba-area .equipe .detalhes{
+.projetos-main .aba-area .equipe .detalhes, .sidebar-page .equipe .detalhes {
 	padding: 7px 0;
 }
 .projetos-main .aba-area .post_content{
