@@ -7,12 +7,7 @@
  */
 ?>
 <section class="col-md-12 biblioteca publicacoes livros_section">
-				<?php if ( is_user_logged_in() ) {
-    // Verifica se user está logado e seta uma variavel pra comparar o CUSTOM POST FIELD assim não preciso fazer 2 querys pra cada
-    $compare_value = array( 'sim', 'nao' );
-} else {
-    $compare_value = array( 'nao' );
-}
+<?php
 				$args = array(
                     'tax_query'  => array(
                         array(
@@ -25,11 +20,11 @@
                     ),
                     'meta_query' => array(
                         array(
-                            'key'     => 'isprivate',
-                            'value'   => $compare_value,
-                            'compare' => 'IN',
+                            'key' => 'in_biblioteca_slider',
+                            'value' => 'nao',
+                            'compare' => 'NOT LIKE'
                         ),
-                    ),
+                    )
                 );
 				$series = new WP_Query( $args ); ?>
 
@@ -106,11 +101,11 @@
         ),
         'meta_query' => array(
             array(
-                'key'     => 'isprivate',
-                'value'   => $compare_value,
-                'compare' => 'IN',
+                'key' => 'in_biblioteca_slider',
+                'value' => 'nao',
+                'compare' => '!='
             ),
-        ),
+        )
     );
     $series = new WP_Query( $args ); ?>
     <header class="section-title">
@@ -185,16 +180,16 @@
         ),
         'meta_query' => array(
             array(
-                'key'     => 'isprivate',
-                'value'   => $compare_value,
-                'compare' => 'IN',
+                'key' => 'in_biblioteca_slider',
+                'value' => 'nao',
+                'compare' => '!='
             ),
-        ),
+        )
     );
     $series = new WP_Query( $args ); ?>
     <header class="section-title">
         <h3>Institucionais</h3>
-        <a href="http://dev.matheusgimenez.com/polis/publicacoes" class="col-md-1 shape-todos">Ver todos</a>
+        <a href="" class="col-md-1 shape-todos">Ver todos</a>
     </header>
     <ul class="list_carousel institucionais-slider">
     <?php while ( $series->have_posts() ) :
