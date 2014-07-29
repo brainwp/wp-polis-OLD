@@ -40,6 +40,7 @@ get_header();?>
                         </li>
                     </ul>
                 </div>
+
                 <section class="col-md-12 tabDetails atividades">
                     <div class="tabContents aba-area">
                         <?php // aqui vai o loop ?>

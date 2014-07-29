@@ -1223,7 +1223,7 @@ if(function_exists("register_field_group"))
                     'sim' => 'Sim',
                     'nao' => 'Não',
                 ),
-                'default_value' => 'sim',
+                'default_value' => 'nao',
                 'layout' => 'vertical',
             ),
         ),

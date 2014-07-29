@@ -7,50 +7,69 @@
 
 get_header(); ?>
 
-<section class="col-md-12 content-single-areas projetos-single">
+<main id="main" class="site-main projetos-main" role="main">
 
-    <?php while (have_posts()) : the_post(); ?>
-        <?php $single_id = get_the_ID(); ?>
-        <header>
-            <h1><?php top_term('categorias'); ?></h1><span
-                class="marcador">•</span><span><?php cpt_name(); ?></span><span
-                class="marcador">•</span><span><?php echo terms('tipos'); ?></span>
-        </header><!-- header -->
+<div class="header-area single-projetos ol-md-12">
+    <h1>Projeto</h1>
+</div><!-- header-area col-md-12 projetos-main -->
 
-        <article class="col-md-12 pull-left">
+    <section class="col-md-12 content-single <?php top_term( 'categorias', 'slug' ); ?>">
+
+        <?php while ( have_posts() ) : the_post(); ?>
+
+        <article class="col-md-8 pull-left">
+            <h1><?php the_title(); ?></h1>
+            
             <div class="thumb">
-                <?php if (has_post_thumbnail()) {
-                    the_post_thumbnail('slider-publicacoes-thumb');
-                } else {
-                    ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg"
-                         alt="<?php the_title(); ?>"/>
+                <?php if ( has_post_thumbnail() ) {
+                    the_post_thumbnail( 'single-noticias-thumb' );
+                } else { ?>
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/default700x200.jpg" alt="<?php the_title(); ?>" />
                 <?php } ?>
-            </div>
-            <!-- thumb -->
-            <div class="content">
-                <h2><?php the_title(); ?></h2>
-                <?php the_content(); ?>
-                <?php if (get_field('projetos_repeater', $single_id)): ?>
-                    <div class="meta">
-                        <h2>Equipe</h2>
-                        <?php while (has_sub_field('projetos_repeater', $single_id)): ?>
-                            <span><?php the_sub_field('projetos_nome'); ?></span>
-                            <span><?php the_sub_field('projetos_email'); ?></span>
-                            <span><?php the_sub_field('projetos_telefone'); ?></span>
-                        <?php endwhile; ?>
-                    </div><!-- meta -->
-                <?php endif; ?>
-            </div>
-            <!-- content -->
+            </div><!-- thumb -->
+
+            <?php the_content(); ?>
         </article>
+        <aside class="col-md-4 pull-right sidebar-page">
 
-    <?php endwhile; // end of the loop. ?>
+             <div class="col-lg-12 clear"></div>
+            <?php if (get_field('projetos_repeater')): ?>
+            <aside class="equipe">
+                <div class="top">
+                    <a href="<?php the_permalink(); ?>#equipe_todos" class="detalhes">Equipe</a>
+                </div>
+                <ul>
+                        <?php $_repeater_i = 1; ?>
+                        <?php while (has_sub_field('projetos_repeater')): ?>
+                            <?php
+                            if($_repeater_i <= 4){
+                                $user = get_user_by( 'email', get_sub_field('projetos_email') );
+                                if($user){
+                                    $href = get_bloginfo('url') . '/equipe/' . $user->user_login;
+                                    echo '<li><a href="' . $href . '"> ' . get_sub_field('projetos_nome') . ' </a></li>';
+                                }
+                                else{
+                                    echo '<li><a> ' . get_sub_field('projetos_nome') . ' </a></li>';
+                                }
+                                $_repeater_i++;
+                            }
+                            ?>
+                        <?php endwhile; ?>
+                </ul>
+            </aside>
+            <?php endif; ?>
 
-</section>
+            <?php if ( is_active_sidebar( 'widgets-institucional' ) ) : ?>
+                <?php dynamic_sidebar( 'widgets-institucional' ); ?>
+            <?php endif; ?>
+        </aside>
+        <?php endwhile; // end of the loop. ?>
+
+    </section>
+
 <section class="col-md-12 slider-single-areas projetos-single">
 
-    <h2>Outros <?php echo terms('tipos'); ?></h2>
+    <h2>Outros Projetos</h2>
 
     <div id="carousel" class="col-md-12 list_carousel responsive">
         <?php
@@ -95,4 +114,5 @@ get_header(); ?>
             publicações ou faça uma busca</a></div>
 
 </section>
+</main>
 <?php get_footer(); ?>
