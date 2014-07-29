@@ -2966,6 +2966,14 @@ header.mini{
     padding-top:80px !important;
     padding-bottom:80px !important;
 }
+
+.projetos-main .header-area.single-projetos {
+    background: url('img/bg-header-projetos.jpg') center 1px fixed #b0d3d8;
+    padding-left:0 !important;
+    padding-right: 0 !important;
+    padding-top: 15px !important;
+    padding-bottom: 20px !important;
+}
 .projetos-main .header-area h1 {
     font-size: 49px;
     text-align: center;

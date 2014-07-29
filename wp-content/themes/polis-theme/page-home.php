@@ -23,8 +23,7 @@ get_header(); ?>
                 <div class="col-md-12 description">
                     <?php echo of_get_option('frase-reformaurbana-home'); ?>
                 </div>
-                <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba
-                    mais</a>
+                <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba mais</a>
             </div>
             <div class="col-md-10 inclusao">
                 <p class="title">Inclusão e Sustentabilidade</p>
@@ -80,7 +79,7 @@ get_header(); ?>
                 <?php $slider_query = new WP_Query(array(
                     'post_type' => array('acoes', 'noticias'),
                     'orderby' => 'date',
-                    'order' => 'ASC',
+                    'order' => 'DESC',
                     'posts_per_page' => 6,
                     'meta_query' => array(
                         array(
