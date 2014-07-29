@@ -35,7 +35,7 @@
 
 <header class="section-title">
     <h3>Séries e livros</h3>
-    <a href="<?php echo home_url(); ?>/publicacoes" class="col-md-1 shape-todos">Ver todos</a>
+    <a href="<?php echo home_url(); ?>/categoria/series-e-livros/" class="col-md-1 shape-todos">Ver todos</a>
 </header>
 
 <ul class="list_carousel publicacoes-slider">

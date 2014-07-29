@@ -993,6 +993,7 @@ object {
 	width: 100%;
 	clear: both;
 	overflow: hidden;
+	margin-bottom: 30px;
 }
 .cada-noticia-area {
 	width: 23%;
@@ -1873,10 +1874,11 @@ slider de noticias + acoes
 }
 .content-single .thumb {
 	width: 100%;
-	height: 200px;
+	min-height: 200px;
 	margin: 25px auto 30px;
 	border-radius: 3px;
 	position: relative;
+	overflow: hidden;
 }
 .content-single .thumb .news-terms {
 	position: absolute;
@@ -2638,16 +2640,52 @@ section.biblioteca.livros_section {
 	background-color:#ededed;
 	background-position: 30px 40px !important;
 }
-.busca-mini{
-	background:#b0d3d8;
-	padding:30px 0;
+.busca-mini {
+	background: #b0d3d8;
+	padding: 30px 0;
+	overflow: hidden;
 }
-.busca-mini .content-search-mini label{
-    font-size:25px;
+.busca-mini .desc {
+	border: 1px solid #8FA6B1;
+	border-radius: 4px;
+	overflow: hidden;
+	display: inline-block;
+	padding: 15px;
+	line-height: 1em;
+	text-align: left;
+	padding-left: 75px;
+	background: url('img/biblioteca-back.png') no-repeat 5px center;
+}
+.busca-mini .desc span {
+	font-size: 0.8em;
+	width: 100%;
+}
+.busca-mini a.voltar-biblioteca {
+	display: block;
+	width: 100%;
+	margin-bottom: 5px;
+	font-family:'Bitter',serif;
+    font-weight:bold;
+    color: #1e5c7a;
+}
+.busca-mini h2 {
+    font-size: 30px;
     color:#1e5c7a;
     font-family:'Bitter',serif;
     font-weight:bold;
     float: left;
+    padding: 20px 45px 0 15px;
+}
+.busca-mini .content-search-mini {
+	padding: 28px 0;
+}
+.busca-mini .content-search-mini label{
+	color: #1e5c7a;
+    float: left;
+    font-family: 'Bitter',serif;
+    font-weight: bold;
+    padding: 4px 15px;
+    text-align: right;
 }
 .busca-mini .content-search-mini input{
     box-shadow:none !important;

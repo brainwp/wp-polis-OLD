@@ -296,7 +296,6 @@
                     $t = top_term('areas', 'return_slug');
                 ?>
 
-                
                     <li class="item item-slider">
                         <div class="post_container">
                             <div class="thumb">
