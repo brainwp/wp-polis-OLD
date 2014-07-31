@@ -120,6 +120,7 @@
                     $noticias = new WP_Query( $args );
                     while ( $noticias->have_posts() ) : $noticias->the_post();
                 ?>
+                
                 <?php get_template_part('area-slider','noticias'); ?>
 
                 <?php endwhile; ?>
@@ -178,9 +179,9 @@
             </ul>
 
         </div>
+        <div class="prev-slider acoes-prev-slider" id="publicacoes-prev-slider-<?php echo $cat; ?>"></div>
+        <div class="next-slider acoes-next-slider" id="publicacoes-next-slider-<?php echo $cat; ?>"></div>
 
-        <div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat; ?>"></div>
-        <div class="next-slider" id="publicacoes-next-slider-<?php echo $cat; ?>"></div>
         <div class="clear"></div>
 
         <div class="todos-full">
@@ -295,9 +296,8 @@
 
                     </div>
 
-                    <div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat; ?>"></div>
-
-                    <div class="next-slider" id="publicacoes-next-slider-<?php echo $cat; ?>"></div>
+                    <div class="prev-slider acoes-prev-slider" id="publicacoes-prev-slider-<?php echo $cat; ?>"></div>
+                    <div class="next-slider acoes-next-slider" id="publicacoes-next-slider-<?php echo $cat; ?>"></div>
 
                     <div class="clear"></div>
 

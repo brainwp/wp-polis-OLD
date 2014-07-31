@@ -187,36 +187,22 @@ get_header(); ?>
                 )
             );
             ?>
-            <ul id="slider2">
-                <?php
-                $publicacoes = new WP_Query($arg);
-                ?>
+            <ul id="publicacoes-slider-<?php echo $cat; ?>" class="publicacoes-slider">
+
+                <?php $publicacoes = new WP_Query( $arg ); ?>
+
                 <?php while ($publicacoes->have_posts()) :
-                    $publicacoes->the_post();
-                    ?>
-                    <li class="item">
-                        <a href="<?php the_permalink(); ?>">
+                    $publicacoes->the_post(); ?>
 
-                            <div class="hover"></div>
-
-                            <?php
-                            if (has_post_thumbnail()) {
-                                $thumb_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'slider-publicacoes-thumb', true);
-                                echo '<img src="' . $thumb_url[0] . '"/>';
-                            } else {
-                                echo '<img src="' . get_bloginfo('template_url') . '/img/default-publicacoes-thumb.jpg' . '" />';
-                            }
-                            ?>
-                        </a>
-                    </li>
+                    <?php get_template_part('area-slider','publicacoes'); ?>
                 <?php endwhile; ?>
+
             </ul>
         </div>
         <!-- carousel -->
 
-        <div id="prev-publicacao" class="prev"></div>
-        <div id="next-publicacao" class="next"></div>
-
+        <div class="prev-slider acoes-prev-slider" id="prev-biblioteca-series"></div>
+        <div class="next-slider acoes-next-slider" id="next-biblioteca-series"></div>
         <div class="clear"></div>
 
         <div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as
