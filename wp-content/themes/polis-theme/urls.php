@@ -23,7 +23,8 @@ function _query_rules () {
         '^projetos/tipo/([^/]+)/?$' => 'template=projetos&aba=$matches[1]',
         '^projetos/tipo/([^/]+)/page/([^/]+)/?$' => 'template=projetos&aba=$matches[1]&paged=$matches[2]',
         '^area/([^/]+)/?$' => 'template=area&area=$matches[1]',
-		'^area/([^/]+)/([^/]+)/?$' => 'template=index&area_archive=$matches[1]&area=$matches[2]',
+        '^area/([^/]+)/([^/]+)/?$' => 'template=area-cpt&select_query=area-cat&area=$matches[1]&cpt=$matches[2]',
+        '^area/([^/]+)/([^/]+)/page/([^/]+)/?$' => 'template=area-cpt&select_query=area-cat&area=$matches[1]&cpt=$matches[2]&paged=$matches[3]',
         '^publicacoes/?$' => 'template=archive-publicacoes',
         '^publicacoes/page/([^/]+)/?$' => 'template=archive-publicacoes&paged=$matches[1]',
     );
