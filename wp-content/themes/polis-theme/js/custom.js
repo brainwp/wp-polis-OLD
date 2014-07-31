@@ -187,16 +187,16 @@ jQuery(document).ready(function () {
             next: '#next-biblioteca-series',
             responsive: true,
             width: '100%',
-            height: 340,
+            height: 450,
             scroll: {
                 items: 1,
                 pauseOnHover: true
             },
             items: {
-                width: 250,
+                width: 200,
                 visible: {
                     min: 1,
-                    max: 4
+                    max: 5
                 }
             }
         });

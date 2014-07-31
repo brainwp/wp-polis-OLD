@@ -645,6 +645,10 @@ object {
 	margin: 0;
 }
 
+.list_carousel .item-slider.publicacoes {
+	height: 420px;
+}
+
 .list_carousel li.item-slider div.post_container {
 	margin: 0 auto;
 	padding: 0;
@@ -653,6 +657,10 @@ object {
 	overflow: hidden;
 	max-width: 320px;
 	height: 100%;
+}
+
+.list_carousel .item-slider.publicacoes .post_container {
+	height: 420px;
 }
 
 .list_carousel li.item-slider div.post_container:hover {
@@ -668,6 +676,11 @@ object {
 	position: relative;
 	overflow: hidden;
 }
+
+.list_carousel .item-slider.publicacoes .post_container .thumb {
+	height: 260px;
+}
+
 .list_carousel li.item-slider div.post_container div.thumb a {
 	padding: 0;
 }
@@ -720,8 +733,9 @@ object {
 	float: right;
 }
 
-
-
+.list_carousel li.item-slider div.post_container div.footer-item .leia.download {
+	margin-right: 33px;
+}
 
 .item_out {
 	height: 380px;
@@ -999,6 +1013,18 @@ object {
 
 .acoes-prev-slider, .acoes-next-slider {
 	margin-top: 205px !important;	
+}
+
+.publicacoes .acoes-prev-slider, .publicacoes .acoes-next-slider {
+	margin-top: 240px !important;	
+}
+
+.publicacoes .acoes-prev-slider {
+	margin-left: 11px !important;	
+}
+
+.publicacoes .acoes-next-slider {
+	margin-right: 11px !important;	
 }
 
 .prev-slider{
@@ -1535,9 +1561,6 @@ slider de noticias + acoes
 .publicacoes, .acoes {
 	overflow: hidden;
 	position: relative;
-}
-.list_carousel .item-slider.publicacoes {
-	height: 320px;
 }
 .publicacoes .links a.ativo {
 	background:#c0c0c0;
