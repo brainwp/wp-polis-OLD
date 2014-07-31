@@ -202,7 +202,15 @@ function optionsframework_options() {
         'std'  => '16',
         'type' => 'text');
 
+    $options[] = array(
+        'name' => 'Areas',
+        'type' => 'heading');
 
+    $options[] = array(
+        'name' => 'Numero de posts por página no archive das areas',
+        'id'   => 'areas-archive-per-page',
+        'std'  => '16',
+        'type' => 'text');
 
     return $options;
 }

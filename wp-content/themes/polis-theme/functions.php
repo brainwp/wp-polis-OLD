@@ -284,6 +284,30 @@ require get_template_directory() . '/biblioteca-sub-count-ajax.php';
 /**
  * Imprime o menu na Home de cada Área com link para as outras 3 Áreas
  */
+function outras_areas_cpt() {
+    global $_query;
+
+    $array_areas  = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+    $current_area = get_term_by( 'slug', $_query->area, 'areas' );
+
+    if ( ( $key = array_search( $current_area->slug, $array_areas ) ) !== false ) {
+        unset( $array_areas[$key] );
+    }
+
+    echo "<ul>";
+    echo "<li class=title-outras>Outras áreas de atuação</li>";
+
+    foreach ( $array_areas as $area ) {
+        $each_area = get_term_by( 'slug', $area, 'areas' );
+        echo "<li class='btn-" . $area . "'>";
+        echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+        echo "</li>";
+    }
+
+    echo "</ul>";
+
+}
+
 function outras_areas() {
 
 	$array_areas  = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );

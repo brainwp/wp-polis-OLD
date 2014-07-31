@@ -191,7 +191,7 @@ function _query_area_categoria()
 {
     global $_query, $wp_query;
     $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = get_option('posts_per_page');
+    $per_page = (int) of_get_option('areas-archive-per-page');
     $area = get_query_var('area');
     $cpt = get_query_var('cpt');
     $_query->area = $area;
