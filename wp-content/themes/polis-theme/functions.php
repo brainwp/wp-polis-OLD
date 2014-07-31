@@ -516,7 +516,8 @@ function custom_logo_login() {
 function biblioteca_count( $area ) {
 	$key     = ( isset( $_GET['key'] ) ) ? $_GET['key'] : '';
 	$tipo        = ( isset( $_GET['tipo'] ) ) ? $_GET['tipo'] : '';
-	$categoria   = ( isset( $_GET['categoria'] ) ) ? $_GET['categoria'] : '';
+    $cat        = ( isset( $_GET['cat'] ) ) ? $_GET['catf'] : '';
+    $categoria   = ( isset( $_GET['categoria'] ) ) ? $_GET['categoria'] : '';
 	$anomin      = ( isset( $_GET['anomin'] ) ) ? $_GET['anomin'] : '';
 	$anomax      = ( isset( $_GET['anomax'] ) ) ? $_GET['anomax'] : '';
     $categoria_query = array();
@@ -549,10 +550,12 @@ function biblioteca_count( $area ) {
 		$date_query = array(
 			array(
 				'after'  => array(
-					'year' => $anomin
+					'year' => (int) $anomin,
+                    'month' => 12
 				),
 				'before' => array(
-					'year' => $anomax,
+					'year' => (int) $anomax,
+                    'month' => 12
 				),
 			)
 		);
@@ -560,7 +563,8 @@ function biblioteca_count( $area ) {
 		$date_query = array(
 			array(
 				'after' => array(
-					'year' => $anomin
+                    'year' => (int) $anomin,
+                    'month' => 12
 				),
 			)
 		);
@@ -568,7 +572,8 @@ function biblioteca_count( $area ) {
 		$date_query = array(
 			array(
 				'before' => array(
-					'year' => $anomax
+                    'year' => (int) $anomax,
+                    'month' => 12
 				),
 			)
 		);
@@ -578,6 +583,7 @@ function biblioteca_count( $area ) {
 		'post_type'     => 'publicacoes',
         'tax_query'     => $categoria_query,
 		'tipos'         => $tipo,
+        'categorias'    => $cat,
 		's'             => $key,
 		'date_query'    => $date_query,
 		'post_per_page' => 999999,

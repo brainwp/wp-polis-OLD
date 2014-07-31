@@ -172,7 +172,6 @@
 
                 <?php while ($publicacoes->have_posts()) :
                     $publicacoes->the_post(); ?>
-
                     <?php get_template_part('area-slider','publicacoes'); ?>
                 <?php endwhile; ?>
 

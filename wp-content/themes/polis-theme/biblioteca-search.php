@@ -26,10 +26,12 @@ if (!empty($anomin) && !empty($anomax)) {
     $date_query = array(
         array(
             'after' => array(
-                'year' => $anomin
+                'year' => (int) $anomin,
+                'month' => 12
             ),
             'before' => array(
-                'year' => $anomax,
+                'year' => (int) $anomax,
+                'month' => 12
             ),
         )
     );
@@ -37,7 +39,8 @@ if (!empty($anomin) && !empty($anomax)) {
     $date_query = array(
         array(
             'after' => array(
-                'year' => $anomin
+                'year' => (int) $anomin,
+                'month' => 12
             ),
         )
     );
@@ -45,7 +48,8 @@ if (!empty($anomin) && !empty($anomax)) {
     $date_query = array(
         array(
             'before' => array(
-                'year' => $anomax
+                'year' => (int) $anomax,
+                'month' => 12
             ),
         )
     );

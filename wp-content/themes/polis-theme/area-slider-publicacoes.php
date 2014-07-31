@@ -7,7 +7,7 @@
  */
 $t = top_term('areas', 'return_slug'); ?>
 <li class="item item-slider publicacoes ajax-item-publicacoes">
-    <div class="post_container">
+    <div class="post_container" data-data-data="true">
         <div class="thumb">
             <a href="<?php the_permalink(); ?>">
                 <?php

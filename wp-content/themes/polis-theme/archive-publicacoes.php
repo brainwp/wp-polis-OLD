@@ -5,7 +5,7 @@
  * Date: 17/07/14
  * Time: 14:39
  */
-global $wp_query;
+global $wp_query, $_query;
 get_header();?>
 
     <section class="col-md-12 biblioteca publicacoes livros_section rm-border">
@@ -18,6 +18,7 @@ get_header();?>
                     'terms'            => 'series-e-livros',
                     'include_children' => true,
                     'posts_per_page'   => 10,
+                    'paged'            => $_query->_page
                 ),
             ),
         );
@@ -34,7 +35,7 @@ get_header();?>
                 $t = top_term('areas', 'return_slug');
                 ?>
 
-                <li class="item item-slider publicacoes">
+                <li class="item item-slider publicacoes" style="float:left;">
                     <div class="post_container">
                         <div class="thumb">
                             <a href="<?php the_permalink(); ?>">
@@ -92,6 +93,7 @@ get_header();?>
                     'terms'            => 'documentos-e-textos',
                     'include_children' => true,
                     'posts_per_page'   => 10,
+                    'paged'            => $_query->_page
                 ),
             ),
         );
@@ -106,7 +108,7 @@ get_header();?>
                 $t = top_term('areas', 'return_slug');
                 ?>
 
-                <li class="item item-slider publicacoes">
+                <li class="item item-slider publicacoes" style="float:left;">
                     <div class="post_container">
                         <div class="thumb">
                             <a href="<?php the_permalink(); ?>">
@@ -164,6 +166,7 @@ get_header();?>
                     'terms'            => 'institucionais',
                     'include_children' => true,
                     'posts_per_page'   => 10,
+                    'paged'            => $_query->_page
                 ),
             ),
         );
@@ -178,7 +181,7 @@ get_header();?>
                 $t = top_term('areas', 'return_slug');
                 ?>
 
-                <li class="item item-slider publicacoes">
+                <li class="item item-slider publicacoes" style="float:left;">
                     <div class="post_container">
                         <div class="thumb">
                             <a href="<?php the_permalink(); ?>">
@@ -229,9 +232,9 @@ get_header();?>
     <div class="container pagination">
         <div class="col-md-4 col-md-offset-4">
             <?php
-            $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $page = $_query->_page;
 
-            $total = $_query->total_pages->max_num_pages;
+            $total = $_query->total_pages;
             $big = 999999999; // need an unlikely integer
             if ($total > 1) {
                 if (!$current_page = $page)

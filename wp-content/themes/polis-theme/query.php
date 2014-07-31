@@ -869,7 +869,8 @@ function _title($title)
 
         }
 
-    } else {
+    }
+    else {
 
         return $title;
 

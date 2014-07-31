@@ -4,7 +4,6 @@
  *
  * @package Polis Theme
  */
-the_field('in_biblioteca_slider');
 get_header(); ?>
 	<?php
 		$w_term = top_term( 'areas', 'return_slug' );
