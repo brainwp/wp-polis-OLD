@@ -53,7 +53,7 @@ if (!empty($anomin) && !empty($anomax)) {
 $args = array(
     'post_type' => 'publicacoes',
     'areas' => $categoria,
-    'categorias' => $tipo,
+    'tipos' => $tipo,
     's' => $key,
     'date_query' => $date_query,
     'posts_per_page' => $per_page,
@@ -66,7 +66,7 @@ $query = new WP_Query($args);
 $count_args = array(
     'post_type' => 'publicacoes',
     'areas' => $categoria,
-    'categorias' => $tipo,
+    'tipos' => $tipo,
     's' => $key,
     'date_query' => $date_query,
     'post_per_page' => 999999,

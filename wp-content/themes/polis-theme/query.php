@@ -38,7 +38,10 @@ function _init_query_object()
         //Canal
         'canal' => false,
 
-    );
+		//Boletim
+		'boletim'        => false,
+
+	);
 }
 
 /**
@@ -166,6 +169,11 @@ function _query_processor($query)
         _query_canal();
 
     }
+    elseif ( get_query_var( 'template' ) == 'boletim' ) {
+
+        _query_boletim();
+
+    }
 
 
     if (get_query_var('select_query') == 'area-cat') {
@@ -240,8 +248,26 @@ function _query_canal()
     $_query->canal = new WP_Query($args);
 }
 
-function _query_noticias_acoes()
-{
+function _query_boletim(){
+    
+	global $_query;
+	$args = array(
+		'post_type' => 'publicacoes',
+		'tax_query' => array(
+			array(
+				'taxonomy'         => 'tipos',
+				'field'            => 'slug',
+				'terms'            => 'boletim-dicas',
+				'include_children' => true,
+				'posts_per_page'   => 10,
+			)
+		)
+	);
+
+	$_query->boletim = new WP_Query( $args );
+}
+
+function _query_noticias_acoes(){
 
     global $_query, $wp_query;
 
