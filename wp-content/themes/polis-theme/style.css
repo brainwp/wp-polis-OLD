@@ -2244,6 +2244,11 @@ slider de noticias + acoes
 	font-size:20px;
 	color:white;
 }
+.user .name small{
+    font-size:12px;
+    width:100%;
+    display:block;
+}
 .equipe{
 	background:white url(img/equipe-bg.jpg) center;
 	background-size: 100%;

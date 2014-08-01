@@ -13,10 +13,10 @@ get_header(); ?>
         <?php
 
         $args = array(
-            // order results by display_name
-            'orderby' => 'display_name',
             // return all fields
             'fields' => 'all_with_meta',
+            'orderby'  => 'meta_value',
+            'meta_key' => 'area',
             'number' => $_query->users_per_page,
             'offset' => $_query->offset, // skip the number of users that we have per page
             'exclude' => $_query->exclude
@@ -39,8 +39,10 @@ get_header(); ?>
                 <?php echo $_avatar; ?>
                 <img src="<?php bloginfo('template_url') ?>/img/image-hover.png" class="hover-icon">
 
-                <div
-                    class="col-md-12 name <?php echo $_area; ?>"><?php echo $_user->first_name . ' ' . $_user->last_name; ?></div>
+                <div class="col-md-12 name <?php echo $_area; ?>">
+                    <?php echo $_user->first_name . ' ' . $_user->last_name; ?>
+                    <small><?php echo get_field('cargo', 'user_' . $user->ID);?></small>
+                </div>
             </a>
         <?php
         }

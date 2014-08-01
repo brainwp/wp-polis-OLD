@@ -403,6 +403,7 @@ function _query_equipe()
 
         $_query->error = false;
 
+
     } else {
 
         $_query->error = true;
