@@ -181,12 +181,45 @@ function _query_processor($query)
         _query_area_categoria();
 
     }
+    if (get_query_var('select_query') == 'tipo') {
+
+        _query_tipo();
+
+    }
+
 
     /* Template redirect */
 
     /* Put something here to do suff in all queries */
 }
-
+function _query_tipo()
+{
+    global $_query, $wp_query;
+    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    $per_page = (int) of_get_option('areas-archive-per-page');
+    $tipo = get_query_var('taxtipo');
+    $args = array(
+        'post_type' => get_query_var('cpt'),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'tipos',
+                'terms' => $tipo,
+                'field' => 'slug',
+                'include_children' => true,
+                'operator' => 'IN'
+            )
+        ),
+        'orderby' => 'date',
+        'order' => 'ASC',
+        'posts_per_page' => $per_page,
+        'paged' => $page
+    );
+    $wp_query = new WP_Query($args);
+    $_query->_page = $page;
+    $_query->total_pages = $wp_query->max_num_pages;
+    $term = get_term_by('slug', $tipo, 'tipos');
+    $_query->tax_name = $term->name;
+}
 function _query_area_categoria()
 {
     global $_query, $wp_query;

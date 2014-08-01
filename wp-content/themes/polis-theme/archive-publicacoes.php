@@ -233,7 +233,6 @@ get_header();?>
     <div class="container pagination">
         <div class="col-md-4 col-md-offset-4">
             <?php
-
             $total = $_query->total_pages;
             $big = 999999999; // need an unlikely integer
             if ($total > 1) {
