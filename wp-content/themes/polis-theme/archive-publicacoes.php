@@ -229,30 +229,31 @@ get_header();?>
         <div class="next-slider" id="next-biblioteca-institucionais"></div>
         <div class="clear"></div>
 
-    </section>
-    <div class="container pagination">
-        <div class="col-md-4 col-md-offset-4">
-            <?php
-            $total = $_query->total_pages;
-            $big = 999999999; // need an unlikely integer
-            if ($total > 1) {
-                if (!$current_page = $page)
-                    $current_page = 1;
-                $format = 'page/%#%/';
-                echo paginate_links(array(
-                    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                    'format' => $format,
-                    'current' => max(1, $page),
-                    'total' => $total,
-                    'mid_size' => 3,
-                    'type' => 'list',
-                    'prev_text' => '<',
-                    'next_text' => '>',
-                ));
-            }
-            ?>
+        <div class="container pagination">
+            <div class="col-md-4 col-md-offset-4">
+                <?php
+                $total = $_query->total_pages;
+                $big = 999999999; // need an unlikely integer
+                if ($total > 1) {
+                    if (!$current_page = $page)
+                        $current_page = 1;
+                    $format = 'page/%#%/';
+                    echo paginate_links(array(
+                        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                        'format' => $format,
+                        'current' => max(1, $page),
+                        'total' => $total,
+                        'mid_size' => 3,
+                        'type' => 'list',
+                        'prev_text' => '<',
+                        'next_text' => '>',
+                    ));
+                }
+                ?>
+            </div>
         </div>
-    </div>
+
+    </section>
 <?php
 get_footer();
 ?>
