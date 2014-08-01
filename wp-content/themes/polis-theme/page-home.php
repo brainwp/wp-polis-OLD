@@ -12,7 +12,7 @@ get_header(); ?>
         </p>
 
         <p class="description text-areas">
-            Áreas de atuação do Pólis
+            Áreas de Atuação
         </p>
     </section>
     <section class="col-md-12 content atuacao">
