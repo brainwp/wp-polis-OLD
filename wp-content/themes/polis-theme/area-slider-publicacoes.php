@@ -39,7 +39,7 @@ $t = top_term('areas', 'return_slug'); ?>
                 $mgr_download = get_campoPersonalizado('mgr_pub_download');
                 $explode_download = explode( '.', $mgr_download );
                 ?>
-                <a class="leia bg-<?php echo $t; ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
+                <a class="leia download bg-<?php echo $t; ?>" href="http://www.polis.org.br/uploads/<?php echo $explode_download[0] . "/" . $mgr_download; ?>" download="<?php echo $mgr_download; ?>">Download</a>
             <?php endif; ?>
             <a class="leia bg-<?php echo $t; ?>" href="<?php the_permalink(); ?>">Leia mais</a>
         </div><!-- .footer-item -->

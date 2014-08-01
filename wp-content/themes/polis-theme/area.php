@@ -120,6 +120,7 @@
                     $noticias = new WP_Query( $args );
                     while ( $noticias->have_posts() ) : $noticias->the_post();
                 ?>
+                
                 <?php get_template_part('area-slider','noticias'); ?>
 
                 <?php endwhile; ?>
