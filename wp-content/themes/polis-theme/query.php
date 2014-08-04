@@ -534,7 +534,7 @@ function _query_membros()
 
             'paged' => $_query->_page,
 
-            'post_per_page' => $per_page
+            'post_per_page' => 8
         );
 
         $wp_query = new WP_Query($args);
