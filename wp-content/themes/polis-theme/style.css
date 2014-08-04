@@ -3414,4 +3414,7 @@ nav.nav img{
     margin:0;
     padding-top:10px;
 }
- /* max-width 700px, mobile-only styles
+ /* max-width 700px, mobile-only styles */
+#noticias-slider-atividades{
+    margin-bottom:20px;
+}
