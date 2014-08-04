@@ -526,15 +526,17 @@ function _query_membros()
 
         $user = $_user;
 
-        $args = array(
+        $select_posts = get_field('in_atividade_slider', 'user_' . $_user->ID);
 
-            'author' => $user->ID,
+        $select_posts = explode(',', $select_posts);
+
+        $args = array(
 
             'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),
 
-            'paged' => $_query->_page,
+            'post_per_page' => 8,
 
-            'post_per_page' => 8
+            'post__in'      => $select_posts
         );
 
         $wp_query = new WP_Query($args);

@@ -15,7 +15,7 @@ function _query_rules () {
 		//'^boletim-dicas/?$' => 'template=boletim',
 		'^equipe/page/([^/]+)/?$' => 'template=equipe&paged=$matches[1]',
 		'^equipe/([^/]+)/?$' => 'template=membros&nome=$matches[1]',
-		'^equipe/([^/]+)/page/([^/]+)/?$' => 'template=membros&nome=$matches[1]&paged=$matches[2]',
+		//'^equipe/([^/]+)/page/([^/]+)/?$' => 'template=membros&nome=$matches[1]&paged=$matches[2]',
 		'^canal/?$' => 'template=canal',
         '^noticias-e-acoes/?$' => 'template=noticias-e-acoes',
         '^noticias-e-acoes/page/([^/]+)/?$' => 'template=noticias-e-acoes&paged=$matches[1]',

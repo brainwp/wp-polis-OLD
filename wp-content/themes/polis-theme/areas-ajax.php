@@ -36,7 +36,14 @@ function areaAjax() {
 
 					)
 
-				)
+				),
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_area_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
 
 			);
 
@@ -76,7 +83,14 @@ function areaAjax() {
 
 					)
 
-				)
+				),
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_area_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
 
 			);
 
@@ -118,7 +132,14 @@ function areaAjax() {
 
 					)
 
-				)
+				),
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_area_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
 
 			);
 

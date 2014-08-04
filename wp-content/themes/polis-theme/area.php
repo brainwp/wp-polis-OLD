@@ -110,6 +110,13 @@
                             'include_children' => true,
                             'posts_per_page' => 8,
                         )
+                    ),
+                    'meta_query' => array(
+                        array(
+                            'key' => 'in_area_slider',
+                            'value' => 'nao',
+                            'compare' => '!='
+                        ),
                     )
                 );
             ?>
@@ -162,6 +169,13 @@
                             'include_children' => true,
                             'posts_per_page' => 10,
                         )
+                    ),
+                    'meta_query' => array(
+                        array(
+                            'key' => 'in_area_slider',
+                            'value' => 'nao',
+                            'compare' => '!='
+                        ),
                     )
                 );
 
@@ -214,6 +228,13 @@
                             'include_children' => true,
                             'posts_per_page' => 10,
                         )
+                    ),
+                    'meta_query' => array(
+                        array(
+                            'key' => 'in_area_slider',
+                            'value' => 'nao',
+                            'compare' => '!='
+                        ),
                     )
                 );
             ?>
