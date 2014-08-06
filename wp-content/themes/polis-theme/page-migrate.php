@@ -7,9 +7,11 @@
  */
 // WP_Query arguments
 global $wpdb;
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $args = array (
     'post_type'              => 'noticias',
-    'posts_per_page'         => '999999999999999999',
+    'posts_per_page'         => '80',
+    'paged'                  => $paged
 );
 
 // The Query
@@ -30,6 +32,9 @@ if ( $query->have_posts() ) {
 
         $wpdb->update($_table, array('post_date' => $data), array('id' => $post_id));
     }
-    echo 'testa la';
+    header( 'Location: '.get_bloginfo('url').'/migrate/page/'. (int) $paged + 1 ) ;
+}
+else{
+    echo 'nao tem essa pagina';
 }
 ?>
