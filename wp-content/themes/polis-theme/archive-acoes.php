@@ -17,30 +17,16 @@ get_header();?>
         </div>
     </section>
     <section class="col-md-12 atividades archive-publicacoes">
-        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <a href="<?php the_permalink(); ?>" class="col-md-3 post">
-                <div class="post_container">
-                    <div class="thumb">
-                        <?php
-                        if (has_post_thumbnail()) {
-                            the_post_thumbnail('medium');
-                        } else {
-                            echo '<img src="' . get_bloginfo('template_url') . '/img/thumb-equipe.png">';
-                        } ?>
-                        <h3><?php the_title(); ?></h3>
+            <ul class="list_carousel">
+                <?php $count = ''; ?>
+                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <div class="col-md-3">
+                        <?php get_template_part('area-slider', 'acoes'); ?>
                     </div>
-                    <!-- thumb -->
-                    <div class="col-md-12 description">
-                        <?php echo resumo(140); ?>
-                        <span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
-                    </div>
-                </div>
-                <!-- post_container -->
-            </a>
-        <?php endwhile;
-        else: ?>
-
-        <?php endif; ?>
+                <?php endwhile;
+                else: ?>
+                <?php endif; ?>
+            </ul>
         <div class="container pagination">
             <div class="col-md-4 col-md-offset-4">
                 <?php
