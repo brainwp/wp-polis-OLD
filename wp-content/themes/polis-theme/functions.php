@@ -249,7 +249,7 @@ require get_template_directory() . '/inc/tax-projetos.php';
 require get_template_directory() . '/inc/cpt-noticias.php';
 require get_template_directory() . '/inc/tax-tags.php';
 
-/**
+/**a
  * Load CPT Publicações file.
  */
 require get_template_directory() . '/inc/cpt-publicacoes.php';

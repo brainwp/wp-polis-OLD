@@ -161,6 +161,6 @@ function areaAjax() {
 
 
 
-add_action( 'init', 'areaAjax', 1 );
+add_action( 'init', 'areaAjax', 99999999999 );
 
 ?>
