@@ -6,6 +6,7 @@
  * Time: 14:39
  */
 global $wp_query, $_query;
+$page = (int) $_query->_page;
 get_header();?>
 
     <section class="col-md-12 biblioteca publicacoes livros_section rm-border">
@@ -17,10 +18,10 @@ get_header();?>
                     'field'            => 'slug',
                     'terms'            => 'series-e-livros',
                     'include_children' => true,
-                    'posts_per_page'   => 10,
-                    'paged'            => $_query->_page
                 ),
             ),
+            'posts_per_page'   => 10,
+            'paged'            => $page
         );
         $series = new WP_Query( $args ); ?>
 
@@ -92,10 +93,10 @@ get_header();?>
                     'field'            => 'slug',
                     'terms'            => 'documentos-e-textos',
                     'include_children' => true,
-                    'posts_per_page'   => 10,
-                    'paged'            => $_query->_page
                 ),
             ),
+            'posts_per_page'   => 10,
+            'paged'            => $page
         );
         $series = new WP_Query( $args ); ?>
         <header class="section-title">
@@ -165,10 +166,10 @@ get_header();?>
                     'field'            => 'slug',
                     'terms'            => 'institucionais',
                     'include_children' => true,
-                    'posts_per_page'   => 10,
-                    'paged'            => $_query->_page
                 ),
             ),
+            'posts_per_page'   => 10,
+            'paged'            => $page
         );
         $series = new WP_Query( $args ); ?>
         <header class="section-title">
@@ -228,32 +229,31 @@ get_header();?>
         <div class="next-slider" id="next-biblioteca-institucionais"></div>
         <div class="clear"></div>
 
-    </section>
-    <div class="container pagination">
-        <div class="col-md-4 col-md-offset-4">
-            <?php
-            $page = $_query->_page;
-
-            $total = $_query->total_pages;
-            $big = 999999999; // need an unlikely integer
-            if ($total > 1) {
-                if (!$current_page = $page)
-                    $current_page = 1;
-                $format = 'page/%#%/';
-                echo paginate_links(array(
-                    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                    'format' => $format,
-                    'current' => max(1, $page),
-                    'total' => $total,
-                    'mid_size' => 3,
-                    'type' => 'list',
-                    'prev_text' => '<',
-                    'next_text' => '>',
-                ));
-            }
-            ?>
+        <div class="container pagination">
+            <div class="col-md-4 col-md-offset-4">
+                <?php
+                $total = $_query->total_pages;
+                $big = 999999999; // need an unlikely integer
+                if ($total > 1) {
+                    if (!$current_page = $page)
+                        $current_page = 1;
+                    $format = 'page/%#%/';
+                    echo paginate_links(array(
+                        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                        'format' => $format,
+                        'current' => max(1, $page),
+                        'total' => $total,
+                        'mid_size' => 3,
+                        'type' => 'list',
+                        'prev_text' => '<',
+                        'next_text' => '>',
+                    ));
+                }
+                ?>
+            </div>
         </div>
-    </div>
+
+    </section>
 <?php
 get_footer();
 ?>

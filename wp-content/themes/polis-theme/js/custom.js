@@ -139,6 +139,26 @@ jQuery(document).ready(function () {
             }
         });
     }
+    if ($(window).width() > 700) {
+        $('#noticias-slider-atividades').carouFredSel({
+            prev: '#noticias-prev-slider',
+            next: '#noticias-next-slider',
+            responsive: true,
+            width: '100%',
+            height: 400,
+            scroll: {
+                items: 1,
+                pauseOnHover: true
+            },
+            items: {
+                width: 250,
+                visible: {
+                    min: 1,
+                    max: 4
+                }
+            }
+        });
+    }
     var _first = $('#first').attr('data-first');
     console.log(_first)
     if ($(window).width() > 700) {

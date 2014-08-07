@@ -1207,63 +1207,66 @@ if(function_exists("register_field_group"))
         'menu_order' => 0,
     ));
 }
-//biblioteca-query
+
+
 if(function_exists("register_field_group"))
 {
     register_field_group(array (
-        'id' => 'acf_exibir-nos-sliders-da-biblioteca',
-        'title' => 'Exibir nos Sliders da Biblioteca?',
+        'id' => 'acf_destaque',
+        'title' => 'Destaque',
         'fields' => array (
             array (
-                'key' => 'field_53d7c21fad0034334344343',
-                'label' => 'Exibir nos Sliders da Biblioteca?',
+                'key' => 'field_53df98de354d7',
+                'label' => 'Mostrar no slider de publicações na página inicial?',
+                'name' => 'in_home_slider',
+                'type' => 'radio',
+                'conditional_logic' => array (
+                    'status' => 1,
+                    'rules' => array (
+                        array (
+                            'field' => 'field_53df994c354d8',
+                            'operator' => '==',
+                            'value' => 'sim',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'choices' => array (
+                    'sim' => 'SIm',
+                    'nao' => 'Não',
+                ),
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => '',
+                'layout' => 'horizontal',
+            ),
+            array (
+                'key' => 'field_53df994c354d8',
+                'label' => 'Mostrar nos sliders da biblioteca?',
                 'name' => 'in_biblioteca_slider',
                 'type' => 'radio',
                 'choices' => array (
-                    'sim' => 'Sim',
+                    'sim' => 'SIm',
                     'nao' => 'Não',
                 ),
-                'default_value' => 'nao',
-                'layout' => 'vertical',
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => '',
+                'layout' => 'horizontal',
             ),
-        ),
-        'location' => array (
             array (
-                array (
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'publicacoes',
-                    'order_no' => 0,
-                    'group_no' => 0,
-                ),
-            ),
-        ),
-        'options' => array (
-            'position' => 'normal',
-            'layout' => 'no_box',
-            'hide_on_screen' => array (
-            ),
-        ),
-        'menu_order' => 0,
-    ));
-}
-if(function_exists("register_field_group"))
-{
-    register_field_group(array (
-        'id' => 'acf_exibir-nos-sliders-da-home',
-        'title' => 'Exibir nos Sliders da Home?',
-        'fields' => array (
-            array (
-                'key' => 'field_53d7c21fad003',
-                'label' => 'Exibir nos Sliders da Home?',
-                'name' => 'in_home_slider',
+                'key' => 'field_53df9a0d354db',
+                'label' => 'Mostrar nos sliders das áreas?',
+                'name' => 'in_area_slider',
                 'type' => 'radio',
                 'choices' => array (
-                    'sim' => 'Sim',
+                    'sim' => 'SIm',
                     'nao' => 'Não',
                 ),
-                'default_value' => 'sim',
-                'layout' => 'vertical',
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => '',
+                'layout' => 'horizontal',
             ),
         ),
         'location' => array (
@@ -1279,7 +1282,7 @@ if(function_exists("register_field_group"))
         ),
         'options' => array (
             'position' => 'normal',
-            'layout' => 'no_box',
+            'layout' => 'default',
             'hide_on_screen' => array (
             ),
         ),

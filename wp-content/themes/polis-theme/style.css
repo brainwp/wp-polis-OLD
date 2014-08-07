@@ -1080,6 +1080,16 @@ object {
 	height: 390px;
 }
 
+.news .carousel .item .thumb {
+	max-height: 200px;
+	overflow: hidden;
+}
+
+.news .carousel .item .thumb img {
+	margin-top: -20px;
+	width: 100%;
+}
+
 .list_carousel .item-slider.noticias .thumb .caption-container {
 	position: absolute;
 	top:0;
@@ -2243,6 +2253,11 @@ slider de noticias + acoes
 	padding:5px;
 	font-size:20px;
 	color:white;
+}
+.user .name small{
+    font-size:12px;
+    width:100%;
+    display:block;
 }
 .equipe{
 	background:white url(img/equipe-bg.jpg) center;
@@ -3410,4 +3425,7 @@ nav.nav img{
     margin:0;
     padding-top:10px;
 }
- /* max-width 700px, mobile-only styles
+ /* max-width 700px, mobile-only styles */
+#noticias-slider-atividades{
+    margin-bottom:20px;
+}

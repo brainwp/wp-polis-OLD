@@ -36,10 +36,6 @@ function biblioteca_count_ajax() {
 		else{
 			echo '<a>Reforma Urbana</a>';
 		}
-        global $wpdb;
-        echo "<pre>";
-        print_r($wpdb->queries);
-        echo "</pre>";
         die();
 	}
 }

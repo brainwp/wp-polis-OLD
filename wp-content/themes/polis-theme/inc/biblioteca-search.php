@@ -52,32 +52,6 @@
                 }
                 ?>
             </select>
-            <select class="col-md-2 select1" name="categoria" id="select_cat">
-                <option value="">Categoria</option>
-                <?php
-                $_args = array(
-                    'type' => 'post',
-                    'child_of' => 0,
-                    'parent' => '',
-                    'orderby' => 'name',
-                    'order' => 'ASC',
-                    'hide_empty' => 1,
-                    'hierarchical' => 1,
-                    'exclude' => '',
-                    'include' => '',
-                    'number' => '',
-                    'taxonomy' => 'categorias',
-                    'pad_counts' => false
-                );
-                $categories = get_categories($_args);
-                foreach ($categories as $category) {
-                    $parent = $category->parent;
-                    if (!$parent == '0') {
-                        echo '<option value="' . $category->slug . '">' . $category->name . '</option>';
-                    }
-                }
-                ?>
-            </select>
         </div>
         <div class="col-md-12 input_container data">
             <label>De</label>

@@ -9,7 +9,7 @@
 $terms = terms('areas');
 $terms = explode(',', $terms);
 ?>
-<li class="item item-slider noticias ajax-item-noticias">
+<li class="item item-slider noticias ajax-item-noticias" style="float:left">
     <div class="post_container">
         <div class="thumb">
             <div class="caption-container">
