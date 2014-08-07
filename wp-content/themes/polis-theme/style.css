@@ -1080,6 +1080,16 @@ object {
 	height: 390px;
 }
 
+.news .carousel .item .thumb {
+	max-height: 200px;
+	overflow: hidden;
+}
+
+.news .carousel .item .thumb img {
+	margin-top: -20px;
+	width: 100%;
+}
+
 .list_carousel .item-slider.noticias .thumb .caption-container {
 	position: absolute;
 	top:0;
