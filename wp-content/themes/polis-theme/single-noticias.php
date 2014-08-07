@@ -25,8 +25,10 @@ get_header(); ?>
 					<?php echo $terms; ?>
 				</div>
 			</div><!-- thumb -->
-
+			
+			<span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
 			<?php the_content(); ?>
+			
 		</article>
 		<aside class="col-md-4 pull-right sidebar-page">
 			<?php if ( is_active_sidebar( 'widgets-institucional' ) ) : ?>

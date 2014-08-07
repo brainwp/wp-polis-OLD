@@ -30,6 +30,7 @@ $terms = explode(',', $terms);
             <?php echo resumo( '150' ); ?>
         </div><!-- .description -->
         <div class="footer-item">
+            <span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
             <a class="leia bg-<?php echo sanitize_title( $terms[0] ); ?>" href="<?php the_permalink(); ?>">Leia mais</a>
         </div><!-- .footer-item -->
     </div><!-- post_container .item-slider -->

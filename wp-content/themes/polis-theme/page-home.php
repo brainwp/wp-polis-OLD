@@ -122,9 +122,11 @@ get_header(); ?>
                         </div>
                         <!-- thumb -->
                         <div class="left type"><?php echo get_post_type(); ?></div>
-                        <h3><a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a></h3>
+                        <h3><a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                        </h3>
 
                         <div class="texto">
+                            <span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
                             <?php the_excerpt(); ?>
                         </div>
                         <a href="<?php the_permalink(); ?>" class="more">Leia Mais</a>
