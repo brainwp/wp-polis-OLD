@@ -9,11 +9,14 @@ global $_query;
 get_header();
 ?>
 
+
+
 <section id="primary" class="content-area boletim">
     <main id="main" class="site-main projetos-main" role="main">
 
         <div class="header-area single-projetos col-md-12 boletim">
-            <h1>Boletim Dicas</h1>
+            <?php $term = get_term_by('slug', get_query_var('termo'), 'tipos'); ?>
+            <h1><?php echo $term->name; ?></h1>
         </div>
         <!-- header-area col-md-12 projetos-main -->
 
