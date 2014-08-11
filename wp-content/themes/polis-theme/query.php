@@ -284,22 +284,26 @@ function _query_canal()
 function _query_colecoes(){
     
 	global $_query;
+    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $termo = get_query_var('termo');
+    $per_page = (int) of_get_option('colecoes-per-page');
 
-	$args = array(
+    $args = array(
 		'post_type' => 'publicacoes',
+        'posts_per_page' => $per_page,
+        'paged' => $page,
 		'tax_query' => array(
 			array(
 				'taxonomy'         => 'tipos',
 				'field'            => 'slug',
 				'terms'            => $termo,
 				'include_children' => true,
-				'posts_per_page'   => 10,
 			)
 		)
 	);
-
 	$_query->boletim = new WP_Query( $args );
+    $_query->page = $page;
+    $_query->total_pages = $_query->boletim->max_num_pages;
 }
 
 function _query_noticias_acoes(){
