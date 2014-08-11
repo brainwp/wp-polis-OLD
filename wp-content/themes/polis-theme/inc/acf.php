@@ -648,7 +648,7 @@ if (function_exists("register_field_group")) {
                     ),
                     'allorany' => 'all'
                 ),
-                'choices' => array (
+                'choices' => array(
                     'emprestado' => 'Emprestado',
                     'doado' => 'Doado',
                     'acervo' => 'No acervo',
@@ -664,7 +664,7 @@ if (function_exists("register_field_group")) {
                 'name' => 'publicacoes_unidade_armazenamento',
                 'type' => 'radio',
                 'instructions' => 'Marque como o documento está arquivado',
-                'choices' => array (
+                'choices' => array(
                     'caixa_arquivo' => 'Caixa Arquivo',
                     'pasta' => 'Pasta',
                     'nao-definido' => 'Não Definido'
@@ -691,7 +691,7 @@ if (function_exists("register_field_group")) {
                     ),
                     'allorany' => 'all'
                 ),
-                'choices' => array (
+                'choices' => array(
                     'corrente' => 'Corrente',
                     'intermediario' => 'Intermediário',
                     'permanente' => 'Permanente',
@@ -918,7 +918,8 @@ if (function_exists("register_field_group")) {
     register_field_group(array('id' => 'acf_avatar', 'title' => 'Avatar', 'fields' => array(array('key' => 'field_53a9927815518', 'label' => 'Avatar', 'name' => 'user_avatar', 'type' => 'image', 'save_format' => 'id', 'preview_size' => 'thumbnail', 'library' => 'all',),), 'location' => array(array(array('param' => 'ef_user', 'operator' => '==', 'value' => 'all', 'order_no' => 0, 'group_no' => 0,),),), 'options' => array('position' => 'normal', 'layout' => 'no_box', 'hide_on_screen' => array(),), 'menu_order' => 0,));
 }
 
-function select_user_area($field){
+function select_user_area($field)
+{
     //democracia e participacao
     $_id = get_term_by('slug', 'democracia-e-participacao', 'areas');
     $_id = $_id->term_id;
@@ -990,8 +991,7 @@ function select_user_area($field){
 add_filter('acf/load_field/name=area', 'select_user_area');
 
 
-if(function_exists("register_field_group"))
-{
+if (function_exists("register_field_group")) {
     register_field_group(array(
         'id' => 'acf_migrando-publicacoes',
         'title' => 'Migrando Publicações',
@@ -1011,20 +1011,20 @@ if(function_exists("register_field_group"))
                 'maxlength' => '',
             ),
             array(
-                    'key' => 'field_53c510498ce5e',
-                    'label' => 'Url',
-                    'name' => 'mgr_pub_url',
-                    'type' => 'text',
-                    'instructions' => 'Url dessa Publicação no site anterior (sem www.polis.org.br/)
+                'key' => 'field_53c510498ce5e',
+                'label' => 'Url',
+                'name' => 'mgr_pub_url',
+                'type' => 'text',
+                'instructions' => 'Url dessa Publicação no site anterior (sem www.polis.org.br/)
                 so_url',
-                    'default_value' => '',
-                    'placeholder' => '',
-                    'prepend' => '',
-                    'append' => '',
-                    'formatting' => 'none',
-                    'maxlength' => '',
-                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
             ),
+        ),
         'location' => array(
             array(
                 array(
@@ -1039,24 +1039,22 @@ if(function_exists("register_field_group"))
         'options' => array(
             'position' => 'side',
             'layout' => 'default',
-            'hide_on_screen' => array(
-            ),
+            'hide_on_screen' => array(),
         ),
     ));
 }
-if(function_exists("register_field_group"))
-{
-    register_field_group(array (
+if (function_exists("register_field_group")) {
+    register_field_group(array(
         'id' => 'acf_projetos',
         'title' => 'Projetos',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53c5447b7015f',
                 'label' => 'Projetos',
                 'name' => 'projetos_repeater',
                 'type' => 'repeater',
-                'sub_fields' => array (
-                    array (
+                'sub_fields' => array(
+                    array(
                         'key' => 'field_53c5455070160',
                         'label' => 'Nome',
                         'name' => 'projetos_nome',
@@ -1069,7 +1067,7 @@ if(function_exists("register_field_group"))
                         'formatting' => 'html',
                         'maxlength' => '',
                     ),
-                    array (
+                    array(
                         'key' => 'field_53c545af70161',
                         'label' => 'Telefone',
                         'name' => 'projetos_telefone',
@@ -1082,7 +1080,7 @@ if(function_exists("register_field_group"))
                         'formatting' => 'html',
                         'maxlength' => '',
                     ),
-                    array (
+                    array(
                         'key' => 'field_53c5460270162',
                         'label' => 'Email',
                         'name' => 'projetos_email',
@@ -1102,9 +1100,9 @@ if(function_exists("register_field_group"))
                 'button_label' => 'Adicionar mais',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'projetos',
@@ -1113,23 +1111,21 @@ if(function_exists("register_field_group"))
                 ),
             ),
         ),
-        'options' => array (
+        'options' => array(
             'position' => 'normal',
             'layout' => 'no_box',
-            'hide_on_screen' => array (
-            ),
+            'hide_on_screen' => array(),
         ),
         'menu_order' => 0,
     ));
 }
 
-if(function_exists("register_field_group"))
-{
-    register_field_group(array (
+if (function_exists("register_field_group")) {
+    register_field_group(array(
         'id' => 'acf_videos',
         'title' => 'Vídeos',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53c7cb0b9c875',
                 'label' => 'URL do Vídeo',
                 'name' => 'url_do_video',
@@ -1144,9 +1140,9 @@ if(function_exists("register_field_group"))
                 'maxlength' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'videos',
@@ -1155,24 +1151,22 @@ if(function_exists("register_field_group"))
                 ),
             ),
         ),
-        'options' => array (
+        'options' => array(
             'position' => 'normal',
             'layout' => 'default',
-            'hide_on_screen' => array (
-            ),
+            'hide_on_screen' => array(),
         ),
         'menu_order' => 0,
     ));
 }
-if(function_exists("register_field_group"))
-{
-    $_id = get_page_by_path('institucional',OBJECT,'page');
+if (function_exists("register_field_group")) {
+    $_id = get_page_by_path('institucional', OBJECT, 'page');
     $_id = $_id->ID;
-    register_field_group(array (
+    register_field_group(array(
         'id' => 'acf_ordenar',
         'title' => 'Ordenar',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53ceb3ebbbab9',
                 'label' => 'Ordernar',
                 'name' => 'institucional_order',
@@ -1187,9 +1181,9 @@ if(function_exists("register_field_group"))
                 'step' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'page_parent',
                     'operator' => '==',
                     'value' => $_id,
@@ -1198,32 +1192,30 @@ if(function_exists("register_field_group"))
                 ),
             ),
         ),
-        'options' => array (
+        'options' => array(
             'position' => 'normal',
             'layout' => 'no_box',
-            'hide_on_screen' => array (
-            ),
+            'hide_on_screen' => array(),
         ),
         'menu_order' => 0,
     ));
 }
 
 
-if(function_exists("register_field_group"))
-{
-    register_field_group(array (
+if (function_exists("register_field_group")) {
+    register_field_group(array(
         'id' => 'acf_destaque',
         'title' => 'Destaque',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_53df98de354d7',
                 'label' => 'Mostrar no slider de publicações na página inicial?',
                 'name' => 'in_home_slider',
                 'type' => 'radio',
-                'conditional_logic' => array (
+                'conditional_logic' => array(
                     'status' => 1,
-                    'rules' => array (
-                        array (
+                    'rules' => array(
+                        array(
                             'field' => 'field_53df994c354d8',
                             'operator' => '==',
                             'value' => 'sim',
@@ -1231,7 +1223,7 @@ if(function_exists("register_field_group"))
                     ),
                     'allorany' => 'all',
                 ),
-                'choices' => array (
+                'choices' => array(
                     'sim' => 'SIm',
                     'nao' => 'Não',
                 ),
@@ -1240,12 +1232,12 @@ if(function_exists("register_field_group"))
                 'default_value' => '',
                 'layout' => 'horizontal',
             ),
-            array (
+            array(
                 'key' => 'field_53df994c354d8',
                 'label' => 'Mostrar nos sliders da biblioteca?',
                 'name' => 'in_biblioteca_slider',
                 'type' => 'radio',
-                'choices' => array (
+                'choices' => array(
                     'sim' => 'SIm',
                     'nao' => 'Não',
                 ),
@@ -1254,12 +1246,12 @@ if(function_exists("register_field_group"))
                 'default_value' => '',
                 'layout' => 'horizontal',
             ),
-            array (
+            array(
                 'key' => 'field_53df9a0d354db',
                 'label' => 'Mostrar nos sliders das áreas?',
                 'name' => 'in_area_slider',
                 'type' => 'radio',
-                'choices' => array (
+                'choices' => array(
                     'sim' => 'SIm',
                     'nao' => 'Não',
                 ),
@@ -1269,9 +1261,9 @@ if(function_exists("register_field_group"))
                 'layout' => 'horizontal',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '!=',
                     'value' => 'post',
@@ -1280,11 +1272,10 @@ if(function_exists("register_field_group"))
                 ),
             ),
         ),
-        'options' => array (
+        'options' => array(
             'position' => 'normal',
             'layout' => 'default',
-            'hide_on_screen' => array (
-            ),
+            'hide_on_screen' => array(),
         ),
         'menu_order' => 0,
     ));
