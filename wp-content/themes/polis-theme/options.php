@@ -212,5 +212,16 @@ function optionsframework_options() {
         'std'  => '16',
         'type' => 'text');
 
+    $options[] = array(
+        'name' => 'Colecões',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Numero de posts por página no /colecoes/',
+        'id'   => 'colecoes-per-page',
+        'std'  => '15',
+        'type' => 'text');
+
+
     return $options;
 }
