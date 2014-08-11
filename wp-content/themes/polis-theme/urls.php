@@ -13,7 +13,7 @@ function _query_rules () {
 		'^biblioteca/?$' => 'template=biblioteca',
 		'^biblioteca/busca/?$' => 'template=biblioteca-search',
 		'^biblioteca/busca/page/([^/]+)/?$' => 'template=biblioteca-search&paged=$matches[1]',
-        '^colecoes/([^/]+)/?$' => 'template=boletim',
+        '^colecoes/([^/]+)/?$' => 'template=colecoes&termo=$matches[1]',
 		//'^boletim-dicas/?$' => 'template=boletim',
 		'^equipe/page/([^/]+)/?$' => 'template=equipe&paged=$matches[1]',
 		'^equipe/([^/]+)/?$' => 'template=membros&nome=$matches[1]',

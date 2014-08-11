@@ -169,9 +169,9 @@ function _query_processor($query)
         _query_canal();
 
     }
-    elseif ( get_query_var( 'template' ) == 'boletim' ) {
+    elseif ( get_query_var( 'template' ) == 'colecoes' ) {
 
-        _query_boletim();
+        _query_colecoes();
 
     }
 
@@ -281,16 +281,18 @@ function _query_canal()
     $_query->canal = new WP_Query($args);
 }
 
-function _query_boletim(){
+function _query_colecoes(){
     
 	global $_query;
+    $termo = get_query_var('termo');
+
 	$args = array(
 		'post_type' => 'publicacoes',
 		'tax_query' => array(
 			array(
 				'taxonomy'         => 'tipos',
 				'field'            => 'slug',
-				'terms'            => 'boletim-dicas',
+				'terms'            => $termo,
 				'include_children' => true,
 				'posts_per_page'   => 10,
 			)
