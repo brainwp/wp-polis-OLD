@@ -139,10 +139,11 @@ get_header(); ?>
                 <div id="slider-news-controle" class="pagination">
                     <div class="carousel-indicators">
                         <?php for ($i = 0; $i < 6; $i++) {
+                            $visible = $i + 1;
                             if ($i == 0) {
-                                echo '<a class="active" href="#slider-news" data-slide-to="' . $i . '">' . $i . '</a>';
+                                echo '<a class="active" href="#slider-news" data-slide-to="' . $i . '">' . $visible . '</a>';
                             } else {
-                                echo '<a href="#slider-news" data-slide-to="' . $i . '">' . $i . '</a>';
+                                echo '<a href="#slider-news" data-slide-to="' . $i . '">' . $visible . '</a>';
                             }
                         }
                         ?>
