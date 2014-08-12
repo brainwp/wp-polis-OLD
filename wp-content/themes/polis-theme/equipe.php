@@ -15,7 +15,8 @@ get_header(); ?>
         $args = array(
             // return all fields
             'fields' => 'all_with_meta',
-            'orderby'  => 'meta_value',
+            'orderby'  => 'display_name meta_value',
+            'order'    => 'ASC',
             'meta_key' => 'area',
             'number' => $_query->users_per_page,
             'offset' => $_query->offset, // skip the number of users that we have per page
