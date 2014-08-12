@@ -38,10 +38,10 @@ function _init_query_object()
         //Canal
         'canal' => false,
 
-		//Boletim
-		'boletim'        => false,
+        //Boletim
+        'boletim' => false,
 
-	);
+    );
 }
 
 /**
@@ -157,7 +157,6 @@ function _query_processor($query)
         _query_noticias_acoes();
 
     } elseif (get_query_var('template') == 'area-cpt') {
-        echo 'teste';
         _query_area_categoria();
 
     } elseif (get_query_var('template') == 'archive-publicacoes') {
@@ -168,13 +167,11 @@ function _query_processor($query)
 
         _query_canal();
 
-    }
-    elseif ( get_query_var( 'template' ) == 'colecoes' ) {
+    } elseif (get_query_var('template') == 'colecoes') {
 
         _query_colecoes();
 
-    }
-    elseif ( get_query_var( 'template' ) == 'redirect_js_institucional' ) {
+    } elseif (get_query_var('template') == 'redirect_js_institucional') {
 
         redirect_js_institucional();
 
@@ -196,17 +193,20 @@ function _query_processor($query)
 
     /* Put something here to do suff in all queries */
 }
-function redirect_js_institucional(){
+
+function redirect_js_institucional()
+{
     $_slug = get_query_var('pslug');
 
     $_url = get_bloginfo('url') . '/institucional/#page_' . $_slug;
-    header('Location: '.$_url);
+    header('Location: ' . $_url);
 }
+
 function _query_tipo()
 {
     global $_query, $wp_query;
     $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = (int) of_get_option('areas-archive-per-page');
+    $per_page = (int)of_get_option('areas-archive-per-page');
     $tipo = get_query_var('taxtipo');
     $args = array(
         'post_type' => get_query_var('cpt'),
@@ -230,11 +230,12 @@ function _query_tipo()
     $term = get_term_by('slug', $tipo, 'tipos');
     $_query->tax_name = $term->name;
 }
+
 function _query_area_categoria()
 {
     global $_query, $wp_query;
     $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = (int) of_get_option('areas-archive-per-page');
+    $per_page = (int)of_get_option('areas-archive-per-page');
     $area = get_query_var('area');
     $cpt = get_query_var('cpt');
     $_query->area = $area;
@@ -291,32 +292,34 @@ function _query_canal()
     $_query->canal = new WP_Query($args);
 }
 
-function _query_colecoes(){
-    
-	global $_query;
+function _query_colecoes()
+{
+
+    global $_query;
     $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $termo = get_query_var('termo');
-    $per_page = (int) of_get_option('colecoes-per-page');
+    $per_page = (int)of_get_option('colecoes-per-page');
 
     $args = array(
-		'post_type' => 'publicacoes',
+        'post_type' => 'publicacoes',
         'posts_per_page' => $per_page,
         'paged' => $page,
-		'tax_query' => array(
-			array(
-				'taxonomy'         => 'tipos',
-				'field'            => 'slug',
-				'terms'            => $termo,
-				'include_children' => true,
-			)
-		)
-	);
-	$_query->boletim = new WP_Query( $args );
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'tipos',
+                'field' => 'slug',
+                'terms' => $termo,
+                'include_children' => true,
+            )
+        )
+    );
+    $_query->boletim = new WP_Query($args);
     $_query->page = $page;
     $_query->total_pages = $_query->boletim->max_num_pages;
 }
 
-function _query_noticias_acoes(){
+function _query_noticias_acoes()
+{
 
     global $_query, $wp_query;
 
@@ -552,7 +555,7 @@ function _query_membros()
 
             'post_per_page' => 8,
 
-            'post__in'      => $select_posts
+            'post__in' => $select_posts
         );
 
         $wp_query = new WP_Query($args);
@@ -921,12 +924,18 @@ function _title($title)
 
         }
 
-    }
-    else {
+    } elseif ($_query->template == 'colecoes') {
+
+        $title = 'Coleções | ' . $title = get_bloginfo('name');
+
+        return $title;
+
+    } else {
 
         return $title;
 
     }
+
 
 }
 
