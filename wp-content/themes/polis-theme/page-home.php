@@ -178,7 +178,7 @@ get_header(); ?>
             <?php $arg = array(
                 'post_type' => array('publicacoes'),
                 'orderby' => 'date',
-                'ordr' => 'ASC',
+                'order' => 'DESC',
                 'posts_per_page' => 15,
                 'meta_query' => array(
                     array(

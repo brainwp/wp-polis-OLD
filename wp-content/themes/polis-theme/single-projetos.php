@@ -76,7 +76,7 @@ get_header(); ?>
         $arg = array(
             'post_type' => array('projetos'),
             'orderby' => 'date',
-            'order' => 'ASC',
+            'order' => 'DESC',
             'post__not_in' => array($single_id),
             'posts_per_page' => 15
         );?>

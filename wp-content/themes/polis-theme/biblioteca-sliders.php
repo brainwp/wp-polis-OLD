@@ -9,13 +9,15 @@
 <section class="col-md-12 biblioteca publicacoes livros_section">
 <?php
 				$args = array(
+                    'posts_per_page'   => 10,
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                     'tax_query'  => array(
                         array(
                             'taxonomy'         => 'categorias',
                             'field'            => 'slug',
                             'terms'            => 'series-e-livros',
                             'include_children' => true,
-                            'posts_per_page'   => 10,
                         ),
                     ),
                     'meta_query' => array(
@@ -90,13 +92,15 @@
 <section class="col-md-12 publicacoes atividades biblioteca documentos_e_textos">
     <?php
     $args = array(
+        'posts_per_page'   => 10,
+        'orderby' => 'date',
+        'order'   => 'DESC',
         'tax_query'  => array(
             array(
                 'taxonomy'         => 'categorias',
                 'field'            => 'slug',
                 'terms'            => 'documentos-e-textos',
                 'include_children' => true,
-                'posts_per_page'   => 10,
             ),
         ),
         'meta_query' => array(
@@ -169,13 +173,15 @@
 <section class="col-md-12 publicacoes atividades biblioteca institucionais">
     <?php
     $args = array(
+        'posts_per_page'   => 10,
+        'orderby' => 'date',
+        'order'   => 'DESC',
         'tax_query'  => array(
             array(
                 'taxonomy'         => 'categorias',
                 'field'            => 'slug',
                 'terms'            => 'institucionais',
                 'include_children' => true,
-                'posts_per_page'   => 10,
             ),
         ),
         'meta_query' => array(

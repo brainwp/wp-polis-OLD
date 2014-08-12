@@ -56,7 +56,7 @@ get_header(); ?>
 				'post_type'			=> array( 'noticias' ),
 				'tipos'				=> $terms_e,
 				'orderby'			=> 'date',
-				'order'				=> 'ASC',
+				'order'				=> 'DESC',
 				'posts_per_page'	=> 15
 			);?>
 			<ul id="slider2">

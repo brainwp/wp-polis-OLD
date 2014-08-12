@@ -174,7 +174,11 @@ function _query_processor($query)
         _query_colecoes();
 
     }
+    elseif ( get_query_var( 'template' ) == 'redirect_js_institucional' ) {
 
+        redirect_js_institucional();
+
+    }
 
     if (get_query_var('select_query') == 'area-cat') {
 
@@ -191,6 +195,12 @@ function _query_processor($query)
     /* Template redirect */
 
     /* Put something here to do suff in all queries */
+}
+function redirect_js_institucional(){
+    $_slug = get_query_var('pslug');
+
+    $_url = get_bloginfo('url') . '/institucional/#page_' . $_slug;
+    header('Location: '.$_url);
 }
 function _query_tipo()
 {

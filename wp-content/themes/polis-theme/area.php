@@ -102,13 +102,15 @@
                 // Loop Notícias
                 $args = array(
                     'post_type' => 'noticias',
+                    'posts_per_page'   => 10,
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'areas',
                             'field' => 'id',
                             'terms' => $cat,
                             'include_children' => true,
-                            'posts_per_page' => 8,
                         )
                     ),
                     'meta_query' => array(
@@ -161,13 +163,15 @@
                 $args = array(
 
                     'post_type' => 'publicacoes',
+                    'posts_per_page'   => 10,
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'areas',
                             'field' => 'id',
                             'terms' => $cat,
                             'include_children' => true,
-                            'posts_per_page' => 10,
                         )
                     ),
                     'meta_query' => array(
@@ -220,13 +224,15 @@
                 // Loop Ações
                 $args = array(
                     'post_type' => 'acoes',
+                    'posts_per_page'   => 10,
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'areas',
                             'field' => 'id',
                             'terms' => $cat,
                             'include_children' => true,
-                            'posts_per_page' => 10,
                         )
                     ),
                     'meta_query' => array(

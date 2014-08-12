@@ -10,7 +10,8 @@ function _query_rules () {
 
     return array(
 		'^equipe/?$' => 'template=equipe',
-		'^biblioteca/?$' => 'template=biblioteca',
+        '^institucional/([^/]+)/?$' => 'template=redirect_js_institucional&pslug=$matches[1]',
+        '^biblioteca/?$' => 'template=biblioteca',
 		'^biblioteca/busca/?$' => 'template=biblioteca-search',
 		'^biblioteca/busca/page/([^/]+)/?$' => 'template=biblioteca-search&paged=$matches[1]',
         '^colecoes/([^/]+)/?$' => 'template=colecoes&termo=$matches[1]',
