@@ -228,7 +228,7 @@ class widget_newsletter extends WP_Widget {
 			<input type="text" placeholder="NOME" class="col-md-12" name="SMT_nome">
             <div class="clear-mob"></div>
 			<select class="col-md-12" name="SMT_area">
-                <option value="" disabled selected>Area de interesse</option>
+                <option value="" disabled selected>Áreas de Interesse</option>
                 <?php echo $areas; ?>
 			</select>
 			<input type="tel" placeholder="TEL: ( )" class="col-md-12" name="SMT_telefone_residencial">

@@ -121,7 +121,7 @@ get_header(); ?>
 				'post_type'			=> array( 'publicacoes' ),
 				'tipos'				=> $terms_c,
 				'orderby'			=> 'date',
-				'order'				=> 'ASC',
+				'order'				=> 'DESC',
 				'posts_per_page'	=> 15
 			);?>
 			<ul id="slider2">

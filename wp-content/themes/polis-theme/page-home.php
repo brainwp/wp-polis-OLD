@@ -139,10 +139,11 @@ get_header(); ?>
                 <div id="slider-news-controle" class="pagination">
                     <div class="carousel-indicators">
                         <?php for ($i = 0; $i < 6; $i++) {
+                            $visible = $i + 1;
                             if ($i == 0) {
-                                echo '<a class="active" href="#slider-news" data-slide-to="' . $i . '">' . $i . '</a>';
+                                echo '<a class="active" href="#slider-news" data-slide-to="' . $i . '">' . $visible . '</a>';
                             } else {
-                                echo '<a href="#slider-news" data-slide-to="' . $i . '">' . $i . '</a>';
+                                echo '<a href="#slider-news" data-slide-to="' . $i . '">' . $visible . '</a>';
                             }
                         }
                         ?>
@@ -178,7 +179,7 @@ get_header(); ?>
             <?php $arg = array(
                 'post_type' => array('publicacoes'),
                 'orderby' => 'date',
-                'ordr' => 'ASC',
+                'order' => 'DESC',
                 'posts_per_page' => 15,
                 'meta_query' => array(
                     array(

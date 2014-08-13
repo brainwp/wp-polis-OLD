@@ -12,7 +12,7 @@ if (function_exists("register_field_group")) {
         'title' => 'Area',
         'fields' => array(
             array(
-                'key' => 'field_53862949d369c',
+                'key' => 'field_area_acf',
                 'label' => 'Area',
                 'name' => 'area',
                 'type' => 'select',
@@ -1280,3 +1280,42 @@ if (function_exists("register_field_group")) {
         'menu_order' => 0,
     ));
 }
+function update_field_area_order( $post_id )
+{
+    // vars
+    $fields = false;
+
+    // load from post
+    if( isset($_POST['fields']) && isset($_POST['user_id'])  )
+    {
+        $_user_id = $_POST['user_id'];
+        $field = $_POST['fields']['field_area_acf'];
+       // global $wpdb;
+
+        if($field == 'reforma'){
+            $order = 1;
+        }
+        elseif($field == 'democracia'){
+            $order = 2;
+        }
+        elseif($field == 'inclusao'){
+            $order = 3;
+        }
+        elseif($field == 'cidadania'){
+            $order = 4;
+        }
+        else{
+            $order = 5;
+        }
+
+        update_user_meta($_user_id, 'area_user_order', $order);
+    }
+
+    // ...
+}
+
+// run before ACF saves the $_POST['fields'] data
+add_action('acf/save_post', 'update_field_area_order', 1);
+
+// run after ACF saves the $_POST['fields'] data
+add_action('acf/save_post', 'update_field_area_order', 20);

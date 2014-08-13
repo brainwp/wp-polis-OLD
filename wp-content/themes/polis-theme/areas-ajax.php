@@ -1,42 +1,44 @@
 <?php
 
-function areaAjax() {
+function areaAjax()
+{
 
-	if ( isset( $_GET['areaAjax'] ) && isset( $_GET['areaCatAjax'] ) && isset( $_GET['areaSlider'] ) ) {
+    if (isset($_GET['areaAjax']) && isset($_GET['areaCatAjax']) && isset($_GET['areaSlider'])) {
 
-		$area   = $_GET['areaAjax'];
+        $area = $_GET['areaAjax'];
 
-		$slider = $_GET['areaSlider'];
+        $slider = $_GET['areaSlider'];
 
-		$cat    = $_GET['areaCatAjax'];
+        $cat = $_GET['areaCatAjax'];
 
-		if ( $slider == 'noticias' ):
+        if ($slider == 'noticias'):
 
-			?>
+            ?>
 
-			<?php
+            <?php
 
-			$args     = array(
+            $args = array(
 
-				'post_type' => 'noticias',
+                'post_type' => 'noticias',
+                'posts_per_page'   => 10,
+                'orderby' => 'date',
+                'order'   => 'DESC',
 
-				'tax_query' => array(
+                'tax_query' => array(
 
-					array(
+                    array(
 
-						'taxonomy'         => 'areas',
+                        'taxonomy' => 'areas',
 
-						'field'            => 'id',
+                        'field' => 'id',
 
-						'terms'            => $cat,
+                        'terms' => $cat,
 
-						'include_children' => true,
+                        'include_children' => true,
 
-						'posts_per_page'   => 8,
+                    )
 
-					)
-
-				),
+                ),
                 'meta_query' => array(
                     array(
                         'key' => 'in_area_slider',
@@ -45,45 +47,46 @@ function areaAjax() {
                     ),
                 )
 
-			);
+            );
 
-			$noticias = new WP_Query( $args ); // exclude category
+            $noticias = new WP_Query($args); // exclude category
 
-			while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
-                <?php get_template_part('area-slider','noticias'); ?>
+            while ($noticias->have_posts()) : $noticias->the_post(); ?>
+                <?php get_template_part('area-slider', 'noticias'); ?>
             <?php endwhile; ?>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php
+        <?php
 
-		if ( $slider == 'publicacoes' ):
+        if ($slider == 'publicacoes'):
 
-			?>
+            ?>
 
-			<?php
+            <?php
 
-			$args        = array(
+            $args = array(
 
-				'post_type' => 'publicacoes',
+                'post_type' => 'publicacoes',
+                'posts_per_page'   => 10,
+                'orderby' => 'date',
+                'order'   => 'DESC',
 
-				'tax_query' => array(
+                'tax_query' => array(
 
-					array(
+                    array(
 
-						'taxonomy'         => 'areas',
+                        'taxonomy' => 'areas',
 
-						'field'            => 'id',
+                        'field' => 'id',
 
-						'terms'            => $cat,
+                        'terms' => $cat,
 
-						'include_children' => true,
+                        'include_children' => true,
 
-						'posts_per_page'   => 10,
+                    )
 
-					)
-
-				),
+                ),
                 'meta_query' => array(
                     array(
                         'key' => 'in_area_slider',
@@ -92,47 +95,49 @@ function areaAjax() {
                     ),
                 )
 
-			);
+            );
 
-			$publicacoes = new WP_Query( $args ); ?>
+            $publicacoes = new WP_Query($args); ?>
 
-			<?php while ( $publicacoes->have_posts() ) :
+            <?php while ($publicacoes->have_posts()) :
 
-			$publicacoes->the_post(); ?>
-            <?php get_template_part('area-slider','publicacoes'); ?>
-		<?php endwhile; ?>
+            $publicacoes->the_post(); ?>
+            <?php get_template_part('area-slider', 'publicacoes'); ?>
+        <?php endwhile; ?>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php
+        <?php
 
-		if ( $slider == 'acoes' ):
+        if ($slider == 'acoes'):
 
-			?>
+            ?>
 
-			<?php
+            <?php
 
-			$args     = array(
+            $args = array(
 
-				'post_type' => 'acoes',
+                'post_type' => 'acoes',
+                'posts_per_page' => 10,
+                'orderby' => 'date',
+                'order' => 'DESC',
 
-				'tax_query' => array(
+                'tax_query' => array(
 
-					array(
+                    array(
 
-						'taxonomy'         => 'areas',
+                        'taxonomy' => 'areas',
 
-						'field'            => 'id',
+                        'field' => 'id',
 
-						'terms'            => $cat,
+                        'terms' => $cat,
 
-						'include_children' => true,
+                        'include_children' => true,
 
-						'posts_per_page'   => 10,
 
-					)
+                    )
 
-				),
+                ),
                 'meta_query' => array(
                     array(
                         'key' => 'in_area_slider',
@@ -141,26 +146,25 @@ function areaAjax() {
                     ),
                 )
 
-			);
+            );
 
-			$noticias = new WP_Query( $args ); // exclude category
+            $noticias = new WP_Query($args); // exclude category
 
-			while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
-                <?php get_template_part('area-slider','acoes'); ?>
+            while ($noticias->have_posts()) : $noticias->the_post(); ?>
+                <?php get_template_part('area-slider', 'acoes'); ?>
             <?php endwhile; ?>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php
+        <?php
 
-		die();
+        die();
 
-	}
+    }
 
 }
 
 
-
-add_action( 'init', 'areaAjax', 99999999999 );
+add_action('init', 'areaAjax', 99999999999);
 
 ?>
