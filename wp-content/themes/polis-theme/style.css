@@ -2082,6 +2082,8 @@ slider de noticias + acoes
 	text-decoration: none !important;
 	transition: 300ms linear all;
 	font-size: 0.9em;
+    margin-bottom:8px;
+    display:inline-block;
 }
 .institucional-nav a:hover, .institucional-nav a.atual{
 	background:#509abd;
