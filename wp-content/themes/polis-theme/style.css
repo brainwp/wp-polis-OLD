@@ -2257,12 +2257,17 @@ slider de noticias + acoes
 
 .user{
 	padding: 5px;
-	border:3px solid transparent;
+	border: 2px solid transparent;
 	transition:400ms all ease ;
 	margin-top: 3px;
 	margin-bottom: 3px;
 	position: relative;
 	border-radius: 5px;
+}
+.user:hover{
+	padding: 5px;
+	border: 2px solid #c3c3c3;
+	transition:400ms all ease ;
 }
 .user img:first-child {
 	-webkit-border-top-left-radius: 5px;
@@ -2286,11 +2291,6 @@ slider de noticias + acoes
 	position: absolute;
 	z-index: 22;
 	opacity:0;
-}
-.user:hover{
-	padding: 5px;
-	border: 2px solid #c3c3c3;
-	transition:400ms all ease ;
 }
 .user:hover .hover-icon{
 	transition:400ms all ease;
