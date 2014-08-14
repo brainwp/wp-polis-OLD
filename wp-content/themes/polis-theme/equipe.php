@@ -25,6 +25,7 @@ get_header(); ?>
 
         // The User Query
         $user_query = new WP_User_Query($args);
+        $count_equipe = 0;
         foreach ($user_query->results as $user) {
             $_user = get_userdata($user->ID);
             $_avatar = get_avatar($user->ID, 200);
@@ -45,8 +46,14 @@ get_header(); ?>
                     <small><?php echo get_field('cargo', 'user_' . $user->ID);?></small>
                 </div>
             </a>
+            <?php $count_equipe++; ?>
+            <?php if ($count_equipe >= 4) : ?>
+                <div class="clear"></div>
+                <?php $count_equipe = 0; ?>
+            <?php endif; ?>
+
         <?php
-        }
+            }
         ?>
         <div class="container pagination">
             <div class="col-md-4 col-md-offset-4">

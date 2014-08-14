@@ -2241,17 +2241,28 @@ slider de noticias + acoes
 }
 /*page equipe.php */
 .user{
-	padding:10px;
+	padding: 5px;
 	border:3px solid transparent;
 	transition:400ms all ease ;
-	margin-top:5px;
-	margin-bottom: 5px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	position: relative;
+	border-radius: 5px;
+}
+.user img:first-child {
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 .user .avatar{
 	width:100%;
 	height: 204px;
 }
 .user .hover-icon{
+	display: block;
 	transition:400ms all ease;
 	margin-top:-102px;
 	margin-left: 98px;
@@ -2262,8 +2273,8 @@ slider de noticias + acoes
 	opacity:0;
 }
 .user:hover{
-	padding:10px;
-	border:3px solid #c3c3c3;
+	padding: 5px;
+	border: 2px solid #c3c3c3;
 	transition:400ms all ease ;
 }
 .user:hover .hover-icon{
@@ -2275,11 +2286,18 @@ slider de noticias + acoes
 	padding:5px;
 	font-size:20px;
 	color:white;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 .user .name small{
-    font-size:12px;
-    width:100%;
-    display:block;
+    display: block;
+	font-size: 12px;
+    padding-bottom: 7px;
+    width: 100%;
 }
 .equipe{
 	background:white url(img/equipe-bg.jpg) center;
