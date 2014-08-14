@@ -76,15 +76,14 @@ $querystr = "
     ORDER BY $wpdb->posts.post_date DESC
     LIMIT 0, 30
  ";
-$_sql .= "SELECT * FROM ".$wpdb->posts.' LEFT OUTER JOIN '.$wpdb->postmeta;
-$_sql .= " WHERE ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id";
-$_sql .= ' AND ' . $wpdb->posts . '.post_type = "publicacoes" ';
-$_sql .= ' AND ' . $wpdb->posts . '.post_status = "publish" ';
+$_sql .= "SELECT DISTINCT * FROM ".$wpdb->posts.' LEFT OUTER JOIN '.$wpdb->postmeta;
+$_sql .= " ON ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id WHERE ".$wpdb->postmeta.".post_id IS NOT NULL";
 $_sql .= ' AND ' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
 $_sql .= ' OR ' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
 $_sql .= ' OR ' . $wpdb->postmeta . '.meta_value LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
-$_sql .= " ORDER BY ".$wpdb->posts.".post_date DESC GROUP BY ".$wpdb->posts.".ID ORDER BY ".$wpdb->posts.".post_date";
-// Busca pelo meta_value
+$_sql .= " ORDER BY ".$wpdb->posts.".post_date DESC";// Busca pelo meta_value
+$_sql .= " LIMIT 0, 10";// Busca pelo meta_value
+
 //$where = str_replace($wpdb->posts.'.post_title', $wpdb->postmeta.'.meta_value', $where);
 // The Query
 //$query = new WP_Query($args);

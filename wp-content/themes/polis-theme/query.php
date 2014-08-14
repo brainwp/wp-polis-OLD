@@ -253,7 +253,7 @@ function _query_area_categoria()
             )
         ),
         'orderby' => 'date',
-        'order' => 'ASC',
+        'order' => 'DESC',
         'posts_per_page' => $per_page,
         'paged' => $page
     );
