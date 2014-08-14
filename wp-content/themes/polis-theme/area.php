@@ -88,6 +88,9 @@ $categorias = get_categories($args);
     <div id="first" data-first="<?php echo $cat; ?>" style="display:none"></div>
 
     <div id="tab<?php echo $_first->term_id; ?>" class="tabContents aba-area">
+        <!-- NOME E DESCRIÇÃO !-->
+        <h1><?php echo $_first->name; ?></h1>
+        <div class="col-md-12"><?php echo $_first->description; ?></div>
 
         <div class="cada-loop-aba publicacoes">
 
@@ -278,6 +281,9 @@ $categorias = get_categories($args);
             ?>
 
             <div id="tab<?php echo $cat; ?>" class="tabContents aba-area">
+                <!-- NOME E DESCRIÇÃO !-->
+                <h1><?php echo $cat->name; ?></h1>
+                <div class="col-md-12"><?php echo $cat->description; ?></div>
 
 
                 <div class="cada-loop-aba publicacoes">
@@ -286,7 +292,7 @@ $categorias = get_categories($args);
 
                         <h3>Noticias</h3>
 
-                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                        <a href="<?php echo 'noticias'; ?>" class="col-md-1 shape-todos">Ver todos</a>
 
                     </div>
 
@@ -311,7 +317,7 @@ $categorias = get_categories($args);
 
                         <h3>Publicações</h3>
 
-                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                        <a href="<?php echo 'publicacoes'; ?>" class="col-md-1 shape-todos">Ver todos</a>
 
                     </div>
 
@@ -342,7 +348,7 @@ $categorias = get_categories($args);
                 <div class="cada-loop-aba publicacoes">
                     <div class="section-title">
                         <h3>Ações</h3>
-                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                        <a href="<?php echo 'acoes'; ?>" class="col-md-1 shape-todos">Ver todos</a>
                     </div>
 
                     <div class="col-md-12 list_carousel responsive">
