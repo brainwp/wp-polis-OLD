@@ -199,7 +199,8 @@ function redirect_js_institucional()
     $_slug = get_query_var('pslug');
 
     $_url = get_bloginfo('url') . '/institucional/#page_' . $_slug;
-    header('Location: ' . $_url);
+    wp_redirect($_url);
+    exit;
 }
 
 function _query_tipo()
@@ -252,7 +253,7 @@ function _query_area_categoria()
             )
         ),
         'orderby' => 'date',
-        'order' => 'ASC',
+        'order' => 'DESC',
         'posts_per_page' => $per_page,
         'paged' => $page
     );
