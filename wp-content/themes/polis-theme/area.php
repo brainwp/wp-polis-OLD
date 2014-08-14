@@ -286,7 +286,7 @@ $categorias = get_categories($args);
 
                         <h3>Noticias</h3>
 
-                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                        <a href="<?php echo 'noticias'; ?>" class="col-md-1 shape-todos">Ver todos</a>
 
                     </div>
 
@@ -311,7 +311,7 @@ $categorias = get_categories($args);
 
                         <h3>Publicações</h3>
 
-                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                        <a href="<?php echo 'publicacoes'; ?>" class="col-md-1 shape-todos">Ver todos</a>
 
                     </div>
 
@@ -342,7 +342,7 @@ $categorias = get_categories($args);
                 <div class="cada-loop-aba publicacoes">
                     <div class="section-title">
                         <h3>Ações</h3>
-                        <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                        <a href="<?php echo 'acoes'; ?>" class="col-md-1 shape-todos">Ver todos</a>
                     </div>
 
                     <div class="col-md-12 list_carousel responsive">
