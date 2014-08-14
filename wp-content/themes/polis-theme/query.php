@@ -199,7 +199,8 @@ function redirect_js_institucional()
     $_slug = get_query_var('pslug');
 
     $_url = get_bloginfo('url') . '/institucional/#page_' . $_slug;
-    header('Location: ' . $_url);
+    wp_redirect($_url);
+    exit;
 }
 
 function _query_tipo()
@@ -252,7 +253,7 @@ function _query_area_categoria()
             )
         ),
         'orderby' => 'date',
-        'order' => 'ASC',
+        'order' => 'DESC',
         'posts_per_page' => $per_page,
         'paged' => $page
     );
@@ -298,24 +299,33 @@ function _query_colecoes()
     global $_query;
     $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $termo = get_query_var('termo');
-    $per_page = (int)of_get_option('colecoes-per-page');
-
-    $args = array(
-        'post_type' => 'publicacoes',
-        'posts_per_page' => $per_page,
-        'paged' => $page,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'tipos',
-                'field' => 'slug',
-                'terms' => $termo,
-                'include_children' => true,
+    $per_page = (int) of_get_option('colecoes-per-page');
+    $cat = get_term_by('slug', $termo, 'tipos');
+    if(!empty($cat->name)){
+        $args = array(
+            'post_type' => 'publicacoes',
+            'posts_per_page' => $per_page,
+            'paged' => $page,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'tipos',
+                    'field' => 'slug',
+                    'terms' => $termo,
+                    'include_children' => true,
+                )
             )
-        )
-    );
-    $_query->boletim = new WP_Query($args);
-    $_query->page = $page;
-    $_query->total_pages = $_query->boletim->max_num_pages;
+        );
+        $_query->term_description = $cat->description;
+        $_query->term_name = $cat->name;
+        $_query->boletim = new WP_Query($args);
+        $_query->page = $page;
+        $_query->total_pages = $_query->boletim->max_num_pages;
+    }
+    else{
+        include get_template_directory() . '/404.php';
+        header("HTTP/1.0 404 Not Found");
+        die();
+    }
 }
 
 function _query_noticias_acoes()

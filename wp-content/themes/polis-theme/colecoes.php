@@ -12,8 +12,11 @@ get_header();
 <section id="primary" class="content-area boletim">
     <main id="main" class="site-main projetos-main" role="main">
 
-        <div class="header-area single-projetos col-md-12 boletim">
-            <h1>Boletim Dicas</h1>
+        <div class="header-area single-colecao col-md-12 boletim">
+            <h1><?php echo $_query->term_name;?></h1>
+            <?php if (!empty($_query->term_description)) : ?>
+                <div class="col-md-12"><?php echo $_query->term_description;?></div>
+            <?php endif; ?>
         </div>
         <!-- header-area col-md-12 projetos-main -->
 

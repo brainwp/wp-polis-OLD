@@ -841,10 +841,26 @@ object {
 
 
 /* Boletim */
+
+.projetos-main .header-area.single-colecao {
+    background: url('img/bg-header-projetos.jpg') center 1px fixed #b0d3d8;
+    padding-left:0 !important;
+    padding-right: 0 !important;
+    padding-top: 15px !important;
+    padding-bottom: 0 !important;
+}
+
 .container section.content-area.boletim {
 	padding: 0;
 }
 
+.content-area.boletim .boletim .col-md-12 {
+	background: url('img/bg-header-colecao.jpg') center 1px fixed #FFF;
+    float: none;
+    margin: 20px auto 0;
+    padding: 30px 15%;
+    text-align: center;
+}
 
 /* Area */
 .header-area.reforma-urbana {
@@ -2082,6 +2098,8 @@ slider de noticias + acoes
 	text-decoration: none !important;
 	transition: 300ms linear all;
 	font-size: 0.9em;
+    margin-bottom:8px;
+    display:inline-block;
 }
 .institucional-nav a:hover, .institucional-nav a.atual{
 	background:#509abd;
