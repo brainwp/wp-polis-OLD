@@ -9,6 +9,11 @@ global $_query;
 $page = $_query->_page;
 $total_pages = $_query->total_pages;
 get_header(); ?>
+
+    <div class="header-area col-md-12 equipe">
+        <h1>Equipe</h1>
+    </div><!-- header-area col-md-12 equipe -->
+
     <section class="col-md-12 content equipe">
         <?php
 

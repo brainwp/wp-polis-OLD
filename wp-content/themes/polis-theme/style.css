@@ -2240,6 +2240,21 @@ slider de noticias + acoes
 	margin-bottom :15px;
 }
 /*page equipe.php */
+.header-area.equipe {
+    background: url('img/bg-header-projetos.jpg') center 1px fixed #b0d3d8;
+    padding-left:0 !important;
+    padding-right: 0 !important;
+    padding-top:30px;
+    padding-bottom:30px;
+    text-align: center;
+}
+
+.header-area.equipe h1 {
+   color: #1e5c7a;
+    font-size: 49px;
+    text-align: center;
+}
+
 .user{
 	padding: 5px;
 	border:3px solid transparent;
@@ -2302,6 +2317,7 @@ slider de noticias + acoes
 .equipe{
 	background:white url(img/equipe-bg.jpg) center;
 	background-size: 100%;
+	padding-top: 20px;
 }
 .pagination{
 	margin-top: 40px;
