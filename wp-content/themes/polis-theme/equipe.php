@@ -43,7 +43,7 @@ get_header(); ?>
             }
             ?>
             <a href="<?php echo get_bloginfo('url') . '/equipe/' . $_user->user_login; ?>" class="col-md-3 user">
-                <?php echo $_avatar; ?>
+                <div class="wrap-avatar"><?php echo $_avatar; ?></div>
                 <img src="<?php bloginfo('template_url') ?>/img/image-hover.png" class="hover-icon">
 
                 <div class="col-md-12 name <?php echo $_area; ?>">
