@@ -615,7 +615,6 @@ function biblioteca_count($area)
     $count = $count_query->found_posts;
 // grab the current page number and set to 1 if no page number is set
     $total_posts = $count;
-
     return $count;
 }
 

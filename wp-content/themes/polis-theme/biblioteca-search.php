@@ -86,14 +86,14 @@ $_sql .= " LIMIT 0, 10";// Busca pelo meta_value
 
 //$where = str_replace($wpdb->posts.'.post_title', $wpdb->postmeta.'.meta_value', $where);
 // The Query
-//$query = new WP_Query($args);
-$pageposts = $wpdb->get_results($_sql, OBJECT);
+$query = new WP_Query($args);
+//$pageposts = $wpdb->get_results($_sql, OBJECT);
 // Print last SQL query string
-echo $wpdb->last_query . '<br>';
+//echo $wpdb->last_query . '<br>';
 // Print last SQL query result
-echo $wpdb->last_result . '<br>';
+//echo $wpdb->last_result . '<br>';
 // Print last SQL query Error
-echo $wpdb->last_error . '<br>';
+//echo $wpdb->last_error . '<br>';
 
 
 $count_args = array(
@@ -140,10 +140,9 @@ $total_pages = ceil($total_posts / $per_page);
             $type_list = array();
             $type_add = array();
 
-            if ($pageposts){
-                global $post;
-                foreach ($pageposts as $post) {
-                    setup_postdata($post);
+            if ($query->have_posts() ){
+                while ($query->have_posts()){
+                    $query->the_post();
                     $type_term = return_term_biblioteca('categorias');
                     if (!in_array(return_term_biblioteca('categorias'), $type_add)) { //verifique se vetor já existe no array
                         $type_add[] = $type_term;
