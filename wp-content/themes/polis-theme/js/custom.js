@@ -94,7 +94,25 @@ jQuery(document).ready(function () {
             $(tab).remove();
         }
     });
-    $('.nav-tabs li:first a').trigger('click');
+    $('.biblioteca-main .pagination a').on('click',function(e){
+        e.preventDefault();
+        var _href = $(this).attr('href');
+        var _elem = $('.nav-tabs li.active').attr('data-tab-element').replace('#','');
+        window.location.href = _href + '#' + _elem;
+    });
+    if (location.hash.lastIndexOf('tab-') != -1) {
+        var _elem = 'li[data-tab-element="'+location.hash+'"]' + ' a';
+        if($(_elem).length > 0){
+            $(_elem).trigger('click');
+        }
+        else{
+            $('.nav-tabs li:first a').trigger('click');
+        }
+        console.log(_elem);
+    }
+    else{
+        $('.nav-tabs li:first a').trigger('click');
+    }
     $('.working-container').css('display', 'block');
     if (location.hash.lastIndexOf('page_') != -1) {
         var pageid = location.hash.slice(6);
