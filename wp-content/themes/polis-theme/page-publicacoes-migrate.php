@@ -7,9 +7,11 @@
  */
 // WP_Query arguments
 global $wpdb;
+$page = $_GET['pagina'];
 $args = array (
     'post_type'              => array('publicacoes'),
-    'posts_per_page'         => '999999999999',
+    'posts_per_page'         => '140',
+    'paged' => $page
 );
 
 // The Query

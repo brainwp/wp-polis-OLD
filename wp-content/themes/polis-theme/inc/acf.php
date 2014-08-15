@@ -1328,7 +1328,7 @@ if(function_exists("register_field_group"))
         'fields' => array (
             array (
                 'key' => 'field_content_publicacoes',
-                'label' => 'Conteúdo',
+                'label' => '',
                 'name' => 'publicacoes_content',
                 'type' => 'wysiwyg',
                 'default_value' => '',
