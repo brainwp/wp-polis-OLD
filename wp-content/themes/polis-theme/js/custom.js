@@ -540,6 +540,7 @@ jQuery(document).ready(function () {
         if ($('#area-input').val().trim() == '') {
             var siteurl = $(document.body).attr('data-siteurl');
             var ajax_req = siteurl + '?isBibliotecaCountAjax=true&key=' + $('#key').val() + '&tipo=' + $('#select_tipo').val() + '&categoria=' + $('#select_cat').val() + '&anomin=' + $('#select_anomin').val() + '&anomax=' + $('#select_anomax').val();
+            var ajax_req = encodeURI(ajax_req);
             $('#ajax-counter').load(ajax_req);
             $('html, body').animate({
                 scrollTop: $('#biblioteca-require-position').offset().top

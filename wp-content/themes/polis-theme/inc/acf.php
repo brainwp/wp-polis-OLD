@@ -1319,3 +1319,41 @@ add_action('acf/save_post', 'update_field_area_order', 1);
 
 // run after ACF saves the $_POST['fields'] data
 add_action('acf/save_post', 'update_field_area_order', 20);
+
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_conteudo',
+        'title' => 'Conteudo',
+        'fields' => array (
+            array (
+                'key' => 'field_content_publicacoes',
+                'label' => 'Conteúdo',
+                'name' => 'publicacoes_content',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'publicacoes',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'default',
+            'hide_on_screen' => array (
+                0 => 'the_content',
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}

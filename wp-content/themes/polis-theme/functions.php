@@ -21,6 +21,7 @@ function acf_check()
 
 define('ACF_LITE', acf_check());
 require get_template_directory() . '/inc/acf.php';
+require get_template_directory() . '/inc/search_content.php';
 
 /**
  * Desabilita o script HeartBeat no Admin, exceto em post.php e post-new.php.
@@ -144,7 +145,36 @@ function resumo($custom_max = '', $sep = '')
         return substr($string, 0, $max) . $sep;
     }
 }
+function resumo_publicacoes($custom_max = '', $sep = '')
+{
+    global $_query;
+    $string = wp_strip_all_tags(get_field('publicacoes_content'));
+    if (empty($string)) {
+        return '';
+    } else {
+        if (empty($sep)) {
+            $sep = ' [...]';
+        }
+        if (empty($custom_max)) {
+            $max = 100;
+        } else {
+            $max = $custom_max;
+        }
 
+        if (strlen($string) > $max) {
+            while (substr($string, $max, 1) <> ' ' && ($max < strlen($string))) {
+                $max++;
+            };
+        };
+        return substr($string, 0, $max) . $sep;
+    }
+}
+function the_content_publicacoes(){
+    echo wp_strip_all_tags(get_field('publicacoes_content'));
+}
+function get_the_content_publicacoes(){
+    return wp_strip_all_tags(get_field('publicacoes_content'));
+}
 /**
  * Register widgetized area and update sidebar with default widgets.
  */
