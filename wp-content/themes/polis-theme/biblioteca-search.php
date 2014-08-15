@@ -63,29 +63,6 @@ $args = array(
     'posts_per_page' => $per_page,
     'paged' => $page,
 );
-global $wpdb;
-$querystr = "
-    SELECT $wpdb->posts.*
-    FROM $wpdb->posts, $wpdb->postmeta
-    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
-    AND $wpdb->posts.post_status = 'publish'
-    AND $wpdb->posts.post_type = 'publicacoes'
-    AND $wpdb->posts.post_date < NOW()
-    AND $wpdb->posts.post_title LIKE '%$key%'
-    OR $wpdb->posts.post_content LIKE '%$key%'
-    ORDER BY $wpdb->posts.post_date DESC
-    LIMIT 0, 30
- ";
-$_sql .= "SELECT DISTINCT * FROM ".$wpdb->posts.' LEFT OUTER JOIN '.$wpdb->postmeta;
-$_sql .= " ON ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id WHERE ".$wpdb->postmeta.".post_id IS NOT NULL";
-$_sql .= ' AND ' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
-$_sql .= ' OR ' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
-$_sql .= ' OR ' . $wpdb->postmeta . '.meta_value LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
-$_sql .= " ORDER BY ".$wpdb->posts.".post_date DESC";// Busca pelo meta_value
-$_sql .= " LIMIT 0, 10";// Busca pelo meta_value
-
-//$where = str_replace($wpdb->posts.'.post_title', $wpdb->postmeta.'.meta_value', $where);
-// The Query
 $query = new WP_Query($args);
 //$pageposts = $wpdb->get_results($_sql, OBJECT);
 // Print last SQL query string
@@ -157,7 +134,7 @@ $total_pages = ceil($total_posts / $per_page);
                     $type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name('categorias');
                     $type_list[$type_term][$_i]['term_slug'] = return_term_biblioteca('categorias');
                     $type_list[$type_term][$_i]['title'] = get_the_title();
-                    $type_list[$type_term][$_i]['resumo'] = resumo(150, '...');
+                    $type_list[$type_term][$_i]['resumo'] = resumo_publicacoes(150, '...');
                     $type_list[$type_term][$_i]['id'] = get_the_id();
                     $type_list[$type_term][$_i]['link'] = get_permalink();
                     $type_list[$type_term][$_i]['autor'] = get_the_author_meta('display_name');

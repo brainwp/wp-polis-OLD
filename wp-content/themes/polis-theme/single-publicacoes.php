@@ -49,7 +49,7 @@ get_header(); ?>
 			</div><!-- thumb -->
 			<div class="content">
 				<h2><?php the_title(); ?></h2>
-				<?php the_content(); ?>
+				<?php the_content_publicacoes(); ?>
 				<div class="meta">
 
 					<div class="left">
