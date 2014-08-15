@@ -15,8 +15,8 @@ get_header();
     <main id="main" class="site-main projetos-main" role="main">
 
         <div class="header-area single-projetos col-md-12 boletim">
-            <?php $term = get_term_by('slug', get_query_var('termo'), 'tipos'); ?>
-            <h1><?php echo $term->name; ?></h1>
+            <h1><?php echo $_query->term_name;?></h1>
+            <div class="col-md-12"><?php echo $_query->term_description;?></div>
         </div>
         <!-- header-area col-md-12 projetos-main -->
 

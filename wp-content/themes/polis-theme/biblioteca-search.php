@@ -63,9 +63,38 @@ $args = array(
     'posts_per_page' => $per_page,
     'paged' => $page,
 );
+global $wpdb;
+$querystr = "
+    SELECT $wpdb->posts.*
+    FROM $wpdb->posts, $wpdb->postmeta
+    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
+    AND $wpdb->posts.post_status = 'publish'
+    AND $wpdb->posts.post_type = 'publicacoes'
+    AND $wpdb->posts.post_date < NOW()
+    AND $wpdb->posts.post_title LIKE '%$key%'
+    OR $wpdb->posts.post_content LIKE '%$key%'
+    ORDER BY $wpdb->posts.post_date DESC
+    LIMIT 0, 30
+ ";
+$_sql .= "SELECT DISTINCT * FROM ".$wpdb->posts.' LEFT OUTER JOIN '.$wpdb->postmeta;
+$_sql .= " ON ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id WHERE ".$wpdb->postmeta.".post_id IS NOT NULL";
+$_sql .= ' AND ' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
+$_sql .= ' OR ' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
+$_sql .= ' OR ' . $wpdb->postmeta . '.meta_value LIKE \'%' . esc_sql( like_escape( $key ) ) . '%\'';
+$_sql .= " ORDER BY ".$wpdb->posts.".post_date DESC";// Busca pelo meta_value
+$_sql .= " LIMIT 0, 10";// Busca pelo meta_value
 
+//$where = str_replace($wpdb->posts.'.post_title', $wpdb->postmeta.'.meta_value', $where);
 // The Query
-$query = new WP_Query($args);
+//$query = new WP_Query($args);
+$pageposts = $wpdb->get_results($_sql, OBJECT);
+// Print last SQL query string
+echo $wpdb->last_query . '<br>';
+// Print last SQL query result
+echo $wpdb->last_result . '<br>';
+// Print last SQL query Error
+echo $wpdb->last_error . '<br>';
+
 
 $count_args = array(
     'post_type' => 'publicacoes',
@@ -111,9 +140,10 @@ $total_pages = ceil($total_posts / $per_page);
             $type_list = array();
             $type_add = array();
 
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
+            if ($pageposts){
+                global $post;
+                foreach ($pageposts as $post) {
+                    setup_postdata($post);
                     $type_term = return_term_biblioteca('categorias');
                     if (!in_array(return_term_biblioteca('categorias'), $type_add)) { //verifique se vetor já existe no array
                         $type_add[] = $type_term;
