@@ -388,28 +388,25 @@ class widget_noticias extends WP_Widget {
 		echo $args['before_title'] . $title . $args['after_title']; ?>
 
 	<?php 
-		$args = array(
-			'posts_per_page'   => 5,
-			'offset'           => 0,
+		$args_noticias = array(
+			'posts_per_page'   => 3,
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
 			'post_type'        => 'noticias',
-			'post_mime_type'   => '',
 			'post_status'      => 'publish',
-			'suppress_filters' => true
 		);
 
-		$posts_noticias = get_posts( $args );
+		$posts_noticias = get_posts( $args_noticias );
 		 if ( !empty( $posts_noticias ) && !is_wp_error( $posts_noticias ) ){
 			echo "<div class='col-md-12 noticias'>";
 		    echo "<ul>";
 
-			foreach ( $posts_noticias as $post ) : setup_postdata( $post ); ?>
+			foreach ( $posts_noticias as $noticia ) : setup_postdata( $noticia ); ?>
 				<li>
 					<div class="thumb"></div>
 					<div class="desc">
-						<div class="title"><?php the_title(); ?></div>				
-						<span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
+						<div class="title"><a href="<?php echo get_permalink( $noticia->ID ); ?>"><?php echo $noticia->post_title; ?></a></div>				
+						<span class="date"><?php echo $noticia->post_date; ?></span>
 					</div>
 				</li>
 			<?php endforeach;
