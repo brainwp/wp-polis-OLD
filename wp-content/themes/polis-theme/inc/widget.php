@@ -385,37 +385,46 @@ class widget_noticias extends WP_Widget {
 	// before and after widget arguments are defined by themes
 		echo $args['before_widget'];
 		if ( ! empty( $title ) )
-		echo $args['before_title'] . $title . $args['after_title']; ?>
+		echo $args['before_title'] . $title . $args['after_title'];
 
-	<?php 
+	
 		$args_noticias = array(
-			'posts_per_page'   => 3,
-			'orderby'          => 'post_date',
-			'order'            => 'DESC',
-			'post_type'        => 'noticias',
-			'post_status'      => 'publish',
-		);
+					'posts_per_page'   => 3,
+					'orderby'          => 'post_date',
+					'order'            => 'DESC',
+					'post_type'        => 'noticias',
+					'post_status'      => 'publish',
+				);
+		// the query
+		$posts_noticias = new WP_Query( $args_noticias );
 
-		$posts_noticias = get_posts( $args_noticias );
-		 if ( !empty( $posts_noticias ) && !is_wp_error( $posts_noticias ) ){
-			echo "<div class='col-md-12 noticias'>";
-		    echo "<ul>";
+		if ( $posts_noticias->have_posts() ) : ?>
 
-			foreach ( $posts_noticias as $noticia ) : setup_postdata( $noticia ); ?>
+			<div class='col-md-12 noticias'>
+		    <ul>
+
+			<!-- the loop -->
+			<?php while ( $posts_noticias->have_posts() ) : $posts_noticias->the_post(); ?>
 				<li>
-					<div class="thumb"></div>
 					<div class="desc">
-						<div class="title"><a href="<?php echo get_permalink( $noticia->ID ); ?>"><?php echo $noticia->post_title; ?></a></div>				
-						<span class="date"><?php echo $noticia->post_date; ?></span>
+						<div class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+						<span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
 					</div>
 				</li>
-			<?php endforeach;
+			<?php endwhile; ?>
+			<!-- end of the loop -->
 
-			wp_reset_postdata(); ?>
+			<?php wp_reset_postdata(); ?>
+
 			<a class="btn-todos" href="<?php echo $link; ?>">Ver todas</a>
 		    </ul>
 			</div>
-		<?php }
+
+		<?php else : ?>
+			<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+		<?php endif; ?>
+
+		<?php 
 		echo $args['after_widget'];
 	}
 
