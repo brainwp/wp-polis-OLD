@@ -919,7 +919,7 @@ object {
 }
 
 .content-area.boletim .boletim .col-md-12 {
-	background: url('img/bg-header-colecao.jpg') center 1px fixed #FFF;
+	/*background: url('img/bg-header-colecao.jpg') center 1px fixed #FFF;*/
     float: none;
     margin: 20px auto 0;
     padding: 30px 15%;
