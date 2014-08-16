@@ -9,6 +9,8 @@ global $_query;
 get_header();
 ?>
 
+
+
 <section id="primary" class="content-area boletim">
     <main id="main" class="site-main projetos-main" role="main">
 
