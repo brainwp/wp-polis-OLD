@@ -6,42 +6,34 @@
  * declare it and document each of the attributes of this object here.
  */
 
-add_action('init', '_init_query_object');
+add_action( 'init', '_init_query_object' );
 
-function _init_query_object()
-{
+function _init_query_object() {
 
-    add_rewrite_tag('%nome%', '(.+)');
+	add_rewrite_tag( '%nome%', '(.+)' );
 
-    global $_query;
-    $_query = (object)array(
+	global $_query;
+	$_query = (object) array(
 
-        // Choose a different template
-        'template' => false,
+		// Choose a different template
+		'template'     => false,
+		// Equipe
+		'equipe'       => false,
+		// Variaveis das Areas do site
+		'area'         => false,
+		'area_archive' => false,
+		// Noticias
+		'noticias'     => false,
+		// Publicacoes
+		'publicacoes'  => false,
+		//Acoes
+		'acoes'        => false,
+		//Canal
+		'canal'        => false,
+		//Boletim
+		'boletim'      => false,
 
-        // Equipe
-        'equipe' => false,
-
-        // Variaveis das Areas do site
-        'area' => false,
-        'area_archive' => false,
-
-        // Noticias
-        'noticias' => false,
-
-        // Publicacoes
-        'publicacoes' => false,
-
-        //Acoes
-        'acoes' => false,
-
-        //Canal
-        'canal' => false,
-
-        //Boletim
-        'boletim' => false,
-
-    );
+	);
 }
 
 /**
@@ -63,890 +55,909 @@ function _init_query_object()
  * items, just put it in the end outside the `if` condition.
  */
 
-function _query_processor($query)
-{
+function _query_processor( $query ) {
 
-    global $_query, $post, $wpdb, $wp_query;
-    $_query->template = !$_query->template ? get_query_var('template') : false;
-    $_query->paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	global $_query, $post, $wpdb, $wp_query;
+	$_query->template = ! $_query->template ? get_query_var( 'template' ) : false;
+	$_query->paged    = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-    /* Main home */
-    if ($query->is_home() && !$_query) {
+	/* Main home */
+	if ( $query->is_home() && ! $_query ) {
 
-        /* Search page */
+		/* Search page */
 
-    } elseif ($query->get('s')) {
+	} elseif ( $query->get( 's' ) ) {
 
-        /* Archives */
+		/* Archives */
 
-    } elseif ($query->is_archive()) {
+	} elseif ( $query->is_archive() ) {
 
-        /* Singles */
+		/* Singles */
 
-    } elseif ($query->is_single()) {
+	} elseif ( $query->is_single() ) {
 
-        /* 404 error */
+		/* 404 error */
 
-    } elseif ($query->is_404()) {
+	} elseif ( $query->is_404() ) {
 
-    } elseif ('noticias' == get_query_var('area_archive')) {
+	} elseif ( 'noticias' == get_query_var( 'area_archive' ) ) {
 
-        $area = get_query_var('area');
-        _query_archive_noticias($area);
+		$area = get_query_var( 'area' );
+		_query_archive_noticias( $area );
 
-        /* Democracia e Participacao */
+		/* Democracia e Participacao */
 
-    } elseif ('democracia-e-participacao' == get_query_var('area')) {
+	} elseif ( 'democracia-e-participacao' == get_query_var( 'area' ) ) {
 
-        $area = 'democracia-e-participacao';
+		$area = 'democracia-e-participacao';
 
-        _query_acoes($area);
+		_query_acoes( $area );
 
-        _query_noticias($area);
+		_query_noticias( $area );
 
-        _query_publicacoes($area);
+		_query_publicacoes( $area );
 
-        /* Reforma Urbana */
+		/* Reforma Urbana */
 
-    } elseif ('reforma-urbana' == get_query_var('area')) {
+	} elseif ( 'reforma-urbana' == get_query_var( 'area' ) ) {
 
-        $area = 'reforma-urbana';
+		$area = 'reforma-urbana';
 
-        _query_acoes($area);
+		_query_acoes( $area );
 
-        _query_noticias($area);
+		_query_noticias( $area );
 
-        _query_publicacoes($area);
+		_query_publicacoes( $area );
 
-        /* Cidadania Cultural */
+		/* Cidadania Cultural */
 
-    } elseif ('cidadania-cultural' == get_query_var('area')) {
+	} elseif ( 'cidadania-cultural' == get_query_var( 'area' ) ) {
 
-        $area = 'cidadania-cultural';
+		$area = 'cidadania-cultural';
 
-        _query_acoes($area);
+		_query_acoes( $area );
 
-        _query_noticias($area);
+		_query_noticias( $area );
 
-        _query_publicacoes($area);
+		_query_publicacoes( $area );
 
-        /* The sample query */
+		/* The sample query */
 
-    } elseif ($q = get_query_var('sample_query')) {
+	} elseif ( $q = get_query_var( 'sample_query' ) ) {
 
-        $_query->sample_query = 'Nice!';
+		$_query->sample_query = 'Nice!';
 
-    } elseif (get_query_var('template') == 'equipe') {
+	} elseif ( get_query_var( 'template' ) == 'equipe' ) {
 
-        _query_equipe();
+		_query_equipe();
 
-    } elseif (get_query_var('template') == 'membros') {
+	} elseif ( get_query_var( 'template' ) == 'equipe-area' ) {
+		_query_equipe_area();
 
-        _query_membros();
+	} elseif ( get_query_var( 'template' ) == 'membros' ) {
 
-    } elseif (get_query_var('template') == 'projetos') {
+		_query_membros();
 
-        _query_projetos();
+	} elseif ( get_query_var( 'template' ) == 'projetos' ) {
 
-    } elseif (get_query_var('template') == 'projetos') {
+		_query_projetos();
 
-        _query_area_cpt();
+	} elseif ( get_query_var( 'template' ) == 'projetos' ) {
 
-    } elseif (get_query_var('template') == 'noticias-e-acoes') {
+		_query_area_cpt();
 
-        _query_noticias_acoes();
+	} elseif ( get_query_var( 'template' ) == 'noticias-e-acoes' ) {
 
-    } elseif (get_query_var('template') == 'area-cpt') {
-        _query_area_categoria();
+		_query_noticias_acoes();
 
-    } elseif (get_query_var('template') == 'archive-publicacoes') {
+	} elseif ( get_query_var( 'template' ) == 'area-cpt' ) {
+		_query_area_categoria();
 
-        _query_archive_publicacoes();
+	} elseif ( get_query_var( 'template' ) == 'archive-publicacoes' ) {
 
-    } elseif (get_query_var('template') == 'canal') {
+		_query_archive_publicacoes();
 
-        _query_canal();
+	} elseif ( get_query_var( 'template' ) == 'canal' ) {
 
-    } elseif (get_query_var('template') == 'colecoes') {
+		_query_canal();
 
-        _query_colecoes();
+	} elseif ( get_query_var( 'template' ) == 'colecoes' ) {
 
-    } elseif (get_query_var('template') == 'redirect_js_institucional') {
+		_query_colecoes();
 
-        redirect_js_institucional();
+	} elseif ( get_query_var( 'template' ) == 'redirect_js_institucional' ) {
 
-    }
+		redirect_js_institucional();
 
-    if (get_query_var('select_query') == 'area-cat') {
+	}
 
-        _query_area_categoria();
+	if ( get_query_var( 'select_query' ) == 'area-cat' ) {
 
-    }
-    if (get_query_var('select_query') == 'tipo') {
+		_query_area_categoria();
 
-        _query_tipo();
+	}
+	if ( get_query_var( 'select_query' ) == 'tipo' ) {
 
-    }
+		_query_tipo();
+
+	}
 
 
-    /* Template redirect */
+	/* Template redirect */
 
-    /* Put something here to do suff in all queries */
+	/* Put something here to do suff in all queries */
 }
 
-function redirect_js_institucional()
-{
-    $_slug = get_query_var('pslug');
+function redirect_js_institucional() {
+	$_slug = get_query_var( 'pslug' );
 
-    $_url = get_bloginfo('url') . '/institucional/#page_' . $_slug;
-    wp_redirect($_url);
-    exit;
+	$_url = get_bloginfo( 'url' ) . '/institucional/#page_' . $_slug;
+	wp_redirect( $_url );
+	exit;
 }
 
-function _query_tipo()
-{
-    global $_query, $wp_query;
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = (int)of_get_option('areas-archive-per-page');
-    $tipo = get_query_var('taxtipo');
-    $args = array(
-        'post_type' => get_query_var('cpt'),
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'tipos',
-                'terms' => $tipo,
-                'field' => 'slug',
-                'include_children' => true,
-                'operator' => 'IN'
-            )
-        ),
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'posts_per_page' => $per_page,
-        'paged' => $page
-    );
-    $wp_query = new WP_Query($args);
-    $_query->_page = $page;
-    $_query->total_pages = $wp_query->max_num_pages;
-    $term = get_term_by('slug', $tipo, 'tipos');
-    $_query->tax_name = $term->name;
+function _query_tipo() {
+	global $_query, $wp_query;
+	$page                = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$per_page            = (int) of_get_option( 'areas-archive-per-page' );
+	$tipo                = get_query_var( 'taxtipo' );
+	$args                = array(
+		'post_type'      => get_query_var( 'cpt' ),
+		'tax_query'      => array(
+			array(
+				'taxonomy'         => 'tipos',
+				'terms'            => $tipo,
+				'field'            => 'slug',
+				'include_children' => true,
+				'operator'         => 'IN'
+			)
+		),
+		'orderby'        => 'date',
+		'order'          => 'ASC',
+		'posts_per_page' => $per_page,
+		'paged'          => $page
+	);
+	$wp_query            = new WP_Query( $args );
+	$_query->_page       = $page;
+	$_query->total_pages = $wp_query->max_num_pages;
+	$term                = get_term_by( 'slug', $tipo, 'tipos' );
+	$_query->tax_name    = $term->name;
 }
 
-function _query_area_categoria()
-{
-    global $_query, $wp_query;
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = (int)of_get_option('areas-archive-per-page');
-    $area = get_query_var('area');
-    $cpt = get_query_var('cpt');
-    $_query->area = $area;
-    $_query->cpt = $cpt;
-    $args = array(
-        'post_type' => get_query_var('cpt'),
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'areas',
-                'terms' => $area,
-                'field' => 'slug',
-                'include_children' => true,
-                'operator' => 'IN'
-            )
-        ),
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'posts_per_page' => $per_page,
-        'paged' => $page
-    );
-    $wp_query = new WP_Query($args);
-    $_query->_page = $page;
-    $_query->total_pages = $wp_query->max_num_pages;
+function _query_area_categoria() {
+	global $_query, $wp_query;
+	$page                = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$per_page            = (int) of_get_option( 'areas-archive-per-page' );
+	$area                = get_query_var( 'area' );
+	$cpt                 = get_query_var( 'cpt' );
+	$_query->area        = $area;
+	$_query->cpt         = $cpt;
+	$args                = array(
+		'post_type'      => get_query_var( 'cpt' ),
+		'tax_query'      => array(
+			array(
+				'taxonomy'         => 'areas',
+				'terms'            => $area,
+				'field'            => 'slug',
+				'include_children' => true,
+				'operator'         => 'IN'
+			)
+		),
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'posts_per_page' => $per_page,
+		'paged'          => $page
+	);
+	$wp_query            = new WP_Query( $args );
+	$_query->_page       = $page;
+	$_query->total_pages = $wp_query->max_num_pages;
 }
 
-function _query_archive_publicacoes()
-{
-    global $_query;
+function _query_archive_publicacoes() {
+	global $_query;
 
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = 30;
+	$page     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$per_page = 30;
 
-    $args = array(
-        'post_type' => array('publicacoes'),
-        'posts_per_page' => $per_page,
-        'paged' => $page
-    );
+	$args = array(
+		'post_type'      => array( 'publicacoes' ),
+		'posts_per_page' => $per_page,
+		'paged'          => $page
+	);
 
 
-    $wp_query = new WP_Query($args);
-    $_query->_page = $page;
-    $_query->total_pages = $wp_query->max_num_pages;
-
-}
-
-function _query_canal()
-{
-
-    global $_query;
-    $args = array(
-        'post_type' => 'videos',
-    );
-
-    $_query->canal = new WP_Query($args);
-}
-
-function _query_colecoes()
-{
-
-    global $_query;
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $termo = get_query_var('termo');
-    $per_page = (int) of_get_option('colecoes-per-page');
-    $cat = get_term_by('slug', $termo, 'tipos');
-    if(!empty($cat->name)){
-        $args = array(
-            'post_type' => 'publicacoes',
-            'posts_per_page' => $per_page,
-            'paged' => $page,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'tipos',
-                    'field' => 'slug',
-                    'terms' => $termo,
-                    'include_children' => true,
-                )
-            )
-        );
-        $_query->term_description = $cat->description;
-        $_query->term_name = $cat->name;
-        $_query->boletim = new WP_Query($args);
-        $_query->page = $page;
-        $_query->total_pages = $_query->boletim->max_num_pages;
-    }
-    else{
-        include get_template_directory() . '/404.php';
-        header("HTTP/1.0 404 Not Found");
-        die();
-    }
-}
-
-function _query_noticias_acoes()
-{
-
-    global $_query, $wp_query;
-
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $per_page = get_option('posts_per_page');
-
-    $args = array(
-        'post_type' => array('noticias', 'acoes'),
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'posts_per_page' => $per_page,
-        'paged' => $page
-    );
-
-    $wp_query = new WP_Query($args);
-    $_query->_page = $page;
-    $_query->total_pages = $wp_query->max_num_pages;
+	$wp_query            = new WP_Query( $args );
+	$_query->_page       = $page;
+	$_query->total_pages = $wp_query->max_num_pages;
 
 }
 
-function _query_projetos()
-{
+function _query_canal() {
 
-    //redireciona o usuario caso ele esteja numa página > 1 no projetos sem tax selecionada (utilizando a padrão)
-    if (isset($_GET['aba_pag'])) {
-        $page = (get_query_var('paged')) ? get_query_var('paged') : '';
-        if (empty($page)) {
-            header('Location: ' . get_bloginfo('url') . '/projetos/tipo/' . $_GET['aba_pag']);
-        } else {
-            header('Location: ' . get_bloginfo('url') . '/projetos/tipo/' . $_GET['aba_pag'] . '/page/' . $page);
-        }
-    }
+	global $_query;
+	$args = array(
+		'post_type' => 'videos',
+	);
 
-    global $_query, $wp_query;
-    $args = array(
-        'type' => 'projetos',
-        'taxonomy' => 'projetos_tax',
-        'hide_empty' => 1,
-    );
-
-    $categories = get_categories($args);
-    foreach ($categories as $category) {
-        $_query->first_tax = $category;
-        break;
-    }
-
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $_aba = (get_query_var('aba')) ? get_query_var('aba') : false;
-    $_query->aba_if = $_aba;
-    $aba = (get_query_var('aba')) ? get_query_var('aba') : $_query->first_tax->slug;
-    $args = array(
-        'post_type' => array('projetos'),
-        'posts_per_page' => 999999999999,
-        'projetos_tax' => $aba
-    );
-
-    $count_query = new WP_Query($args);
-    if ($count_query->found_posts == 0) {
-        include get_template_directory() . '/404.php';
-        header("HTTP/1.0 404 Not Found");
-        die();
-    }
-
-    $_query->found_posts = $count_query->found_posts;
-
-    $per_page = (int)get_option('projetos_per_page');
-
-    $args = array(
-        'post_type' => array('projetos'),
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'posts_per_page' => $per_page,
-        'projetos_tax' => $aba,
-        'paged' => $page
-    );
-
-    $wp_query = new WP_Query($args);
-
-    $_query->projetos_tax_slug = $aba;
-    $_query->total_pages = $wp_query->max_num_pages;
+	$_query->canal = new WP_Query( $args );
 }
 
-function _query_equipe()
-{
+function _query_colecoes() {
 
-    global $_query;
+	global $_query;
+	$page     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$termo    = get_query_var( 'termo' );
+	$per_page = (int) of_get_option( 'colecoes-per-page' );
+	$cat      = get_term_by( 'slug', $termo, 'tipos' );
+	if ( ! empty( $cat->name ) ) {
+		$args                     = array(
+			'post_type'      => 'publicacoes',
+			'posts_per_page' => $per_page,
+			'paged'          => $page,
+			'tax_query'      => array(
+				array(
+					'taxonomy'         => 'tipos',
+					'field'            => 'slug',
+					'terms'            => $termo,
+					'include_children' => true,
+				)
+			)
+		);
+		$_query->term_description = $cat->description;
+		$_query->term_name        = $cat->name;
+		$_query->boletim          = new WP_Query( $args );
+		$_query->page             = $page;
+		$_query->total_pages      = $_query->boletim->max_num_pages;
+	} else {
+		include get_template_directory() . '/404.php';
+		header( "HTTP/1.0 404 Not Found" );
+		die();
+	}
+}
 
-    $_query->exclude = explode(',', of_get_option('equipe-exclude'));
+function _query_noticias_acoes() {
 
-    $count_args = array(
+	global $_query, $wp_query;
 
-        'fields' => 'all_with_meta',
+	$page     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$per_page = get_option( 'posts_per_page' );
 
-        'number' => 9999999999,
+	$args = array(
+		'post_type'      => array( 'noticias', 'acoes' ),
+		'orderby'        => 'date',
+		'order'          => 'ASC',
+		'posts_per_page' => $per_page,
+		'paged'          => $page
+	);
 
-        'exclude' => $_query->exclude
+	$wp_query            = new WP_Query( $args );
+	$_query->_page       = $page;
+	$_query->total_pages = $wp_query->max_num_pages;
 
-    );
+}
 
-    $user_count_query = new WP_User_Query($count_args);
+function _query_projetos() {
 
-    $user_count = $user_count_query->get_results();
+	//redireciona o usuario caso ele esteja numa página > 1 no projetos sem tax selecionada (utilizando a padrão)
+	if ( isset( $_GET['aba_pag'] ) ) {
+		$page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
+		if ( empty( $page ) ) {
+			header( 'Location: ' . get_bloginfo( 'url' ) . '/projetos/tipo/' . $_GET['aba_pag'] );
+		} else {
+			header( 'Location: ' . get_bloginfo( 'url' ) . '/projetos/tipo/' . $_GET['aba_pag'] . '/page/' . $page );
+		}
+	}
+
+	global $_query, $wp_query;
+	$args = array(
+		'type'       => 'projetos',
+		'taxonomy'   => 'projetos_tax',
+		'hide_empty' => 1,
+	);
+
+	$categories = get_categories( $args );
+	foreach ( $categories as $category ) {
+		$_query->first_tax = $category;
+		break;
+	}
+
+	$page           = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$_aba           = ( get_query_var( 'aba' ) ) ? get_query_var( 'aba' ) : false;
+	$_query->aba_if = $_aba;
+	$aba            = ( get_query_var( 'aba' ) ) ? get_query_var( 'aba' ) : $_query->first_tax->slug;
+	$args           = array(
+		'post_type'      => array( 'projetos' ),
+		'posts_per_page' => 999999999999,
+		'projetos_tax'   => $aba
+	);
+
+	$count_query = new WP_Query( $args );
+	if ( $count_query->found_posts == 0 ) {
+		include get_template_directory() . '/404.php';
+		header( "HTTP/1.0 404 Not Found" );
+		die();
+	}
+
+	$_query->found_posts = $count_query->found_posts;
+
+	$per_page = (int) get_option( 'projetos_per_page' );
+
+	$args = array(
+		'post_type'      => array( 'projetos' ),
+		'orderby'        => 'date',
+		'order'          => 'ASC',
+		'posts_per_page' => $per_page,
+		'projetos_tax'   => $aba,
+		'paged'          => $page
+	);
+
+	$wp_query = new WP_Query( $args );
+
+	$_query->projetos_tax_slug = $aba;
+	$_query->total_pages       = $wp_query->max_num_pages;
+}
+
+function _query_equipe() {
+
+	global $_query;
+
+	$_query->exclude = explode( ',', of_get_option( 'equipe-exclude' ) );
+
+	$count_args = array(
+
+		'fields'  => 'all_with_meta',
+		'number'  => 9999999999,
+		'exclude' => $_query->exclude
+
+	);
+
+	$user_count_query = new WP_User_Query( $count_args );
+
+	$user_count = $user_count_query->get_results();
 
 // grab the current page number and set to 1 if no page number is set
 
-    $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-    $total_users = $user_count ? count($user_count) : 1;
+	$total_users = $user_count ? count( $user_count ) : 1;
 
 // how many users to show per page
 
-    $users_per_page = (int)of_get_option('equipe-per-page');
+	$users_per_page = (int) of_get_option( 'equipe-per-page' );
 
 // calculate the total number of pages.
 
-    $total_pages = 1;
+	$total_pages = 1;
 
-    $offset = $users_per_page * ($page - 1);
+	$offset = $users_per_page * ( $page - 1 );
 
-    $total_pages = ceil($total_users / $users_per_page);
+	$total_pages = ceil( $total_users / $users_per_page );
 
-    if ($page <= $total_pages) {
+	if ( $page <= $total_pages ) {
 
-        $_query->total_pages = $total_pages;
+		$_query->total_pages = $total_pages;
 
-        $_query->offset = $offset;
+		$_query->offset = $offset;
 
-        $_query->users_per_page = $users_per_page;
+		$_query->users_per_page = $users_per_page;
 
-        $_query->_page = $page;
+		$_query->_page = $page;
 
-        $_query->total_pages = $total_pages;
+		$_query->total_pages = $total_pages;
 
-        $_query->error = false;
+		$_query->error = false;
 
 
-    } else {
+	} else {
 
-        $_query->error = true;
+		$_query->error = true;
 
-    }
+	}
 
 }
 
-function _query_membros()
-{
+function _query_equipe_area() {
 
-    global $wp_query, $_query, $user;
+	global $_query;
 
-    $_user = get_user_by('login', get_query_var('nome'));
+	$_query->exclude   = explode( ',', of_get_option( 'equipe-exclude' ) );
+	$_query->user_area = get_query_var( 'user_area' );
 
-    if (username_exists($wp_query->query_vars['nome'])) {
+	if ( $_query->user_area == 'democracia-e-participacao' ) {
+		$_query->user_area = 'democracia';
+	}
+	if ( $_query->user_area == 'inclusao-e-sustentabilidade' ) {
+		$_query->user_area = 'inclusao';
+	}
+	if ( $_query->user_area == 'reforma-urbana' ) {
+		$_query->user_area = 'reforma';
+	}
+	if ( $_query->user_area == 'cidadania-cultural' ) {
+		$_query->user_area = 'cidadania';
+	}
 
-        $count_args = array(
+	echo get_query_var( 'user_area' );
+	$count_args = array(
 
-            'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),
+		'fields'     => 'all_with_meta',
+		'number'     => 9999999999,
+		'exclude'    => $_query->exclude,
+		'meta_key'   => 'area',
+		'meta_value' => $_query->user_area
 
-            'author' => $_user->ID,
+	);
 
-            'post_per_page' => 999999
+	$user_count_query = new WP_User_Query( $count_args );
 
-        );
+	$user_count = $user_count_query->get_results();
 
-        $count_query = new WP_Query($count_args);
-
-        $count = $count_query->found_posts;
 
 // grab the current page number and set to 1 if no page number is set
 
-        $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-        $total_posts = $count;
+	$total_users = $user_count ? count( $user_count ) : 1;
 
-        $per_page = 4;
+// how many users to show per page
+
+	$users_per_page = (int) of_get_option( 'equipe-per-page' );
+
 // calculate the total number of pages.
 
-        $offset = $per_page * ($page - 1);
+	$total_pages = 1;
 
-        $wp_query->is_404 = false;
+	$offset = $users_per_page * ( $page - 1 );
 
-        $_avatar = get_avatar($_user->ID, 200);
+	$total_pages = ceil( $total_users / $users_per_page );
 
-        $_area_slug = get_field('area', 'user_' . $_user->ID);
-        if ($_area_slug == 'Institucional' || $_area_slug == 'Outro') {
-            $_area_slug = 'default';
-        } else {
-            $_area_slug_term = get_term_by('slug', $_area_slug, 'areas');
-            if ($_area_slug_term->parent != 0) {
-                $_top_term = get_term_by('id', $_area_slug_term->parent, 'areas');
-                $_area_slug = explode('-', trim($_top_term->slug));
-                $_area_slug = $_area_slug[0];
-            }
-        }
-        $_cargo = get_field('cargo', 'user_' . $_user->ID);
+	if ( $page <= $total_pages ) {
 
-        $_tel = get_field('telefone', 'user_' . $_user->ID);
+		$_query->total_pages = $total_pages;
 
-        $_twitter = get_field('twitter', 'user_' . $_user->ID);
+		$_query->offset = $offset;
 
-        $_email = get_field('email', 'user_' . $_user->ID);
+		$_query->users_per_page = $users_per_page;
 
-        $_query->offset = $offset;
+		$_query->_page = $page;
 
-        $_query->per_page = $per_page;
+		$_query->total_pages = $total_pages;
 
-        $_query->_page = $page;
+		$_query->error = false;
 
-        $_query->area_slug = $_area_slug;
 
-        $_query->cargo = $_cargo;
+	} else {
 
-        $_query->tel = $_tel;
+		$_query->error = true;
 
-        $_query->email = $_email;
-
-        $_query->twitter = $_twitter;
-
-        $_query->avatar = $_avatar;
-
-        $_query->nome = get_query_var('nome');
-
-        $_query->user_id = $_user->ID;
-
-        $user = $_user;
-
-        $select_posts = get_field('in_atividade_slider', 'user_' . $_user->ID);
-
-        $select_posts = explode(',', $select_posts);
-
-        $args = array(
-
-            'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),
-
-            'post_per_page' => 8,
-
-            'post__in' => $select_posts
-        );
-
-        $wp_query = new WP_Query($args);
-
-        $total_pages = $wp_query->max_num_pages;
-
-        $_query->total_pages = $total_pages;
-
-        $_query->error = false;
-
-    } else {
-
-        $_query->error = true;
-
-    }
+	}
 
 }
 
-function _query_blog()
-{
+function _query_membros() {
 
-    global $wp_query, $_query;
+	global $wp_query, $_query, $user;
 
-    $_query->titulo = 'Blog';
+	$_user = get_user_by( 'login', get_query_var( 'nome' ) );
 
-    $wp_query = new WP_Query(array(
-        'post_type' => 'post',
-        'order' => 'ASC'
-    ));
+	if ( username_exists( $wp_query->query_vars['nome'] ) ) {
 
-}
+		$count_args = array(
 
-function _query_noticias($area)
-{
+			'post_type'     => array( 'noticias', 'acoes', 'post', 'publicacoes' ),
+			'author'        => $_user->ID,
+			'post_per_page' => 999999
 
-    global $_query;
-    $args = array(
+		);
 
-        'post_type' => 'noticias',
+		$count_query = new WP_Query( $count_args );
 
-        'tax_query' => array(
+		$count = $count_query->found_posts;
 
-            array(
+// grab the current page number and set to 1 if no page number is set
 
-                'taxonomy' => 'categorias',
+		$page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-                'field' => 'slug',
+		$total_posts = $count;
 
-                'terms' => $area,
+		$per_page = 4;
+// calculate the total number of pages.
 
-                'include_children' => true,
+		$offset = $per_page * ( $page - 1 );
 
-                'posts_per_page' => 8,
+		$wp_query->is_404 = false;
 
-            )
+		$_avatar = get_avatar( $_user->ID, 200 );
 
-        )
+		$_area_slug = get_field( 'area', 'user_' . $_user->ID );
+		if ( $_area_slug == 'Institucional' || $_area_slug == 'Outro' ) {
+			$_area_slug = 'default';
+		} else {
+			$_area_slug_term = get_term_by( 'slug', $_area_slug, 'areas' );
+			if ( $_area_slug_term->parent != 0 ) {
+				$_top_term  = get_term_by( 'id', $_area_slug_term->parent, 'areas' );
+				$_area_slug = explode( '-', trim( $_top_term->slug ) );
+				$_area_slug = $_area_slug[0];
+			}
+		}
+		$_cargo = get_field( 'cargo', 'user_' . $_user->ID );
 
-    );
+		$_tel = get_field( 'telefone', 'user_' . $_user->ID );
 
-    $_query->noticias = new WP_Query($args); // exclude category
+		$_twitter = get_field( 'twitter', 'user_' . $_user->ID );
 
-}
+		$_email = get_field( 'email', 'user_' . $_user->ID );
 
-function _query_publicacoes($area)
-{
+		$_query->offset = $offset;
 
-    global $_query;
+		$_query->per_page = $per_page;
 
-    $args = array(
+		$_query->_page = $page;
 
-        'post_type' => 'publicacoes',
+		$_query->area_slug = $_area_slug;
 
-        'tax_query' => array(
+		$_query->cargo = $_cargo;
 
-            array(
+		$_query->tel = $_tel;
 
-                'taxonomy' => 'categorias',
+		$_query->email = $_email;
 
-                'field' => 'slug',
+		$_query->twitter = $_twitter;
 
-                'terms' => $area,
+		$_query->avatar = $_avatar;
 
-                'include_children' => true,
+		$_query->nome = get_query_var( 'nome' );
 
-                'posts_per_page' => 10,
+		$_query->user_id = $_user->ID;
 
-            )
+		$user = $_user;
 
-        )
+		$select_posts = get_field( 'in_atividade_slider', 'user_' . $_user->ID );
 
-    );
+		$select_posts = explode( ',', $select_posts );
 
-    $_query->publicacoes = new WP_Query($args); // exclude category
+		$args = array(
 
-}
+			'post_type'     => array( 'noticias', 'acoes', 'post', 'publicacoes' ),
+			'post_per_page' => 8,
+			'post__in'      => $select_posts
+		);
 
-function _query_acoes($area)
-{
+		$wp_query = new WP_Query( $args );
 
-    global $_query;
+		$total_pages = $wp_query->max_num_pages;
 
-    $args = array(
+		$_query->total_pages = $total_pages;
 
-        'post_type' => 'acoes',
+		$_query->error = false;
 
-        'tax_query' => array(
+	} else {
 
-            array(
+		$_query->error = true;
 
-                'taxonomy' => 'categorias',
-
-                'field' => 'slug',
-
-                'terms' => $area,
-
-                'include_children' => true,
-
-                'posts_per_page' => 12,
-
-            )
-
-        )
-
-    );
-
-    $_query->acoes = new WP_Query($args); // exclude category
+	}
 
 }
 
-function _query_archive_noticias($area)
-{
+function _query_blog() {
 
-    global $wp_query;
+	global $wp_query, $_query;
 
-    $args = array(
+	$_query->titulo = 'Blog';
 
-        'post_type' => 'noticias',
-
-        'tax_query' => array(
-
-            array(
-
-                'taxonomy' => 'categorias',
-
-                'field' => 'slug',
-
-                'terms' => $area,
-
-                'include_children' => true,
-
-                'posts_per_page' => 10,
-
-            )
-
-        )
-
-    );
-
-    $wp_query = new WP_Query($args);
+	$wp_query = new WP_Query( array(
+		'post_type' => 'post',
+		'order'     => 'ASC'
+	) );
 
 }
 
-function _query_produtos()
-{
+function _query_noticias( $area ) {
 
-    $type = $_GET['p-type'];
+	global $_query;
+	$args = array(
 
-    global $wp_query, $_query;
+		'post_type' => 'noticias',
+		'tax_query' => array(
 
+			array(
 
-    if (empty($type)) {
+				'taxonomy'         => 'categorias',
+				'field'            => 'slug',
+				'terms'            => $area,
+				'include_children' => true,
+				'posts_per_page'   => 8,
 
-        $_query->titulo = 'Produtos';
+			)
 
+		)
 
-        $wp_query = new WP_Query(array(
+	);
 
-            'post_type' => 'produtos',
-
-            'order' => 'ASC',
-
-            'tax_query' => array(
-
-                array(
-
-                    'taxonomy' => 'tipos',
-
-                    'field' => 'soft',
-
-                )
-
-            ),
-
-        ));
-
-    } else {
-
-        if ($type == 'soft') {
-
-            $_query->titulo = 'Produtos';
-
-            $wp_query = new WP_Query(array(
-
-                'post_type' => 'produtos',
-
-                'order' => 'ASC',
-
-                'tax_query' => array(
-
-                    array(
-
-                        'taxonomy' => 'tipos',
-
-                        'field' => 'soft',
-
-                    )
-
-                ),
-
-            ));
-
-        }
-
-
-        if ($type == 'restaurante') {
-
-            $_query->titulo = 'Produtos';
-
-            $wp_query = new WP_Query(array(
-
-                'post_type' => 'produtos',
-
-                'order' => 'ASC',
-
-                'tax_query' => array(
-
-                    array(
-
-                        'taxonomy' => 'tipos',
-
-                        'field' => 'restaurante',
-
-                    )
-
-                ),
-
-            ));
-
-        }
-
-        if ($type == 'chocolate-e-creme') {
-
-            $_query->titulo = 'Produtos';
-
-            $wp_query = new WP_Query(array(
-
-                'post_type' => 'produtos',
-
-                'order' => 'ASC',
-
-                'tax_query' => array(
-
-                    array(
-
-                        'taxonomy' => 'tipos',
-
-                        'field' => 'chocolate-e-creme',
-
-                    )
-
-                ),
-
-            ));
-
-        }
-
-        if ($type == 'artesanal') {
-
-            $_query->titulo = 'Produtos';
-
-            $wp_query = new WP_Query(array(
-
-                'post_type' => 'produtos',
-
-                'order' => 'ASC',
-
-                'tax_query' => array(
-
-                    array(
-
-                        'taxonomy' => 'tipos',
-
-                        'field' => 'slug',
-
-                        'term' => 'artesanal'
-
-                    )
-
-                ),
-
-            ));
-
-        }
-
-    }
+	$_query->noticias = new WP_Query( $args ); // exclude category
 
 }
 
-function _title($title)
-{
+function _query_publicacoes( $area ) {
 
-    global $wp_query, $_query;
+	global $_query;
 
-    if ($_query->template == 'membros' && $_query->error == false) {
+	$args = array(
 
-        $title = get_bloginfo('name') . ' | Equipe | ' . $_query->nome;
+		'post_type' => 'publicacoes',
+		'tax_query' => array(
 
-        return $title;
+			array(
 
-    } elseif ($_query->template == 'equipe') {
+				'taxonomy'         => 'categorias',
+				'field'            => 'slug',
+				'terms'            => $area,
+				'include_children' => true,
+				'posts_per_page'   => 10,
 
-        if ($_query->_page != 1) {
+			)
 
-            $title = get_bloginfo('name') . ' | Equipe';
+		)
 
-            return $title;
+	);
 
-        } else {
+	$_query->publicacoes = new WP_Query( $args ); // exclude category
 
-            $title = get_bloginfo('name') . ' | Equipe | Pagina ' . $_query->_page;
+}
 
-            return $title;
+function _query_acoes( $area ) {
 
-        }
+	global $_query;
 
-    } elseif ($_query->template == 'noticias-e-acoes') {
+	$args = array(
 
-        if ($_query->_page != 1) {
+		'post_type' => 'acoes',
+		'tax_query' => array(
 
-            $title = 'Noticias e Ações | ' . $title = get_bloginfo('name');
+			array(
 
-            return $title;
+				'taxonomy'         => 'categorias',
+				'field'            => 'slug',
+				'terms'            => $area,
+				'include_children' => true,
+				'posts_per_page'   => 12,
 
-        } else {
+			)
 
-            $title = get_bloginfo('name') . ' | Notícias e Ações | Página ' . $_query->_page;
+		)
 
-            return $title;
+	);
 
-        }
+	$_query->acoes = new WP_Query( $args ); // exclude category
 
-    } elseif ($_query->template == 'archive-publicacoes') {
+}
 
-        if ($_query->_page == 1) {
+function _query_archive_noticias( $area ) {
 
-            $title = 'Publicações | ' . $title = get_bloginfo('name');
+	global $wp_query;
 
-            return $title;
+	$args = array(
 
-        } else {
+		'post_type' => 'noticias',
+		'tax_query' => array(
 
-            $title = get_bloginfo('name') . ' | Publicações | Página ' . $_query->_page;
+			array(
 
-            return $title;
+				'taxonomy'         => 'categorias',
+				'field'            => 'slug',
+				'terms'            => $area,
+				'include_children' => true,
+				'posts_per_page'   => 10,
 
-        }
+			)
 
-    } elseif ($_query->template == 'colecoes') {
+		)
 
-        $title = 'Coleções | ' . $title = get_bloginfo('name');
+	);
 
-        return $title;
+	$wp_query = new WP_Query( $args );
 
-    } else {
+}
 
-        return $title;
+function _query_produtos() {
 
-    }
+	$type = $_GET['p-type'];
+
+	global $wp_query, $_query;
+
+
+	if ( empty( $type ) ) {
+
+		$_query->titulo = 'Produtos';
+
+
+		$wp_query = new WP_Query( array(
+
+			'post_type' => 'produtos',
+			'order'     => 'ASC',
+			'tax_query' => array(
+
+				array(
+
+					'taxonomy' => 'tipos',
+					'field'    => 'soft',
+
+				)
+
+			),
+
+		) );
+
+	} else {
+
+		if ( $type == 'soft' ) {
+
+			$_query->titulo = 'Produtos';
+
+			$wp_query = new WP_Query( array(
+
+				'post_type' => 'produtos',
+				'order'     => 'ASC',
+				'tax_query' => array(
+
+					array(
+
+						'taxonomy' => 'tipos',
+						'field'    => 'soft',
+
+					)
+
+				),
+
+			) );
+
+		}
+
+
+		if ( $type == 'restaurante' ) {
+
+			$_query->titulo = 'Produtos';
+
+			$wp_query = new WP_Query( array(
+
+				'post_type' => 'produtos',
+				'order'     => 'ASC',
+				'tax_query' => array(
+
+					array(
+
+						'taxonomy' => 'tipos',
+						'field'    => 'restaurante',
+
+					)
+
+				),
+
+			) );
+
+		}
+
+		if ( $type == 'chocolate-e-creme' ) {
+
+			$_query->titulo = 'Produtos';
+
+			$wp_query = new WP_Query( array(
+
+				'post_type' => 'produtos',
+				'order'     => 'ASC',
+				'tax_query' => array(
+
+					array(
+
+						'taxonomy' => 'tipos',
+						'field'    => 'chocolate-e-creme',
+
+					)
+
+				),
+
+			) );
+
+		}
+
+		if ( $type == 'artesanal' ) {
+
+			$_query->titulo = 'Produtos';
+
+			$wp_query = new WP_Query( array(
+
+				'post_type' => 'produtos',
+				'order'     => 'ASC',
+				'tax_query' => array(
+
+					array(
+
+						'taxonomy' => 'tipos',
+						'field'    => 'slug',
+						'term'     => 'artesanal'
+
+					)
+
+				),
+
+			) );
+
+		}
+
+	}
+
+}
+
+function _title( $title ) {
+
+	global $wp_query, $_query;
+
+	if ( $_query->template == 'membros' && $_query->error == false ) {
+
+		$title = get_bloginfo( 'name' ) . ' | Equipe | ' . $_query->nome;
+
+		return $title;
+
+	} elseif ( $_query->template == 'equipe' ) {
+
+		if ( $_query->_page != 1 ) {
+
+			$title = get_bloginfo( 'name' ) . ' | Equipe';
+
+			return $title;
+
+		} else {
+
+			$title = get_bloginfo( 'name' ) . ' | Equipe | Pagina ' . $_query->_page;
+
+			return $title;
+
+		}
+
+	} elseif ( $_query->template == 'noticias-e-acoes' ) {
+
+		if ( $_query->_page != 1 ) {
+
+			$title = 'Noticias e Ações | ' . $title = get_bloginfo( 'name' );
+
+			return $title;
+
+		} else {
+
+			$title = get_bloginfo( 'name' ) . ' | Notícias e Ações | Página ' . $_query->_page;
+
+			return $title;
+
+		}
+
+	} elseif ( $_query->template == 'archive-publicacoes' ) {
+
+		if ( $_query->_page == 1 ) {
+
+			$title = 'Publicações | ' . $title = get_bloginfo( 'name' );
+
+			return $title;
+
+		} else {
+
+			$title = get_bloginfo( 'name' ) . ' | Publicações | Página ' . $_query->_page;
+
+			return $title;
+
+		}
+
+	} elseif ( $_query->template == 'colecoes' ) {
+
+		$title = 'Coleções | ' . $title = get_bloginfo( 'name' );
+
+		return $title;
+
+	} else {
+
+		return $title;
+
+	}
 
 
 }
 
-add_filter('wp_title', '_title');
+add_filter( 'wp_title', '_title' );
