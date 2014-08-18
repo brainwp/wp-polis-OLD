@@ -88,9 +88,12 @@ $categorias = get_categories($args);
     <div id="first" data-first="<?php echo $cat; ?>" style="display:none"></div>
 
     <div id="tab<?php echo $_first->term_id; ?>" class="tabContents aba-area">
+        
         <!-- NOME E DESCRIÇÃO !-->
-        <h1><?php echo $_first->name; ?></h1>
-        <div class="col-md-12"><?php echo $_first->description; ?></div>
+        <div class="col-md-12 description">
+            <h1><?php echo $_first->name; ?></h1>
+            <?php echo $_first->description; ?>
+        </div>
 
         <div class="cada-loop-aba publicacoes">
 
