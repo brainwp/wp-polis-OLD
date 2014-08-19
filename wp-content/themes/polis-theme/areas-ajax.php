@@ -30,7 +30,7 @@ function areaAjax()
 
                         'taxonomy' => 'areas',
 
-                        'field' => 'id',
+                        'field' => 'slug',
 
                         'terms' => $cat,
 
@@ -78,7 +78,7 @@ function areaAjax()
 
                         'taxonomy' => 'areas',
 
-                        'field' => 'id',
+                        'field' => 'slug',
 
                         'terms' => $cat,
 
@@ -128,7 +128,7 @@ function areaAjax()
 
                         'taxonomy' => 'areas',
 
-                        'field' => 'id',
+                        'field' => 'slug',
 
                         'terms' => $cat,
 

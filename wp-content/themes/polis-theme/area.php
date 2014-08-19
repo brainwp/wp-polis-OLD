@@ -61,13 +61,13 @@ $categorias = get_categories($args);
                 <?php
                 if ($_i == 0) {
                     $_first = $_categorias; ?>
-                    <a class="tab-link active" data-id="<?php echo $_categorias->term_id; ?>"
-                       href="#area_<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
+                    <a class="tab-link active" data-id="<?php echo $_categorias->slug; ?>"
+                       href="#area_<?php echo $_categorias->slug; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
                 <?php } else { ?>
 
-                    <a class="tab-link" data-id="<?php echo $_categorias->term_id; ?>"
-                       href="#area_<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
+                    <a class="tab-link" data-id="<?php echo $_categorias->slug; ?>"
+                       href="#area_<?php echo $_categorias->slug; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
                 <?php } ?>
 
@@ -83,11 +83,11 @@ $categorias = get_categories($args);
 
     <section class="col-md-12 tabDetails atividades">
 
-    <?php $cat = $_first->term_id; ?>
+    <?php $cat = $_first->slug; ?>
 
     <div id="first" data-first="<?php echo $cat; ?>" style="display:none"></div>
 
-    <div id="area_<?php echo $_first->term_id; ?>" class="tabContents aba-area">
+    <div id="area_<?php echo $_first->slug; ?>" class="tabContents aba-area">
 
         <!-- NOME E DESCRIÇÃO !-->
         <div class="col-md-12 description">
@@ -114,7 +114,7 @@ $categorias = get_categories($args);
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'areas',
-                            'field' => 'id',
+                            'field' => 'slug',
                             'terms' => $cat,
                             'include_children' => true,
                         )
@@ -175,7 +175,7 @@ $categorias = get_categories($args);
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'areas',
-                            'field' => 'id',
+                            'field' => 'slug',
                             'terms' => $cat,
                             'include_children' => true,
                         )
@@ -236,7 +236,7 @@ $categorias = get_categories($args);
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'areas',
-                            'field' => 'id',
+                            'field' => 'slug',
                             'terms' => $cat,
                             'include_children' => true,
                         )
@@ -279,7 +279,7 @@ $categorias = get_categories($args);
 
         <?php if ($_i != 0) {
 
-            $cat = $_categorias->term_id;
+            $cat = $_categorias->slug;
 
             ?>
 
