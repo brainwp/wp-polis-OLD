@@ -1028,7 +1028,7 @@ object {
 	color:black;
 	padding:20px;
 	padding-bottom:30px;
-	transition:400ms ease all;
+	transition:300ms ease all;
 	text-decoration: none;
 }
 .tabContaier li a span{
@@ -1036,7 +1036,7 @@ object {
 	font-weight: bold;
 	font-family: 'Bitter', serif;
 	color:#888888;
-	transition:400ms ease all;
+	transition:300ms ease all;
 }
 .democracia-e-participacao .tabContaier li a.active span, .democracia-e-participacao .tabContaier li a span:hover {
 	color:#A22521;
@@ -1048,7 +1048,8 @@ object {
 }
 .reforma-urbana .tabContaier li a.active span, .reforma-urbana .tabContaier li a span:hover {
 	color:#516D33;
-	border-bottom:5px solid #516D33;
+	border-bottom:2px solid #516D33;
+	padding-bottom: 2px;
 }
 .cidadania-cultural .tabContaier li a.active span, .cidadania-cultural .tabContaier li a span:hover {
 	color:#B7913E;
