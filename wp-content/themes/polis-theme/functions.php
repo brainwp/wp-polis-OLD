@@ -170,10 +170,10 @@ function resumo_publicacoes($custom_max = '', $sep = '')
     }
 }
 function the_content_publicacoes(){
-    echo wp_strip_all_tags(get_field('publicacoes_content'));
+    echo apply_filters('the_content', get_field('publicacoes_content'));
 }
 function get_the_content_publicacoes(){
-    return wp_strip_all_tags(get_field('publicacoes_content'));
+    return apply_filters('the_content', get_field('publicacoes_content'));
 }
 /**
  * Register widgetized area and update sidebar with default widgets.
