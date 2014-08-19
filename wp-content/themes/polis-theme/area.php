@@ -285,9 +285,10 @@ $categorias = get_categories($args);
 
             <div id="area_<?php echo $cat; ?>" class="tabContents aba-area">
                 <!-- NOME E DESCRIÇÃO !-->
-                <h1><?php echo $cat->name; ?></h1>
-                <div class="col-md-12"><?php echo $cat->description; ?></div>
-
+                <div class="col-md-12 description">
+                    <h1><?php echo $_categorias->name; ?></h1>
+                    <?php echo $_categorias->description; ?>
+                </div>
 
                 <div class="cada-loop-aba publicacoes">
 
