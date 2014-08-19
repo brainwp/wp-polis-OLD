@@ -62,12 +62,12 @@ $categorias = get_categories($args);
                 if ($_i == 0) {
                     $_first = $_categorias; ?>
                     <a class="tab-link active" data-id="<?php echo $_categorias->term_id; ?>"
-                       href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
+                       href="#area_<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
                 <?php } else { ?>
 
                     <a class="tab-link" data-id="<?php echo $_categorias->term_id; ?>"
-                       href="#tab<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
+                       href="#area_<?php echo $_categorias->term_id; ?>"><span><?php echo $_categorias->name; ?></span></a>
 
                 <?php } ?>
 
@@ -87,7 +87,7 @@ $categorias = get_categories($args);
 
     <div id="first" data-first="<?php echo $cat; ?>" style="display:none"></div>
 
-    <div id="tab<?php echo $_first->term_id; ?>" class="tabContents aba-area">
+    <div id="area_<?php echo $_first->term_id; ?>" class="tabContents aba-area">
         <!-- NOME E DESCRIÇÃO !-->
         <h1><?php echo $_first->name; ?></h1>
         <div class="col-md-12"><?php echo $_first->description; ?></div>
@@ -280,7 +280,7 @@ $categorias = get_categories($args);
 
             ?>
 
-            <div id="tab<?php echo $cat; ?>" class="tabContents aba-area">
+            <div id="area_<?php echo $cat; ?>" class="tabContents aba-area">
                 <!-- NOME E DESCRIÇÃO !-->
                 <h1><?php echo $cat->name; ?></h1>
                 <div class="col-md-12"><?php echo $cat->description; ?></div>

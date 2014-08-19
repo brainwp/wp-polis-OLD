@@ -94,25 +94,26 @@ jQuery(document).ready(function () {
             $(tab).remove();
         }
     });
-    $('.biblioteca-main .pagination a').on('click',function(e){
+    $('.biblioteca-main .pagination a').on('click', function (e) {
         e.preventDefault();
         var _href = $(this).attr('href');
-        var _elem = $('.nav-tabs li.active').attr('data-tab-element').replace('#','');
+        var _elem = $('.nav-tabs li.active').attr('data-tab-element').replace('#', '');
         window.location.href = _href + '#' + _elem;
     });
     if (location.hash.lastIndexOf('tab-') != -1) {
-        var _elem = 'li[data-tab-element="'+location.hash+'"]' + ' a';
-        if($(_elem).length > 0){
+        var _elem = 'li[data-tab-element="' + location.hash + '"]' + ' a';
+        if ($(_elem).length > 0) {
             $(_elem).trigger('click');
         }
-        else{
+        else {
             $('.nav-tabs li:first a').trigger('click');
         }
         console.log(_elem);
     }
-    else{
+    else {
         $('.nav-tabs li:first a').trigger('click');
     }
+
     $('.working-container').css('display', 'block');
     if (location.hash.lastIndexOf('page_') != -1) {
         var pageid = location.hash.slice(6);
@@ -299,11 +300,9 @@ jQuery(document).ready(function () {
             }
         });
     }
-    jQuery(".tabContents").hide(); // Hide all tab content divs by default
-    jQuery(".tabContents:first").show(); // Show the first div of tab content by default
-
-    jQuery(".tabContaier ul li a").on('click', function () { //Fire the click event
-        var id = $(this).attr('data-id');
+    var area_click = function(elem){
+        console.log(elem);
+        var id = $(elem).attr('data-id');
         var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=noticias';
         $.get(post_link, function (data) {
             $('#noticias-slider-' + id).trigger('destroy');
@@ -408,14 +407,18 @@ jQuery(document).ready(function () {
         });
         var activeTab = jQuery(this).attr("href"); // Catch the click link
         jQuery(".tabContaier ul li a").removeClass("active"); // Remove pre-highlighted link
-        jQuery(this).addClass("active"); // set clicked link to highlight state
+        jQuery(elem).addClass("active"); // set clicked link to highlight state
         jQuery(".tabContents").hide(); // hide currently visible tab content div
-        $('#tab' + id).show();
+        $('#area_' + id).show();
         jQuery(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
         $('#ajax-acoes').html("");
         $('#ajax-publicacoes').html("");
         $('#ajax-noticias').html("");
         return false; //prevent page scrolling on tab click
+    }
+    $(".tabContents").hide(); // Hide all tab content divs by defau
+    jQuery(".tabContaier ul li a").on('click', function () { //Fire the click event
+        area_click($(this));
     });
     $('.nav ul li').on('mouseover', function () {
         $('.nav ul li ul').css('display', 'none');
@@ -452,6 +455,7 @@ jQuery(document).ready(function () {
                 }
             });
         });
+        location.hash = 'area_' +id;
         return false;
     });
     $('#busca-biblioteca-bt').on('click', function () {
@@ -510,11 +514,11 @@ jQuery(document).ready(function () {
             var styles = {
                 elementType: "labels",
                 stylers: [
-                    { visibility: "off" }
+                    {visibility: "off"}
                 ],
                 featureType: "poi",
                 stylers: [
-                    { visibility: "off" }
+                    {visibility: "off"}
                 ]
             }
             var map = new google.maps.Map(document.getElementById('map-bg'),
@@ -603,4 +607,21 @@ jQuery(document).ready(function () {
         stickyNav();
     });
 
+    //area
+    if (location.hash.lastIndexOf('area_') != -1) {
+        var area = location.hash.slice(6);
+        //var _elem = 'a[href="#tab'+area+'"]';
+        var _elem = 'a[href="#area_' + area + '"]';
+        console.log('area:' +_elem);
+        if ($(_elem).length > 0) {
+            //alert('chegou aqui?');
+            $(_elem).trigger('click');
+        }
+        else{
+            $(".tabContents:first").show(); // Show the first div of tab content by default
+        }
+    }
+    else{
+        $(".tabContents:first").show(); // Show the first div of tab content by default
+    }
 });
