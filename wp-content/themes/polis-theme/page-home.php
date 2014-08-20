@@ -8,7 +8,16 @@
 get_header(); ?>
     <section class="col-md-12 content text-center">
         <p class="description">
-            <?php echo of_get_option('frase-intro-home'); ?>
+            <?php
+                $intro = of_get_option('frase-intro-home');
+                $beta = of_get_option('frase-intro-beta');
+                if ( !empty( $beta ) ) {
+                    $frase = $beta;
+                } else {
+                    $frase = $intro;
+                }
+             ?>
+            <?php echo $frase; ?>
         </p>
 
         <p class="description text-areas">

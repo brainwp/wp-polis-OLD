@@ -22,6 +22,14 @@ and Blueprint http://www.blueprintcss.org/
 /* =Reset
 -------------------------------------------------------------- */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+.beta {
+    border: 1px solid #299e0c;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+}
 html{
 	font-family: sans-serif;
 	-ms-text-size-adjust:100%;
