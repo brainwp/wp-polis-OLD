@@ -22,6 +22,14 @@ and Blueprint http://www.blueprintcss.org/
 /* =Reset
 -------------------------------------------------------------- */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+.beta {
+    border: 1px solid #299e0c;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+}
 html{
 	font-family: sans-serif;
 	-ms-text-size-adjust:100%;
@@ -597,6 +605,26 @@ object {
 	word-wrap: break-word;
 }
 .bypostauthor {
+}
+.comments-area.col-md-12.pull-left {
+    padding: 0;
+}
+.comments-title {
+    margin: 10px 0 25px 0;
+}
+.comment-list, .children {
+    list-style: none;
+}
+.comment-body {
+    margin: 10px 0;
+    padding: 10px 20px !important;
+    background: #F5F5F5;
+}
+.form-allowed-tags {
+    display: none;
+}
+.comment-respond {
+    margin-top: 25px;
 }
 /* =Widgets
 ----------------------------------------------- */

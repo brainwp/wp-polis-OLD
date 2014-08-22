@@ -29,7 +29,15 @@ get_header(); ?>
 			<span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
 			<?php the_content(); ?>
 			
+			<?php
+				// If comments are open or we have at least one comment, load up the comment template
+				if ( comments_open() || '0' != get_comments_number() ) :
+					comments_template();
+				endif;
+			?>
+
 		</article>
+
 		<aside class="col-md-4 pull-right sidebar-page">
 			<?php if ( is_active_sidebar( 'widgets-institucional' ) ) : ?>
 				<?php dynamic_sidebar( 'widgets-institucional' ); ?>

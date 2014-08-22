@@ -73,10 +73,17 @@ function optionsframework_options() {
 		'type' => 'heading');
 
 	$options[] = array(
+		'name' => 'Frase de introdução Beta',
+		'id'   => 'frase-intro-beta',
+		'std'  => '',
+		'type' => 'textarea');
+
+	$options[] = array(
 		'name' => 'Frase de introdução no home',
 		'id'   => 'frase-intro-home',
 		'std'  => '',
 		'type' => 'textarea');
+
 	$options[] = array(
 		'name' => 'Frase Reforma Urbana na Pagina Inicial',
 		'id'   => 'frase-reformaurbana-home',
@@ -221,7 +228,6 @@ function optionsframework_options() {
         'id'   => 'colecoes-per-page',
         'std'  => '15',
         'type' => 'text');
-
 
     return $options;
 }
