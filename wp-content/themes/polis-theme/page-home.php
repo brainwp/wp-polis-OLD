@@ -68,7 +68,7 @@ get_header(); ?>
         <div class="col-md-10 col-md-offset-1 consultoria-alert">
             <img src="<?php bloginfo('template_url'); ?>/img/consultoria-alert.png">
             <!-- trocar pelo png transparente depois -->
-            <span>Interessado nos serviços de consultoria da Pólis?</span>
+            <span>Interessado nos serviços de consultoria do Pólis?</span>
             <a class="pull-right right" href="<?php echo home_url(); ?>/contato">Entre em contato</a>
         </div>
 
