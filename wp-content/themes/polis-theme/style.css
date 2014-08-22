@@ -606,6 +606,26 @@ object {
 }
 .bypostauthor {
 }
+.comments-area.col-md-12.pull-left {
+    padding: 0;
+}
+.comments-title {
+    margin: 10px 0 25px 0;
+}
+.comment-list, .children {
+    list-style: none;
+}
+.comment-body {
+    margin: 10px 0;
+    padding: 10px 20px !important;
+    background: #F5F5F5;
+}
+.form-allowed-tags {
+    display: none;
+}
+.comment-respond {
+    margin-top: 25px;
+}
 /* =Widgets
 ----------------------------------------------- */
 .widget {
