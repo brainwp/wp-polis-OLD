@@ -25,7 +25,7 @@ function create_taxonomies_areas() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'area' ),
+		'rewrite'           => array( 'slug' => 'subarea' ),
 	);
 
 	register_taxonomy( 'areas', array( 'noticias','publicacoes','acoes' ), $args );

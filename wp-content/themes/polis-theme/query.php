@@ -476,7 +476,7 @@ function _query_equipe_area() {
 		$_query->user_area = 'cidadania';
 	}
 
-	echo get_query_var( 'user_area' );
+	//echo get_query_var( 'user_area' );
 	$count_args = array(
 
 		'fields'     => 'all_with_meta',

@@ -8,15 +8,17 @@
 global $_query;
 $page = $_query->_page;
 $total_pages = $_query->total_pages;
+$cat = get_term_by('slug', get_query_var( 'user_area' ), 'areas');
 get_header(); ?>
 
 	<div class="header-area col-md-12 equipe">
-		<h1>Equipe</h1>
-	</div><!-- header-area col-md-12 equipe -->
+		<h1>Equipe - <?php echo $cat->name;?></h1>
+	</div>
+	<!-- header-area col-md-12 -->
 
 	<section class="col-md-12 content equipe">
 		<?php
-		echo '<h1>'.$_query->user_area.'</h1>';
+		//echo '<h1>'.$_query->user_area.'</h1>';
 
 		$args = array(
 			// return all fields
