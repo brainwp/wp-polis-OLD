@@ -1396,7 +1396,10 @@ conteudo - atuação /pagehome/
 	text-align:center;
 }
 .content .description.text-areas{
-	font-weight:bold;
+    font-family: 'Bitter', serif;
+    font-size: 2em;
+	font-weight: bold;
+    font-style: normal
 }
 .atuacao{
 	background:url("img/home-bg.jpg") bottom no-repeat;
