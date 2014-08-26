@@ -194,6 +194,10 @@ function polis_theme_widgets_init()
         'name' => __('Widget Boletim Home', 'polis-theme'),
         'id' => 'widgets-boletim-home',
     ));
+    register_sidebar(array(
+        'name' => __('Widget Redes Sociais Rodapé', 'polis-theme'),
+        'id' => 'widgets-redes-sociais',
+    ));
 
 }
 

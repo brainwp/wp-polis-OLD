@@ -42,11 +42,12 @@
 			<h3><?php bloginfo( 'name' ); ?></h3>
 			<p><?php echo of_get_option( 'footer-endereco' ); ?> • Tel. <?php echo of_get_option( 'telefone' ); ?></p>
 		</div>
-		<div class="col-md-4 pull-right social">
-			<span>Curta, compartilhe e siga!</span>
-			<a href="<?php echo of_get_option( 'social-twitter-link' );?>"><img src="<?php bloginfo('template_url')?>/img/footer-twitter.png"></a>
-			<a href="<?php echo of_get_option( 'social-facebook-link' );?>"><img src="<?php bloginfo('template_url')?>/img/footer-facebook.png"></a>
-			<a href="<?php echo of_get_option( 'social-vimeo-link' );?>"><img src="<?php bloginfo('template_url')?>/img/footer-vimeo.png"></a>
+		<div class="col-md-5 pull-right social">
+
+			<?php if (is_active_sidebar('widgets-redes-sociais')) : ?>
+			    <?php dynamic_sidebar('widgets-redes-sociais'); ?>
+			<?php endif; ?>
+
 		</div>
 	</div>
 </footer>

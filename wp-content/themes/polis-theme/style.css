@@ -1948,6 +1948,13 @@ slider de noticias + acoes
 #footer .social a{
 	margin-left:7px;
 }
+#footer .simple-social-icons .widgettitle {
+    float: left;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    margin: 10px 5px 0 0;
+}
 #footer .footer h2{
 	font-size:18px;
 	font-weight:bold;
