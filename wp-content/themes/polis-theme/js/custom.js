@@ -478,6 +478,7 @@ jQuery(document).ready(function () {
         var area = $(this).attr('data-area');
         $('#area-input').val(area);
         $('#busca-biblioteca').submit();
+        $('#area-input').val('');
     });
     $(document).on("click", ".bt-categorias", function () {
         var cat = $(this).attr('data-categoria');
