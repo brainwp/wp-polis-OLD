@@ -19,8 +19,8 @@ get_header('mini');
         <?php get_template_part('inc/biblioteca', 'search'); ?>
         <div id="biblioteca-require-position"></div>
         <div class="col-md-12 biblioteca livros_section" id="biblioteca-require" style="display:none">
-            <div class="col-md-7 col-md-offset-2 biblioteca-require">
-                Escolha uma área para melhorar o resultado de sua busca
+            <div class="col-md-6 col-md-offset-3 biblioteca-require">
+                Escolha uma dessas áreas para ver os resultados de sua busca
             </div>
         </div>
         <?php get_template_part('biblioteca','sliders');?>

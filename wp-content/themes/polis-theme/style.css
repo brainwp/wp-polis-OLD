@@ -3162,12 +3162,14 @@ section.biblioteca.livros_section {
     background:white;
 }
 .biblioteca-require{
-    font-family: 'Bitter',serif;
+	background:url(img/biblioteca-required.png) right center no-repeat;
+	font-family: 'Bitter',serif;
     color:#8b8b8b;
-    font-size:22px;
+    font-size:1.6em;
     padding-top:20px;
     padding-bottom:20px;
-    background:url(img/biblioteca-required.png) right center no-repeat;
+	padding-right:50px;
+	text-align:center;
 }
 header.mini{
     padding:0;
