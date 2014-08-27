@@ -560,14 +560,7 @@ jQuery(document).ready(function () {
     }
     if ($('#search_key_validate').attr('data-validate') == 'true') {
         if ($('#area-input').val().trim() == '') {
-            var siteurl = $(document.body).attr('data-siteurl');
-            var ajax_req = siteurl + '?isBibliotecaCountAjax=true&key=' + $('#key').val() + '&tipo=' + $('#select_tipo').val() + '&categoria=' + $('#select_cat').val() + '&anomin=' + $('#select_anomin').val() + '&anomax=' + $('#select_anomax').val();
-            var ajax_req = encodeURI(ajax_req);
-            $('#ajax-counter').load(ajax_req);
-            $('html, body').animate({
-                scrollTop: $('#biblioteca-require-position').offset().top
-            }, 300);
-            $('#biblioteca-require').fadeIn('slow');
+            $('#busca-biblioteca-bt').trigger('click');
         }
     }
     $('#header-search-bt').on('click', function () {
