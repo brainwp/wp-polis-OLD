@@ -42,7 +42,7 @@
 			<h3><?php bloginfo( 'name' ); ?></h3>
 			<p><?php echo of_get_option( 'footer-endereco' ); ?> • Tel. <?php echo of_get_option( 'telefone' ); ?></p>
 		</div>
-		<div class="col-md-5 pull-right social">
+		<div class="pull-right social">
 
 			<?php if (is_active_sidebar('widgets-redes-sociais')) : ?>
 			    <?php dynamic_sidebar('widgets-redes-sociais'); ?>

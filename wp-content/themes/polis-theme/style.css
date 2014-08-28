@@ -1396,11 +1396,27 @@ conteudo - atuação /pagehome/
 	text-align:center;
 }
 .content .description.text-areas{
-    font-family: 'Bitter', serif;
-    font-size: 2em;
+	font-family: 'Bitter', serif;
+	font-size: 2em;
 	font-weight: bold;
-    font-style: normal
+	font-style: normal
 }
+
+.content .description.title-home {
+
+	padding-top: 0;
+	padding-left:10%;
+	padding-right:10%;
+	margin-bottom: 0; 
+	color:#25607E;
+	text-align:center;
+	font-family: 'Bitter', serif;
+	font-size: 2em;
+	font-weight: bold;
+	font-style: normal;
+
+}
+
 .atuacao{
 	background:url("img/home-bg.jpg") bottom no-repeat;
 	padding-top: 40px;
@@ -1940,6 +1956,7 @@ slider de noticias + acoes
 }
 #footer .social{
 	margin-top:14px;
+	min-width: 255px;
 }
 #footer .social span{
 	padding-top:20px;
@@ -3202,7 +3219,7 @@ header.mini{
 }
 .biblioteca-main .header-area .pull-left p{
     padding-top:10px;
-    font-size:21px;
+    font-size:17px;
     font-style:italic;
 }
 .biblioteca-main.first{

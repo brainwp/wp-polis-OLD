@@ -10,7 +10,7 @@ get_header('mini');
 <div id="primary" class="content-area">
     <main id="main" class="site-main biblioteca-main first" role="main">
         <div class="col-md-12 header-area">
-            <div class="col-md-8 pull-left">
+            <div class="col-md-7 pull-left">
                 <h1>Biblioteca</h1>
 
                 <p><?php echo of_get_option('biblioteca-intro'); ?></p>
