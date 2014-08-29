@@ -20,7 +20,7 @@ get_header(); ?>
             <?php echo $frase; ?>
         </p>
 
-        <p class="description text-areas">
+        <p class="description title-home">
             Áreas de Atuação
         </p>
     </section>
