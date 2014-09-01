@@ -99,20 +99,7 @@ $total_pages = ceil($total_posts / $per_page);
 
         </div>
         <div class="col-md-12 search-ctn">
-            <div class="col-md-12 results">
-                <?php $cat_info = get_term_by('slug', $_GET['area'], 'areas'); ?>
-                <?php if (!empty($key) && empty($_GET['categoria'])): ?>
-                    <span class="key"><span class="cinza">Resultados para</span> '<?php echo $key; ?>'</span>
-                <?php endif; ?>
-                <?php if (!empty($key) && empty($_GET['categoria'])): ?>
-                    <span class="area <?php echo $_GET['area']; ?>">Em <?php echo $cat_info->name; ?></span>
-                <?php endif; ?>
-                <?php if (!empty($key) && !empty($_GET['categoria'])): ?>
-                    <?php $sub_cat_info = get_term_by('slug', $_GET['categoria'], 'areas'); ?>
-                    <span class="key"><span class="cinza">Resultados para</span> '<?php echo $key; ?>'</span>
-                    <span class="area <?php echo $_GET['area']; ?>">Em <?php echo $cat_info->name; ?> / <?php echo $sub_cat_info->name;?></span>
-                <?php endif; ?>
-            </div>
+            
             <?php
             $type_list = array();
             $type_add = array();

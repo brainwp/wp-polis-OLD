@@ -3056,14 +3056,12 @@ section.biblioteca.livros_section {
 #ajax-biblioteca-sub-count span{
     color:white;
     font-weight:bold;
-    font-size:18px;
 }
 #ajax-biblioteca-sub-count a{
     display:block;
-    width:100%;
     float:left;
-    padding-left:10px;
     color:white !important;
+    padding: 3px 0;
 }
 #ajax-biblioteca-sub-count.democracia-e-participacao{
     background: url('img/areas/biblioteca-sub-democracia.png') no-repeat;
