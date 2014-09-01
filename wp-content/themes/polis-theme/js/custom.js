@@ -496,7 +496,7 @@ jQuery(document).ready(function () {
             $('#ajax-biblioteca-sub-count').css('height', size + 'px');
         }
     });
-    if ($(window).width() >= 700) {
+    /*if ($(window).width() >= 700) {
         $(document.body).css('background', 'transparent');
         $('#map-bg').contents().find('#mp-embed-bar').remove();
         $('#map-bg').css('height', $(document).height() + 'px');
@@ -544,6 +544,7 @@ jQuery(document).ready(function () {
 
         google.maps.event.addDomListener(window, 'load', initialize);
     }
+    */
     if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
         var msViewportStyle = document.createElement("style");
         msViewportStyle.appendChild(
