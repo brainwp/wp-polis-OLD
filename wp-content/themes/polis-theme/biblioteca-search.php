@@ -95,10 +95,10 @@ $total_pages = ceil($total_posts / $per_page);
     <main id="main" class="site-main biblioteca-main <?php echo $_GET['area']; ?>" role="main">
         <?php get_template_part('inc/biblioteca', 'search-mini'); ?>
         <div class="clear-mob"></div>
-        <div class="col-md-3 <?php echo $_GET['area']; ?>" id="ajax-biblioteca-sub-count">
+        <div class="col-md-12 <?php echo $_GET['area']; ?>" id="ajax-biblioteca-sub-count">
 
         </div>
-        <div class="col-md-9 right search-ctn">
+        <div class="col-md-12 search-ctn">
             <div class="col-md-12 results">
                 <?php $cat_info = get_term_by('slug', $_GET['area'], 'areas'); ?>
                 <?php if (!empty($key) && empty($_GET['categoria'])): ?>
@@ -134,7 +134,7 @@ $total_pages = ceil($total_posts / $per_page);
                     $type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name('categorias');
                     $type_list[$type_term][$_i]['term_slug'] = return_term_biblioteca('categorias');
                     $type_list[$type_term][$_i]['title'] = get_the_title();
-                    $type_list[$type_term][$_i]['resumo'] = resumo_publicacoes(150, '...');
+                    $type_list[$type_term][$_i]['resumo'] = resumo_publicacoes(400, '...');
                     $type_list[$type_term][$_i]['id'] = get_the_id();
                     $type_list[$type_term][$_i]['link'] = get_permalink();
                     $type_list[$type_term][$_i]['autor'] = get_the_author_meta('display_name');
