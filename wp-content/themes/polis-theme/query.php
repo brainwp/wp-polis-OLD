@@ -961,3 +961,4 @@ function _title( $title ) {
 }
 
 add_filter( 'wp_title', '_title' );
+//query funcionando
