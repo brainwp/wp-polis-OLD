@@ -12,13 +12,12 @@ get_header(); ?>
                 $intro = of_get_option('frase-intro-home');
                 $beta = of_get_option('frase-intro-beta');
                 if ( !empty( $beta ) ) {
-                    $frase = $beta;
+                    echo $beta;
                 } else {
-                    $frase = $intro;
+                    echo $intro;
                 }
              ?>
-            <?php echo $frase; ?>
-        </p>
+        </p><!-- description -->
 
         <p class="description title-home">
             Áreas de Atuação
@@ -79,7 +78,7 @@ get_header(); ?>
         <div class="col-md-12">
             <div class="section-title">
                 <h3>Notícias e Ações</h3>
-                <a href="#" class="col-md-1 shape-todos">Ver todos</a>
+                <a href="<?php echo home_url('/noticias-e-acoes'); ?>" class="col-md-1 shape-todos">Ver todos</a>
             </div>
         </div>
 
