@@ -225,7 +225,7 @@ function _query_tipo() {
 }
 
 function _query_area_categoria() {
-	global $_query, $wp_query;
+	global $_query;
 	$page                = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$per_page            = (int) of_get_option( 'areas-archive-per-page' );
 	$area                = get_query_var( 'area' );
@@ -248,9 +248,9 @@ function _query_area_categoria() {
 		'posts_per_page' => $per_page,
 		'paged'          => $page
 	);
-	$wp_query            = new WP_Query( $args );
+	$_query->query       = new WP_Query( $args );
 	$_query->_page       = $page;
-	$_query->total_pages = $wp_query->max_num_pages;
+	$_query->total_pages = $_query->query->max_num_pages;
 }
 
 function _query_archive_publicacoes() {
