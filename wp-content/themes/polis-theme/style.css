@@ -3325,6 +3325,17 @@ header.mini{
     color:#1e5c7a;
     border-bottom:5px solid #1e5c7a;
 }
+
+.aba-area .description h1{
+    float: left;
+}
+
+.aba-area .description .shape-todos {
+    background: #a8a8a8;
+    color: #FFF;
+    margin: 4px 12px;
+}
+
 .projetos-main .aba-area .thumb img{
     width:100%;
 }
