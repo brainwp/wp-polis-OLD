@@ -91,11 +91,10 @@ $categorias = get_categories($args);
 
         <!-- NOME E DESCRIÇÃO !-->
         <div class="col-md-12 description">
-            <h1><?php echo $_first->name; ?></h1>
+            <h1><?php echo $_first->name; ?></h1><a class="btn membros shape-todos" href="<?php echo home_url(); ?>/equipe/area/<?php echo $cat;?>">Equipe</a>
+            <div class="clear"></div>
             <?php echo $_first->description; ?>
 	        <div class="col-md-12 clear"></div>
-	        <?php // link para a página no /equipe ?>
-	        <a href="<?php echo home_url(); ?>/equipe/area/<?php echo $cat;?>">Ver membros dessa área</a>
         </div>
 
         <div class="cada-loop-aba publicacoes">

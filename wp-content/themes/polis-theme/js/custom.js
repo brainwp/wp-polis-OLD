@@ -528,6 +528,37 @@ jQuery(document).ready(function () {
      var contentString = '<p><b>Instituto Polis</b></p>' + '<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
      var infowindow = new google.maps.InfoWindow({
      });
+        $(document.body).css('background', 'transparent');
+        $('#map-bg').contents().find('#mp-embed-bar').remove();
+        $('#map-bg').css('height', $(document).height() + 'px');
+        $('#map-bg').css('width', $(document).width() + 'px');
+        $('#map-bg').css('display', 'block');
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(-23.544891, -46.644645),
+                zoom: 20,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                disableDefaultUI: true,
+                scrollwheel: false,
+                navigationControl: false,
+                mapTypeControl: false
+            }
+            var styles = {
+                elementType: "labels",
+                stylers: [
+                    {visibility: "off"}
+                ],
+                featureType: "poi",
+                stylers: [
+                    {visibility: "off"}
+                ]
+            }
+            var map = new google.maps.Map(document.getElementById('map-bg'),
+                mapOptions);
+            map.setOptions({styles: styles});
+            var contentString = '<p><b>Instituto Polis</b></p>' + '<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
+            var infowindow = new google.maps.InfoWindow({
+            });
 
      var marker = new google.maps.Marker({
      position: new google.maps.LatLng(-23.544891, -46.644645),
@@ -542,9 +573,9 @@ jQuery(document).ready(function () {
 
      }
 
-     google.maps.event.addDomListener(window, 'load', initialize);
-     }
-     */
+        google.maps.event.addDomListener(window, 'load', initialize);
+    }
+    */
     if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
         var msViewportStyle = document.createElement("style");
         msViewportStyle.appendChild(

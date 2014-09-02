@@ -49,17 +49,17 @@ function AjaxSubCount() {
 		<?php
 		//nome da subarea/area
 		?>
-		<div class="col-md-12 results">
+		<div class="col-md-5 results">
 			<?php $cat_info = get_term_by( 'slug', $_GET['area'], 'areas' ); ?>
 			<?php if ( ! empty( $key ) && empty( $_GET['categoria'] ) ): ?>
-				<span class="key"><span class="cinza">Resultados para</span> '<?php echo $key; ?>'</span>
+				<span class="key">Resultados para '<?php echo $key; ?>'</span>
 			<?php endif; ?>
 			<?php if ( ! empty( $key ) && empty( $_GET['categoria'] ) ): ?>
 				<span class="area <?php echo $_GET['area']; ?>">Em <?php echo $cat_info->name; ?></span>
 			<?php endif; ?>
 			<?php if ( ! empty( $key ) && ! empty( $_GET['categoria'] ) ): ?>
 				<?php $sub_cat_info = get_term_by( 'slug', $_GET['categoria'], 'areas' ); ?>
-				<span class="key"><span class="cinza">Resultados para</span> '<?php echo $key; ?>'</span>
+				<span class="key">Resultados para '<?php echo $key; ?>'</span>
 				<span class="area <?php echo $_GET['area']; ?>">Em <?php echo $cat_info->name; ?>
 					/ <?php echo $sub_cat_info->name; ?></span>
 			<?php endif; ?>
@@ -88,7 +88,7 @@ function AjaxSubCount() {
 			$count       = $count_query->found_posts;
 			if ( $count > 0 ) {
 				//exibindo as subareas
-				echo '<a data-categoria="' . $category->slug . '" class="bt-categorias">' . $category->name . ' (' . $count . ')</a>';
+				echo '<a data-categoria="' . $category->slug . '" class="bt-categorias col-md-7">' . $category->name . ' (' . $count . ')</a>';
 				$_counter ++;
 			}
 		}
