@@ -47,7 +47,7 @@
 			<span class="glyphicon glyphicon-search" id="header-search-bt"></span> <!-- icone de search !-->
 		</form>
 	</header>
-	<nav class="col-md-12 nav" id="nav">
+	<nav class="col-md-12 nav" id="nav" data-inload="false">
         <a href="<?php bloginfo('url');?>">
             <img src="<?php bloginfo('template_url');?>/img/logo-mini.png">
         </a>

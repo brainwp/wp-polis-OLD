@@ -300,7 +300,7 @@ jQuery(document).ready(function () {
             }
         });
     }
-    var area_click = function(elem){
+    var area_click = function (elem) {
         console.log(elem);
         var id = $(elem).attr('data-id');
         var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=noticias';
@@ -455,7 +455,7 @@ jQuery(document).ready(function () {
                 }
             });
         });
-        location.hash = 'area_' +id;
+        location.hash = 'area_' + id;
         return false;
     });
     $('#busca-biblioteca-bt').on('click', function () {
@@ -496,54 +496,55 @@ jQuery(document).ready(function () {
             $('#ajax-biblioteca-sub-count').css('height', size + 'px');
         }
     });
-    if ($(window).width() >= 700) {
-        $(document.body).css('background', 'transparent');
-        $('#map-bg').contents().find('#mp-embed-bar').remove();
-        $('#map-bg').css('height', $(document).height() + 'px');
-        $('#map-bg').css('width', $(document).width() + 'px');
-        $('#map-bg').css('display', 'block');
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(-23.544891, -46.644645),
-                zoom: 20,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                disableDefaultUI: true,
-                scrollwheel: false,
-                navigationControl: false,
-                mapTypeControl: false
-            }
-            var styles = {
-                elementType: "labels",
-                stylers: [
-                    {visibility: "off"}
-                ],
-                featureType: "poi",
-                stylers: [
-                    {visibility: "off"}
-                ]
-            }
-            var map = new google.maps.Map(document.getElementById('map-bg'),
-                mapOptions);
-            map.setOptions({styles: styles});
-            var contentString = '<p><b>Instituto Polis</b></p>' + '<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
-            var infowindow = new google.maps.InfoWindow({
-            });
+    /*if ($(window).width() >= 700) {
+     $(document.body).css('background', 'transparent');
+     $('#map-bg').contents().find('#mp-embed-bar').remove();
+     $('#map-bg').css('height', $(document).height() + 'px');
+     $('#map-bg').css('width', $(document).width() + 'px');
+     $('#map-bg').css('display', 'block');
+     function initialize() {
+     var mapOptions = {
+     center: new google.maps.LatLng(-23.544891, -46.644645),
+     zoom: 20,
+     mapTypeId: google.maps.MapTypeId.ROADMAP,
+     disableDefaultUI: true,
+     scrollwheel: false,
+     navigationControl: false,
+     mapTypeControl: false
+     }
+     var styles = {
+     elementType: "labels",
+     stylers: [
+     {visibility: "off"}
+     ],
+     featureType: "poi",
+     stylers: [
+     {visibility: "off"}
+     ]
+     }
+     var map = new google.maps.Map(document.getElementById('map-bg'),
+     mapOptions);
+     map.setOptions({styles: styles});
+     var contentString = '<p><b>Instituto Polis</b></p>' + '<p>Rua Araújo, 124, Vila Buarque, São Paulo - SP</p></p>Tel. (11) 2174-6800</p>'
+     var infowindow = new google.maps.InfoWindow({
+     });
 
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(-23.544891, -46.644645),
-                map: map,
-                title: 'Polis',
-                icon: 'http://brasawp.art.br/polis/wp-content/themes/polis-theme/img/logo.png'
-            });
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.setContent(contentString);
-                infowindow.open(map, marker);
-            });
+     var marker = new google.maps.Marker({
+     position: new google.maps.LatLng(-23.544891, -46.644645),
+     map: map,
+     title: 'Polis',
+     icon: 'http://brasawp.art.br/polis/wp-content/themes/polis-theme/img/logo.png'
+     });
+     google.maps.event.addListener(marker, 'click', function () {
+     infowindow.setContent(contentString);
+     infowindow.open(map, marker);
+     });
 
-        }
+     }
 
-        google.maps.event.addDomListener(window, 'load', initialize);
-    }
+     google.maps.event.addDomListener(window, 'load', initialize);
+     }
+     */
     if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
         var msViewportStyle = document.createElement("style");
         msViewportStyle.appendChild(
@@ -572,50 +573,89 @@ jQuery(document).ready(function () {
     $('nav.sticky').css('width', sticky_width + 'px');
 
     var stickyNavTop = $('#nav').offset().top;
-    var stickyNav = function () {
-        var scrollTop = $(window).scrollTop();
+    if ($('#nav').attr('data-inload') == 'false') {
+        var stickyNav = function () {
+            var scrollTop = $(window).scrollTop();
 
-        if (scrollTop > stickyNavTop) {
-            var data_sticky = $('nav.nav').attr('data-sticky');
-            if (data_sticky != 'true') {
-                $('nav.nav').addClass('sticky');
-                $('nav.nav img').fadeIn();
-                $('nav.nav').attr('data-sticky', 'true');
-                $('nav.nav').css('width', sticky_width + 'px');
-                if ($('#wpadminbar').length > 0 && $(window).width() >= 700) {
-                    $('nav.nav').css('margin-top', '32px');
+            if (scrollTop > stickyNavTop) {
+                var data_sticky = $('nav.nav').attr('data-sticky');
+                if (data_sticky != 'true') {
+                    $('nav.nav').addClass('sticky');
+                    $('nav.nav img').fadeIn();
+                    $('nav.nav').attr('data-sticky', 'true');
+                    $('nav.nav').css('width', sticky_width + 'px');
+                    if ($('#wpadminbar').length > 0 && $(window).width() >= 700) {
+                        $('nav.nav').css('margin-top', '32px');
+                    }
                 }
+                $('nav.sticky').css('top', scrollTop + 'px');
+            } else {
+                $('nav.nav').attr('data-sticky', 'false');
+                $('nav.nav img').fadeOut();
+                $('nav.nav').removeClass('sticky');
+                $('nav.nav').removeAttr('style');
             }
-            $('nav.sticky').css('top', scrollTop + 'px');
-        } else {
-            $('nav.nav').attr('data-sticky', 'false');
-            $('nav.nav img').fadeOut();
-            $('nav.nav').removeClass('sticky');
-            $('nav.nav').removeAttr('style');
         }
-    };
 
-    //stickyNav();
 
-    $(window).scroll(function () {
-        stickyNav();
-    });
+        //stickyNav();
 
+        $(window).scroll(function () {
+            stickyNav();
+        });
+    }
+    if ($('#nav').attr('data-inload') == 'true') {
+        $('nav.nav img').fadeIn();
+        $('nav.nav').addClass('sticky');
+        $('nav.nav').css('position', 'relative');
+
+        var stickyNav = function () {
+            var scrollTop = $(window).scrollTop();
+
+            if (scrollTop > stickyNavTop) {
+                var data_sticky = $('nav.nav').attr('data-sticky');
+                if (data_sticky != 'true') {
+                    // $('nav.nav img').fadeIn();
+                    $('nav.nav').attr('data-sticky', 'true');
+                    $('nav.nav').css('position', 'absolute');
+                    $('nav.nav').css('width', sticky_width + 'px');
+                    if ($('#wpadminbar').length > 0 && $(window).width() >= 700) {
+                        $('nav.nav').css('margin-top', '32px');
+                    }
+                }
+                $('nav.sticky').css('top', scrollTop + 'px');
+            } else {
+                $('nav.nav').attr('data-sticky', 'false');
+                //$('nav.nav img').fadeOut();
+                //$('nav.nav').removeClass('sticky');
+                $('nav.nav').removeAttr('style');
+                $('nav.nav').css('position', 'relative');
+                // $('nav.nav').removeAttr('style');
+            }
+        }
+
+
+        //stickyNav();
+
+        $(window).scroll(function () {
+            stickyNav();
+        });
+    }
     //area
     if (location.hash.lastIndexOf('area_') != -1) {
         var area = location.hash.slice(6);
         //var _elem = 'a[href="#tab'+area+'"]';
         var _elem = 'a[href="#area_' + area + '"]';
-        console.log('area:' +_elem);
+        console.log('area:' + _elem);
         if ($(_elem).length > 0) {
             //alert('chegou aqui?');
             $(_elem).trigger('click');
         }
-        else{
+        else {
             $(".tabContents:first").show(); // Show the first div of tab content by default
         }
     }
-    else{
+    else {
         $(".tabContents:first").show(); // Show the first div of tab content by default
     }
 });
