@@ -41,7 +41,6 @@ $categorias = get_categories($args);
             <?php outras_areas(); ?>
         </div><!-- rigtht -->
 
-
     </div>
 
     <!-- .header-area -->
@@ -288,11 +287,10 @@ $categorias = get_categories($args);
             <div id="area_<?php echo $cat; ?>" class="tabContents aba-area">
                 <!-- NOME E DESCRIÇÃO !-->
                 <div class="col-md-12 description">
-                    <h1><?php echo $_categorias->name; ?></h1>
+                    <h1><?php echo $_categorias->name; ?></h1><a class="btn membros shape-todos" href="<?php echo home_url(); ?>/equipe/area/<?php echo $cat;?>">Equipe</a>
+                    <div class="clear"></div>
                     <?php echo $_categorias->description; ?>
 	                <div class="col-md-12 clear"></div>
-	                <?php // link para a página no /equipe ?>
-	                <a href="<?php echo home_url(); ?>/equipe/area/<?php echo $cat;?>">Ver membros dessa área</a>
                 </div>
 
                 <div class="cada-loop-aba publicacoes">
