@@ -33,12 +33,7 @@
 <body data-siteurl="<?php bloginfo('url');?>/" id="mini-header-body">
 <div id="map-bg"></div>
 <div class="container shadow">
-    <header class="col-md-12 header mini">
-        <a href="<?php bloginfo('url');?>" class="col-md-2 left">  <!-- logo -->
-            <img src="<?php bloginfo('template_url');?>/img/logo-mini.png">
-        </a>
-    </header>
-    <nav class="col-md-12 nav" id="nav">
+    <nav class="col-md-12 nav" id="nav" data-inload="true">
         <a href="<?php bloginfo('url');?>">
             <img src="<?php bloginfo('template_url');?>/img/logo-mini.png">
         </a>

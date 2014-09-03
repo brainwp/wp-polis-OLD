@@ -5,7 +5,7 @@
  * Date: 17/07/14
  * Time: 14:39
  */
-global $wp_query;
+global $_query;
 get_header();?>
 
     <section class="col-md-12 content perfil projetos-main cpt-acoes">
@@ -18,7 +18,7 @@ get_header();?>
     </section>
     <section class="col-md-12 atividades archive-publicacoes">
         <ul class="list_carousel">
-        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+	        <?php if ($_query->query->have_posts()) : while ($_query->query->have_posts()) : $_query->query->the_post(); ?>
             <div class="col-md-3">
                 <?php get_template_part('area-slider', get_post_type() ); ?>
             </div>
@@ -31,7 +31,7 @@ get_header();?>
                 <?php
                 $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-                $total = $wp_query->max_num_pages;
+                $total = $_query->query->max_num_pages;
                 $big = 999999999; // need an unlikely integer
                 if ($total > 1) {
                     if (!$current_page = $page)

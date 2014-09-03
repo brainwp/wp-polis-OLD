@@ -2907,7 +2907,7 @@ section.biblioteca.livros_section {
 	position:absolute;
 	left:160px;
 	bottom:20px;
-	background:#cfcfcf;
+	background:#EDEDED;
 	padding-left:15px;
 	padding-top:7px;
 	padding-bottom:7px;
@@ -2921,7 +2921,7 @@ section.biblioteca.livros_section {
 }
 .item .infos .download{
 	position: absolute;
-	right:18px;
+	right:0;
 	top:0;
 	padding:15px;
 	padding-top:7px;
@@ -3056,14 +3056,12 @@ section.biblioteca.livros_section {
 #ajax-biblioteca-sub-count span{
     color:white;
     font-weight:bold;
-    font-size:18px;
 }
 #ajax-biblioteca-sub-count a{
     display:block;
-    width:100%;
     float:left;
-    padding-left:10px;
     color:white !important;
+    padding: 3px 0;
 }
 #ajax-biblioteca-sub-count.democracia-e-participacao{
     background: url('img/areas/biblioteca-sub-democracia.png') no-repeat;
