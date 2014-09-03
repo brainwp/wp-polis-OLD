@@ -15,7 +15,6 @@
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <?php wp_head(); ?>
 
     <!-- Google Analytics -->
