@@ -217,7 +217,7 @@ function _query_tipo() {
 		'posts_per_page' => $per_page,
 		'paged'          => $page
 	);
-	$_query->query            = new WP_Query( $args );
+	$_query->query       = new WP_Query( $args );
 	$_query->_page       = $page;
 	$_query->total_pages = $_query->query->max_num_pages;
 	$term                = get_term_by( 'slug', $tipo, 'tipos' );
@@ -330,7 +330,7 @@ function _query_noticias_acoes() {
 		'paged'          => $page
 	);
 
-	$_query->query            = new WP_Query( $args );
+	$_query->query       = new WP_Query( $args );
 	$_query->_page       = $page;
 	$_query->total_pages = $_query->query->max_num_pages;
 
@@ -950,6 +950,14 @@ function _title( $title ) {
 		$title = 'Coleções | ' . $title = get_bloginfo( 'name' );
 
 		return $title;
+
+	} elseif ( $_query->template == 'projetos' ) {
+
+
+		$title = get_bloginfo( 'name' ) . ' | Projetos ';
+
+		return $title;
+
 
 	} else {
 
