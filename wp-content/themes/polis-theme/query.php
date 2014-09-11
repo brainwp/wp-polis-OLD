@@ -266,9 +266,9 @@ function _query_archive_publicacoes() {
 	);
 
 
-	$wp_query            = new WP_Query( $args );
+	$_query->query           = new WP_Query( $args );
 	$_query->_page       = $page;
-	$_query->total_pages = $wp_query->max_num_pages;
+	$_query->total_pages = $_query->query->max_num_pages;
 
 }
 
