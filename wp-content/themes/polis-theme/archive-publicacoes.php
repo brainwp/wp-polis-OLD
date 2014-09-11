@@ -5,7 +5,7 @@
  * Date: 17/07/14
  * Time: 14:39
  */
-global $wp_query, $_query;
+global $_query;
 $page = (int) $_query->_page;
 get_header();?>
 
