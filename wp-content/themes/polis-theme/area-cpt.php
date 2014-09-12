@@ -39,7 +39,7 @@ get_header();?>
             <section class="col-md-12 atividades archive-publicacoes">
                 <ul class="list_carousel">
                     <?php $count = ''; ?>
-                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <?php if ($_query->query->have_posts()) : while ($_query->query->have_posts()) : $_query->query->the_post(); ?>
                         <div class="col-md-3">
                             <?php get_template_part('area-slider', $_query->cpt); ?>
                         </div>

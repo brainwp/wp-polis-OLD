@@ -217,15 +217,15 @@ function _query_tipo() {
 		'posts_per_page' => $per_page,
 		'paged'          => $page
 	);
-	$wp_query            = new WP_Query( $args );
+	$_query->query       = new WP_Query( $args );
 	$_query->_page       = $page;
-	$_query->total_pages = $wp_query->max_num_pages;
+	$_query->total_pages = $_query->query->max_num_pages;
 	$term                = get_term_by( 'slug', $tipo, 'tipos' );
 	$_query->tax_name    = $term->name;
 }
 
 function _query_area_categoria() {
-	global $_query, $wp_query;
+	global $_query;
 	$page                = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$per_page            = (int) of_get_option( 'areas-archive-per-page' );
 	$area                = get_query_var( 'area' );
@@ -248,9 +248,9 @@ function _query_area_categoria() {
 		'posts_per_page' => $per_page,
 		'paged'          => $page
 	);
-	$wp_query            = new WP_Query( $args );
+	$_query->query       = new WP_Query( $args );
 	$_query->_page       = $page;
-	$_query->total_pages = $wp_query->max_num_pages;
+	$_query->total_pages = $_query->query->max_num_pages;
 }
 
 function _query_archive_publicacoes() {
@@ -317,7 +317,7 @@ function _query_colecoes() {
 
 function _query_noticias_acoes() {
 
-	global $_query, $wp_query;
+	global $_query;
 
 	$page     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$per_page = get_option( 'posts_per_page' );
@@ -330,9 +330,9 @@ function _query_noticias_acoes() {
 		'paged'          => $page
 	);
 
-	$wp_query            = new WP_Query( $args );
+	$_query->query       = new WP_Query( $args );
 	$_query->_page       = $page;
-	$_query->total_pages = $wp_query->max_num_pages;
+	$_query->total_pages = $_query->query->max_num_pages;
 
 }
 
@@ -348,7 +348,7 @@ function _query_projetos() {
 		}
 	}
 
-	global $_query, $wp_query;
+	global $_query;
 	$args = array(
 		'type'       => 'projetos',
 		'taxonomy'   => 'projetos_tax',
@@ -393,10 +393,11 @@ function _query_projetos() {
 		'projetos_tax'   => $aba,
 		'paged'          => $page
 	);
-	$wp_query = new WP_Query( $args );
+
+	$_query->query = new WP_Query( $args );
 
 	$_query->projetos_tax_slug = $aba;
-	$_query->total_pages       = $wp_query->max_num_pages;
+	$_query->total_pages       = $_query->query->max_num_pages;
 }
 
 function _query_equipe() {
@@ -624,9 +625,9 @@ function _query_membros() {
 			'post__in'      => $select_posts
 		);
 
-		$wp_query = new WP_Query( $args );
+		$_query->query = new WP_Query( $args );
 
-		$total_pages = $wp_query->max_num_pages;
+		$total_pages = $_query->query->max_num_pages;
 
 		$_query->total_pages = $total_pages;
 
@@ -953,6 +954,14 @@ function _title( $title ) {
 
 		return $title;
 
+	} elseif ( $_query->template == 'projetos' ) {
+
+
+		$title = get_bloginfo( 'name' ) . ' | Projetos ';
+
+		return $title;
+
+
 	} else {
 
 		return $title;
@@ -963,3 +972,4 @@ function _title( $title ) {
 }
 
 add_filter( 'wp_title', '_title' );
+//query funcionando
