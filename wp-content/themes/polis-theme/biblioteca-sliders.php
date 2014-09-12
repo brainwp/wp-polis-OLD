@@ -12,6 +12,7 @@
                     'posts_per_page'   => 10,
                     'orderby' => 'date',
                     'order'   => 'DESC',
+                    'post_type' => 'publicacoes',
                     'tax_query'  => array(
                         array(
                             'taxonomy'         => 'categorias',
@@ -95,6 +96,7 @@
         'posts_per_page'   => 10,
         'orderby' => 'date',
         'order'   => 'DESC',
+        'post_type' => 'publicacoes',
         'tax_query'  => array(
             array(
                 'taxonomy'         => 'categorias',
@@ -176,6 +178,7 @@
         'posts_per_page'   => 10,
         'orderby' => 'date',
         'order'   => 'DESC',
+        'post_type' => 'publicacoes',
         'tax_query'  => array(
             array(
                 'taxonomy'         => 'categorias',
