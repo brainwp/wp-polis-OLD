@@ -689,4 +689,12 @@ jQuery(document).ready(function () {
     else {
         $(".tabContents:first").show(); // Show the first div of tab content by default
     }
+
+    var popsrc = $('.image-link').attr('src');
+    $.magnificPopup.open({
+      items: {
+        src: popsrc
+      },
+      type: 'image'
+    });
 });

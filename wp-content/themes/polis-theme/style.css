@@ -3646,3 +3646,7 @@ nav.nav img{
 #noticias-slider-atividades{
     margin-bottom:20px;
 }
+
+.image-link {
+    display: none;
+}
