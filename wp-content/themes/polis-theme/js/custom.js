@@ -690,11 +690,20 @@ jQuery(document).ready(function () {
         $(".tabContents:first").show(); // Show the first div of tab content by default
     }
 
-    var popsrc = $('.image-link').attr('src');
-    $.magnificPopup.open({
-      items: {
-        src: popsrc
-      },
-      type: 'image'
+    if($('.image-link').length > 0){
+  var popsrc = $('.image-link').attr('src');
+$.magnificPopup.open({
+  items: {
+    src: popsrc
+  },
+  type: 'image'
+});
+ 
+    $('.mfp-img').on('click', function (e) {
+        e.preventDefault();
+        var _href = 'http://polis.org.br/noticias/lancamento-da-alianca-residuo-zero-brasil-tem-presenca-do-professor-paul-connet-da-universidade-st-lawrence-nova-york/';
+        window.location.href = _href;
     });
+ 
+}
 });

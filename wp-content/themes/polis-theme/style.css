@@ -3649,4 +3649,8 @@ nav.nav img{
 
 .image-link {
     display: none;
+    cursor: pointer;
+}
+.mfp-img {
+    cursor: pointer !important;
 }
