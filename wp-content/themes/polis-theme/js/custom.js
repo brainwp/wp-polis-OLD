@@ -690,11 +690,67 @@ jQuery(document).ready(function () {
         $(".tabContents:first").show(); // Show the first div of tab content by default
     }
 
-    var popsrc = $('.image-link').attr('src');
-    $.magnificPopup.open({
-      items: {
-        src: popsrc
-      },
-      type: 'image'
+    function isElementVisible(elementToBeChecked)
+    {
+        var TopView = $(window).scrollTop();
+        var BotView = TopView + $(window).height();
+        var TopElement = $(elementToBeChecked).offset().top;
+        var BotElement = TopElement + $(elementToBeChecked).height();
+        return ((BotElement <= BotView) && (TopElement >= TopView));
+    }
+
+    if($('#equipe_load').attr('data-ajax') == 'true'){
+        //ajax equipe
+        var equipe_area_atual = 'reforma-urbana';
+
+        var ajax = siteurl + '?ajaxEquipe=true&query=' +equipe_area_atual;
+        $.get(ajax, function (data) {
+            $(data).appendTo('#equipe_load').hide().fadeIn('slow');
+        })
+    }
+    $(window).scroll(function(e){
+        var is_view = isElementVisible('#footer');
+        if(is_view) {
+            if(equipe_area_atual == 'reforma-urbana'){
+                var ajax = siteurl + '?ajaxEquipe=true&query=democracia-e-participacao';
+                $.get(ajax, function (data) {
+                    $(data).appendTo('#equipe_load').hide().fadeIn('fast');
+                    console.log('reforma' +data)
+                });
+                equipe_area_atual = 'democracia-e-participacao';
+            }
+            if(equipe_area_atual == 'democracia-e-participacao'){
+                var ajax = siteurl + '?ajaxEquipe=true&query=inclusao-e-sustentabilidade';
+                $.get(ajax, function (data) {
+                    $(data).appendTo('#equipe_load').hide().fadeIn('fast');
+                    console.log('democracia' +data)
+                });
+                equipe_area_atual = 'inclusao-e-sustentabilidade';
+            }
+            if(equipe_area_atual == 'inclusao-e-sustentabilidade'){
+                var ajax = siteurl + '?ajaxEquipe=true&query=cidadania-cultural';
+                $.get(ajax, function (data) {
+                    $(data).appendTo('#equipe_load').hide().fadeIn('fast');
+                    console.log('inclusao' +data)
+                });
+                equipe_area_atual = 'cidadania-cultural';
+            }
+            if(equipe_area_atual == 'cidadania-cultural'){
+                var ajax = siteurl + '?ajaxEquipe=true&query=Institucional';
+                $.get(ajax, function (data) {
+                    $(data).appendTo('#equipe_load').hide().fadeIn('fast');
+                    console.log('cidadania' +data)
+                });
+                equipe_area_atual = 'Institucional';
+            }
+            if(equipe_area_atual == 'Institucional'){
+                var ajax = siteurl + '?ajaxEquipe=true&query=Outro';
+                $.get(ajax, function (data) {
+                    $(data).appendTo('#equipe_load').hide().fadeIn('fast');
+                    console.log('Institucional' +data)
+                });
+                equipe_area_atual = false;
+            }
+        }
     });
 });
