@@ -322,6 +322,7 @@ require get_template_directory() . '/institucional-ajax.php';
 require get_template_directory() . '/areas-ajax.php';
 require get_template_directory() . '/biblioteca-count-ajax.php';
 require get_template_directory() . '/biblioteca-sub-count-ajax.php';
+require get_template_directory() . '/equipe-ajax.php';
 
 //widget home
 
