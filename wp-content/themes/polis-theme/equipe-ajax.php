@@ -58,7 +58,6 @@ function ajax_equipe() {
 				</a>
 				<?php $count_equipe ++; ?>
 				<?php if ( $count_equipe >= 4 ) : ?>
-					<div class="clear"></div>
 					<?php $count_equipe = 0; ?>
 				<?php endif; ?>
 			<?php
@@ -111,7 +110,6 @@ function ajax_equipe() {
 					</a>
 					<?php $count_equipe ++; ?>
 					<?php if ( $count_equipe >= 4 ) : ?>
-						<div class="clear"></div>
 						<?php $count_equipe = 0; ?>
 					<?php endif; ?>
 				<?php
@@ -157,7 +155,6 @@ function ajax_equipe() {
 				</a>
 				<?php $count_equipe ++; ?>
 				<?php if ( $count_equipe >= 4 ) : ?>
-					<div class="clear"></div>
 					<?php $count_equipe = 0; ?>
 				<?php endif; ?>
 			<?php
@@ -202,7 +199,6 @@ function ajax_equipe() {
 				</a>
 				<?php $count_equipe ++; ?>
 				<?php if ( $count_equipe >= 4 ) : ?>
-					<div class="clear"></div>
 					<?php $count_equipe = 0; ?>
 				<?php endif; ?>
 			<?php
