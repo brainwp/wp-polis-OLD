@@ -51,7 +51,7 @@ function ajax_equipe() {
 					<div class="wrap-avatar"><?php echo $_avatar; ?></div>
 					<img src="<?php bloginfo( 'template_url' ) ?>/img/image-hover.png" class="hover-icon">
 
-					<div class="col-md-12 name <?php echo $_area; ?>">
+					<div class="col-md-12 name <?php echo $type_exp; ?>">
 						<?php echo $_user->first_name . ' ' . $_user->last_name; ?>
 						<small><?php echo get_field( 'cargo', 'user_' . $user->ID ); ?></small>
 					</div>
@@ -103,7 +103,7 @@ function ajax_equipe() {
 						<div class="wrap-avatar"><?php echo $_avatar; ?></div>
 						<img src="<?php bloginfo( 'template_url' ) ?>/img/image-hover.png" class="hover-icon">
 
-						<div class="col-md-12 name <?php echo $_area; ?>">
+						<div class="col-md-12 name <?php echo $type_exp; ?>">
 							<?php echo $_user->first_name . ' ' . $_user->last_name; ?>
 							<small><?php echo get_field( 'cargo', 'user_' . $user->ID ); ?></small>
 						</div>
