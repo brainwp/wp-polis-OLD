@@ -4,6 +4,53 @@ add_action('acf/register_fields', 'my_register_fields');
 function my_register_fields()
 {
     include_once(get_template_directory() . '/inc/acf-repeater/repeater.php');
+	//include_once(get_template_directory() . '/inc/acf-hidden/acf-hidden.php');
+}
+function hidden_fields() {
+	echo '<style>#acf-hidden-user{display:none}</style>';
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('user_hidden_field', get_template_directory_uri() . '/js/user_hidden_field.js');
+
+}
+add_action( 'admin_enqueue_scripts', 'hidden_fields' );
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_hidden-user',
+		'title' => 'hidden user',
+		'fields' => array (
+			array (
+				'key' => 'field_5421759553174',
+				'label' => 'hidden_user',
+				'name' => 'hidden-user',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'ef_user',
+					'operator' => '==',
+					'value' => 'all',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
 }
 
 if (function_exists("register_field_group")) {
@@ -1357,3 +1404,39 @@ if(function_exists("register_field_group"))
         'menu_order' => 0,
     ));
 }
+
+function save_user( $user_id ) {
+
+	// specific field value
+	$field = $_POST['fields']['field_area_acf'];
+	if($field == 'Institucional'){
+		update_user_meta($user_id, 'user_area_hide', 'Institucional');
+	}
+	elseif($field == 'Outro'){
+		update_user_meta($user_id, 'user_area_hide', 'Outro');
+	}
+	elseif($field == 'democracia'){
+		update_user_meta($user_id, 'user_area_hide', 'democracia-e-participacao');
+	}
+	elseif($field == 'reforma'){
+		update_user_meta($user_id, 'user_area_hide', 'reforma-urbana');
+	}
+	elseif($field == 'cidadania'){
+		update_user_meta($user_id, 'user_area_hide', 'cidadania-cultural');
+	}
+	elseif($field == 'inclusao'){
+		update_user_meta($user_id, 'user_area_hide', 'inclusao-e-sustentabilidade');
+	}
+	else{
+		$term = get_term_by('slug', $field, 'areas');
+		if($term && $term->parent != 0){
+			$parent  = get_term($term->parent,'areas');
+			update_user_meta($user_id, 'user_area_hide', $parent->slug);
+		}
+	}
+
+}
+
+
+// run after ACF saves the $_POST['acf'] data
+add_action('profile_update', 'save_user', 20);
