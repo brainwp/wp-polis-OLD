@@ -23,9 +23,9 @@ get_header(); ?>
 		$args = array(
 			// return all fields
 			'fields' => 'all_with_meta',
-			'orderby'  => 'meta_value',
+			'orderby'  => 'display_name',
 			'order'    => 'ASC',
-			'meta_key' => 'area_user_order',
+			//'meta_key' => 'area_user_order',
 			'number' => $_query->users_per_page,
 			'offset' => $_query->offset, // skip the number of users that we have per page
 			'exclude' => $_query->exclude,
