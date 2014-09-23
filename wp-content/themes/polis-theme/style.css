@@ -2407,6 +2407,7 @@ slider de noticias + acoes
 	margin-bottom: 3px;
 	position: relative;
 	border-radius: 5px;
+    height: 290px;
 }
 .user:hover{
 	padding: 5px;
@@ -2469,6 +2470,13 @@ slider de noticias + acoes
 	background-size: 100%;
 	padding-top: 20px;
 }
+
+#load_ajax_icon {
+    margin: 0 auto;
+    padding: 10px;
+    width: 40px;
+}
+
 .pagination{
 	margin-top: 40px;
 	margin-bottom: 40px;
