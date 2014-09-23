@@ -706,8 +706,15 @@ jQuery(document).ready(function () {
         var ajax = siteurl + '?ajaxEquipe=true&query=' +equipe_area_atual;
         $.get(ajax, function (data) {
             $(data).appendTo('#equipe_load').hide().fadeIn('slow');
-            $('#load_ajax_icon').css('display','none');
+            //$('#load_ajax_icon').css('display','none');
         })
+        var ajax = siteurl + '?ajaxEquipe=true&query=democracia-e-participacao';
+        $.get(ajax, function (data) {
+            $(data).appendTo('#equipe_load').hide().fadeIn('fast');
+            console.log('reforma' +data)
+            $('#load_ajax_icon').css('display','none');
+        });
+        equipe_area_atual = 'democracia-e-participacao';
     }
     $(window).scroll(function(e){
         var is_view = isElementVisible('#footer');
