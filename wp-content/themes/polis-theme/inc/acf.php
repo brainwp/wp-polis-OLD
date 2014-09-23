@@ -6,13 +6,6 @@ function my_register_fields()
     include_once(get_template_directory() . '/inc/acf-repeater/repeater.php');
 	//include_once(get_template_directory() . '/inc/acf-hidden/acf-hidden.php');
 }
-function hidden_fields() {
-	echo '<style>#acf-hidden-user{display:none}</style>';
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('user_hidden_field', get_template_directory_uri() . '/js/user_hidden_field.js');
-
-}
-add_action( 'admin_enqueue_scripts', 'hidden_fields' );
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (

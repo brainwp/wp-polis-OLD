@@ -706,48 +706,59 @@ jQuery(document).ready(function () {
         var ajax = siteurl + '?ajaxEquipe=true&query=' +equipe_area_atual;
         $.get(ajax, function (data) {
             $(data).appendTo('#equipe_load').hide().fadeIn('slow');
+            $('#load_ajax_icon').css('display','none');
         })
     }
     $(window).scroll(function(e){
         var is_view = isElementVisible('#footer');
         if(is_view) {
             if(equipe_area_atual == 'reforma-urbana'){
+                $('#load_ajax_icon').css('display','block');
                 var ajax = siteurl + '?ajaxEquipe=true&query=democracia-e-participacao';
                 $.get(ajax, function (data) {
                     $(data).appendTo('#equipe_load').hide().fadeIn('fast');
                     console.log('reforma' +data)
+                    $('#load_ajax_icon').css('display','none');
                 });
                 equipe_area_atual = 'democracia-e-participacao';
             }
             if(equipe_area_atual == 'democracia-e-participacao'){
+                $('#load_ajax_icon').css('display','block');
                 var ajax = siteurl + '?ajaxEquipe=true&query=inclusao-e-sustentabilidade';
                 $.get(ajax, function (data) {
                     $(data).appendTo('#equipe_load').hide().fadeIn('fast');
                     console.log('democracia' +data)
+                    $('#load_ajax_icon').css('display','none');
                 });
                 equipe_area_atual = 'inclusao-e-sustentabilidade';
             }
             if(equipe_area_atual == 'inclusao-e-sustentabilidade'){
+                $('#load_ajax_icon').css('display','block');
                 var ajax = siteurl + '?ajaxEquipe=true&query=cidadania-cultural';
                 $.get(ajax, function (data) {
                     $(data).appendTo('#equipe_load').hide().fadeIn('fast');
                     console.log('inclusao' +data)
+                    $('#load_ajax_icon').css('display','none');
                 });
                 equipe_area_atual = 'cidadania-cultural';
             }
             if(equipe_area_atual == 'cidadania-cultural'){
+                $('#load_ajax_icon').css('display','block');
                 var ajax = siteurl + '?ajaxEquipe=true&query=Institucional';
                 $.get(ajax, function (data) {
                     $(data).appendTo('#equipe_load').hide().fadeIn('fast');
                     console.log('cidadania' +data)
+                    $('#load_ajax_icon').css('display','none');
                 });
                 equipe_area_atual = 'Institucional';
             }
             if(equipe_area_atual == 'Institucional'){
+                $('#load_ajax_icon').css('display','block');
                 var ajax = siteurl + '?ajaxEquipe=true&query=Outro';
                 $.get(ajax, function (data) {
                     $(data).appendTo('#equipe_load').hide().fadeIn('fast');
                     console.log('Institucional' +data)
+                    $('#load_ajax_icon').css('display','none');
                 });
                 equipe_area_atual = false;
             }

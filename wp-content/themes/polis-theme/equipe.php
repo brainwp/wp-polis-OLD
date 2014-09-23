@@ -16,4 +16,6 @@ get_header(); ?>
 
     <section class="col-md-12 content equipe" id="equipe_load" data-ajax="true">
     </section>
+    <img id="load_ajax_icon" src="<?php bloginfo('template_url');?>/img/ajax-loader.gif" align="center" width="64" height="64">
+
 <?php get_footer(); ?>
