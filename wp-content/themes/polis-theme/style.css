@@ -1913,16 +1913,18 @@ slider de noticias + acoes
 	background: url('img/calendario-sidebar.png') no-repeat;
 	height: 60px;
 }
-/* footer */
+/* Footer */
 #footer{
-	padding: 20px 40px;
+	padding: 40px 40px 20px 40px;
 	background: #083b54;
     opacity: 0.9;
+    overflow: hidden;
 }
 #footer .menu{
 	padding-left:5px;
 	padding-right:5px;
 	padding:0;
+    margin-bottom: 15px;
 }
 #footer .menu li {
 	display: block;
@@ -1965,8 +1967,8 @@ slider de noticias + acoes
 	color:white;
 	font-weight:normal;
 }
-#footer .social a{
-	margin-left:7px;
+#footer .social a {
+	margin-left: 7px;
 }
 #footer .simple-social-icons .widgettitle {
     float: left;
@@ -1987,7 +1989,7 @@ slider de noticias + acoes
 #footer .footer p{
 	font-size: 0.9em;
 	color: #FFF;
-	margin: 5px 0 0 0;
+	margin: 10px 0 0 0;
 }
 #footer .footer, #footer .endereco {
 	margin-left: 0;
@@ -3640,8 +3642,17 @@ nav.nav img{
     .atividades .post_container{
         height:auto;
     }
-
+    
 }
+@media ( min-width: 600px ) {
+    #footer .social {
+        margin-top: 30px;
+        float: none;
+        padding: 0;
+    }
+}
+
+
 .rm-border{
     border:0 !important;
 }
