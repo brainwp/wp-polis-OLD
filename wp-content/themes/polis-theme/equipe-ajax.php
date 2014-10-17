@@ -22,16 +22,16 @@ function ajax_equipe() {
 			$args     = array(
 				// return all fields
 				'fields'     => 'all_with_meta',
-				'orderby'    => 'meta_value',
+				'orderby'    => 'display_name',
 				'order'      => 'ASC',
-				'meta_key'   => 'area_user_order',
+				//'meta_key'   => 'area_user_order',
 				'number'     => 9999999999999,
 				//'offset' => $_query->offset, // skip the number of users that we have per page
 				'exclude'    => $exclude,
 				'meta_query' => array(
 					array(
-						'key'     => 'area',
-						'value'   => $type_exp,
+						'key'     => 'user_area_hide',
+						'value'   => $type,
 						'compare' => '='
 					),
 				)
@@ -51,7 +51,7 @@ function ajax_equipe() {
 					<div class="wrap-avatar"><?php echo $_avatar; ?></div>
 					<img src="<?php bloginfo( 'template_url' ) ?>/img/image-hover.png" class="hover-icon">
 
-					<div class="col-md-12 name <?php echo $_area; ?>">
+					<div class="col-md-12 name <?php echo $type_exp; ?>">
 						<?php echo $_user->first_name . ' ' . $_user->last_name; ?>
 						<small><?php echo get_field( 'cargo', 'user_' . $user->ID ); ?></small>
 					</div>
@@ -62,66 +62,13 @@ function ajax_equipe() {
 				<?php endif; ?>
 			<?php
 			}
-			$meta_query = array( 'relation' => 'OR' );
-			$area_cat   = get_term_by( 'slug', $type, 'areas' );
-			$childs     = get_categories( array(
-				'child_of'   => $area_cat->term_id,
-				'taxonomy'   => 'areas',
-				'hide_empty' => 0
-			) );
-			foreach ( $childs as $cat ) {
-				$args = array(
-					// return all fields
-					'fields'     => 'all_with_meta',
-					'orderby'    => 'meta_value',
-					'order'      => 'ASC',
-					'meta_key'   => 'area_user_order',
-					'number'     => 9999999999999,
-					//'offset' => $_query->offset, // skip the number of users that we have per page
-					'exclude'    => $exclude,
-					'meta_query' => array(
-						array(
-							'key'     => 'area',
-							'value'   => $cat->slug,
-							'compare' => '='
-						),
-					)
-				);
-				// The User Query
-				$user_query = new WP_User_Query( $args );
-				//	global $wpdb;
-				//	echo $wpdb->last_query;
-				$count_equipe = 0;
-				foreach ( $user_query->results as $user ) {
-					$_user           = get_userdata( $user->ID );
-					$_avatar         = get_avatar( $user->ID, 200 );
-					$_area           = get_field( 'area', 'user_' . $user->ID );
-					$_area_slug_term = get_term_by( 'slug', $_area, 'areas' );
-					?>
-					<a href="<?php echo get_bloginfo( 'url' ) . '/equipe/' . $_user->user_login; ?>"
-					   class="col-md-3 user">
-						<div class="wrap-avatar"><?php echo $_avatar; ?></div>
-						<img src="<?php bloginfo( 'template_url' ) ?>/img/image-hover.png" class="hover-icon">
-
-						<div class="col-md-12 name <?php echo $_area; ?>">
-							<?php echo $_user->first_name . ' ' . $_user->last_name; ?>
-							<small><?php echo get_field( 'cargo', 'user_' . $user->ID ); ?></small>
-						</div>
-					</a>
-					<?php $count_equipe ++; ?>
-					<?php if ( $count_equipe >= 4 ) : ?>
-						<?php $count_equipe = 0; ?>
-					<?php endif; ?>
-				<?php
-				}
-			}
 		} elseif ( $type == 'Institucional' ) {
 			$args = array(
 				// return all fields
 				'fields'     => 'all_with_meta',
-				'orderby'    => 'meta_value',
+				'orderby'    => 'display_name',
 				'order'      => 'ASC',
-				'meta_key'   => 'area_user_order',
+				//'meta_key'   => 'area_user_order',
 				'number'     => 9999999999999,
 				//'offset' => $_query->offset, // skip the number of users that we have per page
 				'exclude'    => $exclude,

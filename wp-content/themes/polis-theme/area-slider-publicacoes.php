@@ -5,7 +5,9 @@
  * Date: 29/07/14
  * Time: 12:08
  */
-$t = top_term('areas', 'return_slug'); ?>
+$t = top_term('areas', 'return_slug');
+$post_id =  get_the_ID();
+?>
 <li class="item item-slider publicacoes ajax-item-publicacoes">
     <div class="post_container" data-data-data="true">
         <div class="thumb">

@@ -2392,13 +2392,11 @@ slider de noticias + acoes
     padding-bottom:30px;
     text-align: center;
 }
-
 .header-area.equipe h1 {
    color: #1e5c7a;
     font-size: 49px;
     text-align: center;
 }
-
 .user{
 	padding: 5px;
 	border: 2px solid transparent;
@@ -2407,7 +2405,7 @@ slider de noticias + acoes
 	margin-bottom: 3px;
 	position: relative;
 	border-radius: 5px;
-    height: 280px;
+    height: 290px;
 }
 .user:hover{
 	padding: 5px;
@@ -2465,20 +2463,25 @@ slider de noticias + acoes
     padding-bottom: 7px;
     width: 100%;
 }
-.equipe{
+.equipe {
 	background:white url(img/equipe-bg.jpg) center;
 	background-size: 100%;
 	padding-top: 20px;
 }
-.pagination{
+#load_ajax_icon {
+    margin: 0 auto;
+    padding: 10px;
+    width: 40px;
+}
+.pagination {
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
-.pagination ul{
+.pagination ul {
     list-style: none;
     display:block;
 }
-.pagination li{
+.pagination li {
     display:block;
     float:left;
 }
@@ -2492,7 +2495,6 @@ slider de noticias + acoes
 	transition:ease 300ms all;
 	color: #FFF;
 }
-
 .pagination a:hover, .pagination a.atual, .pagination span.current, .pagination .active{
 	background: #4b809a;
 	transition:ease 300ms all;
@@ -3646,4 +3648,8 @@ nav.nav img{
  /* max-width 700px, mobile-only styles */
 #noticias-slider-atividades{
     margin-bottom:20px;
+}
+
+.image-link {
+    display: none;
 }

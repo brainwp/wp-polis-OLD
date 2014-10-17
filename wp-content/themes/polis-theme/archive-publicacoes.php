@@ -20,6 +20,7 @@ get_header();?>
                     'include_children' => true,
                 ),
             ),
+            'post_type' => 'publicacoes',
             'posts_per_page'   => 10,
             'paged'            => $page
         );
@@ -33,6 +34,7 @@ get_header();?>
         <ul class="list_carousel publicacoes-slider">
             <?php while ( $series->have_posts() ) :
                 $series->the_post();
+	            $post_id = get_the_ID();
                 $t = top_term('areas', 'return_slug');
                 ?>
 
@@ -95,6 +97,7 @@ get_header();?>
                     'include_children' => true,
                 ),
             ),
+            'post_type' => 'publicacoes',
             'posts_per_page'   => 10,
             'paged'            => $page
         );
@@ -106,7 +109,8 @@ get_header();?>
         <ul class="list_carousel documentos-slider">
             <?php while ( $series->have_posts() ) :
                 $series->the_post();
-                $t = top_term('areas', 'return_slug');
+	            $post_id = get_the_ID();
+	            $t = top_term('areas', 'return_slug');
                 ?>
 
                 <li class="item item-slider publicacoes" style="float:left;">
@@ -168,6 +172,7 @@ get_header();?>
                     'include_children' => true,
                 ),
             ),
+            'post_type' => 'publicacoes',
             'posts_per_page'   => 10,
             'paged'            => $page
         );
@@ -179,7 +184,8 @@ get_header();?>
         <ul class="list_carousel institucionais-slider">
             <?php while ( $series->have_posts() ) :
                 $series->the_post();
-                $t = top_term('areas', 'return_slug');
+	            $post_id = get_the_ID();
+	            $t = top_term('areas', 'return_slug');
                 ?>
 
                 <li class="item item-slider publicacoes" style="float:left;">

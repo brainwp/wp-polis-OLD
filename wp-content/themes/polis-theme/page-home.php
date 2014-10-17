@@ -225,4 +225,5 @@ get_header(); ?>
         <div class="linha-tracejada"></div>
 
     </section>
+    <img class="image-link" src="<?php echo get_template_directory_uri(); ?>/img/paul-connet.jpg" alt="Assista no Canal Pólis">
 <?php get_footer(); ?>
