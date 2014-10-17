@@ -2402,11 +2402,12 @@ slider de noticias + acoes
 .user{
 	padding: 5px;
 	border: 2px solid transparent;
-	transition:400ms all ease ;
+	transition:400ms all ease;
 	margin-top: 3px;
 	margin-bottom: 3px;
 	position: relative;
 	border-radius: 5px;
+    height: 280px;
 }
 .user:hover{
 	padding: 5px;
