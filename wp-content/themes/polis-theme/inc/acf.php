@@ -611,17 +611,6 @@ if (function_exists("register_field_group")) {
                 'label' => 'Tombo (Número do Documento)',
                 'name' => 'publicacoes_tombo',
                 'type' => 'number',
-                'conditional_logic' => array(
-                    'status' => 1,
-                    'rules' => array(
-                        array(
-                            'field' => 'field_53b1c1d1453d3',
-                            'operator' => '==',
-                            'value' => 'arquivistica'
-                        )
-                    ),
-                    'allorany' => 'all'
-                ),
                 'default_value' => '',
                 'placeholder' => '',
                 'prepend' => '',
