@@ -53,7 +53,7 @@ get_header();?>
                         <?php
                         $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-                        $total = $$_query->query->max_num_pages;
+                        $total = $_query->query->max_num_pages;
                         $big = 999999999; // need an unlikely integer
                         if ($total > 1) {
                             if (!$current_page = $page)
