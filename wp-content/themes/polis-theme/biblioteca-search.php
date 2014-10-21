@@ -28,31 +28,31 @@ if (!empty($anomin) && !empty($anomax)) {
             'after' => array(
                 'year' => (int) $anomin,
                 'month' => 12
-            ),
+                ),
             'before' => array(
                 'year' => (int) $anomax,
                 'month' => 12
-            ),
-        )
-    );
+                ),
+            )
+        );
 } elseif (!empty($anomin) && empty($anomax)) {
     $date_query = array(
         array(
             'after' => array(
                 'year' => (int) $anomin,
                 'month' => 12
-            ),
-        )
-    );
+                ),
+            )
+        );
 } elseif (!empty($anomax) && empty($anomin)) {
     $date_query = array(
         array(
             'before' => array(
                 'year' => (int) $anomax,
                 'month' => 12
-            ),
-        )
-    );
+                ),
+            )
+        );
 }
 $args = array(
     'post_type' => 'publicacoes',
@@ -62,7 +62,25 @@ $args = array(
     'date_query' => $date_query,
     'posts_per_page' => $per_page,
     'paged' => $page,
-);
+    );
+if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('pesquisador') ) {
+    $args = array(
+        'post_type' => 'publicacoes',
+        'areas' => $categoria,
+        'tipos' => $tipo,
+        's' => $key,
+        'date_query' => $date_query,
+        'posts_per_page' => $per_page,
+        'paged' => $page,
+        'meta_query' => array(
+            array(
+                'key'     => 'publicacoes_qual_tipo',
+                'value'   => 'arquivistica',
+                'compare' => 'NOT LIKE',
+                ),
+            ),
+        );
+}
 $query = new WP_Query($args);
 //$pageposts = $wpdb->get_results($_sql, OBJECT);
 // Print last SQL query string
@@ -80,7 +98,24 @@ $count_args = array(
     's' => $key,
     'date_query' => $date_query,
     'post_per_page' => 999999,
-);
+    );
+if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('pesquisador') ) {
+    $count_args = array(
+        'post_type' => 'publicacoes',
+        'areas' => $categoria,
+        'tipos' => $tipo,
+        's' => $key,
+        'date_query' => $date_query,
+        'post_per_page' => 999999,
+        'meta_query' => array(
+            array(
+                'key'     => 'publicacoes_qual_tipo',
+                'value'   => 'arquivistica',
+                'compare' => 'NOT LIKE',
+                ),
+            ),
+        );
+}
 $count_query = new WP_Query($count_args);
 $count = $count_query->found_posts;
 // grab the current page number and set to 1 if no page number is set
@@ -99,7 +134,7 @@ $total_pages = ceil($total_posts / $per_page);
 
         </div>
         <div class="col-md-12 search-ctn">
-            
+
             <?php
             $type_list = array();
             $type_add = array();
@@ -144,7 +179,7 @@ $total_pages = ceil($total_posts / $per_page);
                         'hierarchical' => 1,
                         'taxonomy' => 'categorias',
                         'pad_counts' => false
-                    );
+                        );
                     $categories = get_categories($_args);
                     foreach ($categories as $category) {
                         ?>
@@ -152,76 +187,76 @@ $total_pages = ceil($total_posts / $per_page);
                             data-tab-element="#tab-<?php echo $category->slug; ?>">
                             <a href="#tab-<?php echo $category->slug; ?>"
                                data-toggle="tab"><?php echo $category->cat_name; ?></a>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-                <div class="tab-content">
+                           </li>
+                           <?php
+                       }
+                       ?>
+                   </ul>
+                   <div class="tab-content">
                     <?php
                     foreach ($type_list as $slug) {
-                    for ($i = 1;
-                    $i < count($slug);
-                    $i++) {
-                    if (trim($slug[$i]['term_slug']) == '') {
-                        continue;
-                    }
-                    if ($i == 1) {
-                    ?>
-                    <div class="tab-pane <?php echo $_GET['area']; ?>" id="tab-<?php echo $slug[$i]['term_slug'] ?>"
-                         data-nav="tab-nav-<?php echo $slug[$i]['term_slug'] ?>">
-                        <?php
-                        }
-                        ?>
-                        <div class="col-md-12 item" data-term-slug="<?php echo $slug[$i]['term_slug'] ?>">
-                            <a href="<?php echo $slug[$i]['link'] ?>" class="th">
-                                <?php
-                                if (has_post_thumbnail($slug[$i]['id'])) {
-                                    echo get_the_post_thumbnail($slug[$i]['id'], 'slider-publicacoes-thumb');
-                                } else {
-                                    echo '<img width="160" height="240" src="'.get_bloginfo('template_url').'/img/default/thumb-default-publicacoes.jpg">';
-                                }
+                        for ($i = 1;
+                            $i < count($slug);
+                            $i++) {
+                            if (trim($slug[$i]['term_slug']) == '') {
+                                continue;
+                            }
+                            if ($i == 1) {
                                 ?>
-                            </a>
-
-                            <div class="col-md-4 search_title">
-                                <div class="col-md-12">
-                                    <a class="titulo"
-                                       href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['title']; ?></a>
-                                </div>
-                                <div class="col-md-12 bt-ctn">
+                                <div class="tab-pane <?php echo $_GET['area']; ?>" id="tab-<?php echo $slug[$i]['term_slug'] ?>"
+                                 data-nav="tab-nav-<?php echo $slug[$i]['term_slug'] ?>">
+                                 <?php
+                             }
+                             ?>
+                             <div class="col-md-12 item" data-term-slug="<?php echo $slug[$i]['term_slug'] ?>">
+                                <a href="<?php echo $slug[$i]['link'] ?>" class="th">
                                     <?php
-                                    if (!empty($slug[$i]['area_sub'])):
-                                        ?>
-                                        <a class="bt <?php echo $slug[$i]['area']; ?>"><?php echo $slug[$i]['area_sub']; ?></a>
-                                    <?php
-                                    endif;
+                                    if (has_post_thumbnail($slug[$i]['id'])) {
+                                        echo get_the_post_thumbnail($slug[$i]['id'], 'slider-publicacoes-thumb');
+                                    } else {
+                                        echo '<img width="160" height="240" src="'.get_bloginfo('template_url').'/img/default/thumb-default-publicacoes.jpg">';
+                                    }
                                     ?>
-                                </div>
-                            </div>
-                            <div class="col-md-5 resumo">
-                                <a href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['resumo']; ?></a>
-                            </div>
-                            <div class="col-md-10 infos">
-                                <a class="autor"
-                                   href="<?php echo get_home_url() . '/equipe/' . $slug[$i]['autor_user']; ?>">Por <?php echo $slug[$i]['autor']; ?></a>
-                                <a class="autor-sep">• <?php echo $slug[$i]['tipos']; ?></a>
-                                <a class="autor-sep">• <?php echo $slug[$i]['data']; ?></a>
+                                </a>
 
-                                <div class="pull-right download">
-                                    <?php
-                                    if (!empty($slug[$i]['downloadid'])):
+                                <div class="col-md-4 search_title">
+                                    <div class="col-md-12">
+                                        <a class="titulo"
+                                        href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['title']; ?></a>
+                                    </div>
+                                    <div class="col-md-12 bt-ctn">
+                                        <?php
+                                        if (!empty($slug[$i]['area_sub'])):
+                                            ?>
+                                        <a class="bt <?php echo $slug[$i]['area']; ?>"><?php echo $slug[$i]['area_sub']; ?></a>
+                                        <?php
+                                        endif;
                                         ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 resumo">
+                                    <a href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['resumo']; ?></a>
+                                </div>
+                                <div class="col-md-10 infos">
+                                    <a class="autor"
+                                    href="<?php echo get_home_url() . '/equipe/' . $slug[$i]['autor_user']; ?>">Por <?php echo $slug[$i]['autor']; ?></a>
+                                    <a class="autor-sep">• <?php echo $slug[$i]['tipos']; ?></a>
+                                    <a class="autor-sep">• <?php echo $slug[$i]['data']; ?></a>
+
+                                    <div class="pull-right download">
+                                        <?php
+                                        if (!empty($slug[$i]['downloadid'])):
+                                            ?>
                                         <a href="<?php echo wp_get_attachment_url($slug[$i]['downloadid']); ?>"
                                            download>
-                                            <img src="<?php bloginfo('template_url'); ?>/img/biblioteca-dl.png">
-                                            Download
-                                        </a>
-                                        <span>|</span>
-                                    <?php
-                                    endif;
-                                    ?>
-                                    <a href="<?php echo $slug[$i]['link']; ?>">
+                                           <img src="<?php bloginfo('template_url'); ?>/img/biblioteca-dl.png">
+                                           Download
+                                       </a>
+                                       <span>|</span>
+                                       <?php
+                                       endif;
+                                       ?>
+                                       <a href="<?php echo $slug[$i]['link']; ?>">
                                         Leia Mais
                                     </a>
                                 </div>
@@ -236,21 +271,21 @@ $total_pages = ceil($total_posts / $per_page);
                         if ($i == count($slug) - 1) {
                             echo '</div>'; //fecha a div da aba
                         }
-                        }
-                        } ?>
-                    </div>
-                </div>
+                    }
+                } ?>
+            </div>
+        </div>
+        <?php
+    } else {
+        echo 'Nenhum post encontrado nessa pesquisa';
+    }
+    ?>
+    <div class="container pagination">
+        <div class="col-md-4 col-md-offset-4">
             <?php
-            } else {
-                echo 'Nenhum post encontrado nessa pesquisa';
-            }
-            ?>
-            <div class="container pagination">
-                <div class="col-md-4 col-md-offset-4">
-                    <?php
-                    $search_vars = '/?key=' . $key . '&tipo=' . $tipo . '&categoria=' . $categoria . '&area=' . $_GET['area'] . '&anomin=' . $anomin . '&anomax=' . $anomax . '';
+            $search_vars = '/?key=' . $key . '&tipo=' . $tipo . '&categoria=' . $categoria . '&area=' . $_GET['area'] . '&anomin=' . $anomin . '&anomax=' . $anomax . '';
 
-                    $total = $total_pages;
+            $total = $total_pages;
                     $big = 999999999; // need an unlikely integer
                     if( $total > 1 )  {
                         if( !$current_page = $page )
@@ -265,12 +300,12 @@ $total_pages = ceil($total_posts / $per_page);
                             'type' 			=> 'list',
                             'prev_text'		=> '<',
                             'next_text'		=> '>',
-                        ) );
+                            ) );
                     }
                     ?>
                 </div>
             </div>
-    </main>
-<?php
-get_footer();
-?>
+        </main>
+        <?php
+        get_footer();
+        ?>

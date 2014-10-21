@@ -106,7 +106,18 @@ function custom_images()
 }
 
 add_action('init', 'custom_images', 1);
-
+function check_user_role( $role, $user_id = null ) {
+ 
+    if ( is_numeric( $user_id ) )
+    $user = get_userdata( $user_id );
+    else
+        $user = wp_get_current_user();
+ 
+    if ( empty( $user ) )
+    return false;
+ 
+    return in_array( $role, (array) $user->roles );
+}
 function emptyReturn($var)
 {
     $var = trim($var);
@@ -794,3 +805,4 @@ function biblioteca_search_filter($search, $wp_query)
 }
 
 //add_filter('posts_search', 'biblioteca_search_filter', 500, 2);
+
