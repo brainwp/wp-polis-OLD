@@ -659,8 +659,26 @@ function biblioteca_count($area)
         'categorias' => $cat,
         's' => $key,
         'date_query' => $date_query,
-        'post_per_page' => 999999,
+        'post_per_page' => 999999,  
     );
+    if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('pesquisador') ) {
+    $count_args = array(
+        'post_type' => 'publicacoes',
+        'tax_query' => $categoria_query,
+        'tipos' => $tipo,
+        'categorias' => $cat,
+        's' => $key,
+        'date_query' => $date_query,
+        'post_per_page' => 999999,  
+        'meta_query' => array(
+            array(
+                'key'     => 'publicacoes_qual_tipo',
+                'value'   => 'arquivistica',
+                'compare' => 'NOT LIKE',
+                ),
+            ),
+        );
+    }
     $count_query = new WP_Query($count_args);
     $count = $count_query->found_posts;
 // grab the current page number and set to 1 if no page number is set
