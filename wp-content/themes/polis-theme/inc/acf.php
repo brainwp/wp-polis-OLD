@@ -1309,6 +1309,103 @@ if (function_exists("register_field_group")) {
         'menu_order' => 0,
     ));
 }
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_idioma',
+        'title' => 'Idioma',
+        'fields' => array (
+            array (
+                'key' => 'field_545b6ba500069',
+                'label' => 'Português',
+                'name' => '',
+                'type' => 'tab',
+            ),
+            array (
+                'key' => 'field_545b6bdc0006b',
+                'label' => 'Titulo',
+                'name' => 'title_ptbr',
+                'type' => 'text',
+                'required' => 1,
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array (
+                'key' => 'field_545b6c090006c',
+                'label' => 'Conteudo',
+                'name' => 'content_ptbr',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+            array (
+                'key' => 'field_545b6bca0006a',
+                'label' => 'Espanhol',
+                'name' => '',
+                'type' => 'tab',
+            ),
+            array (
+                'key' => 'field_545b6cef0006d',
+                'label' => 'Deseja ativar esse idioma?',
+                'name' => 'active_es',
+                'type' => 'radio',
+                'choices' => array (
+                    'true' => 'Sim',
+                    'false' => 'Não',
+                ),
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => 'false',
+                'layout' => 'vertical',
+            ),
+            array (
+                'key' => 'field_545b6d640006f',
+                'label' => 'Titulo',
+                'name' => 'title_es',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array (
+                'key' => 'field_545b6d6800070',
+                'label' => 'Conteudo',
+                'name' => 'content_es',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'acf_after_title',
+            'layout' => 'default',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+
 function update_field_area_order( $post_id )
 {
     // vars
