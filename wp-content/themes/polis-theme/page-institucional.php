@@ -21,6 +21,7 @@ get_header(); ?>
         <?php endwhile; ?>
         <div class="col-md-12 triangulo"></div>
     </section>
+
     <nav class="col-md-12 institucional-nav">
         <?php
         $_id = get_page_by_path('institucional',OBJECT,'page');
@@ -51,8 +52,34 @@ get_header(); ?>
     </nav>
     <section class="col-md-12 content">
         <article class="col-md-8 pull-left content-institucional" id="post_ajax">
-            <h1><?php echo $_first->post_title; ?></h1>
-            <?php echo $_first->post_content; ?>
+            <ul class="nav nav-tabs tabs-idioma" role="tablist" >
+                <li role="presentation" class="active" data-tab-element="#tab-ptbr"><a href="#tab-ptbr" role="tab" data-toggle="tab">Portugues do Brasil</a></li>
+                <li role="presentation" data-tab-element="#tab-es"><a href="#tab-es" role="tab" data-toggle="tab">Espanhol</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tab-ptbr">
+                    <h1><?php echo get_post_meta( $_first->ID, 'title_ptbr', true ); ?></h1>
+                    <?php
+                        $content = get_post_meta( $_first->ID, 'content_ptbr', true );
+                        $content = apply_filters( 'the_content',  $content);
+                        $content = str_replace( ']]>', ']]&gt;', $content );
+                        echo $content;
+                    ?>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab-es">
+                    <?php if( get_post_meta( $_first->ID, 'active_es', true ) == 'true'): ?>
+                        <h1><?php echo get_post_meta( $_first->ID, 'title_es', true ); ?></h1>
+                        <?php
+                        $content = get_post_meta( $_first->ID, 'content_es', true );
+                        $content = apply_filters( 'the_content',  $content);
+                        $content = str_replace( ']]>', ']]&gt;', $content );
+                        echo $content;
+                        ?>
+                    <?php endif;?>
+                </div>
+            </div>
+
         </article>
         <aside class="col-md-4 pull-right">
             <?php if (is_active_sidebar('widgets-institucional')) : ?>

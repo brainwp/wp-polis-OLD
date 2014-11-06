@@ -118,26 +118,56 @@ jQuery(document).ready(function () {
     if (location.hash.lastIndexOf('page_') != -1) {
         var pageid = location.hash.slice(6);
         var siteurl = $(document.body).attr('data-siteurl');
-        var ajax = siteurl + '?ajaxPage=' + pageid.trim();
+        var ajax = siteurl + '?ajaxPage=' + pageid.trim() + '&idioma=ptbr';
         $.get(ajax, function (data) {
-            $('#post_ajax').html(data);
+            $('#tab-ptbr').html(data);
             $('.link_institucional').removeClass('atual');
             $('#bt-' + pageid).addClass('atual');
         })
+        var ajax = siteurl + '?ajaxPage=' + pageid.trim() + '&idioma=es';
+        $.get(ajax, function (data) {
+            $('#tab-es').html(data);
+            $('.tabs-idioma li').each(function(){
+                var elem = $(this).attr('data-tab-element');
+                if($(elem + ' h1').length < 1){
+                    $(elem).css('display','none');
+                    $(this).css('display','none');
+                }
+            });
+        });
     }
     $('.link_institucional').on('click', function () {
         var pageid = $(this).attr('data-id');
         var siteurl = $(document.body).attr('data-siteurl');
-        var ajax = siteurl + '?ajaxPage=' + pageid.trim();
+        var ajax = siteurl + '?ajaxPage=' + pageid.trim() + '&idioma=ptbr';
         $.get(ajax, function (data) {
-            $('#post_ajax').html(data);
+            $('#tab-ptbr').html(data);
             $('.link_institucional').removeClass('atual');
             $('#bt-' + pageid).addClass('atual');
             location.hash = 'page_' + pageid;
             $('html, body').animate({
                 scrollTop: $('#post_ajax').offset().top - 160
             }, 500);
-        })
+        });
+        var ajax = siteurl + '?ajaxPage=' + pageid.trim() + '&idioma=es';
+        $.get(ajax, function (data) {
+            $('#tab-es').html(data);
+            $('.tabs-idioma li').each(function(){
+                var elem = $(this).attr('data-tab-element');
+                if($(elem + ' h1').length < 1){
+                    $(elem).css('display','none');
+                    $(this).css('display','none');
+                }
+            });
+        });
+
+    });
+    $('.tabs-idioma li').each(function(){
+        var elem = $(this).attr('data-tab-element');
+        if($(elem + ' h1').length < 1){
+            $(elem).css('display','none');
+            $(this).css('display','none');
+        }
     });
     if ($(window).width() > 700) {
         $('#slider2').carouFredSel({
