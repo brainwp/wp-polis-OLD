@@ -618,7 +618,7 @@ jQuery(document).ready(function () {
     }
     if ($(window).width() < 700) {
         $('#nav div ul').tinyNav({
-            label: 'Menu'
+            header: 'Menu'
         });
     }
     if ($('#search_key_validate').attr('data-validate') == 'true') {
@@ -646,10 +646,9 @@ jQuery(document).ready(function () {
                     $('nav.nav').attr('data-sticky', 'true');
                     $('nav.nav').css('width', sticky_width + 'px');
                     if ($('#wpadminbar').length > 0 && $(window).width() >= 700) {
-                        $('nav.nav').css('margin-top', '32px');
+                       $('nav.nav').css('margin-top', '32px');
                     }
                 }
-                $('nav.sticky').css('top', scrollTop + 'px');
             } else {
                 $('nav.nav').attr('data-sticky', 'false');
                 $('nav.nav img').fadeOut();
@@ -678,20 +677,16 @@ jQuery(document).ready(function () {
                 if (data_sticky != 'true') {
                     // $('nav.nav img').fadeIn();
                     $('nav.nav').attr('data-sticky', 'true');
-                    $('nav.nav').css('position', 'absolute');
+                    $('nav.nav').css('position', 'fixed');
                     $('nav.nav').css('width', sticky_width + 'px');
                     if ($('#wpadminbar').length > 0 && $(window).width() >= 700) {
-                        $('nav.nav').css('margin-top', '32px');
+                        $('nav.nav').css('top', '46px');
                     }
                 }
-                $('nav.sticky').css('top', scrollTop + 'px');
             } else {
                 $('nav.nav').attr('data-sticky', 'false');
-                //$('nav.nav img').fadeOut();
-                //$('nav.nav').removeClass('sticky');
                 $('nav.nav').removeAttr('style');
                 $('nav.nav').css('position', 'relative');
-                // $('nav.nav').removeAttr('style');
             }
         }
 

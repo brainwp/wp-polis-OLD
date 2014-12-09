@@ -3493,7 +3493,7 @@ nav.sticky div{
     transition:600ms all ease;
 }
 nav.sticky{
-    position:absolute;
+    position:fixed;
     z-index:33;
 }
 nav.nav img{
@@ -3536,7 +3536,7 @@ nav.nav img{
     top: 170px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .intro-institucional .bg,.intro-institucional .triangulo{
         display:none;
     }
@@ -3597,6 +3597,8 @@ nav.nav img{
         font-family: 'Source Sans Pro', sans-serif;
         text-align:center;
         display: block;
+        margin-top:10px;
+        margin-bottom:10px;
     }
     .tinynav option{
         color:black;
@@ -3637,7 +3639,12 @@ nav.nav img{
     .atividades .post_container{
         height:auto;
     }
-    
+    html #wpadminbar{
+        display:none;
+    }
+}
+nav[data-sticky="true"]{
+    top:0;
 }
 @media ( min-width: 600px ) {
     #footer .social {
