@@ -234,8 +234,8 @@ function polis_theme_scripts()
     wp_enqueue_script('custom_js', get_template_directory_uri() . '/js/custom.js');
 
     if (is_home() || is_front_page()) {
-        wp_enqueue_style('polis-magnific-style', get_template_directory_uri() . '/js/magnific/magnific-popup.css');
-        wp_enqueue_script('polis-magnific-scripts', get_template_directory_uri() . '/js/magnific/jquery.magnific-popup.min.js');
+        //('polis-magnific-style', get_template_directory_uri() . '/js/magnific/magnific-popup.css');
+        //wp_enqueue_script('polis-magnific-scripts', get_template_directory_uri() . '/js/magnific/jquery.magnific-popup.min.js');
     }
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {

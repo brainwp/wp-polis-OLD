@@ -33,12 +33,6 @@
 <body data-siteurl="<?php bloginfo('url');?>/">
 <div id="map-bg"></div>
 
-<?php if ( is_front_page() ) : ?>
-	<div id="modal" class="white-popup-block mfp-hide">
-		<a class="link-popup" href="http://polis.org.br/videos/ao-vivo-encontro-internacional-sobre-o-direito-a-cidade/"><img src="http://polis.org.br/wp-content/uploads/popup-polis.jpg"></a>
-	</div>
-<?php endif; ?>
-
 <div class="container shadow">
 	<header class="col-md-12 header">
 		<a href="<?php bloginfo('url');?>" class="col-md-6 left">  <!-- logo -->
