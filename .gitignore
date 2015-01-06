@@ -13,6 +13,7 @@ Vagrantfile
 attach-images.php
 
 sftp-config.json
+sftp-config-alt.json
 desktop.ini
 
 wp-config.php

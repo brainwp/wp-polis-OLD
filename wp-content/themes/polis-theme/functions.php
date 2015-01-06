@@ -824,3 +824,10 @@ function biblioteca_search_filter($search, $wp_query)
 
 //add_filter('posts_search', 'biblioteca_search_filter', 500, 2);
 
+function pre_get_publicacoes_admin(){
+    if(isset($_GET['post_type']) && $_GET['post_type'] == 'publicacoes'){
+        $_GET['orderby'] = 'date';
+        $_GET['order'] = 'desc';
+    }
+}
+add_action( 'admin_init', 'pre_get_publicacoes_admin' );

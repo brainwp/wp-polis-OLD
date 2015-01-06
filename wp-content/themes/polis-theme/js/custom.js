@@ -23,6 +23,27 @@ jQuery(document).ready(function () {
             }
         }
     });
+
+    $(function () {
+        $('.popup-modal').magnificPopup({
+            type: 'inline',
+            preloader: false,
+            focus: '#username',
+            modal: true
+        });
+        $.magnificPopup.open({
+            items: {
+                src: '#modal',
+                type:'inline'
+            },
+            modal: true
+        });
+        $(document).on('click', '.img', function (e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+        });
+    });
+
     if ($(window).width() >= 700) {
         $('.slider_documentos').carouFredSel({
             prev: '#prev-biblioteca-docs',
