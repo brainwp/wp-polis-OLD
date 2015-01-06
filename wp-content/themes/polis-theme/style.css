@@ -1998,6 +1998,12 @@ slider de noticias + acoes
 	padding-right: 0;
 }
 /* page.php */
+ .content-page .tab-content {
+    padding-top: 30px;
+}
+.nav.nav-tabs.tabs-idioma {
+    background: transparent;
+}
 .content-page {
 	padding-top: 40px;
 }
