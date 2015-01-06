@@ -35,7 +35,7 @@
 
 <div class="container shadow">
 	<header class="col-md-12 header">
-		<a href="<?php bloginfo('url');?>" class="col-md-6 left">  <!-- logo -->
+		<a href="<?php bloginfo('url');?>" class="col-md-6 logo left">  <!-- logo -->
 			<img src="<?php bloginfo('template_url');?>/img/logo.png">
 		</a>
 		<form class="col-md-5 left description" action="<?php bloginfo('url');?>/biblioteca/" method="get" id="header-search-form">
