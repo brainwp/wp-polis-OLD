@@ -31,7 +31,7 @@ get_header(); ?>
                 <?php the_content(); ?>
 
                 <?php
-                    $video = get_campoPersonalizado( 'url_do_video' );
+                    $video = get_field( 'url_do_video' );
                     if( ! empty( $video ) ) : ?>
                     <div class="video">
                         <?php echo apply_filters( 'the_content', $video ); ?>
