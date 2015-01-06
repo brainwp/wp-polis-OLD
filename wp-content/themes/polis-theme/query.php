@@ -325,7 +325,7 @@ function _query_noticias_acoes() {
 	$args = array(
 		'post_type'      => array( 'noticias', 'acoes' ),
 		'orderby'        => 'date',
-		'order'          => 'ASC',
+		'order'          => 'DESC',
 		'posts_per_page' => $per_page,
 		'paged'          => $page
 	);
