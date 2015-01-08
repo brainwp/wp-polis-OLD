@@ -39,7 +39,7 @@
 			<img src="<?php bloginfo('template_url');?>/img/logo.png">
 		</a>
 		<form class="col-md-5 left description" action="<?php bloginfo('url');?>/biblioteca/" method="get" id="header-search-form">
-			<p>
+			<p class="desc">
 				<?php echo of_get_option('frase-head'); ?>
 			</p>
 			<label class="left">Busque conteudo</label>
