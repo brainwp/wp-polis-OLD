@@ -678,6 +678,12 @@ function biblioteca_count($area)
             ),
         );
     }
+    if ( is_user_logged_in() && check_user_role('administrator') ) {
+        $count_args['post_status'] = array('publish','private');
+    }
+    if ( is_user_logged_in() && check_user_role('pesquisador') ) {
+        $count_args['post_status'] = array('publish','private');
+    }
     $count_query = new WP_Query($count_args);
     $count = $count_query->found_posts;
 // grab the current page number and set to 1 if no page number is set
