@@ -2967,14 +2967,22 @@ section.biblioteca.livros_section {
 	/*height:180px;*/
 }
 .item, .item *{
-	padding:0;
+	padding: 0;
+}
+.item img.wp-post-image {
+    border: 8px solid #EDEDED;
+}
+.item .resumo {
+    margin-top: 15px;
 }
 .item .search_title a.titulo{
-	text-decoration:none !important;
-	font-family:'Bitter', sans-serif;
-	font-weight:bold;
 	color:#5e5e5e;
+    display: block;
 	font-size:18px;
+    font-family:'Bitter', sans-serif;
+    font-weight:bold;
+    margin-top: 15px;
+    text-decoration:none !important;
 }
 .item .search_title a.bt{
 	padding:7px;
@@ -2999,7 +3007,7 @@ section.biblioteca.livros_section {
 	margin-left:20px;
 }
 .item .search_title{
-	margin-left:10px;
+	margin-left: 20px;
 }
 .item .resumo a{
 	color:#5e5e5e;
@@ -3010,13 +3018,13 @@ section.biblioteca.livros_section {
 	opacity:0.85;
 }
 .item .infos{
-	position:absolute;
-	left:160px;
-	bottom:20px;
+	bottom:0;
+    left:0;
 	background:#EDEDED;
 	padding-left:15px;
 	padding-top:7px;
 	padding-bottom:7px;
+    position:absolute;
 }
 .item .infos .autor{
 	color:#5e5e5e;
@@ -3273,12 +3281,14 @@ section.biblioteca.livros_section {
 }
 .search-ctn{
     padding-left:0;
+    padding-right: 0 !important;
 }
-
 .search-ctn .item {
-	padding: 20px 0;
+    background-color: #DDD;
+    margin-bottom: 20px;
+	padding: 0 20px 38px 0;
+    position: relative;
 }
-
 .biblioteca-main{
     background:white;
 }

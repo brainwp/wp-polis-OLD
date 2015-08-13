@@ -88,7 +88,7 @@ if ( is_user_logged_in() && check_user_role('pesquisador') ) {
     $args['post_status'] = array('publish','private');
 }
 $query = new WP_Query($args);
-echo 'QUERY - '. $query->found_posts . '<br><br>';
+//echo 'QUERY - '. $query->found_posts . '<br><br>';
 //global $wpdb;
 //$pageposts = $wpdb->get_results($_sql, OBJECT);
 // Print last SQL query string
@@ -252,30 +252,24 @@ $total_pages = ceil($total_posts / $per_page);
                                 <div class="col-md-5 resumo">
                                     <a href="<?php echo $slug[$i]['link']; ?>"><?php echo $slug[$i]['resumo']; ?></a>
                                 </div>
-                                <div class="col-md-10 infos">
+                                <div class="col-md-12 infos">
                                     <a class="autor"
                                     href="<?php echo get_home_url() . '/equipe/' . $slug[$i]['autor_user']; ?>">Por <?php echo $slug[$i]['autor']; ?></a>
                                     <a class="autor-sep">• <?php echo $slug[$i]['tipos']; ?></a>
                                     <a class="autor-sep">• <?php echo $slug[$i]['data']; ?></a>
 
                                     <div class="pull-right download">
-                                        <?php
-                                        if (!empty($slug[$i]['downloadid'])):
-                                            ?>
-                                        <a href="<?php echo wp_get_attachment_url($slug[$i]['downloadid']); ?>"
-                                           download>
-                                           <img src="<?php bloginfo('template_url'); ?>/img/biblioteca-dl.png">
-                                           Download
-                                       </a>
-                                       <span>|</span>
-                                       <?php
-                                       endif;
-                                       ?>
-                                       <a href="<?php echo $slug[$i]['link']; ?>">
-                                        Leia Mais
-                                    </a>
-                                </div>
-                            </div>
+                                        <?php if ( !empty( $slug[$i]['downloadid'] ) ) : ?>
+                                            <a href="<?php echo wp_get_attachment_url($slug[$i]['downloadid']); ?>"
+                                               download>
+                                               <img src="<?php bloginfo('template_url'); ?>/img/biblioteca-dl.png">
+                                               Download
+                                            </a>
+                                            <span>|</span>
+                                        <?php endif; ?>
+                                       <a href="<?php echo $slug[$i]['link']; ?>">Leia Mais</a>
+                                </div><!-- download -->
+                            </div><!-- infos -->
                             <div class="col-md-10 infos-mob">
                                 <a href="<?php echo $slug[$i]['link'];?>">Mais informações</a>
                             </div>
