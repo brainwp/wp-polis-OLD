@@ -132,7 +132,7 @@ if ( is_user_logged_in() && check_user_role('pesquisador') ) {
 }
 $count_query = new WP_Query($count_args);
 $count = $count_query->found_posts;
-echo $count;
+//echo $count;
 // grab the current page number and set to 1 if no page number is set
 $total_posts = $count;
 
