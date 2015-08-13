@@ -81,12 +81,20 @@ if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_ro
             ),
         );
 }
+if ( is_user_logged_in() && check_user_role('administrator') ) {
+    $args['post_status'] = array('publish','private');
+}
+if ( is_user_logged_in() && check_user_role('pesquisador') ) {
+    $args['post_status'] = array('publish','private');
+}
 $query = new WP_Query($args);
+echo 'QUERY - '. $query->found_posts . '<br><br>';
+//global $wpdb;
 //$pageposts = $wpdb->get_results($_sql, OBJECT);
 // Print last SQL query string
 //echo $wpdb->last_query . '<br>';
 // Print last SQL query result
-//echo $wpdb->last_result . '<br>';
+//echo var_dump($wpdb->last_result);
 // Print last SQL query Error
 //echo $wpdb->last_error . '<br>';
 
@@ -116,8 +124,15 @@ if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_ro
             ),
         );
 }
+if ( is_user_logged_in() && check_user_role('administrator') ) {
+    $count_args['post_status'] = array('publish','private');
+}
+if ( is_user_logged_in() && check_user_role('pesquisador') ) {
+    $count_args['post_status'] = array('publish','private');
+}
 $count_query = new WP_Query($count_args);
 $count = $count_query->found_posts;
+echo $count;
 // grab the current page number and set to 1 if no page number is set
 $total_posts = $count;
 
@@ -175,7 +190,7 @@ $total_pages = ceil($total_posts / $per_page);
                         'parent' => 0,
                         'orderby' => 'name',
                         'order' => 'ASC',
-                        'hide_empty' => 1,
+                        'hide_empty' => 0,
                         'hierarchical' => 1,
                         'taxonomy' => 'categorias',
                         'pad_counts' => false
