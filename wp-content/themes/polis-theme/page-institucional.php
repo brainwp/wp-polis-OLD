@@ -47,13 +47,13 @@ get_header(); ?>
             }
             $_i++;
         endwhile;
-        echo $pages->post_count;
+        //echo $_pages->post_count;
         ?>
     </nav>
     <section class="col-md-12 content">
         <article class="col-md-8 pull-left content-institucional" id="post_ajax">
             <ul class="nav nav-tabs tabs-idioma" role="tablist" >
-                <li role="presentation" class="active" data-tab-element="#tab-ptbr"><a href="#tab-ptbr" role="tab" data-toggle="tab">Portugues do Brasil</a></li>
+                <li role="presentation" class="active" data-tab-element="#tab-ptbr"><a href="#tab-ptbr" role="tab" data-toggle="tab">Português do Brasil</a></li>
                 <li role="presentation" data-tab-element="#tab-es"><a href="#tab-es" role="tab" data-toggle="tab">Espanhol</a></li>
             </ul>
             <!-- Tab panes -->

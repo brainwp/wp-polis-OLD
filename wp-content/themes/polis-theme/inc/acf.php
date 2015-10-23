@@ -1224,7 +1224,9 @@ if (function_exists("register_field_group")) {
         'options' => array(
             'position' => 'normal',
             'layout' => 'no_box',
-            'hide_on_screen' => array(),
+            'hide_on_screen' => array(
+                0 => 'the_content',
+            ),
         ),
         'menu_order' => 0,
     ));
@@ -1399,7 +1401,8 @@ if(function_exists("register_field_group"))
         'options' => array (
             'position' => 'acf_after_title',
             'layout' => 'default',
-            'hide_on_screen' => array (
+            'hide_on_screen' => array(
+                0 => 'the_content',
             ),
         ),
         'menu_order' => 0,
