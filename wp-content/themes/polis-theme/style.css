@@ -1212,13 +1212,16 @@ object {
 }
 
 .news .carousel .item .thumb {
-	max-height: 200px;
+    background-color: #c2c2c2;
+	display: block;
+    max-height: 200px;
 	overflow: hidden;
+    text-align: center;
+    width: 100%;
 }
-
 .news .carousel .item .thumb img {
 	margin-top: -20px;
-	width: 100%;
+	max-width: 100%;
 }
 
 .list_carousel .item-slider.noticias .thumb .caption-container {
@@ -1592,12 +1595,13 @@ slider de noticias + acoes
 	font-size: 0.8em;
 }
 #slider-news .thumb .news-terms {
+    bottom: 0;
+    color: #FFF;
+    font-size: 0.8em;
+    padding: 6px 10px;
 	position: absolute;
+    text-align: left;
 	right: 1px;
-	padding: 6px 10px;
-	bottom: 0;
-	font-size: 0.8em;
-	color: #FFF;
 }
 #slider-news .title{
 	margin-top: 5px;
