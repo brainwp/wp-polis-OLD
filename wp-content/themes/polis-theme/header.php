@@ -30,7 +30,7 @@
 	</script>
 
 </head>
-<body data-siteurl="<?php bloginfo('url');?>/">
+<body <?php body_class(); ?> data-siteurl="<?php bloginfo('url');?>/">
 <div id="map-bg"></div>
 
 <div class="container shadow">
