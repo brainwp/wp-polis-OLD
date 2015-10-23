@@ -29,7 +29,7 @@
     </script>
 
 </head>
-<body data-siteurl="<?php bloginfo('url');?>/" id="mini-header-body">
+<body <?php body_class(); ?> data-siteurl="<?php bloginfo('url');?>/" id="mini-header-body">
 <div id="map-bg"></div>
 <div class="container shadow">
     <nav class="col-md-12 nav" id="nav" data-inload="true">
