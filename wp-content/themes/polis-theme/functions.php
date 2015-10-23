@@ -834,5 +834,6 @@ function pre_get_publicacoes_admin(){
         $_GET['orderby'] = 'date';
         $_GET['order'] = 'desc';
     }
+    remove_post_type_support('page', 'editor');
 }
 add_action( 'admin_init', 'pre_get_publicacoes_admin' );

@@ -1386,6 +1386,48 @@ if(function_exists("register_field_group"))
                 'toolbar' => 'full',
                 'media_upload' => 'yes',
             ),
+            array (
+                'key' => 'field_545b6bca0GYTYT6a',
+                'label' => 'Inglês',
+                'name' => '',
+                'type' => 'tab',
+            ),
+            array (
+                'key' => 'field_545b6cee9wee93r90006d',
+                'label' => 'Deseja ativar esse idioma?',
+                'name' => 'active_en',
+                'type' => 'radio',
+                'choices' => array (
+                    'true' => 'Sim',
+                    'false' => 'Não',
+                ),
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => 'false',
+                'layout' => 'vertical',
+            ),
+            array (
+                'key' => 'field_542t94t494b6d640006feefe',
+                'label' => 'Titulo',
+                'name' => 'title_en',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array (
+                'key' => 'field_54539y347hrfweuiuheb6d6800070',
+                'label' => 'Conteudo',
+                'name' => 'content_en',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+
         ),
         'location' => array (
             array (
