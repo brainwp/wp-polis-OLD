@@ -28,7 +28,18 @@ get_header(); ?>
 			
 			<span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
 			<?php the_content(); ?>
-			
+			<?php $next_post = get_next_post();?>
+			<?php $prev_post = get_previous_post();?>
+			<?php if ( $prev_post && !empty( $prev_post ) ) : ?>
+				<a href="<?php echo get_permalink( $prev_post->ID );?>">Anterior</a>
+			<?php endif;?>
+			<?php if ( $prev_post && !empty( $prev_post ) && $next_post && !empty( $next_post ) ) : ?>
+				<a href="#">/</a>
+			<?php endif;?>
+			<?php if ( $next_post && !empty( $next_post ) ) : ?>
+				<a href="<?php echo get_permalink( $next_post->ID );?>">Próximo</a>
+			<?php endif;?>
+
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template
 				if ( comments_open() || '0' != get_comments_number() ) :
