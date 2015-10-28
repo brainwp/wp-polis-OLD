@@ -284,7 +284,7 @@ function _query_canal() {
 
 function _query_colecoes() {
 
-	global $_query;
+	global $_query, $query;
 	$page     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$termo    = get_query_var( 'termo' );
 	$per_page = (int) of_get_option( 'colecoes-per-page' );
@@ -308,6 +308,8 @@ function _query_colecoes() {
 		$_query->boletim          = new WP_Query( $args );
 		$_query->page             = $page;
 		$_query->total_pages      = $_query->boletim->max_num_pages;
+		$_query->template = 'colecoes';
+
 	} else {
 		include get_template_directory() . '/404.php';
 		header( "HTTP/1.0 404 Not Found" );
@@ -950,7 +952,7 @@ function _title( $title ) {
 
 	} elseif ( $_query->template == 'colecoes' ) {
 
-		$title = 'Coleções | ' . $title = get_bloginfo( 'name' );
+		$title = 'Coleções | ' . get_bloginfo( 'name' );
 
 		return $title;
 
