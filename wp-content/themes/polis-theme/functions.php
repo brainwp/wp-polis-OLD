@@ -660,7 +660,7 @@ function biblioteca_count($area)
         'date_query' => $date_query,
         'post_per_page' => 999999,  
     );
-    if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('pesquisador') ) {
+    if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('editor') && !check_user_role('pesquisador') ) {
     $count_args = array(
         'post_type' => 'publicacoes',
         'tax_query' => $categoria_query,
@@ -679,6 +679,9 @@ function biblioteca_count($area)
         );
     }
     if ( is_user_logged_in() && check_user_role('administrator') ) {
+        $count_args['post_status'] = array('publish','private');
+    }
+    if ( is_user_logged_in() && check_user_role('editor') ) {
         $count_args['post_status'] = array('publish','private');
     }
     if ( is_user_logged_in() && check_user_role('pesquisador') ) {

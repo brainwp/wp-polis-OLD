@@ -63,7 +63,7 @@ $args = array(
     'posts_per_page' => $per_page,
     'paged' => $page,
     );
-if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('pesquisador') ) {
+if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('editor') && !check_user_role('pesquisador') ) {
     $args = array(
         'post_type' => 'publicacoes',
         'areas' => $categoria,
@@ -82,6 +82,9 @@ if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_ro
         );
 }
 if ( is_user_logged_in() && check_user_role('administrator') ) {
+    $args['post_status'] = array('publish','private');
+}
+if ( is_user_logged_in() && check_user_role('editor') ) {
     $args['post_status'] = array('publish','private');
 }
 if ( is_user_logged_in() && check_user_role('pesquisador') ) {

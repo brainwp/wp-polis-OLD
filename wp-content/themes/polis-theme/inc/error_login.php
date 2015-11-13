@@ -17,7 +17,7 @@ function register_pesquisador(){
 add_action( 'init', 'register_pesquisador', 1 );
 
 function is_logged(){
-	if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('pesquisador') ) {
+	if ( !is_user_logged_in() || !check_user_role('administrator') && !check_user_role('editor') && !check_user_role('pesquisador') ) {
 		$is_private = get_post_custom_values('publicacoes_qual_tipo');
 		if($is_private[0] == 'arquivistica' && is_singular() ){
 			header('HTTP/1.0 403 Forbidden');
